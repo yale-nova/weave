@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package org.sparkweave.schema;
+
+// ✅ Required for ScalaPB-specific options
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+  flat_package: true
+};
+
+message WeaveRecord {
+  bool is_fake = 1;
+
+  oneof key {
+    string key_str = 2;
+    int32 key_int = 3;
+    int64 key_long = 4;
+  }
+
+  oneof value {
+    string val_str = 5;
+    int32 val_int = 6;
+    int64 val_long = 7;
+  }
+}

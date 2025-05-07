@@ -1,0 +1,9 @@
+- name: coreutils  # replaces realpath
+- name: curl
+- name: gnupg
+- name: ca-certificates
+- name: yq
+  manual_install:
+    url: "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+    target: "/usr/local/bin/yq"
+    chmod: "+x"

@@ -1,0 +1,20 @@
+packages:
+  - name: openjdk-11-jdk
+  - name: curl
+  - name: ca-certificates
+  - name: gnupg
+  - name: sbt
+    repo:
+      source: "deb https://repo.scala-sbt.org/scalasbt/debian all main"
+      key_url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x99e82a75642ac823"
+  - name: scala
+    manual_install:
+      url: "https://downloads.lightbend.com/scala/2.12.15/scala-2.12.15.tgz"
+      target: "/opt/scala-2.12.15.tgz"
+      chmod: "+x"
+      unpack:
+        type: "tar.gz"
+        dest: "/opt"
+        link_to: "/opt/scala"
+        export_path: "/opt/scala/bin"
+  - name: scalapb

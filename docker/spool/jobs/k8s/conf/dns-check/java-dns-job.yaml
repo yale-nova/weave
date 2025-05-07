@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: spark-dns-check
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: dns-checker
+          image: openjdk:11
+          command: ["java", "-jar", "/app/dns-test.jar"]
+          volumeMounts:
+            - name: jar
+              mountPath: /app
+      volumes:
+        - name: jar
+          configMap:
+            name: dns-test

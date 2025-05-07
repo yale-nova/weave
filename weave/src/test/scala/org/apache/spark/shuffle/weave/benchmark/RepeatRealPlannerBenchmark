@@ -1,0 +1,39 @@
+package org.apache.spark.shuffle.weave.benchmark
+
+import org.apache.spark.shuffle.weave.fakepadding.RepeatRealPlanner
+import org.scalatest.funsuite.AnyFunSuite
+
+import scala.util.Random
+
+class RepeatRealPlannerBenchmark extends AnyFunSuite {
+
+  def generateRealCounts(numBins: Int, avgCount: Int): Array[Int] = {
+    val rng = new Random(42)
+    Array.fill(numBins)(avgCount + rng.nextInt(avgCount))
+  }
+
+  def benchmark(numBins: Int, avgCount: Int, d: Double, alpha: Double, beta: Double, mode: String): Unit = {
+    val realCounts = generateRealCounts(numBins, avgCount)
+    val planner = new RepeatRealPlanner(alpha, beta, numBins, seed = 1337L, binomialMode = mode)
+
+    val start = System.nanoTime()
+    val fake = planner.computeFakeCounts(realCounts, d)
+    val end = System.nanoTime()
+    val timeMs = (end - start) / 1e6
+    println(f"[FakePlanner:$mode] bins=$numBins%4d, d=$d%6.1f => time=$timeMs%.2f ms, fake.sum=${fake.sum}")
+  }
+
+  test("RepeatRealPlanner scalability across binomial modes") {
+    val binCounts = Seq(4, 16, 64, 256, 1024)
+    val avgRealPerBin = 100
+    val alpha = 0.05
+    val beta = 0.1
+    val d = 1000.0
+    val modes = Seq("exact", "normal", "library")
+
+    for {
+      bins <- binCounts
+      mode <- modes
+    } benchmark(bins, avgRealPerBin, d, alpha, beta, mode)
+  }
+}  

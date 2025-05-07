@@ -1,0 +1,41 @@
+#!/bin/bash
+set -euo pipefail
+
+# === RUN MODE ===
+CLASS_TO_RUN="${1:?Missing Spark class (e.g., org.apache.spark.deploy.worker.Worker)}"
+shift
+SPARK_ARGS=("$@")
+SCALA_VERSION=2.12
+export SPARK_SCALA_VERSION=$SCALA_VERSION
+
+# Load environment
+export SPARK_ENV_LOADED=""
+. "${SPARK_HOME}/bin/load-spark-env.sh"
+export SPARK_PREPEND_CLASSES=""
+
+# === Compute 80% of system memory in MB ===
+TOTAL_KB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+TOTAL_MB=$((TOTAL_KB / 1024))
+USE_MB=$((TOTAL_MB * 80 / 100))
+
+JAVA_BIN=${JAVA_HOME:-/usr}/bin/java
+
+"$JAVA_BIN" \
+  -cp "$SPARK_CONF_DIR:$SPARK_JARS_DIR/*" \
+  "$CLASS_TO_RUN" \
+  "${SPARK_ARGS[@]}" &
+JVM_PID=$!
+
+METRIC_LOG="./logs/metrics_${CLASS_TO_RUN//./_}_$JVM_PID.log"
+$MONITOR_SCRIPT "$JVM_PID" "$METRIC_LOG" &
+MON_PID=$!
+
+echo "�~\~E Launched Spark class '$CLASS_TO_RUN'"
+echo "   JVM PID      : $JVM_PID"
+echo "   Monitor PID  : $MON_PID"
+echo "   Metric Log   : $METRIC_LOG"
+echo "�~_~S~_ To stop monitoring and show metrics:"
+echo "./spark-direct-class stop $CLASS_TO_RUN $JVM_PID"
+
+
+exit 0

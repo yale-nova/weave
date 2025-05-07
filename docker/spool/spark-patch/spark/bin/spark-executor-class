@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ -z "${SPARK_HOME:-}" ]; then
+  echo "[spark-executor-class] ❌ SPARK_HOME is not set"
+  exit 1
+fi
+
+SGX="${SGX:-0}"
+STACK_SIZE="${STACK_SIZE:-4M}"
+BRK_SIZE="${BRK_SIZE:-128M}"
+FDS_LIMIT="${FDS_LIMIT:-1024}"
+SGX_MAX_THREADS="${MAX_THREADS:-8}"
+WORKER_ID="${WORKER_ID:-$(hostname)_executor}"
+ENCLAVE_DIR="${SPARK_HOME}/enclave"
+
+GRAMINE_CMD="gramine-direct"
+MANIFEST="java.manifest"
+if [ "$SGX" = "1" ]; then
+  GRAMINE_CMD="gramine-sgx"
+  MANIFEST="java.manifest.sgx"
+fi
+
+# 🔍 Extract -Xmx from arguments (in MB)
+ORIG_ARGS=("$@")
+XMX_MB=0
+for arg in "${ORIG_ARGS[@]}"; do
+  if [[ "$arg" =~ ^-Xmx([0-9]+)([mMgG])$ ]]; then
+    num="${BASH_REMATCH[1]}"
+    unit="${BASH_REMATCH[2]}"
+    if [[ "$unit" =~ [gG] ]]; then
+      XMX_MB=$((num * 1024))
+    else
+      XMX_MB=$((num))
+    fi
+    break
+  fi
+done
+
+if [ "$XMX_MB" -eq 0 ]; then
+  echo "[spark-executor-class] ❌ No -Xmx option found in JVM args."
+  exit 1
+fi
+
+# 📏 Set enclave size = XMX + 512MB (rounded up to nearest GB)
+SGX_ENCLAVE_SIZE=$(((XMX_MB + 512 + 1023) / 1024))  # round up to next GB
+NEW_XMX_MB=$((SGX_ENCLAVE_SIZE * 1024 - 512))
+NEW_XMX="-Xmx${NEW_XMX_MB}m"
+
+# 🔁 Replace -Xmx argument in original args
+MODIFIED_ARGS=()
+for arg in "${ORIG_ARGS[@]}"; do
+  if [[ "$arg" =~ ^-Xmx ]]; then
+    MODIFIED_ARGS+=("$NEW_XMX")
+  else
+    MODIFIED_ARGS+=("$arg")
+  fi
+done
+
+# 📦 Manifest config
+export stack_size="$STACK_SIZE"
+export brk_size="$BRK_SIZE"
+export fds_limit="$FDS_LIMIT"
+export sgx_max_threads="$SGX_MAX_THREADS"
+export sgx_enclave_size="${SGX_ENCLAVE_SIZE}G"
+export enable_sigterm="true"
+export disallow_subprocesses="false"
+export disable_aslr="true"
+export sgx_edmm_enable="tru"
+
+CONFIG_HASH_FILE="${ENCLAVE_DIR}/.last_executor_manifest_config"
+MANIFEST_OUT="${ENCLAVE_DIR}/java.manifest"
+CURRENT_HASH=$(echo "$SGX $stack_size $brk_size $fds_limit $sgx_max_threads $sgx_enclave_size $enable_sigterm $disallow_subprocesses $disable_aslr" | sha256sum | cut -d ' ' -f 1)
+
+if [ ! -f "$CONFIG_HASH_FILE" ] || [ "$(cat "$CONFIG_HASH_FILE")" != "$CURRENT_HASH" ] || [ ! -f $MANIFEST_OUT ] ; then
+  echo "[spark-executor-class] 🔁 Manifest changed or missing. Rebuilding..."
+  make -C "$ENCLAVE_DIR" clean all \
+    WORKER_ID="$WORKER_ID" SGX="$SGX" \
+    STACK_SIZE="$STACK_SIZE" BRK_SIZE="$BRK_SIZE" \
+    FDA_LIMIT="$FDS_LIMIT" SGX_MAX_THREADS="$SGX_MAX_THREADS" \
+    SGX_ENCLAVE_SIZE="${SGX_ENCLAVE_SIZE}G" \
+    ENABLE_SIGTERM="true" DISALLOW_SUBPROCESSES="false" DISABLE_ASLR="true" SGX_EDMM_ENABLE="true"
+  echo "$CURRENT_HASH" > "$CONFIG_HASH_FILE"
+else
+  echo "[spark-executor-class] ✅ Manifest unchanged."
+fi
+
+# 1. Extract executor ID and app ID from args
+EXEC_ID=""
+APP_ID=""
+
+args=("$@")
+for ((i=0; i < ${#args[@]}; i++)); do
+    if [[ "${args[$i]}" == "--executor-id" ]]; then
+        EXEC_ID="${args[$((i+1))]}"
+        echo "EXEC_ID: $EXEC_ID"
+    elif [[ "${args[$i]}" == "--app-id" ]]; then
+        APP_ID="${args[$((i+1))]}"
+        echo "APP_ID: $APP_ID"
+    fi
+done
+
+if [[ -z "$EXEC_ID" || -z "$APP_ID" ]]; then
+    echo "❌ Could not parse --executor-id or --app-id from arguments"
+    exit 1
+fi
+
+# 2. Define working dir
+WORK_DIR="$SPARK_HOME/work/${APP_ID}/${EXEC_ID}"
+SCRATCH_DIR="$SPARK_HOME/work/${APP_ID}/${EXEC_ID}/scratch"
+mkdir -p "$WORK_DIR" "$SCRATCH_DIR/tmp" "$SCRATCH_DIR/local"
+ls "$SPARK_HOME/work/${APP_ID}"
+cp $MANIFEST_OUT  $WORK_DIR
+# 📝 Log final command
+
+cd "$WORK_DIR"
+
+echo "[spark-executor-class] 🚀 Final command:" > /tmp/executor.final_cmd
+printf '%q ' "$GRAMINE_CMD" "${MODIFIED_ARGS[@]}" >> /tmp/executor.final_cmd
+echo >> /tmp/executor.final_cmd
+
+MODIFIED_ARGS=("$@")
+
+# Skip the first argument (the java binary)
+CMD_ARGS=("${MODIFIED_ARGS[@]:1}")
+
+echo "Final executor args are: gramine-direct java -Djava.io.tmpdir=/scratch/tmp -Dspark.local.dir=/scratch/local ${CMD_ARGS[@]}"
+
+cleanup() {
+    status=$?
+    echo "[spark-executor-class] Cleanup triggered with exit code $status"
+    # Your actual cleanup logic here
+    rm -rf $SCRATCH_DIR
+    exit $status
+}
+
+# Trap must be in the *current shell*, not a subshell, if you want to handle signals properly.
+trap cleanup EXIT INT TERM
+
+# Run gramine and capture its exit code
+gramine-direct java -Djava.io.tmpdir=/scratch/tmp -Dspark.local.dir=/scratch/local "${CMD_ARGS[@]}"
+
+exitcode=$?
+ehco "\n\n[spark-executor-class] Gramine exit code is: $status"
+# Optional: log or act on exitcode here if needed
+exit $exitcode

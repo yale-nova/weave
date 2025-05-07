@@ -1,0 +1,5 @@
+dependencies:
+  - name: scala-library
+    version: 2.13.14
+    url: "https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.14/scala-library-2.13.14.jar"
+    target: "lib/scala-library-2.13.14.jar"

@@ -1,0 +1,66 @@
+
+# Makefile.global
+
+REPO_CONF := /opt/private-repos/private_repos.conf
+REPOS := $(shell . $(REPO_CONF) && echo $$PRIVATEREPOS)
+
+REPO_ROOT := /opt/private-repos
+
+.PHONY: all clean run test help
+
+# Build all repos unless TARGET is set
+all:
+ifeq ($(TARGET),)
+	@for repo in $(REPOS); do \
+	    REPO_DIR="$(REPO_ROOT)/$$repo"; \
+	    if [ -f $$REPO_DIR/Makefile ]; then \
+	        echo "🔨 Building $$repo..."; \
+	        $(MAKE) -C $$REPO_DIR all || exit 1; \
+	    else \
+	        echo "❌ No Makefile found in $$REPO_DIR"; \
+	    fi \
+	done
+else
+	@echo "🔨 Building only $(TARGET)$(if $(SUBTARGET), with subtarget $(SUBTARGET))..."
+	@$(MAKE) -C $(REPO_ROOT)/$(TARGET) $(if $(SUBTARGET),$(SUBTARGET),all)
+endif
+
+# Clean all repos
+clean:
+	@for repo in $(REPOS); do \
+	    REPO_DIR="$(REPO_ROOT)/$$repo"; \
+	    if [ -f $$REPO_DIR/Makefile ]; then \
+	        echo "🧹 Cleaning $$repo..."; \
+	        $(MAKE) -C $$REPO_DIR clean || true; \
+	    fi \
+	done
+
+# Run tests for all repos
+test:
+	@for repo in $(REPOS); do \
+	    REPO_DIR="$(REPO_ROOT)/$$repo"; \
+	    if [ -f $$REPO_DIR/Makefile ]; then \
+	        echo "🧪 Testing $$repo..."; \
+	        $(MAKE) -C $$REPO_DIR test || true; \
+	    fi \
+	done
+
+# Manual passthrough
+run:
+	@for repo in $(REPOS); do \
+	    REPO_DIR="$(REPO_ROOT)/$$repo"; \
+	    if [ -f $$REPO_DIR/Makefile ]; then \
+	        echo "▶️ Running 'make $(ARGS)' in $$repo..."; \
+	        $(MAKE) -C $$REPO_DIR $(ARGS) || true; \
+	    fi \
+	done
+
+help:
+	@echo "Usage:"
+	@echo "  make all                    – build all repos"
+	@echo "  make clean                  – clean all repos"
+	@echo "  make test                   – run tests in all repos (via make check)"
+	@echo "  make TARGET=weave-artifacts – build only that repo"
+	@echo "  make TARGET=weave-artifacts SUBTARGET=test – build/test a subtarget inside"
+	@echo "  make run ARGS=\"check\"       – run a raw make target in each repo"
+

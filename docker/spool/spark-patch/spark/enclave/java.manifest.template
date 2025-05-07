@@ -1,0 +1,84 @@
+# Basic Entry
+libos.entrypoint = "{{ entrypoint }}"
+loader.log_level = "{{ loader_log_level }}"
+# loader.log_level = "debug"
+# loader.log_level = "error"
+#loader.log_file = "{{ spark_home }}/logs/enclave/{{ worker_id }}_gramine_loader.log"
+loader.insecure__use_cmdline_argv = true
+loader.insecure__use_host_env = true
+sys.enable_extra_runtime_domain_names_conf = true
+loader.env.SPARK_HOME = "{{ spark_home }}"
+#loader.env.SPARK_CONF_DIR = "{{ spark_home }}/conf"
+loader.env.SPARK_LOG_DIR="{{ spark_home }}/logs"
+loader.env.SPARK_WORKER_OPTS="-Dlog4j.configuration=file:/opt/spark/conf/log4j.properties -Dspark.log.dir={{ spark_home }}/logs"
+sys.experimental__enable_flock = true
+
+# User Mimic for hadoop
+loader.uid = 1000
+loader.gid = 1000
+loader.env.USER = "spark"
+loader.env.LOGNAME = "spark"
+loader.env.HOME = "/home/spark" # optional but helpful
+loader.env.SHELL = "/bin/bash"
+loader.env.SPARK_LOCAL_DIRS = "/scratch/local"
+
+# Environment
+loader.env.LD_LIBRARY_PATH = "/lib:{{ arch_libdir }}:/usr/lib:/usr/{{ arch_libdir }}"
+
+fs.start_dir = "./scratch"
+# Filesystem
+fs.mounts = [
+  { uri = "file:{{ gramine.runtimedir() }}", path = "/lib" },
+  { uri = "file:{{ arch_libdir }}", path = "{{ arch_libdir }}" },
+  { uri = "file:/usr", path = "/usr" }, 
+  { type = "tmpfs", path = "/tmp" },
+  { uri = "file:{{ spark_home }}/jars", path = "{{ spark_home }}/jars" },
+  { uri = "file:{{ spark_home }}/examples/jars", path = "{{ spark_home }}/examples/jars" },
+  { uri = "file:{{ spark_home }}/conf/log4j.properties", path = "{{ spark_home }}/conf/log4j.properties" },
+  { uri = "file:{{ spark_home }}/logs/enclave/", path = "{{ spark_home }}/logs/enclave/" },
+  { uri = "file:/etc/hosts", path = "/etc/hosts" },
+  { uri = "file:/etc/hostname", path = "/etc/hostname" },
+  { uri = "file:./scratch", path = "/scratch"}, 
+  { uri = "file:{{ enclave_home }}/helper-files/fake-passwd", path = "/etc/passwd" },
+  { uri = "file:{{ enclave_home }}/output-data/", path = "/output-data"}, 
+]
+
+# SGX Settings
+sgx.enclave_size = "{{ sgx_enclave_size }}"
+sgx.max_threads = {{ sgx_max_threads }}
+sgx.edmm_enable = {{ sgx_edmm_enable }}
+sgx.use_exinfo = true
+
+sgx.trusted_files = [
+  "file:{{ entrypoint }}",
+  "file:{{ gramine.runtimedir() }}/",
+  "file:{{ arch_libdir }}/",
+  "file:/usr/{{ arch_libdir }}/",
+  "file:/usr/lib/jvm/java-11-openjdk-amd64/lib/",
+  "file:/etc/hostname", 
+  "file:/etc/hosts",
+  "file:/usr/lib/jvm/java-11-openjdk-amd64/conf/security/",
+  "file:{{ spark_home }}/conf/",
+  "file:{{ spark_home }}/jars/", 
+  "file:{{ spark_home }}/examples/jars/", 
+  "file:{{ enclave_home }}/helper-files/fake-passwd",
+]
+
+sgx.allowed_files = [
+  "file:./scratch/", 
+  "file:{{ spark_home }}/logs/enclave/", 
+  "file:{{ enclave_home }}/output-data/",
+]
+
+# System Settings
+sys.stack.size = "{{ stack_size }}"
+sys.brk.max_size = "{{ brk_size }}"
+sys.fds.limit = {{ fds_limit }}
+sys.enable_sigterm_injection = {{ enable_sigterm }}
+sys.disallow_subprocesses = {{ disallow_subprocesses }}
+loader.insecure__disable_aslr = {{ disable_aslr }}
+
+sys.allowed_ioctls = [
+  { request_code = 0x8912 }, # SIOCGIFCONF
+  { request_code = 0x8927 }  # SIOCGIFHWADDR
+]

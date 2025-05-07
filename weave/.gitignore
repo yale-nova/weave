@@ -1,0 +1,43 @@
+# SBT build artifacts
+target/
+project/target/
+project/project/
+
+# IntelliJ / IDEA / VSCode / Eclipse / Metals
+.idea/
+.vscode/
+*.iml
+.metals/
+.bloop/
+.bsp/
+.ensime*
+.worksheet
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# OS / Editor junk files
+.DS_Store
+Thumbs.db
+
+# Dependency caches
+.ivy2/
+.coursier/
+.cache/
+
+# SBT history
+.history
+
+# Tests results
+test-reports/
+
+# JARs (if you generate them locally)
+*.jar
+
+# User-specific settings
+*.sublime-workspace
+*.sublime-project

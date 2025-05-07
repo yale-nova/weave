@@ -1,0 +1,93 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Change to that directory
+cd "$SCRIPT_DIR" || exit 1
+
+# === Parameters ===
+SGX_ENCLAVE_SIZE="${SGX_ENCLAVE_SIZE:-4}"  # in GB
+SGX="${SGX:-0}"  # SGX=1 = use gramine-sgx
+STACK_SIZE="1M"
+BRK_SIZE="50MB"
+FDS_LIMIT="4096"
+MAX_THREADS="60"
+ENABLE_SIGTERM="true"
+DISALLOW_SUBPROCESSES="false"
+DISABLE_ASLR="true"
+SGX_EDMM_ENABLE="true"
+
+# === Paths ===
+SPARK_HOME="${SPARK_HOME:-/opt/spark}"
+SPARK_CONF_DIR="${SPARK_CONF_DIR:-$SPARK_HOME/conf}"
+SPARK_JARS_DIR="${SPARK_JARS_DIR:-$SPARK_HOME/jars}"
+JAVA_BIN=$(command -v java)
+
+# === System Info ===
+HOSTNAME="$(hostname)"
+NUM_CORES="$(nproc)"
+CORES_TO_USE="$((NUM_CORES - 1))"
+HEAP_GB=$((${SGX_ENCLAVE_SIZE} - 1))
+MEMORY_HEAP="${HEAP_GB}"g
+MEMORY_EXEC="$((${HEAP_GB} - 1))"g
+WORKER_ID="${HOSTNAME}_spark_worker"
+
+# === GC and JVM Options ===
+GC_JVM_OPTS="-XX:+UseParallelGC -XX:+UseParallelOldGC"
+EXECUTOR_OPTS="-XX:+UseParallelGC -XX:+UseParallelOldGC"
+EXECUTOR_CORES="$CORES_TO_USE"
+
+# === Spark Configuration ===
+export SPARK_EXECUTOR_MEMORY="$MEMORY_EXEC"
+export SPARK_EXECUTOR_CORES="$EXECUTOR_CORES"
+export SPARK_EXECUTOR_EXTRAJAVAOPTIONS="$EXECUTOR_OPTS"
+export SPARK_WORKER_MEMORY="$MEMORY_HEAP"
+export SPARK_EXECUTOR_OPTS="-Dlog4j.configuration=file:$SPARK_HOME/conf/log4j.properties"
+
+# === Spark Configuration via system props ===
+#"-Dspark.executor.memory=$MEMORY_EXEC \
+            # -Dspark.executor.cores=$EXECUTOR_CORES \
+SPARK_PROPS="-Dspark.log.dir=/opt/spark/logs"
+
+EXEC_LOG_CONF="-Dlog4j.configuration=file:$SPARK_HOME/conf/log4j.properties"
+WORKER_LOG_CONF=$EXEC_LOG_CONF
+
+# === Compile Manifest ===
+cd /enclave
+make clean all \
+  WORKER_ID="$WORKER_ID" \
+  SGX="$SGX" \
+  stack_size="$STACK_SIZE" \
+  brk_size="$BRK_SIZE" \
+  fds_limit="$FDS_LIMIT" \
+  sgx_max_threads="$MAX_THREADS" \
+  sgx_enclave_size="${SGX_ENCLAVE_SIZE}G" \
+  enable_sigterm="$ENABLE_SIGTERM" \
+  disallow_subprocesses="$DISALLOW_SUBPROCESSES" \
+  disable_aslr="$DISABLE_ASLR"
+
+
+# === Entrypoint: gramine-direct or gramine-sgx ===
+MANIFEST="java.manifest"
+EXEC_CMD="gramine-direct"
+[ "$SGX" = "1" ] && {
+  MANIFEST="${MANIFEST}.sgx"
+  EXEC_CMD="gramine-sgx"
+}
+
+echo "🚀 Launching Spark worker under $EXEC_CMD with heap = $MEMORY_HEAP and cores = $CORES_TO_USE"
+
+echo "Executing:"
+echo "$JAVA_BIN $SPARK_PROPS $EXEC_LOG_CONF $GC_JVM_OPTS -cp $SPARK_CONF_DIR:$SPARK_JARS_DIR/* org.apache.spark.deploy.worker.Worker --cores $CORES_TO_USE --memory $MEMORY_HEAP --executor-java-options $EXECUTOR_OPTS --work-dir /scratch/$WORKER_ID spark://$HOSTNAME:7077"
+
+"$EXEC_CMD" java \
+  $SPARK_PROPS \
+  $EXEC_LOG_CONF \
+  $GC_JVM_OPTS \
+  -cp "$SPARK_CONF_DIR:$SPARK_JARS_DIR/*" \
+  org.apache.spark.deploy.worker.Worker \
+  --work-dir "/scratch/$WORKER_ID" \
+  "spark://127.0.0.1:7077"
+  #--cores "$CORES_TO_USE" \
+  #--memory "$MEMORY_HEAP" \

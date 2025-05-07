@@ -1,0 +1,18 @@
+# Auto-generated
+export SPARK_MASTER_HOST="127.0.0.1"
+SPARK_EXECUTOR_MEMORY_GB=6
+SPARK_EXECUTOR_MEMORY_OVERHEAD_GB=1
+SPARK_WORKER_MEMORY_GB=7
+SPARK_WORKER_CORES=2
+SPARK_DRIVER_MEMORY_GB=4
+SPARK_DRIVER_MEMORY_OVERHEAD_GB=0
+SPARK_DAEMON_MEMORY="4g"
+SPARK_GC_OPTS="-XX:+UseParallelGC -XX:+UseParallelOldGC"
+export SPARK_LOG_DIR="logs/test_sanity_logs"
+export SPARK_LOG_LEVEL="INFO"
+export SPARK_MASTER_PORT="7077"
+export SPARK_MASTER_WEBUI_PORT="8080"
+export SPARK_LOG_MAXFILES="10"
+export SPARK_LOG_MAXSIZE="100m"
+export SPARK_DAEMON_MEMORY="4g"
+export SPARK_DAEMON_JAVA_OPTS="-Dlog4j.configuration=file:/opt/git/weave-artifacts/examples/spark/scripts/../conf/log4j.properties -XX:+UseParallelGC -XX:+UseParallelOldGC"

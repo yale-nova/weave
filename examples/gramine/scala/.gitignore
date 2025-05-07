@@ -1,0 +1,35 @@
+# Scala build artifacts
+target/
+project/target/
+project/project/
+
+# Jar outputs
+jars/
+
+# Logs & outputs
+test-logs/
+test-outputs/
+output-data/
+
+# Gramine build files
+*.manifest
+*.manifest.sgx
+*.sig
+*.token
+
+# Temp Scala files
+*.class
+*.tasty
+
+# Editor cruft
+*.swp
+*.swo
+*~
+
+# macOS specific
+.DS_Store
+
+# IntelliJ & VSCode
+.idea/
+.vscode/
+

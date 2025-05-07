@@ -1,0 +1,34 @@
+# sbt
+target/
+project/target/
+project/project/
+.idea/
+*.iml
+
+# Slim jars
+/minimal-jars/
+
+logs/
+scripts/*.log
+app/target/
+*.log 
+
+# Ignore all subdirectories inside conf/
+conf/*/
+
+# But do not ignore the conf/ directory itself
+!conf/
+# And do not ignore files directly under conf/ (only)
+!conf/*.*
+
+# Ignore .txt files directly under examples/spark/ (but not in subfolders)
+*.txt
+
+# Ignore any file containing 'log' anywhere in its name inside examples/spark/ and all its subdirs
+**/*log*
+
+# Gramine builds (optional)
+java.manifest
+java.manifest.sgx
+java.sig
+

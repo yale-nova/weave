@@ -1,0 +1,30 @@
+# === build outputs ===
+jars/
+fork-jars/
+target/
+project/target/
+project/project/
+
+# === Gramine artifacts ===
+*.manifest
+*.manifest.sgx
+*.sig
+*.token
+
+# === temp/intermediate ===
+*.class
+*.out
+*.err
+*.tmp
+
+# === IDEs ===
+.idea/
+.vscode/
+*.iml
+
+# === OS artifacts ===
+.DS_Store
+Thumbs.db
+
+# === Plots and reports === 
+*.pdf

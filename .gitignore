@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+*.log
+.env
+*.env 
+*auth.env
+*.pem
+.DS_Store
+*.swp
+.vscode/
+.idea/
+# Ignore Gramine build artifacts
+*.manifest
+*.manifest.sgx
+*.sig
+*.PID
+TEST_STDOUT
+TEST_STDERR
+OUTPUT*
+*.so
+*.o
+**/tmp/
