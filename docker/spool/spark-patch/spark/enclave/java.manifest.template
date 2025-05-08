@@ -38,9 +38,9 @@ fs.mounts = [
   { uri = "file:{{ spark_home }}/logs/enclave/", path = "{{ spark_home }}/logs/enclave/" },
   { uri = "file:/etc/hosts", path = "/etc/hosts" },
   { uri = "file:/etc/hostname", path = "/etc/hostname" },
-  { uri = "file:./scratch", path = "/scratch"}, 
+  { uri = "file:/scratch", path = "/scratch"}, 
   { uri = "file:{{ enclave_home }}/helper-files/fake-passwd", path = "/etc/passwd" },
-  { uri = "file:{{ enclave_home }}/output-data/", path = "/output-data"}, 
+  { uri = "file:{{ enclave_home }}/data/", path = "{{ enclave_home }}/data/"}, 
 ]
 
 # SGX Settings
@@ -65,9 +65,9 @@ sgx.trusted_files = [
 ]
 
 sgx.allowed_files = [
-  "file:./scratch/", 
+  "file:/scratch/", 
   "file:{{ spark_home }}/logs/enclave/", 
-  "file:{{ enclave_home }}/output-data/",
+  "file:{{ enclave_home }}/data/",
 ]
 
 # System Settings

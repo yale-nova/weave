@@ -1,0 +1,3338 @@
+﻿The Project Gutenberg eBook of Beyond the pleasure principle
+    
+This ebook is for the use of anyone anywhere in the United States and
+most other parts of the world at no cost and with almost no restrictions
+whatsoever. You may copy it, give it away or re-use it under the terms
+of the Project Gutenberg License included with this ebook or online
+at www.gutenberg.org. If you are not located in the United States,
+you will have to check the laws of the country where you are located
+before using this eBook.
+
+Title: Beyond the pleasure principle
+
+Author: Sigmund Freud
+
+Translator: C. J. M. Hubback
+
+Release date: May 6, 2025 [eBook #76031]
+
+Language: English
+
+Original publication: London: The International Psycho-Analytical Press, 1922
+
+Credits: Richard Tonsing and the Online Distributed Proofreading Team at https://www.pgdp.net (This book was produced from images made available by the HathiTrust Digital Library.)
+
+
+*** START OF THE PROJECT GUTENBERG EBOOK BEYOND THE PLEASURE PRINCIPLE ***
+
+
+
+
+
+                           THE INTERNATIONAL
+                           PSYCHO-ANALYTICAL
+                                LIBRARY
+
+                         EDITED BY ERNEST JONES
+
+                                 No. 4
+
+
+
+
+                     BEYOND THE PLEASURE PRINCIPLE
+
+
+                                   BY
+
+                        SIGM. FREUD, M.D., LL.D.
+
+
+                         AUTHORIZED TRANSLATION
+                     FROM THE SECOND GERMAN EDITION
+                          BY C. J. M. HUBBACK
+
+[Illustration: [Logo]]
+
+               THE INTERNATIONAL PSYCHO-ANALYTICAL PRESS
+                    LONDON      MCMXXII      VIENNA
+
+
+
+
+                             COPYRIGHT 1911
+
+
+
+
+                           EDITORIAL PREFACE
+
+
+I have revised this translation, so carefully made by Miss Hubback,
+several times, but I feel that it calls for special indulgence on the
+part of the reader. On account, doubtless, of the extreme complexity and
+remarkable novelty of the ideas which Professor Freud here expounds,
+comprising as they do his thoughts on the ultimate problems of life, the
+style is one of exceptional difficulty. As it is more important to
+render his ideas precisely than to clothe them in another garb, we
+decided to adhere faithfully to the original even at the expense of some
+uncouthness as regards the English.
+
+The word _Unlust_, as in the phrase pleasure-pain principle, has been
+translated as ‘pain’; pain without inverted commas signifies _Schmerz_
+in the original. The word _Besetzung_ (literally: state of being
+occupied), as in the expressions _Besetzungsenergie_ and
+_Energiebesetzung_ has been rendered by the words ‘investment’ or
+‘charge’, the latter being taken from the analogy of electricity. These
+and other technical terms will be discussed in a Glossary which it is
+intended to publish as a supplement to the _International Journal of
+Psycho-Analysis_.
+
+
+
+
+                               BEYOND THE
+                                PLEASURE
+                               PRINCIPLE
+
+
+
+
+                                   I
+
+
+In the psycho-analytical theory of the mind we take it for granted
+that the course of mental processes is automatically regulated by ‘the
+pleasure-principle’: that is to say, we believe that any given process
+originates in an unpleasant state of tension and thereupon determines
+for itself such a path that its ultimate issue coincides with a
+relaxation of this tension, i. e. with avoidance of ‘pain’ or with
+production of pleasure. When we consider the psychic processes under
+observation in reference to such a sequence we are introducing into
+our work the _economic_ point of view. In our opinion a presentation
+which seeks to estimate, not only the _topographical_ and _dynamic_,
+but also the economic element is the most complete that we can at
+present imagine, and deserves to be distinguished by the term
+_metapsychological_.
+
+We are not interested in examining how far in our assertion of the
+pleasure-principle we have approached to or adopted any given
+philosophical system historically established. Our approach to such
+speculative hypotheses is by way of our endeavour to describe and
+account for the facts falling within our daily sphere of observation.
+Priority and originality are not among the aims which psycho-analysis
+sets itself, and the impressions on which the statement of this
+principle is founded are of so unmistakable a kind that it is scarcely
+possible to overlook them. On the other hand, we should willingly
+acknowledge our indebtedness to any philosophical or psychological
+theory that could tell us the meaning of these feelings of pleasure and
+‘pain’ which affect us so powerfully. Unfortunately no theory of any
+value is forthcoming. It is the obscurest and least penetrable region of
+psychic life and, while it is impossible for us to avoid touching on it,
+the most elastic hypothesis will be, to my mind, the best. We have
+decided to consider pleasure and ‘pain’ in relation to the quantity of
+excitation present in the psychic life—and not confined in any way—along
+such lines that ‘pain’ corresponds with an increase and pleasure with a
+decrease in this quantity. We do not thereby commit ourselves to a
+simple relationship between the strength of the feelings and the changes
+corresponding with them, least of all, judging from psycho-physiological
+experiences, to any view of a direct proportion existing between them;
+probably the amount of diminution or increase in a given time is the
+decisive factor for feeling. Possibly there is room here for
+experimental work, but it is inadvisable for us analysts to go further
+into these problems until we can be guided by quite definite
+observations.
+
+We cannot however profess the like indifference when we find that an
+investigator of such penetration as G. Th. Fechner has advocated a
+conception of pleasure and ‘pain’ which in essentials coincides with
+that forced upon us by psycho-analytic work. Fechner’s pronouncement is
+to be found in his short work ‘Einige Ideen zur Schöpfungs- und
+Entwicklungsgeschichte der Organismen’, 1873 (Section XI, Note p. 94)
+and reads as follows: ‘In so far as conscious impulses always bear a
+relation to pleasure or “pain”, pleasure or “pain” may be thought of in
+psycho-physical relationship to conditions of stability and instability,
+and upon this may be based the hypothesis I intend to develop elsewhere,
+viz.: that every psycho-physical movement rising above the threshold of
+consciousness is charged with pleasure in proportion as it
+approximates—beyond a certain limit—to complete equilibrium, and with
+“pain” in proportion as it departs from it beyond a certain limit; while
+between the two limits which may be described as the qualitative
+thresholds of “pain” or pleasure, there is a certain area of aesthetic
+indifference.’
+
+The facts that have led us to believe in the supremacy of the
+pleasure-principle in psychic life also find expression in the
+hypothesis that there is an attempt on the part of the psychic apparatus
+to keep the quantity of excitation present as low as possible, or at
+least constant. This is the same supposition only put into another form,
+for, if the psychic apparatus operates in the direction of keeping down
+the quantity of excitation, all that tends to increase it must be felt
+to be contrary to function, that is to say painful. The
+pleasure-principle is deduced from the principle of constancy; in
+reality the principle of constancy was inferred from the facts that
+necessitated our assumption of the pleasure-principle. On more detailed
+discussion we shall find further that this tendency on the part of the
+psychic apparatus postulated by us may be classified as a special case
+of Fechner’s principle of the _tendency towards stability_ to which he
+has related the pleasure-pain feelings.
+
+In that event, however, it must be affirmed that it is not strictly
+correct to speak of a supremacy of the pleasure-principle over the
+course of psychic processes. If such existed, then the vast majority of
+our psychic processes would necessarily be accompanied by pleasure or
+would conduce to it, while the most ordinary experience emphatically
+contradicts any such conclusion. One can only say that a strong tendency
+towards the pleasure-principle exists in the psyche, to which, however,
+certain other forces or conditions are opposed, so that the ultimate
+issue cannot always be in accordance with the pleasure-tendency. Compare
+the comment of Fechner in a similar connection.[1] ‘Therewithal it is to
+be noted that the tendency towards the goal does not imply the
+attainment of it and that in general the goal is only approximately
+attainable....’ If we now address ourselves to the question of what
+circumstances have the power to frustrate the successful carrying out of
+the pleasure-principle we shall be treading on safer and better-known
+ground, and we can draw in abundant measure on our analytical
+experiences for the answer.
+
+The first case of such a check on the pleasure-principle is perfectly
+familiar to us in the regularity of its occurrence. We know that the
+pleasure-principle is adjusted to a primary mode of operation on the
+part of the psychic apparatus, and that for the preservation of the
+organism amid the difficulties of the external world it is ab initio
+useless and indeed extremely dangerous. Under the influence of the
+instinct of the ego for self-preservation it is replaced by the
+‘reality-principle’, which without giving up the intention of ultimately
+attaining pleasure yet demands and enforces the postponement of
+satisfaction, the renunciation of manifold possibilities of it, and the
+temporary endurance of ‘pain’ on the long and circuitous road to
+pleasure. The pleasure-principle however remains for a long time the
+method of operation of the sex-impulses, which are not so easily
+educable, and it happens over and over again that whether acting through
+these impulses or operating in the ego itself it prevails over the
+reality-principle to the detriment of the whole organism.
+
+It is at the same time indubitable that the replacement of the
+pleasure-principle by the reality-principle can account only for a small
+part, and that not the most intense, of painful experiences. Another and
+no less regular source of ‘pain’ proceeds from the conflicts and
+dissociations in the psychic apparatus during the development of the ego
+towards a more highly co-ordinated organisation. Nearly all the energy
+with which the apparatus is charged comes from the inborn instincts, but
+not all of these are allowed to develop to the same stage. On the way it
+over and again happens that particular instincts, or portions of them,
+prove irreconcilable in their aims or demands with others which can be
+welded into the comprehensive unity of the ego. They are thereupon split
+off from this unity by the process of repression, retained on lower
+stages of psychic development, and for the time being cut off from all
+possibility of gratification. If they then succeed, as so easily happens
+with the repressed sex-impulses, in fighting their way through—along
+circuitous routes—to a direct or a substitutive gratification, this
+success, which might otherwise have brought pleasure, is experienced by
+the ego as ‘pain’. In consequence of the old conflict which ended in
+repression the pleasure-principle has been violated anew, just at the
+moment when certain impulses were at work on the achievement of fresh
+pleasure in pursuance of the principle. The details of the process by
+which repression changes a possibility of pleasure into a source of
+‘pain’ are not yet fully understood, or are not yet capable of clear
+presentation, but it is certain that all neurotic ‘pain’ is of this
+kind, is pleasure which cannot be experienced as such.
+
+The two sources of ‘pain’ here indicated still do not nearly cover the
+majority of our painful experiences, but as to the rest one may say with
+a fair show of reason that their presence does not impugn the supremacy
+of the pleasure-principle. Most of the ‘pain’ we experience is of a
+perceptual order, perception either of the urge of unsatisfied instincts
+or of something in the external world which may be painful in itself or
+may arouse painful anticipations in the psychic apparatus and is
+recognised by it as ‘danger’. The reaction to these claims of impulse
+and these threats of danger, a reaction in which the real activity of
+the psychic apparatus is manifested, may be guided correctly by the
+pleasure-principle or by the reality-principle which modifies this. It
+seems thus unnecessary to recognise a still more far-reaching limitation
+of the pleasure-principle, and nevertheless it is precisely the
+investigation of the psychic reaction to external danger that may supply
+new material and new questions in regard to the problem here treated.
+
+
+
+
+                                   II
+
+
+After severe shock of a mechanical nature, railway collision or other
+accident in which danger to life is involved, a condition may arise
+which has long been recognised and to which the name ‘traumatic
+neurosis’ is attached. The terrible war that is just over has been
+responsible for an immense number of such maladies and at least has put
+an end to the inclination to explain them on the basis of organic injury
+to the nervous system due to the operation of mechanical force.[2] The
+clinical picture of traumatic neurosis approaches that of hysteria in
+its wealth of similar motor symptoms, but usually surpasses it in its
+strongly marked signs of subjective suffering—in this resembling rather
+hypochondria or melancholia—and in the evidences of a far more
+comprehensive general weakening and shattering of the mental functions.
+Neither the war neuroses nor the traumatic neuroses of peace are as yet
+fully understood. With the war neuroses some light was contributed, but
+also on the other hand a certain confusion introduced, by the fact that
+the same type of malady could occasionally occur without the
+interposition of gross mechanical force. In the traumatic neuroses there
+are two outstanding features which might serve as clues for further
+reflection: first that the chief causal factor seemed to lie in the
+element of surprise, in the fright; and secondly that an injury or wound
+sustained at the same time generally tended to prevent the occurrence of
+the neurosis. Fright, fear, apprehension are incorrectly used as
+synonymous expressions: in their relation to danger they admit of quite
+clear distinction. Apprehension (_Angst_) denotes a certain condition as
+of expectation of danger and preparation for it, even though it be an
+unknown one; fear (_Furcht_) requires a definite object of which one is
+afraid; fright (_Schreck_) is the name of the condition to which one is
+reduced if one encounters a danger without being prepared for it; it
+lays stress on the element of surprise. In my opinion apprehension
+cannot produce a traumatic neurosis; in apprehension there is something
+which protects against fright and therefore against the fright-neurosis.
+We shall return later to this dictum.
+
+The study of dreams may be regarded as the most trustworthy approach to
+the exploration of the deeper psychic processes. Now in the traumatic
+neuroses the dream life has this peculiarity: it continually takes the
+patient back to the situation of his disaster, from which he awakens in
+renewed terror. This fact has caused less surprise than it merits. The
+obtrusion on the patient over and again, even in sleep, of the
+impression made by the traumatic experience is taken as being merely a
+proof of its strength. The patient has so to speak undergone a psychical
+fixation as to the trauma. Fixations of this kind on the experience
+which has brought about the malady have long been known to us in
+connection with hysteria. Breuer and Freud stated in 1893 that hysterics
+suffer for the most part from reminiscences. In the war neuroses,
+observers, such as Ferenczi and Simmel, have been able to explain a
+number of motor symptoms as fixation on the factor of the trauma.
+
+But I am not aware that the patients suffering from traumatic neuroses
+are much occupied in waking life with the recollection of what happened
+to them. They perhaps strive rather not to think of it. To regard it as
+self-evident that the dream at night takes them back to the situation
+which has caused the trouble is to misunderstand the nature of dreams.
+It would be more in correspondence with that nature if the patient were
+presented (in sleep) with images from the time of his normal health or
+of his hoped-for recovery. If we are not to go thoroughly astray as to
+the wish-fulfilment tendency of the dream in consequence of these dreams
+of the shock neuroses, perhaps the expedient is left us of supposing
+that in this condition the dream function suffers dislocation along with
+the others and is diverted from its usual ends, or else we should have
+to think of the enigmatic masochistic tendencies of the ego.
+
+I propose now to leave the obscure and gloomy theme of the traumatic
+neuroses and to study the way in which the psychic apparatus works in
+one of its earliest normal activities. I refer to the play of children.
+
+The different theories of child-play have recently been collated by S.
+Pfeifer in _Imago_[3] and their analytical value estimated; I may here
+refer the reader to this work. These theories endeavour to conjecture
+the motives of children’s play, though without placing any special
+stress on the ‘economic’ point of view, i. e. consideration of the
+attainment of pleasure. Without the intention of making a comprehensive
+study of these phenomena I availed myself of an opportunity which
+offered of elucidating the first game invented by himself of a boy
+eighteen months old. It was more than a casual observation, for I lived
+for some weeks under the same roof as the child and his parents, and it
+was a considerable time before the meaning of his puzzling and
+continually repeated performance became clear to me.
+
+The child was in no respect forward in his intellectual development; at
+eighteen months he spoke only a few intelligible words, making besides
+sundry significant sounds which were understood by those about him. But
+he made himself understood by his parents and the maid-servant, and had
+a good reputation for behaving ‘properly’. He did not disturb his
+parents at night; he scrupulously obeyed orders about not touching
+various objects and not going into certain rooms; and above all he never
+cried when his mother went out and left him for hours together, although
+the tie to his mother was a very close one: she had not only nourished
+him herself, but had cared for him and brought him up without any
+outside help. Occasionally, however, this well-behaved child evinced the
+troublesome habit of flinging into the corner of the room or under the
+bed all the little things he could lay his hands on, so that to gather
+up his toys was often no light task. He accompanied this by an
+expression of interest and gratification, emitting a loud long-drawn-out
+‘o-o-o-oh’ which in the judgement of the mother (one that coincided with
+my own) was not an interjection but meant ‘go away’ (_fort_). I saw at
+last that this was a game, and that the child used all his toys only to
+play ‘being gone’ (_fortsein_) with them. One day I made an observation
+that confirmed my view. The child had a wooden reel with a piece of
+string wound round it. It never occurred to him, for example, to drag
+this after him on the floor and so play horse and cart with it, but he
+kept throwing it with considerable skill, held by the string, over the
+side of his little draped cot, so that the reel disappeared into it,
+then said his significant ‘o-o-o-oh’ and drew the reel by the string out
+of the cot again, greeting its reappearance with a joyful ‘_Da_’
+(there). This was therefore the complete game, disappearance and return,
+the first act being the only one generally observed by the onlookers,
+and the one untiringly repeated by the child as a game for its own sake,
+although the greater pleasure unquestionably attached to the second
+act.[4]
+
+The meaning of the game was then not far to seek. It was connected with
+the child’s remarkable cultural achievement—the foregoing of the
+satisfaction of an instinct—as the result of which he could let his
+mother go away without making any fuss. He made it right with himself,
+so to speak, by dramatising the same disappearance and return with the
+objects he had at hand. It is of course of no importance for the
+affective value of this game whether the child invented it himself or
+adopted it from a suggestion from outside. Our interest will attach
+itself to another point. The departure of the mother cannot possibly
+have been pleasant for the child, nor merely a matter of indifference.
+How then does it accord with the pleasure-principle that he repeats this
+painful experience as a game? The answer will perhaps be forthcoming
+that the departure must be played as the necessary prelude to the joyful
+return, and that in this latter lay the true purpose of the game. As
+against this, however, there is the observation that the first act, the
+going away, was played by itself as a game and far more frequently than
+the whole drama with its joyful conclusion.
+
+The analysis of a single case of this kind yields no sure conclusion: on
+impartial consideration one gains the impression that it is from another
+motive that the child has turned the experience into a game. He was in
+the first place passive, was overtaken by the experience, but now brings
+himself in as playing an active part, by repeating the experience as a
+game in spite of its unpleasing nature. This effort might be ascribed to
+the impulse to obtain the mastery of a situation (the ‘power’ instinct),
+which remains independent of any question of whether the recollection
+was a pleasant one or not. But another interpretation may be attempted.
+The flinging away of the object so that it is gone might be the
+gratification of an impulse of revenge suppressed in real life but
+directed against the mother for going away, and would then have the
+defiant meaning: ‘Yes, you can go, I don’t want you, I am sending you
+away myself.’ The same child a year later than my observations used to
+throw on the floor a toy which displeased him, and to say ‘Go to the
+war!’ He had been told that his absent father was at the war, and he did
+not miss him at all, giving the clearest indications that he did not
+wish to be disturbed in the sole possession of his mother.[5] It is
+known of other children also that they can give vent to similar hostile
+feelings by throwing objects away in place of people.[6] Thus one is
+left in doubt whether the compulsion to work over in psychic life what
+has made a deep impression, to make oneself fully master of it, can
+express itself primarily and independently of the pleasure-principle. In
+the case discussed here, however, the child might have repeated a
+disagreeable impression in play only because with the repetition was
+bound up a pleasure gain of a different kind but more direct.
+
+Nor does the further pursuit of the question of play resolve our
+hesitations between two conceptions. We see that children repeat in
+their play everything that has made a great impression on them in actual
+life, that they thereby abreact the strength of the impression and so to
+speak make themselves masters of the situation. But on the other hand it
+is clear enough that all their play is influenced by the dominant wish
+of their time of life: viz. to be grown-up and to be able to do what
+grown-up people do. It is also observable that the unpleasing character
+of the experience does not always prevent its being utilised as a game.
+If a doctor examines a child’s throat, or performs a small operation on
+him, the alarming experience will quite certainly be made the subject of
+the next game, but in this the pleasure gain from another source is not
+to be overlooked. In passing from the passivity of experience to the
+activity of play the child applies to his playfellow the unpleasant
+occurrence that befell himself and so avenges himself on the person of
+this proxy.
+
+From this discussion it is at all events evident that it is unnecessary
+to assume a particular imitation impulse as the motive of play. We may
+add the reminder that the dramatic and imitative art of adults, which
+differs from the behaviour of children in being directed towards the
+spectator, does not however spare the latter the most painful
+impressions, e. g. in tragedy, and yet can be felt by him as highly
+enjoyable. This convinces us that even under the domination of the
+pleasure-principle there are ways and means enough of making what is in
+itself disagreeable the object of memory and of psychic pre-occupation.
+A theory of aesthetics with an economic point of view should deal with
+these cases and situations ending in final pleasure gain: for our
+purposes they are of no help, since they presuppose the existence and
+supremacy of the pleasure-principle and bear no witness to the operation
+of tendencies beyond the pleasure-principle, that is to say, tendencies
+which might be of earlier origin and independent of this.
+
+
+
+
+                                  III
+
+
+Five-and-twenty years of intensive work have brought about a complete
+change in the more immediate aims of psycho-analytic technique. At first
+the endeavours of the analytic physician were confined to divining the
+unconscious of which his patient was unaware, effecting a synthesis of
+its various components and communicating it at the right time.
+Psychoanalysis was above all an art of interpretation. Since the
+therapeutic task was not thereby accomplished, the next aim was to
+compel the patient to confirm the reconstruction through his own memory.
+In this endeavour the chief emphasis was on the resistances of the
+patient; the art now lay in unveiling these as soon as possible, in
+calling the patient’s attention to them, and by human influence—here
+came in suggestion acting as ‘transference’—teaching him to abandon the
+resistances.
+
+It then became increasingly clear, however, that the aim in view, the
+bringing into consciousness of the unconscious, was not fully attainable
+by this method either. The patient cannot recall all of what lies
+repressed, perhaps not even the essential part of it, and so gains no
+conviction that the conclusion presented to him is correct. He is
+obliged rather to _repeat_ as a current experience what is repressed,
+instead of, as the physician would prefer to see him do, _recollecting_
+it as a fragment of the past.[7] This reproduction appearing with
+unwelcome fidelity always contains a fragment of the infantile sex-life,
+therefore of the Oedipus complex and its off-shoots, and is played
+regularly in the sphere of transference, i. e. the relationship to the
+physician. When this point in the treatment is reached, it may be said
+that the earlier neurosis is now replaced by a fresh one, viz. the
+transference-neurosis. The physician makes it his concern to limit the
+scope of this transference-neurosis as much as he can, to force into
+memory as much as possible, and to leave as little as possible to
+repetition. The relation established between memory and reproduction is
+different for every case. As a rule the physician cannot spare the
+patient this phase of the cure; he must let him live through a certain
+fragment of his forgotten life, and has to see to it that some measure
+of ascendency remains, in the light of which the apparent reality is
+always recognised as a reflection of a forgotten past. If this is
+successfully accomplished then conviction on the part of the patient is
+attained, and with it the therapeutic result that depends on it.
+
+In order to render more comprehensible this ‘repetition-compulsion’
+which appears in the psycho-analytic treatment of neurotics, we must
+above all get entirely rid of the erroneous idea that in this struggle
+with resistances we are concerned with any resistance on the part of the
+unconscious. The unconscious, i. e. the ‘repressed’ material, offers no
+resistance whatever to the curative efforts; indeed it has no other aim
+than to force its way through the pressure weighing on it, either to
+consciousness or to discharge by means of some real action. The
+resistance in the treatment proceeds from the same higher levels and
+systems in the psychic life that in their time brought about the
+repression. But since the motives of the resistances, and indeed the
+resistances themselves, are found in the process of the treatment to be
+unconscious, we are well advised to amend an inadequacy in our mode of
+expression. We escape ambiguity if we contrast not the conscious and the
+unconscious, but the coherent ego and the repressed. Much in the ego is
+certainly unconscious itself, just what may be called the kernel of the
+ego; only a part of it comes under the category of preconscious. After
+thus replacing a purely descriptive method of expression by a systematic
+or dynamic one, we may say that the resistance on the part of the
+analysed person proceeds from his ego, and then we at once see that the
+‘repetition-compulsion’ must be ascribed to the repressed element in the
+unconscious. It probably could not find expression till the work of the
+treatment coming to meet it had loosened the repression.
+
+There is no doubt that the resistance of the conscious and preconscious
+ego subserves the pleasure-principle; it is trying to avoid the ‘pain’
+that would be aroused by the release of the repressed material, and our
+efforts are directed to effecting an entry for such painful feeling by
+an appeal to the reality-principle. In what relation to the
+pleasure-principle then does the repetition-compulsion stand, that which
+expresses the force of what is repressed? It is plain that most of what
+is revived by the repetition-compulsion cannot but bring discomfort to
+the ego, for it promotes the bringing to light of the activities of
+repressed impulses; but that is a discomfort we have already taken into
+account and without subversion of the pleasure-principle, since it is
+‘pain’ in respect of one system and at the same time satisfaction for
+the other. The new and remarkable fact, however, that we have now to
+describe is that the repetition-compulsion also revives experiences of
+the past that contain no potentiality of pleasure, and which could at no
+time have been satisfactions, even of impulses since repressed.
+
+The efflorescence of infantile sex-life was, by reason of the
+irreconcilability of its wishes with reality and the inadequacy of the
+childhood stage of development reached, destined to pass away. It
+perished in most painful circumstances and with feelings of a deeply
+distressing nature. Loss and failure in the sphere of the affections
+left behind on the ego-feeling marks of injury comparable to a
+narcissistic scar, which, according to my experience and the exposition
+given by Marcinowski,[8] yields the most important contribution to the
+‘inferiority complex’ common among neurotics. The sex-quest to which the
+physical development of the child set limits could be brought to no
+satisfying conclusion; hence the plaint in later life: ‘I can’t do
+anything, I am never successful.’ The bonds of tenderness linking the
+child more especially to the parent of the opposite sex succumbed to
+disappointment, to the vain expectation of satisfaction, and to the
+jealousy aroused by the birth of a new child, unmistakable proof as it
+is of the faithlessness of the loved parent; the child’s attempt,
+undertaken with tragic seriousness, to produce another such child
+himself met with humiliating failure; while the partial withdrawal of
+the tenderness lavished on the little one, the more exacting demands of
+discipline and education, severe words and an occasional punishment
+finally revealed to him the whole extent of the disdain which is his
+portion. Some few regularly recurring types are to be found, according
+to the way in which the typical love of this period was brought to an
+end.
+
+All these undesired happenings and painful affective situations are
+repeated by neurotics in the ‘transference’ stage and re-animated with
+much ingenuity. They struggle to break off the unfinished treatment,
+they know how to re-create the feeling of being disdained, how to force
+the physician to adopt brusque speech and a chilling manner towards
+them, they find suitable objects for their jealousy, they substitute for
+the ardently desired child of early days the promise of some great gift
+which becomes as little real as that was. Nothing of all this could ever
+have afforded any pleasure; one would suppose it ought to bring somewhat
+less ‘pain’ if revealed as memory rather than if lived through as a new
+experience. It is a question naturally of the action of impulses that
+should lead to satisfaction, but the experience that instead of this
+they even then brought ‘pain’ has borne no result. The act is repeated
+in spite of everything; a powerful compulsion insists on it.
+
+That which psycho-analysis reveals in the transference phenomena with
+neurotics can also be observed in the life of normal persons. It here
+gives the impression of a pursuing fate, a daemonic trait in their
+destiny, and psycho-analysis has from the outset regarded such a life
+history as in a large measure self-imposed and determined by infantile
+influences. The compulsion which thereby finds expression is in no way
+different from the repetition-compulsion of neurotics, even though such
+persons have never shown signs of a neurotic conflict resulting in
+symptoms. Thus one knows people with whom every human relationship ends
+in the same way: benefactors whose protégés, however different they may
+otherwise have been, invariably after a time desert them in ill-will, so
+that they are apparently condemned to drain to the dregs all the
+bitterness of ingratitude; men with whom every friendship ends in the
+friend’s treachery; others who indefinitely often in their lives invest
+some other person with authority either in their own eyes or generally,
+and themselves overthrow such authority after a given time, only to
+replace it by a new one; lovers whose tender relationships with women
+each and all run through the same phases and come to the same end, and
+so on. We are less astonished at this ‘endless repetition of the same’
+if there is involved a question of active behaviour on the part of the
+person concerned, and if we detect in his character an unalterable trait
+which must always manifest itself in the repetition of identical
+experiences. Far more striking are those cases where the person seems to
+be experiencing something passively, without exerting any influence of
+his own, and yet always meets with the same fate over and over again.
+One may recall, for example, the story of the woman who married three
+men in succession, each of whom fell ill after a short time and whom she
+had to nurse till their death.[9] Tasso gives a singularly affecting
+poetical portrayal of such a trend of fate in the romantic epic:
+‘Gerusalemme liberata.’ The hero, Tancred, has unwittingly slain
+Clorinda, the maiden he loved, who fought with him disguised in the
+armour of an enemy knight. After her burial he penetrates into the
+mysterious enchanted wood, the bane of the army of the crusaders. Here
+he hews down a tall tree with his sword, but from the gash in the trunk
+blood streams forth and the voice of Clorinda whose soul is imprisoned
+in the tree cries out to him in reproach that he has once more wrought a
+baleful deed on his beloved.
+
+In the light of such observations as these, drawn from the behaviour
+during transference and from the fate of human beings, we may venture
+to make the assumption that there really exists in psychic life a
+repetition-compulsion, which goes beyond the pleasure-principle. We
+shall now also feel disposed to relate to this compelling force the
+dreams of shock-patients and the play-impulse in children. We must of
+course remind ourselves that only in rare cases can we recognise the
+workings of this repetition-compulsion in a pure form, without the
+co-operation of other motives. As regards children’s play we have
+already pointed out what other interpretations its origin permits. The
+repetition-compulsion and direct pleasurable satisfaction of impulse
+seem there to be inextricably intertwined. The transference phenomena
+obviously subserve the purpose of the resistance made by the ego
+persisting in its repression: the repetition-compulsion is, as it
+were, called to the aid of the ego, which is resolved to hold fast to
+the pleasure-principle. In what one might call the destiny compulsion
+much appears capable of rational explanation, so that no need is felt
+to establish a new and mysterious impulse. The least suspicious case
+is perhaps that of the shock-dream, but on closer examination it must
+be admitted that in the other examples too the state of affairs is not
+completely explained by the operation of the motives known to us.
+There remains enough over to justify the assumption of a
+repetition-compulsion, and this seems to us more primitive, more
+elementary, more instinctive than the pleasure-principle which is
+displaced by it. But if there is such a repetition-compulsion in
+psychic life, we should naturally like to know with what function it
+corresponds, under what conditions it may appear, and in what relation
+it stands to the pleasure-principle, to which we have heretofore
+ascribed the domination over the course of the processes of excitation
+in the psychic life.
+
+
+
+
+                                   IV
+
+
+What follows now is speculation, speculation often far-fetched, which
+each will according to his particular attitude acknowledge or neglect.
+Or one may call it the exploitation of an idea out of curiosity to see
+whither it will lead.
+
+Psycho-analytic speculation starts from the impression gained on
+investigating unconscious processes that consciousness cannot be the
+most general characteristic of psychic processes, but merely a special
+function of them. Metapsychologically expressed, it asserts that
+consciousness is the functioning of a particular system which may be
+called Bw. Since consciousness essentially yields perceptions of
+excitations coming from without and feelings (_Empfindungen_) of
+pleasure and ‘pain’ which can only be derived from within the psychic
+apparatus, we may allot the system W-Bw.[10] (= perceptual
+consciousness) a position in space. It must lie on the boundary between
+outer and inner, must face towards the outer world, and must envelop the
+other psychic systems. We then note that in this assumption we have
+ventured nothing new, but are in agreement with the localising
+tendencies of cerebral anatomy, which places the ‘seat’ of consciousness
+in the cortical layer, the outermost enveloping layer of the central
+organ. Cerebral anatomy does not need to wonder why—anatomically
+speaking—consciousness should be accomodated on the surface of the
+brain, instead of being safely lodged somewhere in the deepest recesses
+of it. Perhaps we may carry matters a little further than this in our
+deduction of such a position for our system W-Bw.
+
+Consciousness is not the only peculiar feature that we ascribe to the
+processes in this system. Our impressions gained by psycho-analytic
+experience lead us to the supposition that all excitation processes in
+the other systems leave in them permanent traces forming the foundations
+of memory-records which have nothing to do with the question of becoming
+conscious. They are often strongest and most enduring when the process
+that left them behind never reached consciousness at all. But we find it
+difficult to believe that such lasting traces of excitation are formed
+also in the system W-Bw. itself. If they remained permanently in
+consciousness they would very soon limit the fitness of the system for
+registration of new excitations;[11] on the other hand, if they became
+unconscious we should be confronted with the task of explaining the
+existence of unconscious processes in a system whose functioning is
+otherwise accompanied by the phenomenon of consciousness. We should, so
+to speak, have gained nothing and altered nothing by our supposition
+which relegates to a special system the process of becoming conscious.
+Though this may not be an absolutely binding consideration, it may at
+any rate lead us to conjecture that becoming conscious and leaving
+behind a memory-trace are processes incompatible with each other in the
+same system. We should thus be able to say: in the system Bw. the
+process of excitation becomes conscious but it leaves behind no lasting
+trace; all the traces of it on which memory relies would come about in
+the next systems inwards from the propagation of the excitation on to
+them. It is on these lines that the scheme is sketched which I inserted
+into the speculative section of my ‘Traumdeutung’ in 1900. If one
+reflects how little we know from other sources about the origin of
+consciousness the pronouncement that _consciousness arises in the place
+of the memory-trace_ must be conceded at least the importance of a
+statement which is to some extent definite.
+
+The system Bw. would thus be characterised by the peculiarity that the
+excitation process does not leave in it, as it does in all other psychic
+systems, a permanent alteration of its elements, but is as it were
+discharged in the phenomenon of becoming conscious and vanishes. Such a
+departure from the general rule requires an explanation on the ground of
+a factor which comes into account in this one system only: this factor
+which is absent from all other systems might well be the exposed
+situation of the Bw. system—its immediate contact with the outer world.
+
+Let us imagine the living organism in the simplest possible form as an
+undifferentiated vesicle of sensitive substance: then its surface,
+exposed as it is to the outer world, is by its very position
+differentiated and serves as an organ for receiving stimuli. Embryology,
+repeating as it does the history of evolution, does in fact show that
+the central nervous system arises from the ectoderm; the grey cortex of
+the brain remains a derivative of the primitive superficial layer and
+may have inherited essential properties from this. It would then be
+easily conceivable that, owing to the constant impact of external
+stimuli on the superficies of the vesicle, its substance would undergo
+lasting alteration to a certain depth, so that its excitation process
+takes a different course from that taken in the deeper layers. Thus a
+rind would be formed which would finally have been so burned through by
+the effects of stimulation that it presents the most favourable
+conditions for the reception of stimuli and is incapable of any further
+modification. Applying this idea to the system Bw., this would mean that
+its elements are not susceptible of any further lasting alteration from
+the passage of the excitation, because they are already modified to the
+uttermost in that respect. But they are then capable of giving rise to
+consciousness. In what exactly these modifications of the substance and
+of the excitation process in it consist many views may be held which as
+yet cannot be tested. It may be assumed that the excitation has, in its
+transmission from one element to another, to overcome a resistance, and
+that this diminution of the resistance itself lays down the permanent
+trace of the excitation (a path): in system Bw. there would no longer
+exist any such resistance to transmission from one element to another.
+We may associate with this conception Breuer’s distinction between
+quiescent (bound) and free-moving ‘investment-energy’ in the elements of
+the psychic systems;[12] the elements of the system Bw. would then
+convey no ‘bound’ energy, only free energy capable of discharge. In my
+opinion, however, it is better for the present to express oneself as to
+these conditions in the least committal way. At any rate by these
+speculations we should have brought the origin of consciousness into a
+certain connection with the position of the system Bw. and with the
+peculiarities of the excitation process to be ascribed to this.
+
+We have more to say about the living vesicle with its receptive outer
+layer. This morsel of living substance floats about in an outer world
+which is charged with the most potent energies, and it would be
+destroyed by the operation of the stimuli proceeding from this world if
+it were not furnished with a protection against stimulation
+(_Reizschutz_). It acquires this through its outermost layer—which gives
+the structure that belongs to living matter—becoming in a measure
+inorganic, and this now operates as a special integument or membrane
+that keeps off the stimuli, i. e. makes it impossible for the energies
+of the outer world to act with more than a fragment of their intensity
+on the layers immediately below which have preserved their vitality.
+These are now able under cover of the protecting layer to devote
+themselves to the reception of those stimulus masses that have been let
+through. But the outer layer has by its own death secured all the deeper
+layers from a like fate—at least so long as no stimuli present
+themselves of such a strength as to break through the protective
+barrier. For the living organism protection against stimuli is almost a
+more important task than reception of stimuli; the protective barrier is
+equipped with its own store of energy and must above all endeavour to
+protect the special forms of energy-transformations going on within
+itself from the equalising and therefore destructive influence of the
+enormous energies at work in the outer world. The reception of stimuli
+serves above all the purpose of collecting information about the
+direction and nature of the external stimuli, and for that it must
+suffice to take little samples of the outer world, to taste it, so to
+speak, in small quantities. In highly developed organisms the receptive
+external layer of what was once a vesicle has long been withdrawn into
+the depths of the body, but portions of it have been left on the surface
+immediately beneath the common protective barrier. These portions form
+the sense organs, which essentially comprise arrangements for the
+reception of specific stimuli, but also possess special arrangements
+adapted for a fresh protection against an overwhelming amount of
+stimulus, and for warding off unsuitable kinds of stimuli. It is
+characteristic of them that they assimilate only very small quantities
+of the outer stimulus, and take in only samples of the outer world; one
+might compare them to antennae which touch at the outer world and then
+constantly withdraw from it again.
+
+At this point I shall permit myself to touch cursorily upon a theme
+which would deserve the most thorough treatment. The Kantian proposition
+that time and space are necessary modes of thought may be submitted to
+discussion to-day in the light of certain knowledge reached through
+psycho-analysis. We have found by experience that unconscious mental
+processes are in themselves ‘timeless’. That is to say to begin with:
+they are not arranged chronologically, time alters nothing in them, nor
+can the idea of time be applied to them. These are negative
+characteristics, which can be made plain only by instituting a
+comparison with conscious psychic processes. Our abstract conception of
+time seems rather to be derived wholly from the mode of functioning of
+the system W-Bw., and to correspond with a self-perception of it. In
+this mode of functioning of the system another form of protection
+against stimulation probably comes into play. I know that these
+statements sound very obscure, but I must confine myself to these few
+hints.
+
+So far we have got to the point that the living vesicle is equipped with
+a protection against stimuli from the outer world. Before that, we had
+decided that the cortical layer next to it must be differentiated as the
+organ for reception of external stimuli. But this sensitive layer (what
+is later the system Bw.) also receives excitations from within: the
+position of the system between outer and inner and the difference in the
+conditions under which this receptivity operates on the two sides become
+deciding factors for the functioning of the system and of the whole
+psychic apparatus. Towards the outer world there is a barrier against
+stimuli, and the mass of excitations coming up against it will take
+effect only on a reduced scale; towards what is within no protection
+against stimuli is possible, the excitations of the deeper layers pursue
+their way direct and in undiminished mass into the system, while certain
+characteristics of their course produce the series of pleasure-pain
+feelings. Naturally the excitations coming from within will, in
+conformity with their intensity and other qualitative characteristics
+(or possibly their amplitude), be more proportionate to the mode of
+operation of the system than the stimuli streaming in from the outer
+world. Two things are, however, decisively determined by these
+conditions: first the preponderance over all outer stimuli of the
+pleasure and ‘pain’ feelings, which are an index for processes within
+the mechanism; and secondly a shaping of behaviour towards such inner
+excitations as bring with them an overplus of ‘pain’. There will be a
+tendency to treat them as though they were acting not from within but
+from without, in order for it to be possible to apply against them the
+defensive measures of the barrier against stimuli (_Reizschutz_). This
+is the origin of projection, for which so important a part is reserved
+in the production of pathological states.
+
+I have the impression that by these last considerations we have
+approached nearer to a comprehension of the supremacy of the
+pleasure-principle, but we have not attained to an explanation of those
+cases which are opposed to it. Let us therefore go a step further. Such
+external excitations as are strong enough to break through the barrier
+against stimuli we call traumatic. In my opinion the concept of trauma
+involves such a relationship to an otherwise efficacious barrier. An
+occurrence such as an external trauma will undoubtedly provoke a very
+extensive disturbance in the workings of the energy of the organism, and
+will set in motion every kind of protective measure. But the
+pleasure-principle is to begin with put out of action here. The flooding
+of the psychic apparatus with large masses of stimuli can no longer be
+prevented: on the contrary, another task presents itself—to bring the
+stimulus under control, to ‘bind’ in the psyche the stimulus mass that
+has broken its way in, so as to bring about a discharge of it.
+
+Probably the specific discomfort of bodily pain is the result of some
+local breaking through of the barrier against stimuli. From this point
+in the periphery there stream to the central psychic apparatus continual
+excitations such as would otherwise come only from within.[13] What are
+we to expect as the reaction of the psychic life to this invasion? From
+all sides the ‘charging energy’ is called on in order to create all
+round the breach correspondingly high ‘charges’ of energy. An immense
+‘counter-charge’ is set up, in favour of which all the other psychic
+systems are impoverished, so that a wide-spread paralysis or diminution
+of other psychic activity follows. We endeavour to learn from examples
+such as these to base our metapsychological conjectures on such
+prototypes. Thus from this behaviour we draw the conclusion that even a
+highly charged system is able to receive new energy streaming in, to
+convert it into a ‘quiescent charge’, thus to ‘bind’ it psychically. The
+more intense is the intrinsic quiescent charge the greater is its
+binding force: and conversely the lower the charge of the system the
+less capable is it of receiving the energy that streams in, and so the
+more violent are the consequences when the barrier against stimuli is
+broken through. It is not a valid objection to this view that the
+intensifying of the charges round the place of irruption could be much
+more simply explained as the direct action of the oncoming mass of
+excitation. If that were so, the psychic apparatus would merely undergo
+an increase of its energy charges, and the paralysing character of pain,
+with the impoverishment of all the other systems, would remain without
+explanation. Nor do the very violent discharge effects of pain
+invalidate our explanation, for they happen in a reflex manner, that is
+to say, they follow without the interposition of the psychic apparatus.
+The indefinite nature of all the discussions that we term
+metapsychological naturally comes from the fact that we know nothing
+about the nature of the excitation process in the elements of the
+psychic systems and do not feel justified in making any assumption about
+it. Thus we are all the time operating with a large X, which we carry
+over into every new formula. That this process is accomplished with
+energies which differ quantitatively is an easily admissible postulate,
+that it also has more than one quality (e.g. in the direction of
+amplitude) may be regarded as probable: the new consideration we have
+brought in is Breuer’s proposition that we have to do with two ways in
+which a system may be filled with energy, so that a distinction has to
+be made between a ‘charging’ of the psychic systems (or its elements)
+that is free-flowing and striving to be discharged and one that is
+quiescent. Perhaps we may admit the conjecture that the binding of the
+energy streaming into the psychic apparatus consists in a translating of
+it from the free-flowing to the quiescent state.
+
+I think one may venture (tentatively) to regard the ordinary traumatic
+neurosis as the result of an extensive rupture of the barrier against
+stimuli. In this way the old naïve doctrine of ‘shock’ would come into
+its own again, apparently in opposition to a later and psychologically
+more pretentious view which ascribes aetiological significance not to
+the effect of the mechanical force, but to the fright and the menace to
+life. But these opposing views are not irreconcilable, and the
+psycho-analytic conception of the traumatic neurosis is far from being
+identical with the crudest form of the ‘shock’ theory. While the latter
+takes the essential nature of the shock as residing in the direct injury
+to the molecular structure, or even to the histological structure, of
+the nervous elements, we seek to understand the effect of the shock by
+considering the breaking through of the barrier with which the psychic
+organ is provided against stimuli, and from the tasks with which this is
+thereby faced. Fright retains its meaning for us too. What conditions it
+is the failure of the mechanism of apprehension to make the proper
+preparation, including the over-charging of the systems first receiving
+the stimulus. In consequence of this lower degree of charging these
+systems are hardly in a position to bind the oncoming masses of
+excitation, and the consequences of the breaking through of the
+protective barrier appear all the more easily. We thus find that the
+apprehensive preparation, together with the over-charging of the
+receptive systems, represents the last line of defence against stimuli.
+For a great number of traumata the difference between the unprepared
+systems and those prepared by over-charging may turn the scale as to the
+outcome: with a trauma beyond a certain strength such a difference may
+no longer be of any importance. When the dreams of patients suffering
+from traumatic neuroses so regularly take them back to the situation of
+the disaster they do not thereby, it is true, serve the purpose of
+wish-fulfilment, the hallucinatory conjuring up of which has, under the
+domination of the pleasure-principle, become the function of dreams. But
+we may assume that they thereby subserve another purpose, which must be
+fulfilled before the pleasure-principle can begin its sway. These dreams
+are attempts at restoring control of the stimuli by developing
+apprehension, the pretermission of which caused the traumatic neurosis.
+They thus afford us an insight into a function of the psychic apparatus,
+which without contradicting the pleasure-principle is nevertheless
+independent of it, and appears to be of earlier origin than the aim of
+attaining pleasure and avoiding ‘pain’.
+
+This is therefore the moment to concede for the first time an
+exception to the principle that the dream is a wish-fulfilment.
+Anxiety dreams are no such exception, as I have repeatedly and in
+detail shown; nor are the ‘punishment dreams’, for they merely put in
+the place of the interdicted wish-fulfilment the punishment
+appropriate to it, and are thus the wish-fulfilment of the sense of
+guilt reacting on the contemned impulse. But the dreams mentioned
+above of patients suffering from traumatic neuroses do not permit of
+classification under the category of wish-fulfilment, nor do the
+dreams occurring during psycho-analysis that bring back the
+recollection of the psychic traumata of childhood. They obey rather
+the repetition-compulsion, which in analysis, it is true, is supported
+by the (not unconscious) wish to conjure up again what has been
+forgotten and repressed. Thus the function of the dream, viz. to do
+away with the motives leading to interruption of sleep by presenting
+wish-fulfilments of the disturbing excitations, would not be its
+original one; the dream could secure control of this function only
+after the whole psychic life had accepted the domination of the
+pleasure-principle. If there is a ‘beyond the pleasure-principle’ it
+is logical to admit a prehistoric past also for the wish-fulfilling
+tendency of the dream, though to do so is no contradiction of its
+later function. Now, when this tendency is once broken through, there
+arises the further question: are such dreams, which in the interests
+of the psychical binding of traumatic impressions follow the
+repetition-compulsion, not possible apart from analysis? The answer is
+certainly in the affirmative.
+
+With regard to the war neuroses, so far as the term has any significance
+apart from a reference to the occasion of the appearance of the illness,
+I have explained elsewhere that they might very well be traumatic
+neuroses which have arisen the more easily on account of an
+ego-conflict.[14] The fact mentioned on page 9, viz. that a severe
+injury inflicted at the same time by the trauma lessens the chance of a
+neurosis arising, is no longer difficult to understand if two
+circumstances emphasised by psycho-analytic research are borne in mind.
+First that mechanical concussion must be recognised as one of the
+sources of sexual excitation (cp. the remarks: ‘The effects of swinging
+and railway travelling’ in Drei Abhandlungen zur Sexualtheorie, 4.
+Auflage 1920); and, secondly, that a painful and feverish illness exerts
+for the time it lasts a powerful influence on the distribution of the
+libido. Thus the mechanical force of the trauma would set free the quota
+of sexual excitation which, in consequence of the lacking preparation by
+apprehension, has a traumatic effect: but, on the other hand, the
+contemporaneous bodily injury would bind the surplus excitation by the
+putting in of a claim to a narcissistic over-charging of the injured
+part (see ‘Zur Einführung des Narzissmus’, Sammlung kleiner Schriften
+zur Neurosenlehre, IV. Folge, 1918). It is also known, though the idea
+has not been sufficiently made use of in the Libido theory, that
+disturbances in the distribution of the libido so severe as those of
+melancholia may be removed for a time by an intercurrent organic
+disease; in fact even the condition of a fully developed dementia
+praecox is capable of a transitory improvement in these circumstances.
+
+
+
+
+                                   V
+
+
+The fact that the sensitive cortical layer has no protective barrier
+against excitations emanating from within will have one inevitable
+consequence: viz. that these transmissions of stimuli acquire increased
+economic significance and frequently give rise to economic disturbances
+comparable to the traumatic neuroses. The most prolific sources of such
+inner excitations are the so-called instincts of the organism, the
+representatives of all forces arising within the body and transmitted to
+the psychic apparatus—the most important and most obscure element in
+psychological research.
+
+Perhaps we shall not find it too rash an assumption that the excitations
+proceeding from the instincts do not conform to the type of the ‘bound’
+but of the free-moving nerve processes that are striving for discharge.
+The most trustworthy knowledge we have of these processes comes from the
+study of dreams. There we found that the processes in the unconscious
+systems are fundamentally different from those in the (pre)conscious;
+that in the unconscious ‘charges’ may easily be completely transferred,
+displaced or condensed, while if this happened with preconscious
+material only defective results would be obtained. This is the reason
+for the well-known peculiarities of the manifest dream, after the
+preconscious residues of the day before have undergone elaboration
+according to the laws of the unconscious. I termed this kind of process
+in the unconscious the psychic ‘primary process’ in contradistinction to
+the secondary process valid in our normal waking life. Since the
+excitations of instincts all affect the unconscious systems, it is
+scarcely an innovation to say that they follow the lines of the primary
+process, and little more so to identify the psychic primary process with
+the freely mobile charge, the secondary process with changes in Breuer’s
+bound or tonic charge.[15] It would then be the task of the higher
+layers of the psychic apparatus to bind the instinct-excitation that
+reaches the primary process. The failure to effect this binding would
+evoke a disturbance analogous to the traumatic neuroses; it is only
+after the binding had been successfully accomplished that the
+pleasure-principle (and its modification the reality-principle) would
+have an opportunity to assert its sway without hindrance. Till then, the
+other task of the psychic apparatus would take precedence, viz. to
+obtain control of or to bind the excitation, not in opposition to the
+pleasure-principle but independently of it and in part without regard to
+it.
+
+The expressions of a repetition-compulsion which we have described,
+both in the early activities of infantile psychic life and in the
+experiences of psycho-analytic treatment, show in a high degree an
+instinctive character, and, where they come into contrast with the
+pleasure-principle, a daemonic character. In the play of children we
+seem to arrive at the conclusion that the child repeats even the
+unpleasant experiences because through his own activity he gains a far
+more thorough mastery of the strong impression than was possible by
+mere passive experience. Every fresh repetition seems to strengthen
+this mastery for which the child strives; even with pleasurable
+experiences the child cannot do enough in the way of repetition and
+will inexorably insist on the identity of the impression. This
+characteristic is destined later to disappear. A witticism heard for
+the second time will almost fail of effect; a theatrical performance
+will never make the same impression the second time that it did on the
+first occasion; indeed it is hard to persuade the adult to read again
+at all soon a book he has enjoyed. Novelty is always the necessary
+condition of enjoyment. The child, however, never gets tired of
+demanding from a grown-up the repetition of a game he has played with
+him before or has shown him, till at last the grown-up refuses,
+utterly worn out; similarly if he has been told a pretty story, he
+wants always to hear the same story instead of a new one, insists
+inexorably on exact repetition and corrects each deviation which the
+narrator lets slip by mistake, which perhaps he even thought to gain
+new merit by inserting. Here there is no contradiction of the
+pleasure-principle: it is evident that the repetition, the rediscovery
+of the identity, is itself a source of pleasure. In the case of a
+patient in analysis, on the other hand, it is plain that the
+compulsion to repeat in the transference the occurrences of his
+infantile life disregards _in every way_ the pleasure-principle. The
+patient behaves in this respect completely like a child, and thus
+makes it clear to us that the repressed memory-traces of his primitive
+experience are not present in a ‘bound’ form, are indeed, in a sense,
+not capable of the secondary process. To this fact of their not being
+bound they owe their power to weave a wish-phantasy that will be
+represented in a dream, by adhering to the residues from waking
+experiences. We frequently encounter the same repetition-compulsion as
+a therapeutic obstacle, when at the end of the treatment we wish to
+bring about complete detachment from the physician; and it may be
+supposed that the vague dread with which those who are unfamiliar with
+it view analysis, as though they feared to wake what they think is
+better left to sleep, is at root a fear of the appearance of this
+daemonic compulsion.
+
+In what way is the instinctive connected with the compulsion to
+repetition? At this point the idea is forced upon us that we have
+stumbled on the trace of a general and hitherto not clearly
+recognised—or at least not expressly emphasised—characteristic of
+instinct, perhaps of all organic life. According to this, _an instinct
+would be a tendency innate in living organic matter impelling it towards
+the reinstatement of an earlier condition_, one which it had to abandon
+under the influence of external disturbing forces—a kind of organic
+elasticity, or, to put it another way, the manifestation of inertia in
+organic life.[16]
+
+This conception of instinct strikes us as strange, since we are
+accustomed to see in instinct the factor urging towards change and
+development, and now we find ourselves required to recognise in it the
+very opposite, viz. the expression of the conservative nature of living
+beings. On the other hand, we soon think of those examples in animal
+life which appear to confirm the idea of instinct having been
+historically conditioned. When certain fish undertake arduous journeys
+at spawning-time, in order to deposit the spawn in certain definite
+waters far removed from their usual habitats, according to the
+interpretation of many biologists they are only seeking the earlier
+homes of their kind, which in course of time they have exchanged for
+others. The same is said to be true of the migratory flights of birds of
+passage, but the search for further examples becomes superfluous when we
+remember that in the phenomena of heredity and in the facts of
+embryology we have the most imposing proofs of the organic compulsion to
+repetition. We see that the germ cell of a living animal is obliged to
+repeat in its development—although in a fleeting and curtailed
+fashion—the structures of all the forms from which the animal is
+descended, instead of hastening along the shortest path to its own final
+shape. A mechanical explanation of this except in some trifling
+particulars is impossible, and the historical explanation cannot be
+disregarded. In the same way we find extending far upwards in the animal
+kingdom a power of reproduction whereby a lost organ is replaced by the
+growth of a new one exactly like it.
+
+The obvious objection, that it may well be that besides the conservative
+instincts compelling repetition there are others which press towards new
+formation and progress, should certainly not be left unnoticed; it will
+be considered at a later stage of our discussion. But we may first be
+tempted to follow to its final consequences the hypothesis that all
+instincts have as their aim the reinstatement of an earlier condition.
+If what results gives an appearance of ‘profundity’ or bears a
+resemblance to mysticism, still we know ourselves to be clear of the
+reproach of having striven after anything of the sort. We are in search
+of sober results of investigation or of reflections based upon it, and
+the only character we wish for in these results is that of certainty.
+
+If then all organic instincts are conservative, historically acquired,
+and are directed towards regression, towards reinstatement of something
+earlier, we are obliged to place all the results of organic development
+to the credit of external, disturbing and distracting influences. The
+rudimentary creature would from its very beginning not have wanted to
+change, would, if circumstances had remained the same, have always
+merely repeated the same course of existence. But in the last resort it
+must have been the evolution of our earth, and its relation to the sun,
+that has left its imprint on the development of organisms. The
+conservative organic instincts have absorbed every one of these enforced
+alterations in the course of life and have stored them for repetition;
+they thus present the delusive appearance of forces striving after
+change and progress, while they are merely endeavouring to reach an old
+goal by ways both old and new. This final goal of all organic striving
+can be stated too. It would be counter to the conservative nature of
+instinct if the goal of life were a state never hitherto reached. It
+must rather be an ancient starting point, which the living being left
+long ago, and to which it harks back again by all the circuitous paths
+of development. If we may assume as an experience admitting of no
+exception that everything living dies from causes within itself, and
+returns to the inorganic, we can only say ‘_The goal of all life is
+death_’, and, casting back, ‘_The inanimate was there before the
+animate_.’
+
+At one time or another, by some operation of force which still
+completely baffles conjecture, the properties of life were awakened in
+lifeless matter. Perhaps the process was a prototype resembling that
+other one which later in a certain stratum of living matter gave rise to
+consciousness. The tension then aroused in the previously inanimate
+matter strove to attain an equilibrium; the first instinct was present,
+that to return to lifelessness. The living substance at that time had
+death within easy reach; there was probably only a short course of life
+to run, the direction of which was determined by the chemical structure
+of the young organism. So through a long period of time the living
+substance may have been constantly created anew, and easily
+extinguished, until decisive external influences altered in such a way
+as to compel the still surviving substance to ever greater deviations
+from the original path of life, and to ever more complicated and
+circuitous routes to the attainment of the goal of death. These
+circuitous ways to death, faithfully retained by the conservative
+instincts, would be neither more nor less than the phenomena of life as
+we now know it. If the exclusively conservative nature of the instincts
+is accepted as true, it is impossible to arrive at any other
+suppositions with regard to the origin and goal of life.
+
+If these conclusions sound strangely in our ears, equally so will those
+we are led to make concerning the great groups of instincts which we
+regard as lying behind the vital phenomena of organisms. The postulate
+of the self-preservative instincts we ascribe to every living being
+stands in remarkable contrast to the supposition that the whole life of
+instinct serves the one end of bringing about death. The theoretic
+significance of the instincts of self-preservation, power and
+self-assertion, shrinks to nothing, seen in this light; they are
+part-instincts designed to secure the path to death peculiar to the
+organism and to ward off possibilities of return to the inorganic other
+than the immanent ones, but the enigmatic struggle of the organism to
+maintain itself in spite of all the world, a struggle that cannot be
+brought into connection with anything else, disappears. It remains to be
+added that the organism is resolved to die only in its own way; even
+these watchmen of life were originally the myrmidons of death. Hence the
+paradox comes about that the living organism resists with all its energy
+influences (dangers) which could help it to reach its life-goal by a
+short way (a short circuit, so to speak); but this is just the behaviour
+that characterises a pure instinct as contrasted with an intelligent
+striving.[17]
+
+But we must bethink ourselves: this cannot be the whole truth. The
+sexual instincts, for which the theory of the neuroses claims a position
+apart, lead us to quite another point of view. Not all organisms have
+yielded to the external compulsion driving them to an ever further
+development. Many have succeeded in maintaining themselves on their low
+level up to the present time: there are in existence to-day, if not all,
+at all events many forms of life that must resemble the primitive stages
+of the higher animals and plants. And, similarly, not all the elementary
+organisms that make up the complicated body of a higher form of life
+take part in the whole path of evolution to the natural end, i.e. death.
+Some among them, the reproductive cells, probably retain the original
+structure of the living substance and, after a given time, detach
+themselves from the parent organism, charged as they are with all the
+inherited and newly acquired instinctive dispositions. Possibly it is
+just those two features that make their independent existence possible.
+If brought under favourable conditions they begin to develop, that is,
+to repeat the same cycle to which they owe their origin, the end being
+that again one portion of the substance carries through its development
+to a finish, while another part, as a new germinal core, again harks
+back to the beginning of the development. Thus these reproductive cells
+operate against the death of the living substance and are able to win
+for it what must seem to us to be potential immortality, although
+perhaps it only means a lengthening of the path to death. Of the highest
+significance is the fact that the reproductive cell is fortified for
+this function, or only becomes capable of it, by the mingling with
+another like it and yet different from it.
+
+There is a group of instincts that care for the destinies of these
+elementary organisms which survive the individual being, that concern
+themselves with the safe sheltering of these organisms as long as they
+are defenceless against the stimuli of the outer world, and finally
+bring about their conjunction with other reproductive cells. These are
+collectively the sexual instincts. They are conservative in the same
+sense as the others are, in that they reproduce earlier conditions of
+the living substance, but they are so in a higher degree in that they
+show themselves specially resistant to external influences; and they are
+more conservative in a wider sense still, since they preserve life
+itself for a longer time. They are the actual life-instincts; the fact
+that they run counter to the trend of the other instincts which lead
+towards death indicates a contradiction between them and the rest, one
+which the theory of neuroses has recognised as full of significance.
+There is as it were an oscillating rhythm in the life of organisms: the
+one group of instincts presses forward to reach the final goal of life
+as quickly as possible, the other flies back at a certain point on the
+way only to traverse the same stretch once more from a given spot and
+thus to prolong the duration of the journey. Although sexuality and the
+distinction of the sexes certainly did not exist at the dawn of life,
+nevertheless it remains possible that the instincts which are later
+described as sexual were active from the very beginning and took up the
+part of opposition to the rôle of the ‘ego-instincts’ then, and not only
+at some later time.
+
+Let us now retrace our steps for the first time, to ask whether all
+these speculations are not after all without foundation. Are there
+really, _apart from the sexual instincts_, no other instincts than those
+which have as their object the reinstatement of an earlier condition,
+none that strive towards a condition never yet attained? I am not aware
+of any satisfactory example in the organic world running counter to the
+characteristic I have suggested. The existence of a general impulse
+towards higher development in the plant and animal world can certainly
+not be established, though some such line of development is as a fact
+unquestionable. But, on the one hand, it is often merely a question of
+our own valuation when we pronounce one stage of development to be
+higher than another, and, on the other hand, biology makes clear to us
+that a higher development in one particular is often purchased with, or
+balanced by, retrogression in another. Then there are plenty of animal
+forms the youthful stages of which teach us that their development has
+taken a retrograde character rather than otherwise. Higher development
+and retrogression alike might well be the results of external forces
+impelling towards adaptation, and the part played by the instincts might
+be confined in both cases to retaining the enforced changes as sources
+of pleasure.[18]
+
+Many of us will also find it hard to abandon our belief that in man
+himself there dwells an impulse towards perfection, which has brought
+him to his present heights of intellectual prowess and ethical
+sublimation, and from which it might be expected that his development
+into superman will be ensured. But I do not believe in the existence of
+such an inner impulse, and I see no way of preserving this pleasing
+illusion. The development of man up to now does not seem to me to need
+any explanation differing from that of animal development, and the
+restless striving towards further perfection which may be observed in a
+minority of human beings is easily explicable as the result of that
+repression of instinct upon which what is most valuable in human culture
+is built. The repressed instinct never ceases to strive after its
+complete satisfaction which would consist in the repetition of a primary
+experience of satisfaction: all substitution- or reaction-formations and
+sublimations avail nothing towards relaxing the continual tension; and
+out of the excess of the satisfaction demanded over that found is born
+the driving momentum which allows of no abiding in any situation
+presented to it, but in the poet’s words ‘urges ever forward, ever
+unsubdued’ (Mephisto in ‘Faust’, Act 1. Faust’s study.). The path in the
+other direction, back to complete satisfaction, is as a rule barred by
+the resistances that maintain the repressions, and thus there remains
+nothing for it but to proceed in the other, still unobstructed
+direction, that of development, without, however, any prospect of being
+able to bring the process to a conclusion or to attain the goal. What
+occurs in the development of a neurotic phobia, which is really nothing
+but an attempt at flight from the satisfaction of an instinct, gives us
+the prototype for the origin of this ostensible ‘impulse towards
+perfection’ which, however, we cannot possibly ascribe to all human
+beings. The dynamic conditions are, it is true, quite generally present,
+but the economic relations seem only in rare cases to favour the
+phenomenon.
+
+
+
+
+                                   VI
+
+
+Our discussion so far results in the establishing of a sharp antithesis
+between the ‘ego-instincts’ and the sexual instincts, the former
+impelling towards death and the latter towards the preservation of life,
+a result which we ourselves must surely find in many respects far from
+adequate. Further, only for the former can we properly claim the
+conservative—or, better, regressive—character corresponding to a
+repetition-compulsion. For according to our hypothesis the ego-instincts
+spring from the vitalising of inanimate matter, and have as their aim
+the reinstatement of lifelessness. As to the sexual instincts on the
+other hand: it is obvious that they reproduce primitive states of the
+living being, but the aim they strive for by every means is the union of
+two germ cells which are specifically differentiated. If this union does
+not take place, then the germ cell dies like all other elements of the
+multicellular organism. Only on this condition can the sexual function
+prolong life and lend it the semblance of immortality. Of what important
+happening then in the process of development of the living substance is
+sexual reproduction, or its forerunner, the copulation of two individual
+protozoa, the repetition? That question we do not know how to answer,
+and therefore we should feel relieved if the whole structure of our
+arguments were to prove erroneous. The opposition of ego- (or death-)
+instincts and sexual (life-) instincts would then disappear, and the
+repetition-compulsion would thereupon also lose the significance we have
+attributed to it.
+
+Let us turn back therefore to one of the assumptions we interpolated, in
+the expectation that it will permit of exact refutation. We built up
+further conclusions on the basis of the assumption that all life must
+die from internal causes. We made this assumption so light-heartedly
+because it does not seem to us to be one. We are accustomed so to think,
+and every poet encourages us in the idea. Perhaps we have resolved so to
+think because there lies a certain consolation in this belief. If man
+must himself die, after first losing his most beloved ones by death, he
+would prefer that his life be forfeit to an inexorable law of nature,
+the sublime Ἀνάγκη, than to a mere accident which perhaps could have
+been in some way avoided. But perhaps this belief in the incidence of
+death as the necessary consequence of an inner law of being is also only
+one of those illusions that we have fashioned for ourselves ‘so as to
+endure the burden of existence’. It is certainly not a primordial
+belief: the idea of a ‘natural death’ is alien to primitive races; they
+ascribe every death occurring among themselves to the influence of an
+enemy or an evil spirit. So let us not neglect to turn to biological
+science to test the belief.
+
+If we do so, we may be astonished to find how little agreement exists
+among biologists on the question of natural death, that indeed the very
+conception of death altogether eludes them. The fact of a certain
+average length of life, at least among the higher animals, is of course
+an argument for death from inner causes, but the circumstance that
+certain large animals and giant trees reach a very great age, one not to
+be computed up to now, once more removes this impression. According to
+the grandiose conception of W. Fliess all the vital phenomena—and
+certainly also death—are linked with the accomplishment of certain
+periods of time, among which there finds expression the dependence of
+two living substances, one male and one female, upon the solar year. But
+observations of how easily and extensively the influences of external
+forces can alter vital manifestations, especially in the plant world, as
+to their occurrence in time, can hasten or retard them, militate against
+the rigidity of the formulae laid down by Fliess and leaves at least
+doubtful the universality of the laws he sought to establish.
+
+The treatment of these themes, death and the duration of life among
+organisms, in the works of A. Weismann[19] possesses the greatest
+interest for us. This investigator originated the distinction of living
+substance into a mortal and an immortal half; the mortal is the body in
+the narrower sense, the soma, which alone is subject to natural death;
+while the germ cells are potentially immortal, in so far as they are
+capable under certain favourable conditions of developing into a new
+individual, or expressed otherwise, of surrounding themselves with a new
+soma.[20]
+
+What here arrests our attention is the unexpected analogy with our
+conception developed along so different a line of thought. Weismann, who
+is considering living substance morphologically, recognises in it a
+constituent which is the prey of death, the soma, the body viewed apart
+from sex or heredity elements, and, on the other hand, an immortal part,
+the germ-plasm, which serves the purpose of preservation of the species,
+of propagation. We have fixed our attention not on the living matter,
+but on the forces active in it, and have been led to distinguish two
+kinds of instincts: those the purpose of which is to guide life towards
+death, and the others, the sexual instincts, which perpetually strive
+for, and bring about, the renewal of life. This sounds like a dynamic
+corollary to Weismann’s morphological theory.
+
+This appearance of an important correspondence vanishes as soon as we
+examine Weismann’s pronouncement on the problem of death. For Weismann
+admits the differentiation between the mortal soma and the immortal
+germ-plasm only in relation to multicellular organisms; with the
+unicellular beings the individual and the reproductive cell are still
+one and the same.[21] The unicellular he thus affirms to be potentially
+immortal; death appears only among the metazoa, the multicellular. This
+death of the higher organisms is, it is true, a natural one, a death
+from inner causes, but it does not depend on an inherent quality of the
+living substance,[22] is not to be conceived as an absolute necessity
+based on the nature of life.[23] Death is rather a purposive
+contrivance, a phenomenon of adaptation to the external conditions of
+life, because after the differentiation of the corporeal cells into soma
+and germ-plasm the indefinite prolongation of the life of the individual
+would have become a quite inexpedient luxury. With the appearance of
+this differentiation among multicellular organisms death became possible
+and expedient. Since then the soma of the higher organisms dies after a
+certain time from internal causes; the protozoa, however, remain
+immortal. Propagation, on the other hand, was not first introduced with
+death; it is on the contrary a primordial property of living matter like
+growth, in which it originated, and life has gone on uninterruptedly
+from its inception on the earth.[24]
+
+It is easy to see that to concede natural death to the higher organisms
+does not greatly help our case. If death is a late acquisition of life,
+then death instincts traceable to the beginning of life on this planet
+no longer come into question. Multicellular organisms may continue to
+die from internal causes, whether defect of differentiation or
+imperfections of their metabolism; it possesses no interest for the
+inquiry on which we are engaged. Such a conception and derivation of
+death certainly more nearly approaches the ordinary human view of it
+than the unwonted assumption of ‘death-instincts’.
+
+The discussion which has centred round Weismann’s assertations has in my
+opinion had no decisive result in any direction.[25] Many writers have
+reverted to the standpoint of Goette (1883) who saw in death the direct
+consequence of propagation. Hartmann does not regard as the
+characteristic of death the appearance of a ‘corpse’, a piece of living
+substance which has ‘died off’, but defines it as the ‘definitive end of
+individual development’. In this sense protozoa are also subject to
+death; with them death invariably coincides with propagation, but it is,
+so to speak, disguised by the latter, for the whole substance of the
+parent organism may be absorbed directly into the new individuals.[26]
+
+The interest of the inquiry was soon directed towards testing
+experimentally the asserted immortality of living substance in
+unicellular beings. An American, named Woodruff, instituted a culture of
+a ciliated infusorium, a ‘slipper-animalcule’, which reproduces itself
+by division into two individuals; each time he isolated one of the
+products and put it into fresh water. He traced the propagation to the
+3029th generation, when he discontinued the experiment. The last
+descendant of the first slipper-animalcule was just as lively as its
+original ancestor, without any sign of age or degeneration: if such
+numbers are convincing, the immortality of protozoa seemed thus
+experimentally demonstrable.[27]
+
+Other investigators have arrived at other results. Maupas, Calkins,
+etc., found, in contradiction to Woodruff, that even these infusoria
+after a certain number of divisions become weaker, decrease in size,
+lose a portion of their organisation, and finally die if they do not
+encounter certain invigorating influences. According to this, protozoa
+die after a phase of senile decay just like higher animals, in direct
+contravention of what is maintained by Weismann, who recognises in death
+a late acquisition of living organisms.
+
+Taking the net result of these researches together, we note two facts
+which seem to afford us a firm foothold. First: if the animalculae, at a
+time when they as yet show no signs of age, have the opportunity of
+mingling with each other, of ‘conjugating’—afterwards again
+separating—then they remain exempt from age, they have been
+‘rejuvenated’. This conjugation is doubtless the prototype of sexual
+propagation of higher organisms: as yet it has nothing to do with
+multiplication, it is confined to the mingling of the substances of both
+individuals (Weismann’s Amphimixis). The invigorating influence of
+conjugation can also be replaced, however, by certain modes of
+stimulation, changes in the composition of the nutrient fluid, raising
+of temperature, or shaking. The famous experiment of J. Loeb will be
+recalled, who by the application of certain chemical stimuli to the ova
+of sea-urchins brought about processes of division which usually take
+place only after fertilisation.
+
+Secondly: it is after all probable that the infusoria are brought to a
+natural death through their own vital process, for the contradiction
+between Woodruff’s findings and those of others arises from Woodruff
+having placed each generation in fresh nutrient fluid. When he refrained
+from doing so he observed, as did the other investigators, that the
+generations showed signs of age. He concluded that the animalculae were
+injured by the products of metabolism which they gave off into the
+surrounding fluid, and was then able to prove convincingly that only the
+products of _its own_ metabolism had this effect in bringing about the
+death of the generation. For in a solution over-saturated with waste
+products of a distantly related species the very same animalculae throve
+excellently which when allowed to accumulate in their own nutrient fluid
+inevitably perished. Thus, left to itself, the infusorium dies a natural
+death from the imperfect disposal of its own metabolic products: perhaps
+all higher animals die ultimately from the same inability.
+
+At this point the doubt may then occur to us whether any good purpose
+has been served in looking for the answer to the question as to natural
+death in the study of the protozoa. The primitive organisation of these
+forms of life may conceal from us important conditions which are present
+in them too, but can be recognised only among the higher animals where
+they have achieved for themselves a morphological expression. If we
+abandon the morphological point of view for the dynamic, it may be a
+matter of entire indifference to us whether the natural death of the
+protozoa can be proved or not. With them the substance later recognised
+as immortal has not yet separated itself in any way from the part
+subject to death. The instinctive forces which endeavour to conduct life
+to death might be active in them too from the beginning and yet their
+effect might be so obscured by that of the forces tending to preserve
+life that any direct evidence of their existence becomes hard to
+establish. We have heard, it is true, that the observations of
+biologists allow us to assume such death-ward tending inner processes
+also among the protozoa. But even if the protozoa prove to be immortal
+in Weismann’s sense, his assertion that death is a late acquisition
+holds good only of the outward manifestations of death, and does not
+invalidate any hypothesis as to such processes as impel towards death.
+Our expectation that biology would entirely put out of court any
+recognition of the death-instincts has not been fulfilled. It is open to
+us to occupy ourselves further with this possibility, if we have other
+reasons for doing so. The striking resemblance between Weismann’s
+separation of soma and germ-plasm and our distinction between the death
+and the life-instincts remains unshaken, moreover, and retains its
+value.
+
+Let us dwell for a moment on this exquisitely dualistic conception of
+the instinctive life. According to E. Hering’s theory of the processes
+in living matter there course through it uninterruptedly two kinds of
+processes of opposite direction, one anabolic, assimilatory, the other
+katabolic, disintegrating. Shall we venture to recognise in these two
+directions of the vital processes the activity of our two instinctive
+tendencies, the life-instincts and the death-instincts? And we cannot
+disguise another fact from ourselves, that we have steered unawares into
+the haven of Schopenhauer’s philosophy for whom death is the ‘real
+result’ of life[28] and therefore in so far its aim, while the sexual
+instinct is the incarnation of the will to live.
+
+Let us boldly try to go a step further. According to general opinion the
+union of numerous cells into one vital connection, the multicellularity
+of organisms, has become a means to the prolongation of their span of
+life. One cell helps to preserve the life of the others, and the
+cell-community can go on living even if single cells have to perish. We
+have already heard that also conjugation, the temporary mingling of two
+unicellular entities, has a preservative and rejuvenating effect on
+both. The attempt might consequently be made to transfer the Libido
+theory yielded by psycho-analysis to the relationship of the cells to
+one another and to imagine that it is the vital or sexual instincts
+active in every cell that take the other cells for their ‘object’,
+partially neutralise their death-instincts, i. e. the processes
+stimulated by these, and so preserve those cells in life, while other
+cells do the same for them, and still others sacrifice themselves in the
+exercise of this libidinous function. The germ cells themselves would
+behave in a completely ‘narcissistic’ fashion, as we are accustomed to
+describe it in the theory of the neuroses when an individual
+concentrates his libido on the ego, and gives out none of it for the
+charging of objects. The germ cells need their libido—the activity of
+their vital instincts—for themselves as a provision for their later
+enormous constructive activity. Perhaps the cells of the malignant
+growths that destroy the organism can also be considered to be
+narcissistic in the same sense. Pathology is indeed prepared to regard
+the kernels of them as congenital in origin and to ascribe embryonal
+attributes to them. Thus the Libido of our sexual instincts would
+coincide with the Eros of poets and philosophers, which holds together
+all things living.
+
+At this point opportunity offers of reviewing the gradual development of
+our Libido theory. The analysis of the transference-neuroses forced on
+our notice in the first place the opposition between ‘sexual instincts’
+which are directed towards an object and other instincts which we only
+imperfectly discerned and provisionally described as ‘ego-instincts’.
+Among the latter those which subserve the self-preservation of the
+individual had the first claim for recognition. What other distinctions
+were to be made, it was impossible to say. No knowledge would have been
+so important for the establishment of a sound psychology as some
+approximate understanding of the common nature and possible differences
+of the instincts. But in no department of psychology did one grope more
+in the dark. Everyone posited as many instincts or ‘fundamental
+instincts’ as he pleased, and contrived with them just as the ancient
+Greek philosophers did with their four elements: earth, air, fire and
+water. Psycho-Analysis, which could not dispense with some kind of
+hypothesis as to the instincts, adhered to begin with to the popular
+distinction, typically represented by the phrase ‘hunger and love’. It
+was at least no new arbitrary creation. With this one adequately covered
+a considerable distance in the analysis of the psychoneuroses. The
+conception of ‘sexuality’—and therewith that of a sexual
+instinct—certainly had to Be extended, till it included much that did
+not come into the category of the function of propagation, and this led
+to outcry enough in a severe and superior or merely hypocritical world.
+
+The next step followed when Psycho-Analysis was able to feel its way a
+little nearer to the psychological ego, which was at first known to us
+only as a repressing, censoring agency, capable of constituting
+defences and reaction-formations. Critical and other far-seeing minds
+had indeed for a long time raised objections to the narrowing of the
+libido concept down to the energy of the sexual instinct as directed
+to the object. But they omitted to say whence they obtained this
+fuller comprehension, and failed to deduce anything from it of value
+for Psycho-Analysis. In the course of more deliberate advance it came
+under psycho-analytic observation how regularly libido is withdrawn
+from the object and directed towards the ego (introversion), and
+through the study of the libido-development of the child in its
+earliest phases it became clear that the ego is the true and original
+reservoir of the libido, which is extended to the object only from
+this. The ego took its place as one of the sexual objects and was
+immediately recognised as the choicest among them. Where the libido
+thus remained attached to the ego it was termed ‘narcissistic’.[29]
+This narcissistic libido was naturally also the expression of the
+energy of sexual instincts in the analytical sense which now had to be
+identified with the ‘instincts of self-preservation’, the existence of
+which was admitted from the first. Whereupon the original antithesis
+between the ego-instincts and the sexual instincts became inadequate.
+A part of the ego-instincts was recognised as libidinous: in the ego
+sexual instincts were found to be active—probably in addition to
+others; nevertheless one is justified in saying that the old formula,
+viz. that a psychoneurosis arises out of a conflict between the
+ego-instincts and the sexual instincts, contained nothing that we
+should have to reject to-day. Only, the difference of the two kinds of
+instincts which was supposed originally to be in some kind of way
+qualitative has now to be defined otherwise, namely on a topographical
+basis. In particular the transference-neurosis, the real object of
+psycho-analytic study, is still seen to be the result of a conflict
+between the ego and libidinous investment of an object.
+
+We are the more compelled now to accentuate the libidinous character of
+the self-preservative instincts, since we are venturing on the further
+step of recognising the sexual instinct as the Eros, the all-sustaining,
+and of deriving the narcissistic libido of the ego from the sum of the
+libido quantities that bring about the mutual adherence of the somatic
+cells. But we now find ourselves suddenly confronted with this question:
+If the self-preservative instincts are also of a libidinous kind, then
+perhaps we have no other instincts at all than libidinous ones. There
+are at least no others apparent. In that event we must admit the critics
+to be in the right who from the first have suspected that
+psycho-analysis makes sexuality the explanation of everything, or the
+innovators like Jung who, quickly making up their mind, have used
+‘libido’ as a synonym for ‘instinctive force’ in general. Is that not
+so?
+
+This result was at all events one not intended by us. On the contrary,
+we took as our starting point a sharp distinction between the
+ego-instincts (= death-instincts) and the sexual instincts (=
+life-instincts). We were prepared indeed to reckon even the alleged
+self-preservative instincts of the ego among death-instincts, a position
+which we have since corrected and withdrawn from. Our standpoint was a
+dualistic one from the beginning, and is so to-day more sharply than
+before, since we no longer call the contrasting tendencies egoistic and
+sexual instincts, but life-instincts and death-instincts. Jung’s libido
+theory, on the other hand, is a monistic one; that he has applied the
+term libido to his only instinctive energy was bound to create
+confusion, but should not have any further effect on us. We suspect that
+there are in the ego other instincts than those of self-preservation;
+only we ought to be in a position to demonstrate them. Unfortunately so
+little progress has been made in the analysis of the ego that this proof
+becomes extraordinarily difficult of attainment. The libidinous
+instincts of the ego may indeed be conjoined in a special way with other
+ego-instincts of which we as yet know nothing. Before ever we had
+clearly recognised narcissism, the conjecture was already present in the
+minds of psychoanalysts that the ‘ego-instincts’ had drawn libidinous
+components to themselves. But these are merely vague possibilities which
+our opponents will hardly take into account. It remains an awkward fact
+that analysis up to now has only put us in the position of demonstrating
+libidinous impulses. The conclusion that therefore there are no others
+is one to which we do not assent.
+
+In the obscurity that at present shrouds the theory of instinct, we
+shall certainly not do well to reject any idea that promises to throw
+light. We have made the antithesis between the life and death-instincts
+our point of departure. Object-love itself displays a second such
+polarity, that of love (tenderness) and hate (aggression). What if we
+could succeed in bringing these two polarities into relation with each
+other, in tracing the one to the other! We have long recognised a
+sadistic component of the sexual instinct:[30] it can, as we know,
+attain independence, and as a perversion, dominate the whole sexual
+trend of a person. In one of the organisations which I have termed
+‘pregenital’ it appears as a dominating part-instinct. But how is one to
+derive the sadistic impulse, which aims at the injury of the object,
+from the life-sustaining Eros! Does not the assumption suggest itself
+that this sadism is properly a death-instinct which is driven apart from
+the ego by the influence of the narcissistic libido, so that it becomes
+manifest only in reference to the object? It then enters the service of
+the sexual function; at the oral stage of organisation of the libido,
+amorous possession is still one and the same as annihilation of the
+object; later the sadistic impulse separates itself, and at last at the
+stage of the genital primacy it takes over with the aim of propagation
+the function of so far overpowering the sex-object as the carrying out
+of the sexual act demands. One might even say that the sadism expelled
+from the ego has acted as guide to the libidinous components of the
+sexual instinct; these later press on towards the object. Where the
+original sadism experiences no abatement or fusion, the well-known
+hate-love ambivalence of the love-life is set up.
+
+If the above assumption is justifiable then we have met the challenge of
+demonstrating an example of a death-instinct—though a displaced one.
+This conception, however, is far from being evident, and creates a
+frankly mystical impression. We incur the suspicion of having attempted
+at all costs to find a way out of an _impasse_. We may appeal against
+this verdict by saying that the assumption is no new one, that we have
+once before made it when there was no question of an _impasse_. Clinical
+observations forced upon us the view that the part-instinct of
+masochism, the one complementary to sadism, is to be understood as a
+recoil of the sadism on to the ego itself.[31] A turning of the instinct
+from the object to the ego is, however, essentially the same as a
+turning from the ego to the object, which is just now the new idea in
+question. Masochism, the turning of the instinct against the self, would
+then be in reality a return to an earlier phase of this, a regression.
+The exposition I then gave of masochism needs correction in one respect
+as being too exclusive: masochism may also be what I was there concerned
+to deny, primary.[32]
+
+Let us return, however, to the life-sustaining sexual instincts. We have
+already learned from the investigation of the protozoa that the mingling
+of two individuals without consequent partition, just as copulation
+between two individuals which soon after separate, has a strengthening
+and rejuvenating effect (v. s. Lipschütz). There is no sign of
+degeneration in their descendents, and they also seem to have gained the
+capacity for withstanding for a longer time the injurious results of
+their own metabolism. I think that this one observation may be taken as
+a prototype of the effect of sexual intercourse also. But in what way
+does the blending of two slightly different cells bring about such a
+renewal of life? The experiment which substitutes for conjugation among
+protozoa the effect of chemical or even of mechanical stimuli[33] admits
+of our giving a reply with certainty: it comes about by the introduction
+of new stimulus masses. This is in close agreement with the hypothesis
+that the life-process of an individual leads, from internal causes, to
+the equalising of chemical tensions: i. e. to death, while union with an
+individually different living substance increases these tensions—so to
+speak, introduces new vital differentia, which then have to be again
+lived out. For this difference between the two there must naturally be
+one or more optima. Our recognition that the ruling tendency of psychic
+life, perhaps of nerve life altogether, is the struggle for reduction,
+keeping at a constant level, or removal of the inner stimulus tension
+(the Nirvana-principle, as Barbara Low terms it)—a struggle which comes
+to expression in the pleasure-principle—is indeed one of our strongest
+motives for believing in the existence of death-instincts.
+
+But the course of our argument is still disturbed by an uneasy feeling
+that just in the case of the sexual instinct we are unable to
+demonstrate that character of a repetition-compulsion which first put us
+on the track of the death-instincts. It is true that the realm of
+embryonic developmental processes offers an abundance of such repetition
+phenomena—the two germ cells of sexual propagation and their life
+history are themselves only repetitions of the beginning of organic
+life: but the essential feature in the processes designed by the sexual
+instinct is nevertheless the mingling of two cells. Only by this is the
+immortality of the living substance among the higher forms of life
+assured.
+
+To put it in other words: we have to make enquiry into the origin of
+sexual propagation and the source of the sexual instincts in general, a
+task before which the lay mind quails and which even specialists have
+not yet been able to solve. Let us, therefore, make a condensed
+selection from all the conflicting accounts and opinions of whatever can
+be brought into relation with our train of thought.
+
+One view deprives the problem of propagation of its mysterious
+attraction by representing it as part of the phenomenon of growth
+(multiplication by division, germination, budding). The arising of
+propagation by means of germ cells sexually differentiated might be
+conceived, in accordance with the sober Darwinian mode of thought, as a
+way of maintaining and utilising for further development the advantage
+of the amphimixis which resulted in the first instance from the
+fortuitous conjugation of two protozoa.[34] ‘Sex’ would not thus be of
+very ancient origin and the extraordinarily powerful instincts which aim
+at bringing about sexual union would thereby repeat something which once
+chanced to happen and since became established as being advantageous.
+
+The same question now recurs as arose in respect of death—namely,
+whether the protozoa can be credited with anything beyond what they
+exhibit, and whether we may assume that forces and processes which
+become perceptible only in the case of the higher animals did first
+arise in the more primitive. For our purpose the view of sexuality
+mentioned above helps very little. The objection may be raised against
+it that it presupposes the existence of life-instincts as already
+operative in the simplest forms of life, for otherwise conjugation,
+which works against the expiration of life and makes the task of dying
+harder, would not have been retained and elaborated, but would have been
+avoided. If, then, we are not to abandon the hypothesis of
+death-instincts maintained, we must associate them with life-instincts
+from the beginning. But we must admit that we are working here at an
+equation with two unknown quantities. Anything else that science can
+tell us of the origin of sexuality amounts to so little that this
+problem may be likened to an obscurity into which not even the ray of an
+hypothesis has penetrated. In quite another quarter, however, we
+encounter such an hypothesis, but it is of so fantastic a kind—assuredly
+a myth rather than a scientific explanation—that I should not venture to
+bring it forward if it did not exactly fulfil the one condition for the
+fulfilment of which we are labouring. That is to say, it derives an
+instinct from the _necessity for the reinstatement of an earlier
+situation_.
+
+I refer, of course, to the theory that Plato in his Symposium puts into
+the mouth of Aristophanes and which deals not only with the origin of
+the sexual instinct but also with its most important variations in
+relation to the object. ‘Human nature was once quite other than now.
+Originally there were three sexes, three and not as to-day two: besides
+the male and the female there existed a third sex which had an equal
+share in the two first.... In these beings everything was double: thus,
+they had four hands and four feet, two faces, two genital parts, and so
+on. Then Zeus allowed himself to be persuaded to cut these beings in
+two, as one divides pears to stew them.... When all nature was divided
+in this way, to each human being came the longing for his own other
+half, and the two halves embraced and entwined their bodies _and desired
+to grow together again_.’[35]
+
+Are we to follow the clue of the poet-philosopher and make the daring
+assumption that living substance was at the time of its animation rent
+into small particles, which since that time strive for reunion by means
+of the sexual instincts? That these instincts—in which the chemical
+affinity of inanimate matter is continued—passing through the realm of
+the protozoa gradually overcome all hindrances set to their striving by
+an environment charged with stimuli dangerous to life, and are impelled
+by it to form a protecting covering layer? And that these dispersed
+fragments of living substance thus achieve a multicellular organisation,
+and finally transfer to the germ cells in a highly concentrated form the
+instinct for reunion? I think this is the point at which to break off.
+
+But not without a few words of critical reflection in conclusion. I
+might be asked whether I am myself convinced of the views here set
+forward, and if so how far. My answer would be that I am neither
+convinced myself, nor am I seeking to arouse conviction in others.
+More accurately: I do not know how far I believe in them. It seems to
+me that the affective feature ‘conviction’ need not come into
+consideration at all here. One may surely give oneself up to a line of
+thought, and follow it up as far as it leads, simply out of scientific
+curiosity, or—if you prefer—as advocatus diaboli, without, however,
+making a pact with the devil about it. I am perfectly aware that the
+third step in the theory of instinct which I am taking here cannot
+claim the same certainty as the two former ones, viz. the extending of
+the conception of sexuality and the establishing of narcissism. These
+innovations were direct translations of observation into theory,
+subject to no greater sources of error than is inevitable in anything
+of the kind. The assertion of the regressive character of instinct
+rests also, it is true, on observed material, namely on the facts of
+the repetition-compulsion. But perhaps I have over-estimated their
+significance. At all events there is no way of working out this idea
+except by combining facts with pure imagination many times in
+succession, and thereby departing far from observation. We know that
+the final result becomes the more untrustworthy the oftener one does
+this in the course of building up a theory, but the precise degree of
+uncertainty is not ascertainable. One may thereby have made a
+brilliant discovery or one may have gone ignominiously astray. In such
+work I trust little to so-called intuition: what I have seen of it
+seems to me to be the result of a certain impartiality of the
+intellect—only that people unfortunately are seldom impartial where
+they are concerned with the ultimate things, the great problems of
+science and of life. My belief is that there everyone is under the
+sway of preferences deeply rooted within, into the hands of which he
+unwittingly plays as he pursues his speculation. Where there are such
+good grounds for distrust, only a tepid feeling of indulgence is
+possible towards the results of one’s own mental labours. But I hasten
+to add that such self-criticism does not render obligatory any special
+tolerance of divergent opinions. One may inexorably reject theories
+that are contradicted by the very first steps in the analysis of
+observation and yet at the same time be aware that those one holds
+oneself have only a tentative validity. Were we to appraise our
+speculations upon the life and death-instincts it would disturb us but
+little that so many processes go on which are surprising and hard to
+picture, such as one instinct being expelled by others, or turning
+from the ego to an object, and so on. This comes only from our being
+obliged to operate with scientific terms, i. e. with the metaphorical
+expressions peculiar to psychology (or more correctly: psychology of
+the deeper layers). Otherwise we should not be able to describe the
+corresponding processes at all, nor in fact even to have remarked
+them. The shortcomings of our description would probably disappear if
+for the psychological terms we could substitute physiological or
+chemical ones. These too only constitute a metaphorical language, but
+one familiar to us for a much longer time and perhaps also simpler.
+
+On the other hand we wish to make it quite clear that the uncertainty of
+our speculation is enhanced in a high degree by the necessity of
+borrowing from biological science. Biology is truly a realm of limitless
+possibilities; we have the most surprising revelations to expect from
+it, and cannot conjecture what answers it will offer in some decades to
+the questions we have put to it. Perhaps they may be such as to
+overthrow the whole artificial structure of hypotheses. If that is so,
+someone may ask why does one undertake such work as the one set out in
+this article, and why should it be communicated to the world? Well, I
+cannot deny that some of the analogies, relations and connections
+therein traced appeared to me worthy of consideration.[36]
+
+
+
+
+                                  VII
+
+
+If this attempt to reinstate an earlier condition really is so universal
+a characteristic of the instincts, we should not find it surprising that
+so many processes in the psychic life are performed independently of the
+pleasure-principle. This characteristic would communicate itself to
+every part-instinct and would in that case concern a harking back to a
+definite point on the path of development. But all that the
+pleasure-principle has not yet acquired power over is not therefore
+necessarily in opposition to it, and we have not yet solved the problem
+of determining the relation of the instinctive repetition processes to
+the domination of the pleasure-principle.
+
+We have recognised that one of the earliest and most important functions
+of the psychic apparatus is to ‘bind’ the instreaming instinctive
+excitations, to substitute the ‘secondary process’ for the ‘primary
+process’ dominating them, and to transform their freely mobile
+energy-charge into a predominantly quiescent (tonic) charge. During this
+transformation no attention can be paid to the development of ‘pain’,
+but the pleasure-principle is not thereby annulled. On the contrary, the
+transformation takes place in the service of the pleasure-principle; the
+binding is an act of preparation, which introduces and secures its
+sovereignty.
+
+Let us distinguish function and tendency more sharply than we have
+hitherto done. The pleasure-principle is then a tendency which subserves
+a certain function—namely, that of rendering the psychic apparatus as a
+whole free from any excitation, or to keep the amount of excitation
+constant or as low as possible. We cannot yet decide with certainty for
+either of these conceptions, but we note that the function so defined
+would partake of the most universal tendency of all living matter—to
+return to the peace of the inorganic world. We all know by experience
+that the greatest pleasure it is possible for us to attain, that of the
+sexual act, is bound up with the temporary quenching of a greatly
+heightened state of excitation. The ‘binding’ of instinct-excitation,
+however, would be a preparatory function, which would direct the
+excitation towards its ultimate adjustment in the pleasure of discharge.
+
+In the same connection, the question arises whether the sensations of
+pleasure and ‘pain’ can emanate as well from the bound as from the
+‘unbound’ excitation processes. It appears quite beyond doubt that the
+‘unbound’, the primary, processes give rise to much more intense
+sensations in both directions than the bound ones, those of the
+‘secondary processes’. The primary processes are also the earlier in
+point of time; at the beginning of mental life there are no others, and
+we may conclude that if the pleasure-principle were not already in
+action in respect to them, it would not establish itself in regard to
+the later processes. We thus arrive at the result which at bottom is not
+a simple one, that the search for pleasure manifests itself with far
+greater intensity at the beginning of psychic life than later on, but
+less unrestrictedly: it has to put up with repeated breaches. At a
+maturer age the dominance of the pleasure-principle is very much more
+assured, though this principle as little escapes limitations as all the
+other instincts. In any case, whatever it is in the process of
+excitation that engenders the sensations of pleasure and ‘pain’ must be
+equally in existence when the secondary process is at work as with the
+primary process.
+
+This would seem to be the place to institute further studies. Our
+consciousness conveys to us from within not only the sensations of
+pleasure and ‘pain’, but also those of a peculiar tension, which again
+may be either pleasurable or painful in itself. Now is it the ‘bound’
+and ‘unbound’ energy processes that we have to distinguish from each
+other by the help of these sensations, or is the sensation of tension to
+be related to the absolute quantity, perhaps to the level of the charge,
+while the pleasure-pain series refers to the changes in the quantity of
+charge in the unit of time? We must also be struck with the fact that
+the life-instincts have much more to do with our inner perception, since
+they make their appearance as disturbers of the peace, and continually
+bring along with them states of tension the resolution of which is
+experienced as pleasure; while the death-instincts, on the other hand,
+seem to fulfil their function unostentatiously. The pleasure-principle
+seems directly to subserve the death-instincts; it keeps guard, of
+course, also over the external stimuli, which are regarded as dangers by
+both kinds of instincts, but in particular over the inner increases in
+stimulation which have for their aim the complication of the task of
+living. At this point innumerable other questions arise to which no
+answer can yet be given. We must be patient and wait for other means and
+opportunities for investigation. We must hold ourselves too in readiness
+to abandon the path we have followed for a time, if it should seem to
+lead to no good result. Only such ‘true believers’ as expect from
+science a substitute for the creed they have relinquished will take it
+amiss if the investigator develops his views further or even transforms
+them.
+
+For the rest we may find consolation in the words of a poet for the slow
+rate of progress in scientific knowledge:
+
+            Whither we cannot fly, we must go limping.
+                   ·       ·       ·       ·       ·
+            The Scripture saith that limping is no sin.[37]
+
+
+
+
+                                 INDEX
+
+
+ Acquired instinctive dispositions, 49.
+
+ Adaptation, 52.
+   Death a phenomenon of, 58.
+
+ Ambivalence, hate-love, 69.
+
+ Amphimixis, 60, 72.
+
+ Anabolic processes, 63.
+
+ Angst, 9.
+
+ Animalculae, 60, 61.
+
+ Anxiety dreams, 38.
+
+ Apprehension, 9, 37, 39.
+
+ _Aristophanes_, 74.
+
+
+ Barrier against stimuli, 33, 34, 36–7.
+
+ Binding, psychical, 30, 34–7, 39, 42, 44, 80–2.
+
+ _Breuer, J._, 10, 27, 30, 36, 42.
+
+
+ _Calkins_, 60.
+
+ Charge, 34–7, 80, 82.
+   Breuer’s bound or tonic, 42.
+   Counter-, 34.
+   Free-flowing, 36, 42, 80.
+   of object, 64.
+   Over-, 37, 39–40.
+   Quiescent, 35–6, 80.
+
+ Children, play of, 11, 16, 43.
+
+ Compulsion, 22, 49.
+   Daemonic, 44.
+   Destiny-, 24.
+   Repetition-. _See_ Repetition-compulsion.
+   to repeat, 44.
+
+ Conjugation, 60, 63, 71–3.
+
+ Conscious:
+   Becoming, 27, 28.
+   ego, 19–20.
+   impulses, 3.
+   psychic processes, 32.
+   The, 19.
+
+ Consciousness, 3, 17, 19, 26–9, 47, 82.
+   Origin of, 28, 30.
+   Perceptual, 26.
+   Seat of, 27.
+   Threshold of, 3.
+
+ Conservative:
+   instincts. _See under_ Instincts.
+   nature of living beings, 45.
+
+ Constancy, principle of, 4.
+
+
+ Daemonic:
+   character, 43.
+   compulsion, 44.
+
+ Danger, 7, 9, 49, 83.
+
+ Death, 47–50, 54–63, 71, 73.
+   consequence of propagation, 59.
+   from inner causes, 56, 58.
+   Goal of. _See under_ Goal.
+   Impulsion towards, 70.
+   instincts. _See under_ Instincts.
+   Natural, 55, 56, 58, 61–2.
+   of higher animals, 61.
+   phenomenon of adaptation, 58.
+
+ Destiny, 22.
+   -compulsion, 24.
+
+ _Deussen_, 75.
+
+ Development, 45, 47, 49–54, 59, 72, 80.
+   Impulse towards higher, 51.
+   Libido-, 66.
+   Organic, 46.
+
+ _Doflein, Franz_, 59.
+
+ Dreams, 9–10, 37–9, 41, 44.
+   Anxiety-, 38.
+   during psycho-analysis, 38.
+   Function of, 37–8.
+   in traumatic neuroses, 37–8.
+   -life, 9.
+   of shock-patients, 24.
+   Punishment, 38.
+   Wish-fulfilment tendency of, 10.
+
+ Dualistic standpoint of psycho-analysis, 67.
+
+ Dynamic, 1, 19, 53, 57, 62.
+
+
+ Economic, 1, 11, 16, 41, 53.
+
+ Ego, 5, 6, 19, 20, 24, 64, 66–70, 75, 78–9.
+   Analysis of, 68, 69.
+   Coherent, 19.
+   -conflict, 39.
+   Conscious, 19, 20.
+   -feeling, 20.
+   instinct. _See under_ Instinct.
+   Kernel of, 19.
+   Libidinous components of, 68.
+   Libido directed towards, 65–6.
+   Masochistic tendencies of, 10.
+   Preconscious, 19, 20.
+   Psychological, 65.
+
+ Embryology, 29, 45.
+
+ Energy, 5, 31, 36.
+   Binding of, 36.
+   Bound, 30, 82.
+   charges, 34, 35.
+   Charging, 34.
+   Free, 30.
+   Free-flowing, 36, 80.
+   Instinctive, 67.
+   Propagation of, 28.
+   -transformations, 31.
+   Unbound, 82.
+   Quiescent, 36, 80.
+
+ Eros, 64, 67, 69, 79.
+
+ Excitation, 29, 33, 34, 39, 41, 42, 81, 82.
+   Barrier against, 41.
+   Bound, 81.
+   Disturbing, 38.
+   External, 34.
+   from within, 32, 33.
+   Heightened state of, 81.
+   Inner, 4.
+   Instinct, 42, 81.
+   Instinctive, 80.
+   Mass of, 33, 35, 37.
+   Quantity of, 2, 3, 81.
+   Perceptions of, 26.
+   processes, 25, 27–30, 35.
+   Propagation of, 28.
+   Sexual, 39.
+   Traces of, 27, 30.
+   Traumatic, 34.
+   Unbound, 81.
+
+ Experiences:
+   Painful, 6, 13;
+     repeated as a game, 13, 15, 43.
+   Pleasurable, 43.
+   Primary e. of satisfaction, 53.
+   Repetition of identical, 22, 23.
+   Revival of past, 20.
+   Traumatic, 10.
+
+
+ Fate, 22, 23, 24.
+
+ Fear, 9.
+
+ _Fechner, G. Th._, 3, 4.
+
+ Feeling, 2.
+   Ego-, 20.
+   Hostile, 15.
+   of ‘pain’, 26, 33.
+   of pleasure, 26, 33.
+   Painful, 20.
+   Pleasure-pain, 4, 33.
+
+ _Ferenczi_, 10, 52.
+
+ Fixation, 20.
+
+ _Fliess, W._, 56.
+
+ Fright, 9, 36, 37.
+   -neurosis, 9.
+
+ Furcht, 9.
+
+
+ Game:
+   Child’s, 12.
+   Meaning of, 13.
+   Painful experience repeated as, 13, 15, 43.
+   Repetition of, 43.
+
+ Genital primacy, 69.
+
+ Germ cell, 45, 54, 56, 64, 72, 76.
+   Narcissistic behaviour of, 63.
+
+ Germ-plasm, 57, 58, 62.
+
+ Goal, 47, 53.
+   Life-, 49.
+   Tendency towards, 4.
+   of life, 47–9, 51.
+   of organic striving, 47.
+
+ _Goette_, 59.
+
+ _Gomperz, Prof. Hein._, 74.
+
+
+ _Hartmann, Max_, 59.
+
+ Hate, 68, 69.
+
+ Heredity, 45, 57.
+
+ _Hering, E._, 62.
+
+ ‘Hunger and Love’, 65.
+
+
+ Imitation impulse, 16.
+
+ Immortality, 50, 54, 56–62, 72.
+   of protozoa, 60.
+   of unicellular beings, 59.
+
+ Impulse, 7, 14, 22, 51.
+   Conscious, 3.
+   Contemned, 38.
+   Imitation, 16.
+   Libidinous, 68.
+   of revenge, 14.
+   Play, 24.
+   Repressed, 20.
+   Sadistic, 69.
+   Stages of, 51.
+   towards higher development, 51.
+   towards perfection, 52–3.
+
+ Inertia, in organic life, 45.
+
+ Infantile:
+   influences, 22.
+   life, 44.
+   psychic life, 43.
+   sex-life, 18, 20.
+
+ Inferiority complex, 21.
+
+ Inheritance tendencies, 73.
+
+ Inherited instinctive dispositions, 49.
+
+ Instability, conditions of, 3.
+
+ Instinct, 5, 6, 41, 46, 48–53, 64–8, 70, 73–4, 77, 79–80, 82–3.
+   Aim of, 46.
+   compelling repetition, 46.
+   Conception of, 44–5.
+   Conservative, 46, 48;
+     c. ego-, 54;
+     c. organic, 47;
+     c. sexual, 50.
+   Death-, 54–5, 58–9, 62–3, 67–9, 71–3, 77, 79, 82–3.
+   Destruction-, 79.
+   Ego-, 51, 54–5, 64, 66–8, 79;
+   Libidinous nature of, 79.
+   Egoistic-, 79.
+   excitations, 42, 81.
+   First, 47.
+   Foregoing the satisfaction of, 13.
+   for reunion, 76.
+   Inborn, 5.
+   Libidinous, 67–8, 79.
+   Life-, 50–1, 54–5, 57, 62–3, 67–8, 73, 77, 79, 82.
+   Narcissistic, 79.
+   Nature of, 44.
+   Object-, 79.
+   of self-assertion, 48.
+   Part-, 48, 69, 70, 80.
+   Power-, 14, 48.
+   Regressive character of, 76.
+   Repression of, 52.
+   Self-preservative, 5, 48, 49, 64, 66, 67, 68, 79.
+   Sexual, 49–51, 54, 55, 57, 63–8, 70, 72, 78, 79;
+     libidinous, 79,
+     libidinous components of, 69,
+     origin of, 74.
+   Theory of, 68, 70, 76.
+   Two kinds of, 57.
+   Unsatisfied, 6.
+   Vital, 63, 64.
+
+ Introversion, 66.
+
+ Investment-energy, quiescent (bound) and free-moving, 30.
+   _See_ Charge.
+
+
+ Jealousy, 14, 21, 22.
+
+ _Jung, C. G._, 23, 67.
+
+
+ Katabolic processes, 63.
+
+
+ Libido, 64–7, 79.
+   concept, 65, 70, 79.
+   development, 66.
+   directed towards the ego, 65–6.
+   distribution, 39–40.
+   Narcissistic, 66–7, 69, 79.
+   Oral stages of, 69.
+   quantities, 67.
+   Reservoir of, 66.
+   theory, 40, 63, 64, 67.
+
+ Life, 47–8, 50, 55, 58, 62, 63.
+   Beginnings of, 79.
+   Dawn of, 51.
+   Forces tending to preserve, 62.
+   Goal of. _See under_ Goal.
+   -instincts. _See under_ Instincts.
+   Instinctive, 62.
+   Length of, 56.
+   Love-, 69.
+   Menace to, 36.
+   process, 71.
+   Prolongation of, 54, 58, 63, 73.
+   Properties of, 47.
+   Renewal of, 57, 71, 73.
+   Rhythm in, 50–1.
+   Stimuli dangerous to, 76.
+
+ _Lipschütz, Alex._, 59, 60, 71.
+
+ _Loeb, J._, 61.
+
+ Love, 21, 68, 69.
+
+ _Low, Barbara_, 71.
+
+
+ _Marcinowski_, 21.
+
+ Masochistic tendencies of the ego, 10.
+
+ Masochism, 70.
+   primary, 70.
+
+ _Maupas_, 60.
+
+ Mechanical:
+   concussion, 39.
+   force, 39.
+   shock, 8.
+   stimuli, 7.
+
+ Memory, 22, 28.
+   -records, 27.
+   -traces, 27–8;
+     repressed, 44.
+
+ Metabolism, 58, 61, 71.
+
+ Metapsychology, 1, 26, 35.
+
+ Metazoa, 57.
+
+ Multicellular organisms, 57–8, 63, 76.
+
+
+ Narcissism, 68, 76.
+
+ Narcissistic:
+   behaviour of germ cells, 63.
+   instincts, 79.
+   libido, 66, 67, 69, 79.
+   over-charging of the injured part, 39–40.
+   scar, 20.
+
+ Neuroses, 8–9, 18, 39.
+   Fright-, 9.
+   Shock, 10.
+   Theory of the, 49, 50, 64.
+
+ Nirvana-principle, 71.
+
+
+ Object, 63–6, 69, 70, 74, 78–9.
+   Annihilation of, 69.
+   Charging of, 64.
+   Injury of, 69.
+   -instinct, 79.
+   Libidinous investment of, 66.
+   -love, 68.
+   Sex-, 69.
+
+ Oedipus complex, 18.
+
+ Oral stage of libido, 69.
+
+ Organic:
+   compulsion to repetition, 45.
+   development, 47.
+
+
+ Pain, 35.
+   Bodily, 34.
+
+ ‘Pain’, 1–3, 5–6, 20, 22, 26, 33, 38, 80–2.
+   Avoidance of, 1, 38.
+   feelings, 33.
+   Feelings (_Empfindungen_) of, 26.
+   Neurotic, 6.
+   Sensations of, 81.
+
+ Part-instinct, 48, 69, 70, 80.
+
+ Perfection, impulse towards, 52.
+
+ _Pfeifer, S._, 11.
+
+ Philosophy, 1, 2, 63, 65.
+
+ _Plato_, 74–5.
+
+ Play:
+   -impulse, 24.
+   of children, 11–16, 43.
+   Motive of, 16.
+
+ Pleasure, 1–6, 11, 15, 16, 22, 26, 33, 38, 52, 81.
+
+ Pleasure-pain, 4, 33, 82.
+
+ Pleasure-principle, 1–7, 13, 15–16, 20, 24–5, 34, 37–9, 42–4, 71, 80–3.
+   Beyond the, 16, 24, 38.
+   Dominance of, 82.
+   Frustration of, 4–6.
+   Replaced by reality-principle, 5.
+   Supremacy of, 3.
+   Tendencies beyond, 16.
+
+ Pleasure-tendency, 4.
+
+ Power-instinct, 14.
+
+ Preconscious, 19, 41.
+   ego, 19, 20.
+   material, 42.
+   residues, 42.
+
+ Pregenital organisation, 69.
+
+ Primary:
+   experience of satisfaction, 53.
+   Masochism, 70.
+   process, 80, 81.
+
+ Projection, 33.
+
+ Propagation, 57–9, 65, 69, 72.
+   and death, 59.
+   Death the consequence of, 59.
+   Function of, 79.
+   of energy, 28.
+   Sexual, 60, 72.
+
+ Protective barrier, 31, 37, 41, 76.
+
+ Protozoa, 55, 58–62, 70–1, 73, 76.
+   Immortality of, 60.
+
+ Psychic:
+   apparatus, 3, 4, 5, 7, 11, 26, 33, 34, 35, 36, 37, 41, 42, 80, 81.
+   life, 2, 3, 15, 19, 24, 25, 34, 38, 71, 80, 82.
+   processes, 1, 4, 9, 26;
+     conscious, 32,
+     primary, 42,
+     secondary, 42.
+   systems, 27, 28, 30, 34, 35, 36.
+
+ Punishment dreams, 38.
+
+ _Pythagoras_, 75.
+
+
+ _Rank_, 70.
+
+ Reaction-formation, 53, 65.
+
+ Reality-principle, 5, 7, 20, 42.
+   Pleasure-principle replaced by, 5.
+
+ Regression, 46, 52, 70.
+
+ Regressive character of:
+   ego-instincts, 54.
+   instincts, 76.
+
+ Re-incarnation, 75.
+
+ Reinstatement of:
+   earlier condition, 44, 46, 51, 74, 80.
+   lifelessness, 54.
+
+ Rejuvenation, 60, 63, 71, 73.
+
+ Repetition, 18, 43, 44, 46, 47, 49, 52, 55, 72.
+   Endless r. of the same, 23.
+   Instincts compelling, 46.
+   of identical experiences, 22–3,
+   processes, 80.
+
+ Repetition-compulsion, 19, 20, 22, 24, 25, 38, 39, 42, 44, 55, 72, 76.
+   Organic, 45.
+
+ Repressed:
+   impulses, 20.
+   instinct, 52.
+   material, 19, 20.
+   memory-traces, 44.
+   sex-impulses, 6.
+   The, 19, 38.
+
+ Repressing agency, 65.
+
+ Repression, 6, 18, 19, 24, 53.
+   of instinct, 52.
+
+ Reproductive cells, 49, 50, 57.
+
+ Resistance, 17, 19, 20, 24, 30, 53.
+
+ Retrogression, 51–2.
+
+ Return to:
+   lifelessness, 47.
+   the inorganic, 48, 81.
+
+ _Rückert_, 83.
+
+
+ Sadism, 69, 70.
+
+ _Schopenhauer_, 63.
+
+ Secondary process, 44, 80, 81, 82.
+
+ Self-preservation:
+   Instinct of, 5, 48, 49, 64, 66, 68, 79.
+   Libidinous character of, 67.
+
+ Sex, 57, 73, 78.
+   distinction, 51.
+   impulses, 5;
+     repressed, 6.
+   -life, infantile, 18, 20.
+   -object, 69.
+   -quest, 21.
+
+ Sexuality, 51, 65, 57.
+   Conception of, 76.
+   Origin of, 73.
+
+ Shock, 36.
+   -dream, 24.
+   Dreams of s. patients, 24.
+   Mechanical, 8.
+   neuroses, 10.
+   theory, 36.
+
+ _Simmel_, 10.
+
+ _Spielrein, Sabina_, 70.
+
+ Stability:
+   Conditions of, 3.
+   Tendency towards, 4.
+
+ _Stärcke, A._, 70.
+
+ Stimulation, 83.
+   Protection against, 30, 32.
+
+ Stimuli, 29–34, 37, 41, 50, 52, 76, 83.
+   Barrier against, 33, 34, 36, 37.
+   Chemical, 71.
+   Control of, 37.
+   dangerous to life, 76.
+   Defence against, 37.
+   Mechanical, 71.
+   Protection against, 31, 33.
+   Reception of, 29, 31, 32.
+
+ Stimulus masses, 31, 34, 71.
+
+ Sublimation, 52, 53.
+
+ System:
+   Bw., 26, 28, 29.
+   W-Bw., 26, 27, 32.
+
+
+ _Tasso_, 23.
+
+ Tension, 82.
+   Unpleasant state of, 1.
+   Chemical, 71.
+   Relaxation of, 1, 53.
+
+ Trauma, 34, 37, 39.
+   External, 34.
+   Fixation on, 10.
+
+ Traumatic:
+   excitation, 34.
+   experiences, 10.
+   impressions, 39.
+   neurosis, 36, 37, 39, 41, 42;
+     dreams in, 37, 38.
+   neurosis of peace, 8.
+
+
+ Unconscious, 17, 19, 27.
+   charges, 41.
+   mental process ‘timeless’, 32.
+   processes, 26, 27.
+   resistances, 19.
+   Systems, 41–2.
+   The, 19, 42.
+
+ Unicellular beings, 57, 59, 63.
+   Immortality of, 59.
+
+ Upanishads, 75.
+
+
+ Vesicle, 29, 30, 31, 32.
+
+
+ War neuroses, 8, 9, 10, 39.
+
+ W-Bw., the system, 26–7, 32.
+
+ _Weismann, A._, 56, 57, 59, 60, 62, 73.
+
+ Wish-fulfilment, 37, 38.
+   tendency of dreams, 10;
+     prehistoric past of, 38.
+
+ _Woodruff_, 59, 60, 61.
+
+
+ _Ziegler, K._, 75.
+
+-----
+
+Footnote 1:
+
+  op. cit., p. 90.
+
+Footnote 2:
+
+  Cp. Psycho-Analysis and the War Neuroses, by Ferenczi, Abraham, Simmel
+  and Ernest Jones; No. 2 of the International Psycho-Analytical
+  Library, 1921.
+
+Footnote 3:
+
+  1919, Bd. V, S. 243.
+
+Footnote 4:
+
+  This interpretation was fully established by a further observation.
+  One day when the mother had been out for some hours she was greeted on
+  her return by the information ‘Baby o-o-o-o’ which at first remained
+  unintelligible. It soon proved that during his long lonely hours he
+  had found a method of bringing about his own disappearance. He had
+  discovered his reflection in the long mirror which nearly reached to
+  the ground and had then crouched down in front of it, so that the
+  reflection was ‘_fort_’.
+
+Footnote 5:
+
+  When the child was five and three-quarter years old his mother died.
+  Now, when she was really ‘gone’ (o-o-o), the boy showed no grief for
+  her. A second child had, it is true, been born in the meantime and had
+  aroused his strongest jealousy.
+
+Footnote 6:
+
+  Cp. ‘Eine Kindheitserinnerung aus “Dichtung und Wahrheit”.’ _Imago_,
+  1917, Bd. V, S. 49.
+
+Footnote 7:
+
+  See ‘Zur Technik der Psychoanalyse. II. Erinnern, Wiederholen und
+  Durcharbeiten.’ Sammlung kleiner Schriften zur Neurosenlehre. IV.
+  Folge, 1918, S. 441.
+
+Footnote 8:
+
+  Marcinowski: ‘Die erotischen Quellen der Minderwertigkeitsgefühle’,
+  _Zeitschrift für Sexualwissenschaft_, 1918, IV.
+
+Footnote 9:
+
+  Cp. the pertinent observations of C. G. Jung in his article ‘Die
+  Bedeutung des Vaters für das Schicksal des Einzelnen’. _Jahrbuch für
+  psychoanalytische und psychopathologische Forschungen_, 1901, Bd. I.
+
+Footnote 10:
+
+  Thus named after the German words _Wahrnehmung_ (= perception) and
+  _Bewußtsein_ (= consciousness).
+
+Footnote 11:
+
+  Here I follow throughout J. Breuer’s exposition in the theoretical
+  section of the ‘Studien über Hysterie’, 1895.
+
+Footnote 12:
+
+  J. Breuer and S. Freud: Studien über Hysterie.
+
+Footnote 13:
+
+  Cp. ‘Triebe und Triebschicksale’, Sammlung kleiner Schriften zur
+  Neurosenlehre. IV. Folge, 1918.
+
+Footnote 14:
+
+  Psycho-Analysis and the War Neuroses. Introduction. International
+  Psycho-Analytical Library. No. 2, 1921.
+
+Footnote 15:
+
+  Cp. Section VII, ‘Psychology of the Dream-Processes’ in my
+  ‘Traumdeutung’.
+
+Footnote 16:
+
+  I have little doubt that similar conjectures about the nature of
+  instinct have been already repeatedly put forward.
+
+Footnote 17:
+
+  Compare the subsequent criticism of this extreme view of the
+  self-preservative instincts.
+
+Footnote 18:
+
+  By a different route Ferenczi has arrived at the possibility of this
+  conception. (‘Stages of Development in the Sense of Reality’. Ch. VIII
+  of his Contributions to Psycho-Analysis, 1916.) He writes: ‘By
+  following through this process of thought logically one is obliged to
+  gain familiarity with the idea of a tendency to persistence or
+  regression governing organic life also, while the tendency to progress
+  in development, adaptation, etc. is manifested only as against
+  external stimuli.’
+
+Footnote 19:
+
+  Über die Dauer des Lebens, 1882; Über Leben und Tod, 2. Aufl., 1892;
+  Das Keimplasma, 1892, etc.
+
+Footnote 20:
+
+  Über Leben und Tod, 2. Aufl., S. 20.
+
+Footnote 21:
+
+  Über die Dauer des Lebens, S. 38.
+
+Footnote 22:
+
+  Über Leben und Tod, 2. Aufl., S. 67.
+
+Footnote 23:
+
+  Über die Dauer des Lebens, S. 33.
+
+Footnote 24:
+
+  Über Leben und Tod. Conclusion.
+
+Footnote 25:
+
+  Cp. Max Hartmann: Tod und Fortpflanzung, 1906; Alex. Lipschütz: ‘Warum
+  wir sterben’, _Kosmosbücher_, 1914; Franz Doflein: Das Problem des
+  Todes und der Unsterblichkeit bei den Pflanzen und Tieren, 1919.
+
+Footnote 26:
+
+  Hartmann: loc. cit., S. 29.
+
+Footnote 27:
+
+  For this and what follows see Lipschütz: Loc. cit., S. 26 and 52 ff.
+
+Footnote 28:
+
+  ‘Über die anscheinende Absichtlichkeit im Schicksale des Einzelnen’.
+  Großherzog Wilhelm Ernst Auflage, Bd. IV, S. 268.
+
+Footnote 29:
+
+  ‘Zur Einführung des Narzissmus’, _Jahrbuch der Psychoanalyse_, Bd. VI,
+  1914, and Sammlung kleiner Schriften zur Neurosenlehre, IV. Folge,
+  1918.
+
+Footnote 30:
+
+  Drei Abhandlungen zur Sexualtheorie, from the First Edition, 1905,
+  onwards.
+
+Footnote 31:
+
+  See Sexualtheorie, 4. Aufl., 1920, and ‘Triebe und Triebschicksale’ in
+  Sammlung kleiner Schriften, IV. Folge.
+
+Footnote 32:
+
+  A considerable part of this speculation has been anticipated in a work
+  which is full of valuable matter and ideas but is unfortunately not
+  entirely clear to me: (Sabina Spielrein: ‘Die Destruktion als Ursache
+  des Werdens’, _Jahrbuch für Psychoanalyse_, IV, 1912). She designates
+  the sadistic component as ‘destructive’. In still another way A.
+  Stärcke (Inleiding by de vertaling von S. Freud, De sexuele
+  beschavingsmoral etc., 1914) has attempted to identify the libido
+  concept itself with the biological concept of an impulsion towards
+  death which is to be assumed on theoretical grounds (Cp. also Rank:
+  ‘Der Künstler’). All these attempts, as the one in the text, indicate
+  how much the need is felt for a clarification in the theory of
+  instinct which we do not yet possess.
+
+Footnote 33:
+
+  loc. cit.
+
+Footnote 34:
+
+  Although Weismann (Das Keimplasma, 1892) denies even this advantage:
+  ‘Fertilisation in no way signifies a rejuvenation or renewing of
+  life,—it is in no way necessary for the prolongation of life; it is
+  nothing but a device for making possible the blending of two different
+  inheritance tendencies.’ Still, he considers an increase of
+  variability in living organisms to be the result of such blending.
+
+Footnote 35:
+
+  I am indebted to Prof. Heinrich Gomperz of Vienna for the following
+  indications as to the origin of the Platonic myth, which I repeat
+  partly in his own words: I should like to call attention to the fact
+  that essentially the same theory is also to be found in the
+  Upanishads. The Brihad-Aranyaka Upanishad 1, 4, 3 (Deussen, 60
+  Upanishads des Veda, S. 393), where the creation of the world from the
+  Âtman (the self or ego) is described, has the following passage ‘Nor
+  did he (the Âtman, the self or ego) experience any joy, and for that
+  reason no one has joy when he is alone. So he longed for a partner. He
+  was as big as a woman and a man together when they embrace. He divided
+  himself into two parts, which made a husband and a wife. This body is
+  therefore one half of the self, according to Yajnavalkya. And for the
+  same reason this empty space here becomes filled by the woman.’
+
+  The Brihad-Aranyaka Upanishad is the oldest of all the Upanishads, and
+  no expert authority would date it later than 800 B.C. In opposition to
+  the prevailing opinion I should not like definitely to deny the
+  possibility of Plato having been dependent, even though very
+  indirectly, on these Indian thoughts, for this possibility cannot be
+  absolutely put aside even for the doctrine of re-incarnation. A
+  dependence of this sort, first conveyed through Pythagoras, would
+  scarcely detract from the significance of the coincidence in thought,
+  for Plato would not have adopted any such story conveyed in some way
+  from Oriental traditions, let alone have given it such an important
+  place, had he not himself felt the truth contained in it to be
+  illuminating.
+
+  In an article by K. Ziegler (‘Menschen- und Weltwerden’, _Neue
+  Fahrbücher für das klassische Altertum_, 1913, Band XXXI), which
+  contains a systematic investigation of the thought in question, it is
+  traced back to Babylonian ideas.
+
+Footnote 36:
+
+  I would here subjoin a few words to clarify our nomenclature, one
+  which has undergone a certain development in the course of our
+  discussion. What ‘sexual instincts’ are, we knew through their
+  relation to the sexes and to the function of propagation. We then
+  retained this term when the findings of psycho-analysis compelled us
+  to regard its relation to propagation as less close. With the
+  discovery of narcissistic libido, and the extension of the libido
+  concept to the individual cells, the sexual instinct became for us
+  transformed into the Eros that endeavours to impel the separate parts
+  of living matter to one another and to hold them together; what is
+  commonly called the sexual instinct appears as that part of the Eros
+  that is turned towards the object. Our speculation then supposes that
+  this Eros is at work from the beginnings of life, manifesting itself
+  as the ‘life-instinct’ in contradistinction to the ‘death-instinct’
+  which developed through the animation of the inorganic. It endeavours
+  to solve the riddle of life by the hypothesis of these two instincts
+  striving with each other from the very beginning. The transformation
+  which the concept of the ‘ego-instincts’ has undergone is perhaps
+  harder to review. Originally we applied this term to all those
+  instinct-directions—not better known to us—which can be distinguished
+  from the sexual instincts that have the object as their aim, thus
+  contrasting the ego-instincts with the sexual ones, the expression of
+  which is the libido. Later on we approached the analysis of the ego
+  and saw that a part also of the ‘ego-instincts’ is of a libidinous
+  nature, having taken its own self as an object. These narcissistic
+  instincts of self-preservation therefore had now to be reckoned to the
+  libidinous sexual instincts. The contrast between egoistic and sexual
+  instincts was now converted into one between egoistic and
+  object-instincts, both libidinous in nature. In its place, however,
+  arose a new contrast between libidinous (ego and object) instincts and
+  others whose existence can be determined in the ego and can perhaps be
+  detected in the destruction-instincts. Speculation transforms this
+  contrast into that of life-instincts (Eros) and death-instincts.
+
+Footnote 37:
+
+  Rückert in the ‘Makamen des Hariri.’
+
+
+
+
+         PRINTED IN VIENNA BY THE SOCIETY FOR GRAPHIC INDUSTRY
+
+------------------------------------------------------------------------
+
+
+              THE INTERNATIONAL PSYCHO-ANALYTICAL LIBRARY
+
+                         Edited by ERNEST JONES
+
+    No. 1. ADDRESSES ON PSYCHO-ANALYSIS. By J. J. PUTNAM, M.D. Emeritus
+           Professor of Neurology, Harvard University. With a Preface by
+           SIGM. FREUD, M.D., LL.D.
+
+    No. 2. PSYCHO-ANALYSIS AND THE WAR NEUROSES. By DRS. S. FERENCZI
+           (Budapest), KARL ABRAHAM (Berlin), ERNST SIMMEL (Berlin) and
+           ERNEST JONES (London). INTRODUCTION by Professor SIGM. FREUD
+           (Vienna).
+
+     No. 3 THE PSYCHO-ANALYTIC STUDY OF THE FAMILY. By J. C. FLÜGEL,
+           B.A.
+
+    No. 4. BEYOND THE PLEASURE PRINCIPLE. By SIGM. FREUD M.D., LL.D.
+           Authorized Translation from the second German Edition by C.
+           J. M. HUBBACK.
+
+    No. 5. ESSAYS IN APPLIED PSYCHO-ANALYSIS. By ERNEST JONES M.D.
+           President of the International Psycho-Analytical Association.
+
+    No. 6. GROUP PSYCHOLOGY AND THE ANALYSIS OF THE EGO. By SIGM. FREUD
+           M.D., LL.D. Authorized Translation from the German by JAMES
+           STRACHEY.
+
+
+              THE INTERNATIONAL JOURNAL OF PSYCHO-ANALYSIS
+                        Directed by SIGM. FREUD
+
+                         Official Organ of the
+              INTERNATIONAL PSYCHO-ANALYTICAL ASSOCIATION
+
+                         Edited by ERNEST JONES
+                      President of the Association
+
+                         With the Assistance of
+                  DOUGLAS BRYAN, J. C. FLÜGEL (London)
+          A. A. BRILL, H. W. FRINK, C. P. OBERNDORF (New York)
+
+                          --------------------
+
+                            Issued Quarterly
+
+ Subscription 30s. or $6.— per Volume of Four Parts (_c._ 500 pp.), the
+                    parts not being sold separately.
+
+               THE INTERNATIONAL PSYCHO-ANALYTICAL PRESS
+
+------------------------------------------------------------------------
+
+
+
+
+                          TRANSCRIBER’S NOTES
+
+
+ ● Typos fixed; non-standard spelling and dialect retained.
+ ● Used numbers for footnotes, placing them all at the end of the last
+     chapter.
+ ● Enclosed italics font in _underscores_.
+
+
+
+
+
+*** END OF THE PROJECT GUTENBERG EBOOK BEYOND THE PLEASURE PRINCIPLE ***
+
+
+    
+
+Updated editions will replace the previous one—the old editions will
+be renamed.
+
+Creating the works from print editions not protected by U.S. copyright
+law means that no one owns a United States copyright in these works,
+so the Foundation (and you!) can copy and distribute it in the United
+States without permission and without paying copyright
+royalties. Special rules, set forth in the General Terms of Use part
+of this license, apply to copying and distributing Project
+Gutenberg™ electronic works to protect the PROJECT GUTENBERG™
+concept and trademark. Project Gutenberg is a registered trademark,
+and may not be used if you charge for an eBook, except by following
+the terms of the trademark license, including paying royalties for use
+of the Project Gutenberg trademark. If you do not charge anything for
+copies of this eBook, complying with the trademark license is very
+easy. You may use this eBook for nearly any purpose such as creation
+of derivative works, reports, performances and research. Project
+Gutenberg eBooks may be modified and printed and given away—you may
+do practically ANYTHING in the United States with eBooks not protected
+by U.S. copyright law. Redistribution is subject to the trademark
+license, especially commercial redistribution.
+
+
+START: FULL LICENSE
+
+THE FULL PROJECT GUTENBERG LICENSE
+
+PLEASE READ THIS BEFORE YOU DISTRIBUTE OR USE THIS WORK
+
+To protect the Project Gutenberg™ mission of promoting the free
+distribution of electronic works, by using or distributing this work
+(or any other work associated in any way with the phrase “Project
+Gutenberg”), you agree to comply with all the terms of the Full
+Project Gutenberg™ License available with this file or online at
+www.gutenberg.org/license.
+
+Section 1. General Terms of Use and Redistributing Project Gutenberg™
+electronic works
+
+1.A. By reading or using any part of this Project Gutenberg™
+electronic work, you indicate that you have read, understand, agree to
+and accept all the terms of this license and intellectual property
+(trademark/copyright) agreement. If you do not agree to abide by all
+the terms of this agreement, you must cease using and return or
+destroy all copies of Project Gutenberg™ electronic works in your
+possession. If you paid a fee for obtaining a copy of or access to a
+Project Gutenberg™ electronic work and you do not agree to be bound
+by the terms of this agreement, you may obtain a refund from the person
+or entity to whom you paid the fee as set forth in paragraph 1.E.8.
+
+1.B. “Project Gutenberg” is a registered trademark. It may only be
+used on or associated in any way with an electronic work by people who
+agree to be bound by the terms of this agreement. There are a few
+things that you can do with most Project Gutenberg™ electronic works
+even without complying with the full terms of this agreement. See
+paragraph 1.C below. There are a lot of things you can do with Project
+Gutenberg™ electronic works if you follow the terms of this
+agreement and help preserve free future access to Project Gutenberg™
+electronic works. See paragraph 1.E below.
+
+1.C. The Project Gutenberg Literary Archive Foundation (“the
+Foundation” or PGLAF), owns a compilation copyright in the collection
+of Project Gutenberg™ electronic works. Nearly all the individual
+works in the collection are in the public domain in the United
+States. If an individual work is unprotected by copyright law in the
+United States and you are located in the United States, we do not
+claim a right to prevent you from copying, distributing, performing,
+displaying or creating derivative works based on the work as long as
+all references to Project Gutenberg are removed. Of course, we hope
+that you will support the Project Gutenberg™ mission of promoting
+free access to electronic works by freely sharing Project Gutenberg™
+works in compliance with the terms of this agreement for keeping the
+Project Gutenberg™ name associated with the work. You can easily
+comply with the terms of this agreement by keeping this work in the
+same format with its attached full Project Gutenberg™ License when
+you share it without charge with others.
+
+1.D. The copyright laws of the place where you are located also govern
+what you can do with this work. Copyright laws in most countries are
+in a constant state of change. If you are outside the United States,
+check the laws of your country in addition to the terms of this
+agreement before downloading, copying, displaying, performing,
+distributing or creating derivative works based on this work or any
+other Project Gutenberg™ work. The Foundation makes no
+representations concerning the copyright status of any work in any
+country other than the United States.
+
+1.E. Unless you have removed all references to Project Gutenberg:
+
+1.E.1. The following sentence, with active links to, or other
+immediate access to, the full Project Gutenberg™ License must appear
+prominently whenever any copy of a Project Gutenberg™ work (any work
+on which the phrase “Project Gutenberg” appears, or with which the
+phrase “Project Gutenberg” is associated) is accessed, displayed,
+performed, viewed, copied or distributed:
+
+    This eBook is for the use of anyone anywhere in the United States and most
+    other parts of the world at no cost and with almost no restrictions
+    whatsoever. You may copy it, give it away or re-use it under the terms
+    of the Project Gutenberg License included with this eBook or online
+    at www.gutenberg.org. If you
+    are not located in the United States, you will have to check the laws
+    of the country where you are located before using this eBook.
+  
+1.E.2. If an individual Project Gutenberg™ electronic work is
+derived from texts not protected by U.S. copyright law (does not
+contain a notice indicating that it is posted with permission of the
+copyright holder), the work can be copied and distributed to anyone in
+the United States without paying any fees or charges. If you are
+redistributing or providing access to a work with the phrase “Project
+Gutenberg” associated with or appearing on the work, you must comply
+either with the requirements of paragraphs 1.E.1 through 1.E.7 or
+obtain permission for the use of the work and the Project Gutenberg™
+trademark as set forth in paragraphs 1.E.8 or 1.E.9.
+
+1.E.3. If an individual Project Gutenberg™ electronic work is posted
+with the permission of the copyright holder, your use and distribution
+must comply with both paragraphs 1.E.1 through 1.E.7 and any
+additional terms imposed by the copyright holder. Additional terms
+will be linked to the Project Gutenberg™ License for all works
+posted with the permission of the copyright holder found at the
+beginning of this work.
+
+1.E.4. Do not unlink or detach or remove the full Project Gutenberg™
+License terms from this work, or any files containing a part of this
+work or any other work associated with Project Gutenberg™.
+
+1.E.5. Do not copy, display, perform, distribute or redistribute this
+electronic work, or any part of this electronic work, without
+prominently displaying the sentence set forth in paragraph 1.E.1 with
+active links or immediate access to the full terms of the Project
+Gutenberg™ License.
+
+1.E.6. You may convert to and distribute this work in any binary,
+compressed, marked up, nonproprietary or proprietary form, including
+any word processing or hypertext form. However, if you provide access
+to or distribute copies of a Project Gutenberg™ work in a format
+other than “Plain Vanilla ASCII” or other format used in the official
+version posted on the official Project Gutenberg™ website
+(www.gutenberg.org), you must, at no additional cost, fee or expense
+to the user, provide a copy, a means of exporting a copy, or a means
+of obtaining a copy upon request, of the work in its original “Plain
+Vanilla ASCII” or other form. Any alternate format must include the
+full Project Gutenberg™ License as specified in paragraph 1.E.1.
+
+1.E.7. Do not charge a fee for access to, viewing, displaying,
+performing, copying or distributing any Project Gutenberg™ works
+unless you comply with paragraph 1.E.8 or 1.E.9.
+
+1.E.8. You may charge a reasonable fee for copies of or providing
+access to or distributing Project Gutenberg™ electronic works
+provided that:
+
+    • You pay a royalty fee of 20% of the gross profits you derive from
+        the use of Project Gutenberg™ works calculated using the method
+        you already use to calculate your applicable taxes. The fee is owed
+        to the owner of the Project Gutenberg™ trademark, but he has
+        agreed to donate royalties under this paragraph to the Project
+        Gutenberg Literary Archive Foundation. Royalty payments must be paid
+        within 60 days following each date on which you prepare (or are
+        legally required to prepare) your periodic tax returns. Royalty
+        payments should be clearly marked as such and sent to the Project
+        Gutenberg Literary Archive Foundation at the address specified in
+        Section 4, “Information about donations to the Project Gutenberg
+        Literary Archive Foundation.”
+    
+    • You provide a full refund of any money paid by a user who notifies
+        you in writing (or by e-mail) within 30 days of receipt that s/he
+        does not agree to the terms of the full Project Gutenberg™
+        License. You must require such a user to return or destroy all
+        copies of the works possessed in a physical medium and discontinue
+        all use of and all access to other copies of Project Gutenberg™
+        works.
+    
+    • You provide, in accordance with paragraph 1.F.3, a full refund of
+        any money paid for a work or a replacement copy, if a defect in the
+        electronic work is discovered and reported to you within 90 days of
+        receipt of the work.
+    
+    • You comply with all other terms of this agreement for free
+        distribution of Project Gutenberg™ works.
+    
+
+1.E.9. If you wish to charge a fee or distribute a Project
+Gutenberg™ electronic work or group of works on different terms than
+are set forth in this agreement, you must obtain permission in writing
+from the Project Gutenberg Literary Archive Foundation, the manager of
+the Project Gutenberg™ trademark. Contact the Foundation as set
+forth in Section 3 below.
+
+1.F.
+
+1.F.1. Project Gutenberg volunteers and employees expend considerable
+effort to identify, do copyright research on, transcribe and proofread
+works not protected by U.S. copyright law in creating the Project
+Gutenberg™ collection. Despite these efforts, Project Gutenberg™
+electronic works, and the medium on which they may be stored, may
+contain “Defects,” such as, but not limited to, incomplete, inaccurate
+or corrupt data, transcription errors, a copyright or other
+intellectual property infringement, a defective or damaged disk or
+other medium, a computer virus, or computer codes that damage or
+cannot be read by your equipment.
+
+1.F.2. LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the “Right
+of Replacement or Refund” described in paragraph 1.F.3, the Project
+Gutenberg Literary Archive Foundation, the owner of the Project
+Gutenberg™ trademark, and any other party distributing a Project
+Gutenberg™ electronic work under this agreement, disclaim all
+liability to you for damages, costs and expenses, including legal
+fees. YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
+LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
+PROVIDED IN PARAGRAPH 1.F.3. YOU AGREE THAT THE FOUNDATION, THE
+TRADEMARK OWNER, AND ANY DISTRIBUTOR UNDER THIS AGREEMENT WILL NOT BE
+LIABLE TO YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, PUNITIVE OR
+INCIDENTAL DAMAGES EVEN IF YOU GIVE NOTICE OF THE POSSIBILITY OF SUCH
+DAMAGE.
+
+1.F.3. LIMITED RIGHT OF REPLACEMENT OR REFUND - If you discover a
+defect in this electronic work within 90 days of receiving it, you can
+receive a refund of the money (if any) you paid for it by sending a
+written explanation to the person you received the work from. If you
+received the work on a physical medium, you must return the medium
+with your written explanation. The person or entity that provided you
+with the defective work may elect to provide a replacement copy in
+lieu of a refund. If you received the work electronically, the person
+or entity providing it to you may choose to give you a second
+opportunity to receive the work electronically in lieu of a refund. If
+the second copy is also defective, you may demand a refund in writing
+without further opportunities to fix the problem.
+
+1.F.4. Except for the limited right of replacement or refund set forth
+in paragraph 1.F.3, this work is provided to you ‘AS-IS’, WITH NO
+OTHER WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PURPOSE.
+
+1.F.5. Some states do not allow disclaimers of certain implied
+warranties or the exclusion or limitation of certain types of
+damages. If any disclaimer or limitation set forth in this agreement
+violates the law of the state applicable to this agreement, the
+agreement shall be interpreted to make the maximum disclaimer or
+limitation permitted by the applicable state law. The invalidity or
+unenforceability of any provision of this agreement shall not void the
+remaining provisions.
+
+1.F.6. INDEMNITY - You agree to indemnify and hold the Foundation, the
+trademark owner, any agent or employee of the Foundation, anyone
+providing copies of Project Gutenberg™ electronic works in
+accordance with this agreement, and any volunteers associated with the
+production, promotion and distribution of Project Gutenberg™
+electronic works, harmless from all liability, costs and expenses,
+including legal fees, that arise directly or indirectly from any of
+the following which you do or cause to occur: (a) distribution of this
+or any Project Gutenberg™ work, (b) alteration, modification, or
+additions or deletions to any Project Gutenberg™ work, and (c) any
+Defect you cause.
+
+Section 2. Information about the Mission of Project Gutenberg™
+
+Project Gutenberg™ is synonymous with the free distribution of
+electronic works in formats readable by the widest variety of
+computers including obsolete, old, middle-aged and new computers. It
+exists because of the efforts of hundreds of volunteers and donations
+from people in all walks of life.
+
+Volunteers and financial support to provide volunteers with the
+assistance they need are critical to reaching Project Gutenberg™’s
+goals and ensuring that the Project Gutenberg™ collection will
+remain freely available for generations to come. In 2001, the Project
+Gutenberg Literary Archive Foundation was created to provide a secure
+and permanent future for Project Gutenberg™ and future
+generations. To learn more about the Project Gutenberg Literary
+Archive Foundation and how your efforts and donations can help, see
+Sections 3 and 4 and the Foundation information page at www.gutenberg.org.
+
+Section 3. Information about the Project Gutenberg Literary Archive Foundation
+
+The Project Gutenberg Literary Archive Foundation is a non-profit
+501(c)(3) educational corporation organized under the laws of the
+state of Mississippi and granted tax exempt status by the Internal
+Revenue Service. The Foundation’s EIN or federal tax identification
+number is 64-6221541. Contributions to the Project Gutenberg Literary
+Archive Foundation are tax deductible to the full extent permitted by
+U.S. federal laws and your state’s laws.
+
+The Foundation’s business office is located at 809 North 1500 West,
+Salt Lake City, UT 84116, (801) 596-1887. Email contact links and up
+to date contact information can be found at the Foundation’s website
+and official page at www.gutenberg.org/contact
+
+Section 4. Information about Donations to the Project Gutenberg
+Literary Archive Foundation
+
+Project Gutenberg™ depends upon and cannot survive without widespread
+public support and donations to carry out its mission of
+increasing the number of public domain and licensed works that can be
+freely distributed in machine-readable form accessible by the widest
+array of equipment including outdated equipment. Many small donations
+($1 to $5,000) are particularly important to maintaining tax exempt
+status with the IRS.
+
+The Foundation is committed to complying with the laws regulating
+charities and charitable donations in all 50 states of the United
+States. Compliance requirements are not uniform and it takes a
+considerable effort, much paperwork and many fees to meet and keep up
+with these requirements. We do not solicit donations in locations
+where we have not received written confirmation of compliance. To SEND
+DONATIONS or determine the status of compliance for any particular state
+visit www.gutenberg.org/donate.
+
+While we cannot and do not solicit contributions from states where we
+have not met the solicitation requirements, we know of no prohibition
+against accepting unsolicited donations from donors in such states who
+approach us with offers to donate.
+
+International donations are gratefully accepted, but we cannot make
+any statements concerning tax treatment of donations received from
+outside the United States. U.S. laws alone swamp our small staff.
+
+Please check the Project Gutenberg web pages for current donation
+methods and addresses. Donations are accepted in a number of other
+ways including checks, online payments and credit card donations. To
+donate, please visit: www.gutenberg.org/donate.
+
+Section 5. General Information About Project Gutenberg™ electronic works
+
+Professor Michael S. Hart was the originator of the Project
+Gutenberg™ concept of a library of electronic works that could be
+freely shared with anyone. For forty years, he produced and
+distributed Project Gutenberg™ eBooks with only a loose network of
+volunteer support.
+
+Project Gutenberg™ eBooks are often created from several printed
+editions, all of which are confirmed as not protected by copyright in
+the U.S. unless a copyright notice is included. Thus, we do not
+necessarily keep eBooks in compliance with any particular paper
+edition.
+
+Most people start at our website which has the main PG search
+facility: www.gutenberg.org.
+
+This website includes information about Project Gutenberg™,
+including how to make donations to the Project Gutenberg Literary
+Archive Foundation, how to help produce our new eBooks, and how to
+subscribe to our email newsletter to hear about new eBooks.
+
+

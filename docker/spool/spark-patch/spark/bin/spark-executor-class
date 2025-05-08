@@ -110,7 +110,10 @@ WORK_DIR="$SPARK_HOME/work/${APP_ID}/${EXEC_ID}"
 SCRATCH_DIR="$SPARK_HOME/work/${APP_ID}/${EXEC_ID}/scratch"
 mkdir -p "$WORK_DIR" "$SCRATCH_DIR/tmp" "$SCRATCH_DIR/local"
 ls "$SPARK_HOME/work/${APP_ID}"
+echo $(sha256sum $MANIFEST_OUT | awk '{print $1}')
+echo Copying $MANIFEST_OUT to $WORK_DIR
 cp $MANIFEST_OUT  $WORK_DIR
+echo $(stat $WORK_DIR/$MANIFEST_OUT)
 # 📝 Log final command
 
 cd "$WORK_DIR"

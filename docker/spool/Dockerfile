@@ -125,10 +125,18 @@ ENV PATH="${PATH}:${SPARK_HOME}/bin:${SPARK_HOME}/sbin"
 
 COPY weave-serial /opt/weave-serial
 
-RUN cp /opt/weave-serial/target/scala-2.12/spark-weave-shuffle_2.12-0.1.0.jar /opt/spark/jars
+RUN cp /opt/weave-serial/target/scala-2.12/*.jar /opt/spark/jars
 
 # ---------- Final Stage ----------
 FROM runtime AS final
+
+COPY data /opt/spark/enclave/data
+
+COPY data /workspace/helloworld/data
+
+COPY scripts/helloworld /workspace/helloworld
+
+RUN find /opt/spark \( -path "*/bin/*" -o -path "*/sbin/*" \) -type f -exec chmod u+x {} \;
 
 WORKDIR /workspace
 COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh

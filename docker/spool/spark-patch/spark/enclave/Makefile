@@ -39,7 +39,7 @@ endif
 
 .PHONY: dirs
 dirs:
-	    mkdir -p /scratch/$(WORKER_ID) $(ENCLAVE_HOME)/output-data/$(WORKER_ID) $(SPARK_HOME)/logs/ $(ENCLAVE_LOG_DIR)
+	    mkdir -p /scratch/$(WORKER_ID) $(ENCLAVE_HOME)/data/ $(SPARK_HOME)/logs/ $(ENCLAVE_LOG_DIR)
 
 java.manifest: java.manifest.template
 	    gramine-manifest \
