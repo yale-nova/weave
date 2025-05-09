@@ -1,3 +1,4 @@
+# 🧵🌀🧶
 ## 🔁 Reproducible Execution of Spark Workloads with Weave Shuffle
 
 This repository provides a unified interface for executing Spark workloads using the **Weave custom shuffle manager**, orchestrated through the **Spool framework**. The workflow supports deterministic dataset scaling, Spark job submission, enclave context isolation, and profiling—ensuring a reproducible, containerized evaluation environment suitable for both development and artifact evaluation.
