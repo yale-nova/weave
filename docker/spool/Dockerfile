@@ -132,11 +132,19 @@ FROM runtime AS final
 
 COPY data /opt/spark/enclave/data
 
-COPY data /workspace/helloworld/data
+COPY data /workspace/data
 
+COPY scripts/spark_mini_cluster.sh /workspace
 COPY scripts/helloworld /workspace/helloworld
 
 RUN find /opt/spark \( -path "*/bin/*" -o -path "*/sbin/*" \) -type f -exec chmod u+x {} \;
+
+
+RUN mkdir -p /scratch/registeredExecutors.ldb
+
+RUN find /opt/spark /opt/private-repos /opt/weave-serial /workspace/helloworld \
+  \( -type f \( -path "*/bin/*" -o -path "*/sbin/*" -o -name "*.sh" \) \) \
+  -exec chmod u+x {} \;
 
 WORKDIR /workspace
 COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
