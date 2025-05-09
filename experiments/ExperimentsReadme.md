@@ -10,7 +10,8 @@ Weave is a secure shuffle engine for Apache Spark that integrates with SGX encla
 
 Spool orchestrates context creation and transparent enclave management for Weave.
 
----
+--
+
 
 ## 🧰 Prerequisites
 
@@ -31,20 +32,120 @@ We provide a prebuilt Docker image to simplify running Weave and Spool:
 docker pull solei/spark-spool-direct
 
 
-### ✅ 1. Run the HelloWorld demo
+![Weave Logo](./images/weave.png) ![Spool Logo](./images/spark.png)
 
-Inside the container or host VM:
+## Running the HelloWorld Examples in Weave
+
+This guide explains how to run the `HelloWorld` examples under different execution modes, including native Spark, Weave, and Gramine-SGX. The goal is to demonstrate the behavior and overheads of our secure shuffle mechanism (Weave) in both associative and non-associative workloads.
+
+---
+
+### Prerequisites
+
+* You must be inside the Docker container built from our artifact.
+* Ensure at least 8GB of memory is available. For low-memory setups, reduce the data size as shown below.
+
+---
+
+### Step 1: Launch the Mini Cluster
+
+To enable enclave-based execution with Gramine, first run:
 
 ```bash
-/workdir/weave_helloworld.sh
+./spark_mini_cluster.sh
 ```
 
-This script:
-- Starts an encrypted Spark master
-- Launches one local Spark worker
-- Runs a sample WordCount job with Weave on `input.txt`
+This script launches a Spark master and two workers inside Gramine-SGX enclaves. The script may be fragile, so **verify the processes** are running using:
 
-Output will show standard Spark logs and Weave-specific messages.
+```bash
+jps
+```
+
+You should see entries for `Master` and two `Worker` processes.
+
+**Illustration:**
+
+* Mini cluster launch: ![Mini Cluster Launch](../images/mini_cluster.png)
+
+---
+
+### Step 2: Run the HelloWorld Examples
+
+Once the cluster is running, execute the HelloWorld WordCount and Sort examples:
+
+```bash
+./helloworld/HelloWorldContainerWordCount.sh
+./helloworld/HelloWorldContainerWordSort.sh
+```
+
+These scripts run:
+
+* **Spark (vanilla)**
+* **ColumnSort** (based on Opaque core)
+* **Weave** (our secure shuffle)
+
+> SnB is skipped due to memory constraints in container setups.
+
+---
+
+### Step 3: Example Outputs and Visual Comparison
+
+* **Non-enclave Spark Worker Log**: ![Non-Gramine Worker](../images/gramine-off.jpg)
+* **Enclave-based Spark Worker Log**: ![Gramine Worker](../images/gramine-on.jpg)
+
+#### WordCount Results
+
+Weave vs Spark (Associative Task):
+
+![Weave WordCount](../images/weave.png) ![Spark WordCount](../images/spark.png)
+
+For associative operations like WordCount, Weave incurs **only \~12% overhead**, thanks to sampling and tight-packing optimizations.
+
+#### Sort Results
+
+However, for non-associative operations like sorting, the overhead can be significantly higher.
+
+> Weave can experience up to **150% overhead** for tasks like Sort, where Spark applies aggressive optimizations while Weave must insert fake records and perform full reshuffling.
+
+---
+
+### Notes
+
+* Gramine and encryption settings are managed via:
+
+  ```
+  /opt/spark/conf/spark-defaults.conf
+  ```
+
+* Weave executors are launched via:
+
+  ```
+  /opt/spark/bin/spark-executor-class
+  ```
+
+  This script checks memory settings and rebuilds Gramine manifests if needed. As a result, the first `spark-submit` invocation is slower due to manifest compilation.
+
+* To warm up the enclave and reduce startup overhead, we recommend running SparkPi after launching the cluster:
+
+  ```bash
+  /opt/spark/bin/spark-submit \
+    --class org.apache.spark.examples.SparkPi \
+    --master spark://127.0.0.1:7077 \
+    /opt/spark/jars/spark-examples_2.12-3.2.2.jar \
+    100
+  ```
+
+---
+
+### Troubleshooting
+
+* If logs or outputs are missing, rerun `spark_mini_cluster.sh` and confirm `jps` shows the correct processes.
+* Use fewer records (e.g., 1 million instead of 2 million) for Sort if memory is limited.
+
+---
+
+For more detail, refer to our [full artifact README](https://github.com/MattSlm/weave-artifacts/blob/main/Readme.md).
+
 
 ---
 
