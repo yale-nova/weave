@@ -90,8 +90,8 @@ These scripts run:
 
 ### Step 3: Example Outputs and Visual Comparison
 
-* **Non-enclave Spark Worker Log**: ![Non-Gramine Worker](../images/gramine-off.jpg)
-* **Enclave-based Spark Worker Log**: ![Gramine Worker](../images/gramine-on.jpg)
+* **Non-enclave Spark Worker Log**: ![Non-Gramine Worker](../images/gramine-off.png)
+* **Enclave-based Spark Worker Log**: ![Gramine Worker](../images/gramine-on.png)
 
 #### WordCount Results
 
