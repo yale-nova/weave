@@ -150,6 +150,10 @@ For more detail, refer to our [full artifact README](https://github.com/MattSlm/
 
 ---
 
+**End of kick tires HelloWorld examples readme. Our artifact is fully functional if it has passed the Hello World test.**
+
+Continue reading to troubleshoot the artifact if the tests above have failed. 
+ 
 ## 🧪 Manual Verification (Recommended)
 
 ### ✅ Step 1: Start Spark Master (unenclaved)
