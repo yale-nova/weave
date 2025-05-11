@@ -70,6 +70,23 @@ You should see entries for `Master` and two `Worker` processes.
 
 ---
 
+### Step 2: Compile the Manifest and Warm Up the Executor Class
+
+* To reduce startup overhead and ensure the enclave is properly initialized, we recommend running the SparkPi example after launching the cluster and **before** testing Weave functionality:
+
+```bash
+/opt/spark/bin/spark-submit \
+  --class org.apache.spark.examples.SparkPi \
+  --master spark://127.0.0.1:7077 \
+  /opt/spark/jars/spark-examples_2.12-3.2.2.jar \
+  100
+```
+
+This script computes an estimate of Pi using 100 splits. A successful run confirms that Weave has correctly launched Gramine-based executors and the environment is ready for Weave functionality tests.
+
+---- 
+
+
 ### Step 2: Run the HelloWorld Examples
 
 Once the cluster is running, execute the HelloWorld WordCount and Sort examples:
@@ -126,15 +143,7 @@ However, for non-associative operations like sorting, the overhead can be signif
 
   This script checks memory settings and rebuilds Gramine manifests if needed. As a result, the first `spark-submit` invocation is slower due to manifest compilation.
 
-* To warm up the enclave and reduce startup overhead, we recommend running SparkPi after launching the cluster:
 
-  ```bash
-  /opt/spark/bin/spark-submit \
-    --class org.apache.spark.examples.SparkPi \
-    --master spark://127.0.0.1:7077 \
-    /opt/spark/jars/spark-examples_2.12-3.2.2.jar \
-    100
-  ```
 
 ---
 
@@ -145,12 +154,11 @@ However, for non-associative operations like sorting, the overhead can be signif
 
 ---
 
-For more detail, refer to our [full artifact README](https://github.com/MattSlm/weave-artifacts/blob/main/Readme.md).
-
-
----
-
 **End of kick tires HelloWorld examples readme. Our artifact is fully functional if it has passed the Hello World test.**
+
+For more details about:
+- Result reproduction: refer to the [reproduction readme](https://github.com/MattSlm/weave-artifacts/blob/main/ReproductionReadme.md). 
+- Weave design: refer to our repo for [Weave development] (https://github.com/MattSlm/spark-weave-shuffle/tree/main). _This repo is not used at any stage for artifact evulation_
 
 Continue reading to troubleshoot the artifact if the tests above have failed. 
  
