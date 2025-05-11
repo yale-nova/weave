@@ -141,6 +141,9 @@ However, for non-associative operations like sorting, the overhead can be signif
   /opt/spark/conf/spark-defaults.conf
   ```
 
+ ![Weave configurations](../images/weave-conf.png)
+
+
 * Weave executors are launched via:
 
   ```
