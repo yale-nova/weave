@@ -66,7 +66,9 @@ You should see entries for `Master` and two `Worker` processes.
 
 **Illustration:**
 
-* Mini cluster launch: ![Mini Cluster Launch](../images/mini_cluster.png)
+* Mini cluster launch: 
+
+![Mini Cluster Launch](../images/mini_cluster.png)
 
 ---
 
@@ -108,8 +110,12 @@ These scripts run:
 
 ### Step 3: Example Outputs and Visual Comparison
 
-* **Non-enclave Spark Worker Log**: ![Non-Gramine Worker](../images/gramine-off.png)
-* **Enclave-based Spark Worker Log**: ![Gramine Worker](../images/gramine-on.png)
+* **Non-enclave Spark Worker Log**:
+
+ ![Non-Gramine Worker](../images/gramine-off.png)
+* **Enclave-based Spark Worker Log**:
+
+ ![Gramine Worker](../images/gramine-on.png)
 
 #### WordCount Results
 
