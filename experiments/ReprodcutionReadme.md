@@ -1,4 +1,4 @@
-## This file is not complete.
+## This file is not complete. Will get completed with the access requirements and full guidelines by May 16th. 
 
 ### 📆 Usage
 
