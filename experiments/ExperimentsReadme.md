@@ -175,8 +175,8 @@ However, for non-associative operations like sorting, the overhead can be signif
 **End of kick tires HelloWorld examples readme. Our artifact is fully functional if it has passed the Hello World test.**
 
 For more details about:
-- Result reproduction: refer to the [reproduction readme](https://github.com/MattSlm/weave-artifacts/blob/main/ReproductionReadme.md). 
-- Weave design: refer to our repo for [Weave development] (https://github.com/MattSlm/spark-weave-shuffle/tree/main). _This repo is not used at any stage for artifact evulation_
+- Result reproduction: refer to the [reproduction readme](https://github.com/MattSlm/weave-artifacts/blob/main/experiments/ReprodcutionReadme.md). 
+- Weave design: refer to our repo for [Weave development] (https://github.com/MattSlm/spark-weave-shuffle/tree/main). _This repo is not used at any stage for artifact evaluation_
 
 Continue reading to troubleshoot the artifact if the tests above have failed. 
  
