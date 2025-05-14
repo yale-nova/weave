@@ -89,7 +89,7 @@ This script computes an estimate of Pi using 100 splits. A successful run confir
 ---- 
 
 
-### Step 2: Run the HelloWorld Examples
+### Step 3: Run the HelloWorld Examples
 
 Once the cluster is running, execute the HelloWorld WordCount and Sort examples:
 
