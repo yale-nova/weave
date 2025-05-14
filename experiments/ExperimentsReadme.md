@@ -31,7 +31,7 @@ We provide a prebuilt Docker image to simplify running Weave and Spool:
 
 ```bash
 docker pull solei/spark-spool-direct
-
+```
 
 ![Weave Logo](./images/weave.png) ![Spool Logo](./images/spark.png)
 
@@ -95,7 +95,7 @@ Once the cluster is running, execute the HelloWorld WordCount and Sort examples:
 
 ```bash
 ./helloworld/HelloWorldContainerWordCount.sh
-./helloworld/HelloWorldContainerWordSort.sh
+./helloworld/HelloWorldContainerSort.sh
 ```
 
 These scripts run:
