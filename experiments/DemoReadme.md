@@ -163,6 +163,8 @@ http://weavec2-dns.eastus.azurecontainer.io:9090/?file=wordcount-err.csv&x=Test+
 
 ### Example Use Cases:
 
+ ![Wordcount overhead comparison](../images/newplot.png)
+ 
 * **a)** Absolute user time (WordCount)
 * **b)** Relative user time overhead (WordCount)
 * **c)** Absolute user time (Sort)
