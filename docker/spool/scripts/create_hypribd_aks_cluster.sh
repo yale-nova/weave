@@ -94,6 +94,13 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$SCRIPT_DIR/.."
 cd "$REPO_ROOT"
 
+# === Compile Java DNS Test ===
+echo "🔨 Compiling DNS test via build script..."
+cd ./jobs/java/dns
+./build.sh
+DNS_JAR_PATH="jobs/java/dns/build/dns-test.jar"
+cd "$REPO_ROOT"
+
 # === Logs ===
 exec 3>&1 4>&2
 
@@ -101,13 +108,6 @@ exec 3>&1 4>&2
 echo "☁️ Creating resource group..."
 az group create --name "$RG_NAME" --location "$LOCATION" > .az_group.log 2>&1
 
-
-# === Get credentials ===
-echo "🔑 Getting AKS credentials..."
-az aks get-credentials --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --overwrite-existing > .az_getcreds.log 2>&1
-
-
-# === Check existing cluster ===
 validate_or_update_pool() {
   local name=$1
   local expected_vm_size=$2
@@ -115,11 +115,49 @@ validate_or_update_pool() {
   local expected_mode=$4
   local expected_min=$5
 
-  echo "🔍 Validating node pool [$name]..."
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "🔍 Validating node pool: [$name]"
+  echo "  ↳ Expected VM Size : $expected_vm_size"
+  echo "  ↳ Mode              : $expected_mode"
+  echo "  ↳ Min Nodes         : $expected_min"
+  echo "  ↳ Max Nodes         : $expected_max"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+  if [[ "$POOLS_JSON" == "[]" && "$expected_mode" == "System" ]]; then
+    echo "🚀 Cluster not yet initialized. Creating system pool [$name] via az aks create..."
+    az aks create \
+      --resource-group "$RG_NAME" \
+      --name "$CLUSTER_NAME" \
+      --enable-managed-identity \
+      --generate-ssh-keys \
+      --enable-addons confcom \
+      --enable-cluster-autoscaler \
+      --nodepool-name "$name" \
+      --node-vm-size "$expected_vm_size" \
+      --node-count "$expected_max" \
+      --min-count "$expected_min" \
+      --max-count "$expected_max" \
+      > ".az_create_${name}.log" 2>&1
+
+    echo "✅ Cluster and [$name] pool initialized successfully."
+      # === Get credentials ===
+    echo "🔑 Getting AKS credentials after cluster creation..."
+    az aks get-credentials --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --overwrite-existing > .az_getcreds.log 2>&1
+    echo "🔄 Refreshing POOLS_JSON after cluster creation..."
+    POOLS_JSON=$(az aks nodepool list --cluster-name "$CLUSTER_NAME" --resource-group "$RG_NAME" -o json)
+    return
+  fi
+
+  if [[ "$POOLS_JSON" == "[]" && "$expected_mode" == "User" ]]; then
+    echo "❌ Error: Trying to create user-mode pool [$name] before cluster initialization."
+    echo "   ➤ A system node pool must be created first (e.g., masterpool)."
+    exit 1
+  fi
 
   POOL=$(echo "$POOLS_JSON" | jq -r --arg name "$name" '.[] | select(.name == $name)')
+
   if [[ -z "$POOL" ]]; then
-    echo "➕ Pool [$name] not found. Creating..."
+    echo "➕ Node pool [$name] not found. Creating it now..."
     az aks nodepool add \
       --resource-group "$RG_NAME" \
       --cluster-name "$CLUSTER_NAME" \
@@ -130,56 +168,88 @@ validate_or_update_pool() {
       --enable-cluster-autoscaler \
       --min-count "$expected_min" \
       --max-count "$expected_max" \
-      --no-public-ip \
       $( [[ "$name" == "sgxpool" ]] && echo "--node-taints sgx=true:NoSchedule --labels sgx=true node-role=sgx-worker" ) \
       $( [[ "$name" == "directpool" ]] && echo "--node-taints direct=true:NoSchedule --labels direct=true node-role=direct-worker" ) \
       > ".az_add_${name}.log" 2>&1
-  else
-    current_vm_size=$(echo "$POOL" | jq -r '.vmSize')
-    current_max=$(echo "$POOL" | jq -r '.maxCount')
-    current_min=$(echo "$POOL" | jq -r '.minCount')
-    current_mode=$(echo "$POOL" | jq -r '.mode')
 
-    if [[ "$current_vm_size" != "$expected_vm_size" ]]; then
-      echo "🧨 VM size mismatch for [$name] ($current_vm_size ≠ $expected_vm_size). Recreating..."
-      az aks nodepool delete \
-        --cluster-name "$CLUSTER_NAME" \
-        --resource-group "$RG_NAME" \
-        --name "$name" \
-        --yes > ".az_delete_${name}.log" 2>&1
-
-      echo "➕ Recreating node pool [$name]..."
-      az aks nodepool add \
-        --resource-group "$RG_NAME" \
-        --cluster-name "$CLUSTER_NAME" \
-        --name "$name" \
-        --node-vm-size "$expected_vm_size" \
-        --node-count "$expected_max" \
-        --mode "$expected_mode" \
-        --enable-cluster-autoscaler \
-        --min-count "$expected_min" \
-        --max-count "$expected_max" \
-        --no-public-ip \
-        $( [[ "$name" == "sgxpool" ]] && echo "--node-taints sgx=true:NoSchedule --labels sgx=true node-role=sgx-worker" ) \
-        $( [[ "$name" == "directpool" ]] && echo "--node-taints direct=true:NoSchedule --labels direct=true node-role=direct-worker" ) \
-        > ".az_add_${name}_recreate.log" 2>&1
-
-    elif [[ "$current_max" != "$expected_max" || "$current_min" != "$expected_min" || "$current_mode" != "$expected_mode" ]]; then
-      echo "🔁 Updating scaling for [$name]..."
-      az aks nodepool update \
-        --resource-group "$RG_NAME" \
-        --cluster-name "$CLUSTER_NAME" \
-        --name "$name" \
-        --max-count "$expected_max" \
-        --min-count "$expected_min" \
-        > ".az_update_${name}.log" 2>&1
-    else
-      echo "✅ Pool [$name] is up-to-date."
-    fi
+    echo "✅ Node pool [$name] created."
+    return
   fi
+
+  current_vm_size=$(echo "$POOL" | jq -r '.vmSize')
+  current_max=$(echo "$POOL" | jq -r '.maxCount')
+  current_min=$(echo "$POOL" | jq -r '.minCount')
+  current_mode=$(echo "$POOL" | jq -r '.mode')
+
+  echo "🔍 Current pool status:"
+  echo "  ↳ VM Size       : $current_vm_size"
+  echo "  ↳ Min Count     : $current_min"
+  echo "  ↳ Max Count     : $current_max"
+  echo "  ↳ Mode          : $current_mode"
+
+  if [[ "$current_vm_size" != "$expected_vm_size" ]]; then
+    echo "🧨 Mismatch: VM size differs. Expected [$expected_vm_size], found [$current_vm_size]"
+    echo "🗑️  Deleting pool [$name]..."
+    az aks nodepool delete \
+      --cluster-name "$CLUSTER_NAME" \
+      --resource-group "$RG_NAME" \
+      --name "$name" \
+      --yes > ".az_delete_${name}.log" 2>&1
+
+    echo "➕ Recreating node pool [$name]..."
+    az aks nodepool add \
+      --resource-group "$RG_NAME" \
+      --cluster-name "$CLUSTER_NAME" \
+      --name "$name" \
+      --node-vm-size "$expected_vm_size" \
+      --node-count "$expected_max" \
+      --mode "$expected_mode" \
+      --enable-cluster-autoscaler \
+      --min-count "$expected_min" \
+      --max-count "$expected_max" \
+      $( [[ "$name" == "sgxpool" ]] && echo "--node-taints sgx=true:NoSchedule --labels sgx=true node-role=sgx-worker" ) \
+      $( [[ "$name" == "directpool" ]] && echo "--node-taints direct=true:NoSchedule --labels direct=true node-role=direct-worker" ) \
+      > ".az_add_${name}_recreate.log" 2>&1
+
+    echo "✅ Node pool [$name] recreated."
+    return
+  fi
+
+  if [[ "$current_max" != "$expected_max" || "$current_min" != "$expected_min" || "$current_mode" != "$expected_mode" ]]; then
+    echo "🔁 Scaling mismatch detected:"
+    [[ "$current_max" != "$expected_max" ]] && echo "  ✦ Max Count: expected $expected_max, found $current_max"
+    [[ "$current_min" != "$expected_min" ]] && echo "  ✦ Min Count: expected $expected_min, found $current_min"
+    [[ "$current_mode" != "$expected_mode" ]] && echo "  ✦ Mode     : expected $expected_mode, found $current_mode"
+
+    echo "🛠️  Updating node pool [$name]..."
+    az aks nodepool update \
+      --resource-group "$RG_NAME" \
+      --cluster-name "$CLUSTER_NAME" \
+      --name "$name" \
+      --max-count "$expected_max" \
+      --min-count "$expected_min" \
+      > ".az_update_${name}.log" 2>&1
+
+    echo "✅ Node pool [$name] scaling updated."
+  else
+    echo "✅ Node pool [$name] is already configured correctly."
+  fi
+
+  echo
 }
 
-echo "🔍 Checking existing cluster..."
+
+# === Check for existing cluster ===
+echo "🔍 Checking for existing AKS cluster [$CLUSTER_NAME] in resource group [$RG_NAME]..."
+if ! az aks show --name "$CLUSTER_NAME" --resource-group "$RG_NAME" > /dev/null 2>&1; then
+  POOLS_JSON="[]"
+else
+  POOLS_JSON=$(az aks nodepool list --cluster-name "$CLUSTER_NAME" --resource-group "$RG_NAME" -o json)
+  # === Get credentials ===
+  echo "🔑 Getting AKS credentials..."
+  az aks get-credentials --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --overwrite-existing > .az_getcreds.log 2>&1
+fi
+
 validate_or_update_pool "masterpool" "Standard_D${MASTER_CORES}s_v3" 1 "System" 1
 
 if [ "$SGX_NODES" -gt 0 ]; then
@@ -195,7 +265,6 @@ else
   echo "🧹 Removing unused direct pool..."
   az aks nodepool delete --cluster-name "$CLUSTER_NAME" --resource-group "$RG_NAME" --name directpool --yes > .az_delete_direct.log 2>&1 || true
 fi
-
 
 # === Wait for nodes ===
 echo "⏳ Waiting for AKS nodes to be ready..."
@@ -278,7 +347,6 @@ launch_static_pod() {
   echo "  ↳ Role:        $ROLE"
   echo "  ↳ Node pool:   $NODEPOOL"
   [[ -n "$TAINT_KEY" ]] && echo "  ↳ Taint:       $TAINT_KEY=true:NoSchedule"
-  [[ -n "$SELECTOR_KEY" ]] && echo "  ↳ Service tag: sgx=$SELECTOR_KEY"
   echo "  ↳ NodeSelector: agentpool=$NODEPOOL"
   echo "  ↳ AntiAffinity: role=$ROLE"
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -292,15 +360,18 @@ metadata:
     app: spark-worker
     role: ${ROLE}
 spec:
-  $( [[ "$NODEPOOL" != "masterpool" ]] && echo "nodeSelector:" )
-  $( [[ "$NODEPOOL" != "masterpool" ]] && echo "  agentpool: $NODEPOOL" )
-  $( [[ -n "$TAINT_KEY" ]] && cat <<TAINT
+$( [[ "$NODEPOOL" != "masterpool" ]] && cat <<NODE_SELECTOR
+  nodeSelector:
+    agentpool: $NODEPOOL
+NODE_SELECTOR
+)
+$( [[ -n "$TAINT_KEY" ]] && cat <<TAINTS
   tolerations:
     - key: "$TAINT_KEY"
       operator: "Equal"
       value: "true"
       effect: "NoSchedule"
-TAINT
+TAINTS
 )
   affinity:
     podAntiAffinity:
@@ -312,9 +383,31 @@ TAINT
                 values: ["$ROLE"]
           topologyKey: "kubernetes.io/hostname"
   containers:
-  - name: spark-node
-    image: "$ACR_NAME.azurecr.io/spark-spool-direct:latest"
-    command: ["tail", "-f", "/dev/null"]
+    - name: spark-node
+      image: "$ACR_NAME.azurecr.io/spark-spool-direct:latest"
+      command: ["tail", "-f", "/dev/null"]
+$( [[ "$ROLE" == "sgx" ]] && cat <<SGXCONF
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - name: sgx-enclave
+          mountPath: /dev/sgx/enclave
+        - name: sgx-provision
+          mountPath: /dev/sgx/provision
+SGXCONF
+)
+$( [[ "$ROLE" == "sgx" ]] && cat <<SGXVOL
+  volumes:
+    - name: sgx-enclave
+      hostPath:
+        path: /dev/sgx/enclave
+        type: CharDevice
+    - name: sgx-provision
+      hostPath:
+        path: /dev/sgx/provision
+        type: CharDevice
+SGXVOL
+)
 EOF
 
   echo "✅ Pod [$POD_NAME] submitted"
