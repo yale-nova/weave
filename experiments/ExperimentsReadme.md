@@ -33,7 +33,6 @@ We provide a prebuilt Docker image to simplify running Weave and Spool:
 docker pull solei/spark-spool-direct
 ```
 
-![Weave Logo](./images/weave.png) ![Spool Logo](./images/spark.png)
 
 ## Running the HelloWorld Examples in Weave
 
