@@ -1,3 +1,16 @@
+# Ignore built artifacts and tarballs
 *.tar.gz
 spark-built/
-.
+
+# Ignore all .log*.log and .log*.yaml files recursively
+*.log
+*.log*.log
+*.log*.yaml
+
+# Ignore all dotfiles (in all dirs)
+.*
+# But do not ignore these
+!.gitignore
+!.dockerignore
+!.vm_skus_eastus.json
+
