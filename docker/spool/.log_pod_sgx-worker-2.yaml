@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sgx-worker-2
+  labels:
+    app: spark-worker
+    role: sgx
+spec:
+  nodeSelector:
+    agentpool: sgxpool
+  tolerations:
+    - key: "sgx"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: role
+                operator: In
+                values: ["sgx"]
+          topologyKey: "kubernetes.io/hostname"
+  containers:
+  - name: spark-node
+    image: "graminedirect.azurecr.io/spark-spool-direct:latest"
+    command: ["tail", "-f", "/dev/null"]

@@ -9,12 +9,13 @@ ACR_NAME="graminedirect"
 LOCATION="eastus"
 NAMESPACE="spark"
 PUBLIC_IP_NAME="spark-master-ip"
+RESERVED_GB=5  
 
 # Parse arguments
-CLUSTER_SIZE=${1:-3}
+CLUSTER_SIZE=${1:-5}
 CORES_PER_NODE=${2:-4}
-MEMORY_PER_NODE=${3:-4}
-SGX_WORKERS=${4:-2}
+SGX_WORKERS=${3:-2}
+MASTER_CORES=${4:-4}
 
 # Derived values
 NON_MASTER_NODES=$((CLUSTER_SIZE - 1))
@@ -27,6 +28,68 @@ echo "  Cores per node     = $CORES_PER_NODE"
 echo "  SGX workers        = $SGX_NODES"
 echo "  Regular workers    = $REGULAR_NODES"
 
+
+# === VM Type and Memory Setup ===
+LOCATION="eastus"
+SKU_CACHE=".vm_skus_eastus.json"
+
+# Fetch and cache VM SKUs
+if [ ! -f "$SKU_CACHE" ]; then
+  echo "📦 Caching Azure VM SKUs to $SKU_CACHE..."
+  az vm list-skus \
+    --location "$LOCATION" \
+    --resource-type "virtualMachines" \
+    -o json > "$SKU_CACHE"
+else
+  echo "📂 Using cached VM SKU data from $SKU_CACHE"
+fi
+
+# Helper function to get CPU or Memory from cache
+get_cached_capability() {
+  local vm_size=$1
+  local cap_name=$2
+  jq -r --arg vm "$vm_size" --arg cap "$cap_name" '
+    .[] | select(.name == $vm) |
+    .capabilities[] | select(.name == $cap) |
+    .value' "$SKU_CACHE" | head -n 1
+}
+
+# Set VM types
+SGX_VM_SIZE="Standard_DC${CORES_PER_NODE}s_v3"
+REGULAR_VM_SIZE="Standard_D${CORES_PER_NODE}s_v3"
+MASTER_VM_SIZE="Standard_D${MASTER_CORES}s_v3"
+
+# Fetch specs for each pool
+SGX_MEMORY_GB=$(get_cached_capability "$SGX_VM_SIZE" "MemoryGB")
+SGX_CPU=$(get_cached_capability "$SGX_VM_SIZE" "vCPUs")
+
+REGULAR_MEMORY_GB=$(get_cached_capability "$REGULAR_VM_SIZE" "MemoryGB")
+REGULAR_CPU=$(get_cached_capability "$REGULAR_VM_SIZE" "vCPUs")
+
+MASTER_MEMORY_GB=$(get_cached_capability "$MASTER_VM_SIZE" "MemoryGB")
+MASTER_CPU=$(get_cached_capability "$MASTER_VM_SIZE" "vCPUs")
+
+# Compute usable resource limits (buffered CPU, full memory)
+SGX_USABLE_CPU=$(awk "BEGIN { print $SGX_CPU - 0.5 }")
+SGX_USABLE_MEMORY="$(awk "BEGIN { print $SGX_MEMORY_GB - $RESERVED_GB }")Gi"
+
+REGULAR_USABLE_CPU=$(awk "BEGIN { print $REGULAR_CPU - 0.5 }")
+REGULAR_USABLE_MEMORY="$(awk "BEGIN { print $REGULAR_MEMORY_GB - $RESERVED_GB }")Gi"
+
+MASTER_USABLE_CPU=$(awk "BEGIN { print $MASTER_CPU - 0.5 }")
+MASTER_USABLE_MEMORY="$(awk "BEGIN { print $MASTER_MEMORY_GB - $RESERVED_GB }")Gi"
+
+# Export for pod templates
+export SGX_VM_SIZE REGULAR_VM_SIZE MASTER_VM_SIZE
+export SGX_USABLE_CPU REGULAR_USABLE_CPU MASTER_USABLE_CPU
+export SGX_USABLE_MEMORY REGULAR_USABLE_MEMORY MASTER_USABLE_MEMORY
+
+# Log it
+echo "🧠 SGX node:     $SGX_VM_SIZE → CPU: $SGX_CPU, Memory: ${SGX_MEMORY_GB}Gi → Usable: ${SGX_USABLE_CPU}, ${SGX_USABLE_MEMORY}"
+echo "🧠 Direct node:  $REGULAR_VM_SIZE → CPU: $REGULAR_CPU, Memory: ${REGULAR_MEMORY_GB}Gi → Usable: ${REGULAR_USABLE_CPU}, ${REGULAR_USABLE_MEMORY}"
+echo "🧠 Master node:  $MASTER_VM_SIZE → CPU: $MASTER_CPU, Memory: ${MASTER_MEMORY_GB}Gi → Usable: ${MASTER_USABLE_CPU}, ${MASTER_USABLE_MEMORY}"
+
+# === Compile Java DNS Test ===
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$SCRIPT_DIR/.."
 cd "$REPO_ROOT"
@@ -37,6 +100,108 @@ exec 3>&1 4>&2
 # === Create RG ===
 echo "☁️ Creating resource group..."
 az group create --name "$RG_NAME" --location "$LOCATION" > .az_group.log 2>&1
+
+
+# === Get credentials ===
+echo "🔑 Getting AKS credentials..."
+az aks get-credentials --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --overwrite-existing > .az_getcreds.log 2>&1
+
+
+# === Check existing cluster ===
+validate_or_update_pool() {
+  local name=$1
+  local expected_vm_size=$2
+  local expected_max=$3
+  local expected_mode=$4
+  local expected_min=$5
+
+  echo "🔍 Validating node pool [$name]..."
+
+  POOL=$(echo "$POOLS_JSON" | jq -r --arg name "$name" '.[] | select(.name == $name)')
+  if [[ -z "$POOL" ]]; then
+    echo "➕ Pool [$name] not found. Creating..."
+    az aks nodepool add \
+      --resource-group "$RG_NAME" \
+      --cluster-name "$CLUSTER_NAME" \
+      --name "$name" \
+      --node-vm-size "$expected_vm_size" \
+      --node-count "$expected_max" \
+      --mode "$expected_mode" \
+      --enable-cluster-autoscaler \
+      --min-count "$expected_min" \
+      --max-count "$expected_max" \
+      --no-public-ip \
+      $( [[ "$name" == "sgxpool" ]] && echo "--node-taints sgx=true:NoSchedule --labels sgx=true node-role=sgx-worker" ) \
+      $( [[ "$name" == "directpool" ]] && echo "--node-taints direct=true:NoSchedule --labels direct=true node-role=direct-worker" ) \
+      > ".az_add_${name}.log" 2>&1
+  else
+    current_vm_size=$(echo "$POOL" | jq -r '.vmSize')
+    current_max=$(echo "$POOL" | jq -r '.maxCount')
+    current_min=$(echo "$POOL" | jq -r '.minCount')
+    current_mode=$(echo "$POOL" | jq -r '.mode')
+
+    if [[ "$current_vm_size" != "$expected_vm_size" ]]; then
+      echo "🧨 VM size mismatch for [$name] ($current_vm_size ≠ $expected_vm_size). Recreating..."
+      az aks nodepool delete \
+        --cluster-name "$CLUSTER_NAME" \
+        --resource-group "$RG_NAME" \
+        --name "$name" \
+        --yes > ".az_delete_${name}.log" 2>&1
+
+      echo "➕ Recreating node pool [$name]..."
+      az aks nodepool add \
+        --resource-group "$RG_NAME" \
+        --cluster-name "$CLUSTER_NAME" \
+        --name "$name" \
+        --node-vm-size "$expected_vm_size" \
+        --node-count "$expected_max" \
+        --mode "$expected_mode" \
+        --enable-cluster-autoscaler \
+        --min-count "$expected_min" \
+        --max-count "$expected_max" \
+        --no-public-ip \
+        $( [[ "$name" == "sgxpool" ]] && echo "--node-taints sgx=true:NoSchedule --labels sgx=true node-role=sgx-worker" ) \
+        $( [[ "$name" == "directpool" ]] && echo "--node-taints direct=true:NoSchedule --labels direct=true node-role=direct-worker" ) \
+        > ".az_add_${name}_recreate.log" 2>&1
+
+    elif [[ "$current_max" != "$expected_max" || "$current_min" != "$expected_min" || "$current_mode" != "$expected_mode" ]]; then
+      echo "🔁 Updating scaling for [$name]..."
+      az aks nodepool update \
+        --resource-group "$RG_NAME" \
+        --cluster-name "$CLUSTER_NAME" \
+        --name "$name" \
+        --max-count "$expected_max" \
+        --min-count "$expected_min" \
+        > ".az_update_${name}.log" 2>&1
+    else
+      echo "✅ Pool [$name] is up-to-date."
+    fi
+  fi
+}
+
+echo "🔍 Checking existing cluster..."
+validate_or_update_pool "masterpool" "Standard_D${MASTER_CORES}s_v3" 1 "System" 1
+
+if [ "$SGX_NODES" -gt 0 ]; then
+  validate_or_update_pool "sgxpool" "Standard_DC${CORES_PER_NODE}s_v3" "$SGX_NODES" "User" 0
+else
+  echo "🧹 Removing unused SGX pool..."
+  az aks nodepool delete --cluster-name "$CLUSTER_NAME" --resource-group "$RG_NAME" --name sgxpool --yes > .az_delete_sgx.log 2>&1 || true
+fi
+
+if [ "$REGULAR_NODES" -gt 0 ]; then
+  validate_or_update_pool "directpool" "Standard_D${CORES_PER_NODE}s_v3" "$REGULAR_NODES" "User" 0
+else
+  echo "🧹 Removing unused direct pool..."
+  az aks nodepool delete --cluster-name "$CLUSTER_NAME" --resource-group "$RG_NAME" --name directpool --yes > .az_delete_direct.log 2>&1 || true
+fi
+
+
+# === Wait for nodes ===
+echo "⏳ Waiting for AKS nodes to be ready..."
+kubectl wait --for=condition=Ready nodes --all --timeout=300s
+
+echo "✅ AKS cluster setup complete."
 
 # === Create or reuse public IP ===
 echo "🌐 Checking for existing public IP [$PUBLIC_IP_NAME]..."
@@ -64,190 +229,98 @@ if [ "$MATCHED" = false ]; then
 fi
 
 
-# === Attach ACR ===
-echo "🔗 Attaching ACR..."
+# === Attach ACR (if not already attached) ===
+echo "🔗 Checking ACR attachment..."
 
-az role assignment create \
-  --assignee "$(az aks show --resource-group $RG_NAME --name $CLUSTER_NAME --query identity.principalId -o tsv)" \
-  --role AcrPull \
-  --scope "$(az acr show --name $ACR_NAME --query id -o tsv)" > .az_acr_role_def.log 2>&1
+CLUSTER_MI=$(az aks show --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --query identity.principalId -o tsv)
+ACR_ID=$(az acr show --name "$ACR_NAME" --query id -o tsv)
 
-az aks update \
-  --name "$CLUSTER_NAME" \
-  --resource-group "$RG_NAME" \
-  --attach-acr "$ACR_NAME" > .az_acr.log 2>&1
+az role assignment list \
+  --assignee "$CLUSTER_MI" \
+  --scope "$ACR_ID" \
+  --query "[?roleDefinitionName=='AcrPull']" -o tsv > .az_acr_check.log 2>&1
 
-# === Get credentials ===
-az aks get-credentials --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --overwrite-existing > .az_getcreds.log 2>&1
+ACR_BOUND=$(cat .az_acr_check.log)
 
+if [ -n "$ACR_BOUND" ]; then
+  echo "✅ ACR [$ACR_NAME] is already attached to AKS."
+else
+  echo "➕ Attaching ACR [$ACR_NAME] to AKS..."
+  az role assignment create \
+    --assignee "$CLUSTER_MI" \
+    --role AcrPull \
+    --scope "$ACR_ID" > .az_acr_role_def.log 2>&1
 
-# === Check existing cluster ===
-echo "🔍 Checking existing cluster..."
-if az aks show --name "$CLUSTER_NAME" --resource-group "$RG_NAME" > /dev/null 2>&1; then
-  echo "✅ Cluster exists. Validating node pools..."
-
-  POOLS=$(az aks nodepool list --cluster-name "$CLUSTER_NAME" --resource-group "$RG_NAME" -o json)
-
-  DELETE_CLUSTER=false
-
-  for EXPECTED in masterpool sgxpool directpool; do
-    if echo "$POOLS" | jq -e ".[] | select(.name==\"$EXPECTED\")" >/dev/null; then
-      VM_SIZE=$(echo "$POOLS" | jq -r ".[] | select(.name==\"$EXPECTED\") | .vmSize")
-      if [[ "$EXPECTED" == "masterpool" && "$VM_SIZE" != "Standard_D${CORES_PER_NODE}s_v3" ]]; then
-        DELETE_CLUSTER=true
-      elif [[ "$EXPECTED" == "sgxpool" && $SGX_NODES -gt 0 && "$VM_SIZE" != "Standard_DC${CORES_PER_NODE}s_v3" ]]; then
-        DELETE_CLUSTER=true
-      elif [[ "$EXPECTED" == "directpool" && $REGULAR_NODES -gt 0 && "$VM_SIZE" != "Standard_D${CORES_PER_NODE}s_v3" ]]; then
-        DELETE_CLUSTER=true
-      fi
-    fi
-  done
-
-  if [ "$DELETE_CLUSTER" = true ]; then
-    echo "🧨 Deleting mismatched cluster..."
-    az aks delete --name "$CLUSTER_NAME" --resource-group "$RG_NAME" --yes --no-wait > .az_delete.log 2>&1
-    sleep 30
-  else
-    echo "✅ All node pools match. Continuing."
-  fi
+  az aks update \
+    --name "$CLUSTER_NAME" \
+    --resource-group "$RG_NAME" \
+    --attach-acr "$ACR_NAME" > .az_acr_attach.log 2>&1
 fi
 
-# === Create AKS cluster ===
-if ! az aks show --name "$CLUSTER_NAME" --resource-group "$RG_NAME" > /dev/null 2>&1; then
-  echo "🚀 Creating AKS cluster..."
-  az aks create \
-    --resource-group "$RG_NAME" \
-    --name "$CLUSTER_NAME" \
-    --node-count 1 \
-    --node-vm-size "Standard_D${CORES_PER_NODE}s_v3" \
-    --generate-ssh-keys \
-    --enable-managed-identity \
-    --nodepool-name masterpool \
-    --enable-cluster-autoscaler \
-    --min-count 1 \
-    --max-count 1 > .az_create.log 2>&1
-    # === Add SGX pool ===
-  if [ "$SGX_NODES" -gt 0 ]; then
-    echo "➕ Adding SGX pool..."
-    az aks nodepool add \
-      --resource-group "$RG_NAME" \
-      --cluster-name "$CLUSTER_NAME" \
-      --name sgxpool \
-      --node-count "$SGX_NODES" \
-      --node-vm-size Standard_DC${CORES_PER_NODE}s_v3 \
-      --labels sgx=true node-role=sgx-worker \
-      --enable-cluster-autoscaler \
-      --min-count 0 \
-      --max-count "$SGX_NODES" \
-      --mode User \
-      --enable-node-public-ip \
-      --node-taints sgx=true:NoSchedule > .az_sgxpool.log 2>&1
-  fi
-
-    # === Add direct pool ===
-  if [ "$REGULAR_NODES" -gt 0 ]; then
-    echo "➕ Adding direct pool..."
-    az aks nodepool add \
-      --resource-group "$RG_NAME" \
-      --cluster-name "$CLUSTER_NAME" \
-      --name directpool \
-      --node-count "$REGULAR_NODES" \
-      --node-vm-size Standard_D${CORES_PER_NODE}s_v3 \
-      --labels node-role=direct-worker \
-      --enable-cluster-autoscaler \
-      --min-count 0 \
-      --max-count "$REGULAR_NODES" \
-      --mode User > .az_directpool.log 2>&1
-  fi
-
-fi  
-
-# === Wait for nodes ===
-echo "⏳ Waiting for AKS nodes to be ready..."
-kubectl wait --for=condition=Ready nodes --all --timeout=300s
-
-echo "✅ AKS cluster setup complete."
 
 # === Clean Existing Namespace and Pods ===
 echo "🧼 Cleaning existing namespace and pods if any..."
-kubectl delete namespace "$NAMESPACE" --ignore-not-found > /dev/null 2>&1
-kubectl create namespace "$NAMESPACE" > /dev/null 2>&1
+kubectl delete namespace "$NAMESPACE" --ignore-not-found > .log_kubectl_ns_delete 2>&1
+kubectl create namespace "$NAMESPACE" > .log_kubectl_ns_create 2>&1
 
 # === Launch Static Spark Pods and Headless Services ===
 echo "🚀 Launching static Spark pods and headless services..."
 
-export CORES_PER_NODE MEMORY_PER_NODE
 
-# Master
-cat <<EOF | envsubst | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
+launch_static_pod() {
+  local POD_NAME=$1
+  local ROLE=$2             # "master", "sgx", or "direct"
+  local NODEPOOL=$3         # e.g., "masterpool", "sgxpool", "directpool"
+  local TAINT_KEY=$4        # e.g., "sgx", "direct", or empty
+
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "🔧 Creating pod [$POD_NAME]"
+  echo "  ↳ Role:        $ROLE"
+  echo "  ↳ Node pool:   $NODEPOOL"
+  [[ -n "$TAINT_KEY" ]] && echo "  ↳ Taint:       $TAINT_KEY=true:NoSchedule"
+  [[ -n "$SELECTOR_KEY" ]] && echo "  ↳ Service tag: sgx=$SELECTOR_KEY"
+  echo "  ↳ NodeSelector: agentpool=$NODEPOOL"
+  echo "  ↳ AntiAffinity: role=$ROLE"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+  cat <<EOF | tee ".log_pod_${POD_NAME}.yaml" | kubectl apply -n "$NAMESPACE" -f - > ".log_apply_${POD_NAME}.log" 2>&1
 apiVersion: v1
 kind: Pod
 metadata:
-  name: spark-master
-  labels:
-    app: spark-master
-spec:
-  containers:
-  - name: spark-node
-    image: "$ACR_NAME.azurecr.io/spark-spool-direct:latest"
-    command: ["tail", "-f", "/dev/null"]
-    resources:
-      requests:
-        cpu: "${CORES_PER_NODE}"
-        memory: "${MEMORY_PER_NODE}Gi"
-      limits:
-        cpu: "${CORES_PER_NODE}"
-        memory: "${MEMORY_PER_NODE}Gi"
-EOF
-
-cat <<EOF | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
-apiVersion: v1
-kind: Service
-metadata:
-  name: spark-master
-spec:
-  clusterIP: None
-  selector:
-    app: spark-master
-  ports:
-  - port: 7077
-EOF
-
-# SGX Workers
-if [ "$SGX_NODES" -gt 0 ]; then
-  for i in $(seq 1 "$SGX_NODES"); do
-    POD_NAME="sgx-worker-$i"
-    export POD_NAME
-    cat <<EOF | envsubst | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
-apiVersion: v1
-kind: Pod
-metadata:
-  name: $POD_NAME
+  name: ${POD_NAME}
   labels:
     app: spark-worker
-    sgx: "true"
+    role: ${ROLE}
 spec:
-  nodeSelector:
-    agentpool: sgxpool
+  $( [[ "$NODEPOOL" != "masterpool" ]] && echo "nodeSelector:" )
+  $( [[ "$NODEPOOL" != "masterpool" ]] && echo "  agentpool: $NODEPOOL" )
+  $( [[ -n "$TAINT_KEY" ]] && cat <<TAINT
   tolerations:
-    - key: "sgx"
+    - key: "$TAINT_KEY"
       operator: "Equal"
       value: "true"
       effect: "NoSchedule"
+TAINT
+)
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: role
+                operator: In
+                values: ["$ROLE"]
+          topologyKey: "kubernetes.io/hostname"
   containers:
   - name: spark-node
     image: "$ACR_NAME.azurecr.io/spark-spool-direct:latest"
     command: ["tail", "-f", "/dev/null"]
-    resources:
-      requests:
-        cpu: "${CORES_PER_NODE}"
-        memory: "${MEMORY_PER_NODE}Gi"
-      limits:
-        cpu: "${CORES_PER_NODE}"
-        memory: "${MEMORY_PER_NODE}Gi"
 EOF
 
-    cat <<EOF | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
+  echo "✅ Pod [$POD_NAME] submitted"
+
+  echo "📡 Creating headless service [$POD_NAME]..."
+cat <<EOF | tee ".log_svc_${POD_NAME}.yaml" | kubectl apply -n "$NAMESPACE" -f - > ".log_svc_apply_${POD_NAME}.log" 2>&1
 apiVersion: v1
 kind: Service
 metadata:
@@ -256,74 +329,53 @@ spec:
   clusterIP: None
   selector:
     app: spark-worker
-    sgx: "true"
+    role: "$ROLE"
   ports:
   - port: 7077
 EOF
+  echo "🔧 Service [$POD_NAME] created"
+}
+
+
+
+# Master Pod
+POD_NAME="spark-master"
+launch_static_pod "$POD_NAME" "master" "masterpool" "" ""
+
+# SGX Workers
+if [ "$SGX_NODES" -gt 0 ]; then
+  echo "🚀 Launching SGX worker pods..."
+  for i in $(seq 1 "$SGX_NODES"); do
+    POD_NAME="sgx-worker-$i"
+    launch_static_pod "$POD_NAME" "sgx" "sgxpool" "sgx"
   done
-else 
-  echo "⚠️ No SGX worker nodes requested. Skipping direct pod creation."
+else
+  echo "⚠️ No SGX worker nodes requested. Skipping SGX pod creation."
 fi
 
 # Direct Workers
 if [ "$REGULAR_NODES" -gt 0 ]; then
-  echo "🚀 Launching direct worker pods and headless services..."
+  echo "🚀 Launching direct worker pods..."
   for i in $(seq 1 "$REGULAR_NODES"); do
     POD_NAME="direct-worker-$i"
-    export POD_NAME
-    cat <<EOF | envsubst | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
-apiVersion: v1
-kind: Pod
-metadata:
-  name: $POD_NAME
-  labels:
-    app: spark-worker
-    sgx: "false"
-spec:
-  nodeSelector:
-    agentpool: directpool
-  containers:
-  - name: spark-node
-    image: "$ACR_NAME.azurecr.io/spark-spool-direct:latest"
-    command: ["tail", "-f", "/dev/null"]
-    resources:
-      requests:
-        cpu: "${CORES_PER_NODE}"
-        memory: "${MEMORY_PER_NODE}Gi"
-      limits:
-        cpu: "${CORES_PER_NODE}"
-        memory: "${MEMORY_PER_NODE}Gi"
-EOF
-
-  cat <<EOF | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
-apiVersion: v1
-kind: Service
-metadata:
-  name: $POD_NAME
-spec:
-  clusterIP: None
-  selector:
-    app: spark-worker
-    sgx: "false"
-  ports:
-  - port: 7077
-EOF
+    launch_static_pod "$POD_NAME" "direct" "directpool" "direct"
   done
-else 
-  echo "⚠️ No direct worker nodes requested. Skipping SGX pod creation."
+else
+  echo "⚠️ No direct worker nodes requested. Skipping direct pod creation."
 fi
+
 
 # === Wait for Pods to be Ready ===
 echo "⏳ Waiting for all Spark pods to be Ready..."
 for pod in $(kubectl get pods -n "$NAMESPACE" -o jsonpath='{.items[*].metadata.name}'); do
   echo "⌛ Waiting for pod $pod..."
-  kubectl wait --for=condition=Ready pod/$pod -n "$NAMESPACE" --timeout=180s > /dev/null 2>&1
+  kubectl wait --for=condition=Ready pod/$pod -n "$NAMESPACE" --timeout=180s > ".log_wait_${pod}.log" 2>&1
   sleep 2
 done
 
 # === Submit DNS Test Job ===
 echo "🚀 Submitting DNS resolution test job..."
-kubectl create configmap dns-test --from-file=dns-test.jar="$DNS_JAR_PATH" --namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f - > /dev/null 2>&1
+kubectl create configmap dns-test --from-file=dns-test.jar="$DNS_JAR_PATH" --namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f - > .log_configmap_dns.log 2>&1
 
 DNS_HOSTS=(spark-master)
 for i in $(seq 1 "$SGX_NODES"); do DNS_HOSTS+=("sgx-worker-$i"); done
@@ -331,7 +383,7 @@ for i in $(seq 1 "$REGULAR_NODES"); do DNS_HOSTS+=("direct-worker-$i"); done
 DNS_ARGS=$(printf '"%s", ' "${DNS_HOSTS[@]}")
 DNS_ARGS=${DNS_ARGS%, }
 
-cat <<EOF | kubectl apply -n "$NAMESPACE" -f - > /dev/null 2>&1
+cat <<EOF | tee ".log_dns_job.yaml" | kubectl apply -n "$NAMESPACE" -f - > ".log_apply_dns_job.log" 2>&1
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -357,11 +409,12 @@ EOF
 
 # === Wait and Display DNS Test Result ===
 echo "⏳ Waiting for Spark DNS resolution job to finish..."
-kubectl wait --for=condition=Complete job/spark-dns-check -n "$NAMESPACE" --timeout=120s > /dev/null 2>&1 || echo "⚠️ DNS resolution test job did not complete in time."
+kubectl wait --for=condition=Complete job/spark-dns-check -n "$NAMESPACE" --timeout=120s > .log_wait_dns_job.log 2>&1 || echo "⚠️ DNS resolution test job did not complete in time."
 
 echo "📄 DNS resolution test result logs:"
 POD_NAME=$(kubectl get pods -n "$NAMESPACE" --selector=job-name=spark-dns-check -o jsonpath='{.items[0].metadata.name}')
 kubectl logs "$POD_NAME" -n "$NAMESPACE" || echo "⚠️ Could not fetch DNS test logs."
 
 echo "✅ Cluster setup complete."
+
 
