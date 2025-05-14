@@ -110,14 +110,22 @@ These scripts run:
 
 ### Step 4: Example Outputs and Visual Comparison
 
+You can inspect /workspace/Worker.log to see that Weave is using Gramine for running the executors under the hood. Example output:
+
+* **Enclave-based Spark Worker Log**:
+
+ ![Gramine Worker](../images/gramine-on.png)
+
+If you wish, you can turn the enclave execution off in 
+  ```
+  /opt/spark/conf/spark-defaults.conf
+  ```
+Run the Spark mini cluster again, and then the same SparkPI example, to see how Weave works without Gramine. Then the worker logs will look like the snippet below. 
+
 * **Non-enclave Spark Worker Log**:
 
  ![Non-Gramine Worker](../images/gramine-off.png)
-* **Enclave-based Spark Worker Log**:
 
-You can inspect /workspace/Worker.log to see that Weave is using Gramine for running the executors under the hood. Example output: 
-
- ![Gramine Worker](../images/gramine-on.png)
 
 #### WordCount Results
 
@@ -125,7 +133,7 @@ Weave vs Spark (Associative Task):
 
 ![Weave WordCount](../images/weave.png) ![Spark WordCount](../images/spark.png)
 
-For associative operations like WordCount, Weave incurs **only \~12% overhead**, thanks to sampling and tight-packing optimizations.
+In our run, for associative operations like WordCount, Weave incurs **only \~12% overhead**, thanks to sampling and tight-packing optimizations.
 
 #### Sort Results
 
