@@ -108,12 +108,14 @@ These scripts run:
 
 ---
 
-### Step 3: Example Outputs and Visual Comparison
+### Step 4: Example Outputs and Visual Comparison
 
 * **Non-enclave Spark Worker Log**:
 
  ![Non-Gramine Worker](../images/gramine-off.png)
 * **Enclave-based Spark Worker Log**:
+
+You can inspect /workspace/Worker.log to see that Weave is using Gramine for running the executors under the hood. Example output: 
 
  ![Gramine Worker](../images/gramine-on.png)
 
