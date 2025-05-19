@@ -1,4 +1,8 @@
-## This file is not complete. Will get completed with the access requirements and full guidelines by May 16th. 
+## This file is not complete. Will get completed with the access requirements and full guidelines by May 19th. 
+
+We are reproducing our traces on the cluster for reviewers.
+
+You can access to the cluster WebUI [here](http://weave-webui.eastus.cloudapp.azure.com:9090)
 
 ### 📆 Usage
 
