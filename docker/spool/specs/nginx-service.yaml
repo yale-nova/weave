@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-nginx
+  namespace: spark
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 20.169.236.178  # ← THIS IS THE KEY LINE
+  selector:
+    app: spark-nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

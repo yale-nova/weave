@@ -12,10 +12,11 @@ PUBLIC_IP_NAME="spark-master-ip"
 RESERVED_GB=5  
 
 # Parse arguments
-CLUSTER_SIZE=${1:-5}
+CLUSTER_SIZE=${1:-11}
 CORES_PER_NODE=${2:-4}
-SGX_WORKERS=${3:-2}
+SGX_WORKERS=${3:-0}
 MASTER_CORES=${4:-4}
+WORKERS_PER_NODE=${5:-1}
 
 # Derived values
 NON_MASTER_NODES=$((CLUSTER_SIZE - 1))
@@ -223,6 +224,7 @@ validate_or_update_pool() {
 
     echo "🛠️  Updating node pool [$name]..."
     az aks nodepool update \
+      --update-cluster-autoscaler \
       --resource-group "$RG_NAME" \
       --cluster-name "$CLUSTER_NAME" \
       --name "$name" \
@@ -250,7 +252,7 @@ else
   az aks get-credentials --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --overwrite-existing > .az_getcreds.log 2>&1
 fi
 
-validate_or_update_pool "masterpool" "Standard_D${MASTER_CORES}s_v3" 1 "System" 1
+validate_or_update_pool "masterpool" "Standard_D${MASTER_CORES}s_v3" 2 "System" 1
 
 if [ "$SGX_NODES" -gt 0 ]; then
   validate_or_update_pool "sgxpool" "Standard_DC${CORES_PER_NODE}s_v3" "$SGX_NODES" "User" 0
@@ -268,7 +270,7 @@ fi
 
 # === Wait for nodes ===
 echo "⏳ Waiting for AKS nodes to be ready..."
-kubectl wait --for=condition=Ready nodes --all --timeout=300s
+kubectl wait --for=condition=Ready nodes --all --timeout=720s
 
 echo "✅ AKS cluster setup complete."
 
@@ -283,8 +285,10 @@ for IP_NAME in $EXISTING_IPS; do
     echo "✅ Public IP [$PUBLIC_IP_NAME] already exists. Reusing."
     MATCHED=true
   else
-    echo "🧹 Deleting unused public IP [$IP_NAME]..."
-    az network public-ip delete --resource-group "$RG_NAME" --name "$IP_NAME" > .az_delete_ip_$IP_NAME.log 2>&1
+    if [[ "$IP_NAME" != *vm* ]]; then
+        echo "🧹 Deleting unused public IP [$IP_NAME]..."
+        az network public-ip delete --resource-group "$RG_NAME" --name "$IP_NAME" > .az_delete_ip_$IP_NAME.log 2>&1
+    fi
   fi
 done
 # Get node resource group
@@ -297,7 +301,13 @@ if [ "$MATCHED" = false ]; then
     --name "$PUBLIC_IP_NAME" \
     --sku Standard \
     --allocation-method static > .az_publicip.log 2>&1
+  echo "➕ Creating dns name for [$PUBLIC_IP_NAME]..."
+  az network public-ip update \
+    --name "$PUBLIC_IP_NAME" \
+    --resource-group $NODE_RG \
+    --dns-name weave-webui > .az_publicdns.log 2>&1
 fi
+
 
 
 # === Attach ACR (if not already attached) ===
@@ -336,7 +346,7 @@ kubectl create namespace "$NAMESPACE" > .log_kubectl_ns_create 2>&1
 
 # === Create Spark PVCs ===
 echo "📦 Creating PersistentVolumeClaims for [$CLUSTER_NAME / $NAMESPACE]..."
-$REPO_ROOT/scripts/create-spark-pvcs.sh "$CLUSTER_NAME" "$NAMESPACE" "$SGX_NODES" "$REGULAR_NODES"
+$REPO_ROOT/scripts/create-spark-pvcs-bound.sh "$CLUSTER_NAME" "$NAMESPACE" "$SGX_NODES" "$REGULAR_NODES"
 
 # === Launch Static Spark Pods and Headless Services ===
 echo "🚀 Launching static Spark pods and headless services..."
@@ -347,6 +357,8 @@ launch_static_pod() {
   local ROLE=$2             # master | sgx | direct
   local NODEPOOL=$3         # masterpool | sgxpool | directpool
   local TAINT_KEY=$4        # sgx | direct | ""
+  local WORKER_GROUP=$5
+  local WORKER_INDEX=$6
 
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   echo "🔧 Creating pod [$POD_NAME]"
@@ -355,6 +367,8 @@ launch_static_pod() {
   [[ -n "$TAINT_KEY" ]] && echo "  ↳ Taint:       $TAINT_KEY=true:NoSchedule"
   echo "  ↳ NodeSelector: agentpool=$NODEPOOL"
   echo "  ↳ AntiAffinity: role=$ROLE"
+  echo "  ↳ Worker group: $WORKER_GROUP"
+  echo "  ↳ Worker index: $WORKER_INDEX"
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
   POD_YAML=".log_pod_${POD_NAME}.yaml"
@@ -368,6 +382,8 @@ launch_static_pod() {
     echo "  labels:"
     echo "    app: spark-worker"
     echo "    role: ${ROLE}"
+    echo "    worker-group: \"${WORKER_GROUP}\""
+    echo "    worker-index: \"${WORKER_INDEX}\""
     if [[ "$ROLE" == "sgx" ]]; then
       echo "    cluster: \"0\""
     elif [[ "$ROLE" == "direct" ]]; then
@@ -393,6 +409,9 @@ launch_static_pod() {
     echo "              - key: role"
     echo "                operator: In"
     echo "                values: [\"$ROLE\"]"
+    echo "              - key: worker-group"
+    echo "                operator: In"
+    echo "                values: [\"$WORKER_GROUP\"]"
     echo "          topologyKey: \"kubernetes.io/hostname\""
     echo "  containers:"
     echo "    - name: spark-node"
@@ -464,6 +483,8 @@ spec:
   selector:
     app: spark-worker
     role: "$ROLE"
+    worker-group: "${WORKER_GROUP}"
+    worker-index: "${WORKER_INDEX}"
   ports:
     - name: spark-comm
       port: 7077
@@ -475,7 +496,7 @@ EOF
   echo "🔧 Service [$POD_NAME] created"
 
   echo "⏳ Waiting for [$POD_NAME] to be ready..."
-  kubectl wait --for=condition=Ready pod/$POD_NAME -n "$NAMESPACE" --timeout=180s > ".log_wait_${POD_NAME}.log" 2>&1
+  kubectl wait --for=condition=Ready pod/$POD_NAME -n "$NAMESPACE" --timeout=420s > ".log_wait_${POD_NAME}.log" 2>&1
 
   echo "📥 Fetching SGX check and environment info from [$POD_NAME]..."
   kubectl cp "$NAMESPACE/$POD_NAME:/tmp/check-sgx.log" "./log_check_sgx_${POD_NAME}.log" > /dev/null 2>&1 || echo "⚠️ Could not fetch check-sgx.log"
@@ -490,16 +511,20 @@ EOF
 
 
 
-# Master Pod
-POD_NAME="spark-master"
-launch_static_pod "$POD_NAME" "master" "masterpool" "" ""
+# Master Pods
+for i in $(seq 1 1); do
+  POD_NAME="spark-master-${i}"
+  launch_static_pod "$POD_NAME" "master" "masterpool" "" "i" "1"
+done
 
 # SGX Workers
 if [ "$SGX_NODES" -gt 0 ]; then
   echo "🚀 Launching SGX worker pods..."
   for i in $(seq 1 "$SGX_NODES"); do
-    POD_NAME="sgx-worker-$i"
-    launch_static_pod "$POD_NAME" "sgx" "sgxpool" "sgx"
+    for j in $(seq 0 $((WORKERS_PER_NODE - 1))); do
+      POD_NAME="sgx-worker-${i}-${j}"
+      launch_static_pod "$POD_NAME" "sgx" "sgxpool" "sgx" "$j" "$i"
+    done
   done
 else
   echo "⚠️ No SGX worker nodes requested. Skipping SGX pod creation."
@@ -509,8 +534,10 @@ fi
 if [ "$REGULAR_NODES" -gt 0 ]; then
   echo "🚀 Launching direct worker pods..."
   for i in $(seq 1 "$REGULAR_NODES"); do
-    POD_NAME="direct-worker-$i"
-    launch_static_pod "$POD_NAME" "direct" "directpool" "direct"
+    for j in $(seq 0 $((WORKERS_PER_NODE - 1))); do
+      POD_NAME="direct-worker-${i}-${j}"
+      launch_static_pod "$POD_NAME" "direct" "directpool" "direct" "$j" "$i"
+    done
   done
 else
   echo "⚠️ No direct worker nodes requested. Skipping direct pod creation."
@@ -521,7 +548,7 @@ fi
 echo "⏳ Waiting for all Spark pods to be Ready..."
 for pod in $(kubectl get pods -n "$NAMESPACE" -o jsonpath='{.items[*].metadata.name}'); do
   echo "⌛ Waiting for pod $pod..."
-  kubectl wait --for=condition=Ready pod/$pod -n "$NAMESPACE" --timeout=180s > ".log_wait_${pod}.log" 2>&1
+  kubectl wait --for=condition=Ready pod/$pod -n "$NAMESPACE" --timeout=420s > ".log_wait_${pod}.log" 2>&1
   sleep 2
 done
 
@@ -529,9 +556,21 @@ done
 echo "🚀 Submitting DNS resolution test job..."
 kubectl create configmap dns-test --from-file=dns-test.jar="$DNS_JAR_PATH" --namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f - > .log_configmap_dns.log 2>&1
 
-DNS_HOSTS=(spark-master)
-for i in $(seq 1 "$SGX_NODES"); do DNS_HOSTS+=("sgx-worker-$i"); done
-for i in $(seq 1 "$REGULAR_NODES"); do DNS_HOSTS+=("direct-worker-$i"); done
+# Construct host list
+DNS_HOSTS=("spark-master-1" "spark-master-2")
+
+for i in $(seq 1 "$SGX_NODES"); do
+  for j in $(seq 0 $((WORKERS_PER_NODE - 1))); do
+    DNS_HOSTS+=("sgx-worker-${i}-${j}")
+  done
+done
+
+for i in $(seq 1 "$REGULAR_NODES"); do
+  for j in $(seq 0 $((WORKERS_PER_NODE - 1))); do
+    DNS_HOSTS+=("direct-worker-${i}-${j}")
+  done
+done
+
 DNS_ARGS=$(printf '"%s", ' "${DNS_HOSTS[@]}")
 DNS_ARGS=${DNS_ARGS%, }
 
@@ -568,5 +607,4 @@ POD_NAME=$(kubectl get pods -n "$NAMESPACE" --selector=job-name=spark-dns-check 
 kubectl logs "$POD_NAME" -n "$NAMESPACE" || echo "⚠️ Could not fetch DNS test logs."
 
 echo "✅ Cluster setup complete."
-
 

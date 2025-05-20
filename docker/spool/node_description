@@ -1,0 +1,257 @@
+Name:               aks-masterpool-31404296-vmss000000
+Roles:              <none>
+Labels:             agentpool=masterpool
+                    beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=Standard_D4s_v3
+                    beta.kubernetes.io/os=linux
+                    failure-domain.beta.kubernetes.io/region=eastus
+                    failure-domain.beta.kubernetes.io/zone=0
+                    kubernetes.azure.com/agentpool=masterpool
+                    kubernetes.azure.com/azure-cni-overlay=true
+                    kubernetes.azure.com/cluster=MC_weave-rg_spark-cluster_eastus
+                    kubernetes.azure.com/consolidated-additional-properties=dbfc6c21-3087-11f0-978e-0abf3d787e87
+                    kubernetes.azure.com/kubelet-identity-client-id=3fd05ac5-b705-47de-8ab7-495202ce4ffc
+                    kubernetes.azure.com/mode=system
+                    kubernetes.azure.com/network-name=aks-vnet-24438580
+                    kubernetes.azure.com/network-resourcegroup=weave-rg
+                    kubernetes.azure.com/network-subnet=aks-subnet
+                    kubernetes.azure.com/network-subscription=9b6caf57-f783-40c8-8df9-efabf697870b
+                    kubernetes.azure.com/node-image-version=AKSUbuntu-2204gen2containerd-202504.28.0
+                    kubernetes.azure.com/nodenetwork-vnetguid=e8bfb0be-51ee-4838-8536-e8a7d32d901b
+                    kubernetes.azure.com/nodepool-type=VirtualMachineScaleSets
+                    kubernetes.azure.com/os-sku=Ubuntu
+                    kubernetes.azure.com/podnetwork-type=overlay
+                    kubernetes.azure.com/role=agent
+                    kubernetes.azure.com/storageprofile=managed
+                    kubernetes.azure.com/storagetier=Premium_LRS
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=aks-masterpool-31404296-vmss000000
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=Standard_D4s_v3
+                    storageprofile=managed
+                    storagetier=Premium_LRS
+                    topology.disk.csi.azure.com/zone=
+                    topology.kubernetes.io/region=eastus
+                    topology.kubernetes.io/zone=0
+Annotations:        alpha.kubernetes.io/provided-node-ip: 10.224.0.4
+                    csi.volume.kubernetes.io/nodeid:
+                      {"disk.csi.azure.com":"aks-masterpool-31404296-vmss000000","file.csi.azure.com":"aks-masterpool-31404296-vmss000000"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Wed, 14 May 2025 01:56:37 -0400
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  aks-masterpool-31404296-vmss000000
+  AcquireTime:     <unset>
+  RenewTime:       Thu, 15 May 2025 21:46:25 -0400
+Conditions:
+  Type                          Status  LastHeartbeatTime                 LastTransitionTime                Reason                          Message
+  ----                          ------  -----------------                 ------------------                ------                          -------
+  ContainerRuntimeProblem       False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   ContainerRuntimeIsUp            container runtime service is up
+  ReadonlyFilesystem            False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   FilesystemIsNotReadOnly         Filesystem is not read-only
+  FrequentKubeletRestart        False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   NoFrequentKubeletRestart        kubelet is functioning properly
+  KubeletProblem                False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   KubeletIsUp                     kubelet service is up
+  FrequentDockerRestart         False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   NoFrequentDockerRestart         docker is functioning properly
+  KernelDeadlock                False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   KernelHasNoDeadlock             kernel has no deadlock
+  FrequentContainerdRestart     False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   NoFrequentContainerdRestart     containerd is functioning properly
+  FrequentUnregisterNetDevice   False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   NoFrequentUnregisterNetDevice   node is functioning properly
+  VMEventScheduled              False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   NoVMEventScheduled              VM has no scheduled event
+  FilesystemCorruptionProblem   False   Thu, 15 May 2025 21:41:45 -0400   Wed, 14 May 2025 08:42:27 -0400   FilesystemIsOK                  Filesystem is healthy
+  MemoryPressure                False   Thu, 15 May 2025 21:44:09 -0400   Wed, 14 May 2025 01:56:37 -0400   KubeletHasSufficientMemory      kubelet has sufficient memory available
+  DiskPressure                  False   Thu, 15 May 2025 21:44:09 -0400   Wed, 14 May 2025 01:56:37 -0400   KubeletHasNoDiskPressure        kubelet has no disk pressure
+  PIDPressure                   False   Thu, 15 May 2025 21:44:09 -0400   Wed, 14 May 2025 01:56:37 -0400   KubeletHasSufficientPID         kubelet has sufficient PID available
+  Ready                         True    Thu, 15 May 2025 21:44:09 -0400   Wed, 14 May 2025 01:56:49 -0400   KubeletReady                    kubelet is posting ready status
+Addresses:
+  InternalIP:  10.224.0.4
+  Hostname:    aks-masterpool-31404296-vmss000000
+Capacity:
+  cpu:                4
+  ephemeral-storage:  129886128Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             16374772Ki
+  pods:               250
+Allocatable:
+  cpu:                3860m
+  ephemeral-storage:  119703055367
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             12078068Ki
+  pods:               250
+System Info:
+  Machine ID:                 b2dae28f942f4e579ae7181f8e63f908
+  System UUID:                2068900d-ea60-469f-90f7-af462551f35e
+  Boot ID:                    4fcbc4c5-e814-485d-b14e-24e85ad2e5a7
+  Kernel Version:             5.15.0-1087-azure
+  OS Image:                   Ubuntu 22.04.5 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.7.27-1
+  Kubelet Version:            v1.31.7
+  Kube-Proxy Version:         v1.31.7
+ProviderID:                   azure:///subscriptions/9b6caf57-f783-40c8-8df9-efabf697870b/resourceGroups/mc_weave-rg_spark-cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-masterpool-31404296-vmss/virtualMachines/0
+Non-terminated Pods:          (16 in total)
+  Namespace                   Name                                             CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                             ------------  ----------  ---------------  -------------  ---
+  kube-system                 azure-cns-qptr2                                  40m (1%)      40m (1%)    250Mi (2%)       250Mi (2%)     43h
+  kube-system                 azure-ip-masq-agent-jg8tw                        100m (2%)     500m (12%)  50Mi (0%)        250Mi (2%)     43h
+  kube-system                 cloud-node-manager-ncsc8                         50m (1%)      0 (0%)      50Mi (0%)        512Mi (4%)     43h
+  kube-system                 coredns-57d886c994-92f5n                         100m (2%)     3 (77%)     70Mi (0%)        500Mi (4%)     43h
+  kube-system                 coredns-57d886c994-l7792                         100m (2%)     3 (77%)     70Mi (0%)        500Mi (4%)     43h
+  kube-system                 coredns-autoscaler-55bcd876cc-8vv84              20m (0%)      200m (5%)   10Mi (0%)        500Mi (4%)     43h
+  kube-system                 csi-azuredisk-node-klkx8                         30m (0%)      0 (0%)      60Mi (0%)        5800Mi (49%)   43h
+  kube-system                 csi-azurefile-node-hrj27                         30m (0%)      0 (0%)      60Mi (0%)        600Mi (5%)     43h
+  kube-system                 konnectivity-agent-59f78b58-n67gs                20m (0%)      1 (25%)     20Mi (0%)        1Gi (8%)       43h
+  kube-system                 konnectivity-agent-59f78b58-z9jcl                20m (0%)      1 (25%)     20Mi (0%)        1Gi (8%)       43h
+  kube-system                 konnectivity-agent-autoscaler-679b77b4f-n52jx    20m (0%)      350m (9%)   10Mi (0%)        512M (4%)      43h
+  kube-system                 kube-proxy-jw825                                 100m (2%)     0 (0%)      0 (0%)           0 (0%)         43h
+  kube-system                 metrics-server-6d968d6d47-7kjbc                  156m (4%)     251m (6%)   138Mi (1%)       408Mi (3%)     6m31s
+  kube-system                 metrics-server-6d968d6d47-k57vm                  156m (4%)     251m (6%)   138Mi (1%)       408Mi (3%)     6m32s
+  kube-system                 sgx-webhook-74f4c58d9c-gfbqg                     250m (6%)     250m (6%)   100Mi (0%)       200Mi (1%)     43h
+  spark                       spark-master                                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         7m34s
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                1192m (30%)  9842m (254%)
+  memory             1046Mi (8%)  12763424Ki (105%)
+  ephemeral-storage  0 (0%)       0 (0%)
+  hugepages-1Gi      0 (0%)       0 (0%)
+  hugepages-2Mi      0 (0%)       0 (0%)
+Events:              <none>
+
+
+Name:               aks-sgxpool-41619820-vmss000001
+Roles:              <none>
+Labels:             agentpool=sgxpool
+                    beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=Standard_DC4s_v3
+                    beta.kubernetes.io/os=linux
+                    failure-domain.beta.kubernetes.io/region=eastus
+                    failure-domain.beta.kubernetes.io/zone=0
+                    kubernetes.azure.com/agentpool=sgxpool
+                    kubernetes.azure.com/azure-cni-overlay=true
+                    kubernetes.azure.com/cluster=MC_weave-rg_spark-cluster_eastus
+                    kubernetes.azure.com/consolidated-additional-properties=15695ebe-308b-11f0-8659-464b190bd0f4
+                    kubernetes.azure.com/kubelet-identity-client-id=3fd05ac5-b705-47de-8ab7-495202ce4ffc
+                    kubernetes.azure.com/mode=user
+                    kubernetes.azure.com/network-name=aks-vnet-24438580
+                    kubernetes.azure.com/network-resourcegroup=weave-rg
+                    kubernetes.azure.com/network-subnet=aks-subnet
+                    kubernetes.azure.com/network-subscription=9b6caf57-f783-40c8-8df9-efabf697870b
+                    kubernetes.azure.com/node-image-version=AKSUbuntu-2204gen2containerd-202504.28.0
+                    kubernetes.azure.com/nodenetwork-vnetguid=e8bfb0be-51ee-4838-8536-e8a7d32d901b
+                    kubernetes.azure.com/nodepool-type=VirtualMachineScaleSets
+                    kubernetes.azure.com/os-sku=Ubuntu
+                    kubernetes.azure.com/podnetwork-type=overlay
+                    kubernetes.azure.com/role=agent
+                    kubernetes.azure.com/storageprofile=managed
+                    kubernetes.azure.com/storagetier=Premium_LRS
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=aks-sgxpool-41619820-vmss000001
+                    kubernetes.io/os=linux
+                    node-role=sgx-worker
+                    node.kubernetes.io/instance-type=Standard_DC4s_v3
+                    sgx=true
+                    storageprofile=managed
+                    storagetier=Premium_LRS
+                    topology.disk.csi.azure.com/zone=
+                    topology.kubernetes.io/region=eastus
+                    topology.kubernetes.io/zone=0
+Annotations:        alpha.kubernetes.io/provided-node-ip: 10.224.0.5
+                    csi.volume.kubernetes.io/nodeid:
+                      {"disk.csi.azure.com":"aks-sgxpool-41619820-vmss000001","file.csi.azure.com":"aks-sgxpool-41619820-vmss000001"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Wed, 14 May 2025 02:18:29 -0400
+Taints:             node.kubernetes.io/unreachable:NoExecute
+                    ToBeDeletedByClusterAutoscaler=1747359515:NoSchedule
+                    node.kubernetes.io/unreachable:NoSchedule
+                    sgx=true:NoSchedule
+                    DeletionCandidateOfClusterAutoscaler=1747358913:PreferNoSchedule
+Unschedulable:      false
+Lease:
+  HolderIdentity:  aks-sgxpool-41619820-vmss000001
+  AcquireTime:     <unset>
+  RenewTime:       Thu, 15 May 2025 21:38:42 -0400
+Conditions:
+  Type                          Status    LastHeartbeatTime                 LastTransitionTime                Reason                          Message
+  ----                          ------    -----------------                 ------------------                ------                          -------
+  FrequentUnregisterNetDevice   False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   NoFrequentUnregisterNetDevice   node is functioning properly
+  FrequentDockerRestart         False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   NoFrequentDockerRestart         docker is functioning properly
+  FrequentContainerdRestart     False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   NoFrequentContainerdRestart     containerd is functioning properly
+  ContainerRuntimeProblem       False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   ContainerRuntimeIsUp            container runtime service is up
+  FilesystemCorruptionProblem   False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   FilesystemIsOK                  Filesystem is healthy
+  ReadonlyFilesystem            True      Thu, 15 May 2025 21:38:52 -0400   Thu, 15 May 2025 21:38:51 -0400   FilesystemIsReadOnly            EXT4-fs (sda1): Remounting filesystem read-only
+  KernelDeadlock                False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   KernelHasNoDeadlock             kernel has no deadlock
+  FrequentKubeletRestart        False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   NoFrequentKubeletRestart        kubelet is functioning properly
+  VMEventScheduled              False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   NoVMEventScheduled              VM has no scheduled event
+  KubeletProblem                False     Thu, 15 May 2025 21:38:52 -0400   Wed, 14 May 2025 10:57:00 -0400   KubeletIsUp                     kubelet service is up
+  MemoryPressure                Unknown   Thu, 15 May 2025 21:36:53 -0400   Thu, 15 May 2025 21:39:32 -0400   NodeStatusUnknown               Kubelet stopped posting node status.
+  DiskPressure                  Unknown   Thu, 15 May 2025 21:36:53 -0400   Thu, 15 May 2025 21:39:32 -0400   NodeStatusUnknown               Kubelet stopped posting node status.
+  PIDPressure                   Unknown   Thu, 15 May 2025 21:36:53 -0400   Thu, 15 May 2025 21:39:32 -0400   NodeStatusUnknown               Kubelet stopped posting node status.
+  Ready                         Unknown   Thu, 15 May 2025 21:36:53 -0400   Thu, 15 May 2025 21:39:32 -0400   NodeStatusUnknown               Kubelet stopped posting node status.
+Addresses:
+  InternalIP:  10.224.0.5
+  Hostname:    aks-sgxpool-41619820-vmss000001
+Capacity:
+  cpu:                      4
+  ephemeral-storage:        129886128Ki
+  hugepages-1Gi:            0
+  hugepages-2Mi:            0
+  memory:                   32864252Ki
+  pods:                     250
+  sgx.intel.com/enclave:    110
+  sgx.intel.com/epc:        17179869184
+  sgx.intel.com/provision:  110
+Allocatable:
+  cpu:                      3860m
+  ephemeral-storage:        119703055367
+  hugepages-1Gi:            0
+  hugepages-2Mi:            0
+  memory:                   27590652Ki
+  pods:                     250
+  sgx.intel.com/enclave:    110
+  sgx.intel.com/epc:        17179869184
+  sgx.intel.com/provision:  110
+System Info:
+  Machine ID:                 9cc606ac814b45cd8caec76ef92b75f0
+  System UUID:                e2d70cea-2938-4372-9d37-eb4335151f97
+  Boot ID:                    43efdba8-0bf0-49fb-86d1-d9e10719f4d9
+  Kernel Version:             5.15.0-1087-azure
+  OS Image:                   Ubuntu 22.04.5 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.7.27-1
+  Kubelet Version:            v1.31.7
+  Kube-Proxy Version:         v1.31.7
+ProviderID:                   azure:///subscriptions/9b6caf57-f783-40c8-8df9-efabf697870b/resourceGroups/mc_weave-rg_spark-cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-sgxpool-41619820-vmss/virtualMachines/1
+Non-terminated Pods:          (7 in total)
+  Namespace                   Name                         CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                         ------------  ----------  ---------------  -------------  ---
+  kube-system                 azure-cns-zsznf              40m (1%)      40m (1%)    250Mi (0%)       250Mi (0%)     43h
+  kube-system                 azure-ip-masq-agent-nmdst    100m (2%)     500m (12%)  50Mi (0%)        250Mi (0%)     43h
+  kube-system                 cloud-node-manager-dwldg     50m (1%)      0 (0%)      50Mi (0%)        512Mi (1%)     43h
+  kube-system                 csi-azuredisk-node-gkzjw     30m (0%)      0 (0%)      60Mi (0%)        5800Mi (21%)   43h
+  kube-system                 csi-azurefile-node-tqf4l     30m (0%)      0 (0%)      60Mi (0%)        600Mi (2%)     43h
+  kube-system                 kube-proxy-mkw9v             100m (2%)     0 (0%)      0 (0%)           0 (0%)         43h
+  kube-system                 sgx-plugin-784bn             10m (0%)      20m (0%)    100Mi (0%)       200Mi (0%)     43h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource                 Requests    Limits
+  --------                 --------    ------
+  cpu                      360m (9%)   560m (14%)
+  memory                   570Mi (2%)  7612Mi (28%)
+  ephemeral-storage        0 (0%)      0 (0%)
+  hugepages-1Gi            0 (0%)      0 (0%)
+  hugepages-2Mi            0 (0%)      0 (0%)
+  sgx.intel.com/enclave    0           0
+  sgx.intel.com/epc        0           0
+  sgx.intel.com/provision  0           0
+Events:
+  Type     Reason                Age    From                Message
+  ----     ------                ----   ----                -------
+  Normal   ScaleDown             7m54s  cluster-autoscaler  marked the node as toBeDeleted/unschedulable
+  Warning  FilesystemIsReadOnly  7m39s  kernel-monitor      Node condition ReadonlyFilesystem is now: True, reason: FilesystemIsReadOnly, message: "EXT4-fs (sda1): Remounting filesystem read-only"
+  Normal   NodeNotReady          6m58s  node-controller     Node aks-sgxpool-41619820-vmss000001 status is now: NodeNotReady

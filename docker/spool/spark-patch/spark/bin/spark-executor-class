@@ -66,20 +66,32 @@ export sgx_enclave_size="${SGX_ENCLAVE_SIZE}G"
 export enable_sigterm="true"
 export disallow_subprocesses="false"
 export disable_aslr="true"
-export sgx_edmm_enable="tru"
+export sgx_edmm_enable="{EDMM:1}"
+
+
+if [[ "$EDMM" == "1" ]]; then
+  SGX_EDMM_ENABLE="true"
+else
+  SGX_EDMM_ENABLE="false"
+fi
+
+export sgx_edmm_enable=$SGX_EDMM_ENABLE
 
 CONFIG_HASH_FILE="${ENCLAVE_DIR}/.last_executor_manifest_config"
 MANIFEST_OUT="${ENCLAVE_DIR}/java.manifest"
-CURRENT_HASH=$(echo "$SGX $stack_size $brk_size $fds_limit $sgx_max_threads $sgx_enclave_size $enable_sigterm $disallow_subprocesses $disable_aslr" | sha256sum | cut -d ' ' -f 1)
+MANIFEST_SGX_OUT="${ENCLAVE_DIR}/java.manifest.sgx"
+MANIFEST_SIG_OUT="${ENCLAVE_DIR}/java.sig"
 
-if [ ! -f "$CONFIG_HASH_FILE" ] || [ "$(cat "$CONFIG_HASH_FILE")" != "$CURRENT_HASH" ] || [ ! -f $MANIFEST_OUT ] ; then
+CURRENT_HASH=$(echo "$SGX $EDMM $stack_size $brk_size $fds_limit $sgx_max_threads $sgx_enclave_size $enable_sigterm $disallow_subprocesses $disable_aslr" | sha256sum | cut -d ' ' -f 1)
+
+if [ ! -f "$CONFIG_HASH_FILE" ] || [ "$(cat "$CONFIG_HASH_FILE")" != "$CURRENT_HASH" ] || [ ! -f $MANIFEST_OUT ] || { [ "$SGX" = "1" ] && [ ! -f "$MANIFEST_SGX_OUT" ]; }; then
   echo "[spark-executor-class] 🔁 Manifest changed or missing. Rebuilding..."
   make -C "$ENCLAVE_DIR" clean all \
     WORKER_ID="$WORKER_ID" SGX="$SGX" \
     STACK_SIZE="$STACK_SIZE" BRK_SIZE="$BRK_SIZE" \
     FDA_LIMIT="$FDS_LIMIT" SGX_MAX_THREADS="$SGX_MAX_THREADS" \
     SGX_ENCLAVE_SIZE="${SGX_ENCLAVE_SIZE}G" \
-    ENABLE_SIGTERM="true" DISALLOW_SUBPROCESSES="false" DISABLE_ASLR="true" SGX_EDMM_ENABLE="true"
+    ENABLE_SIGTERM="true" DISALLOW_SUBPROCESSES="false" DISABLE_ASLR="true" SGX_EDMM_ENABLE="$SGX_EDMM_ENABLE"
   echo "$CURRENT_HASH" > "$CONFIG_HASH_FILE"
 else
   echo "[spark-executor-class] ✅ Manifest unchanged."
@@ -93,15 +105,15 @@ args=("$@")
 for ((i=0; i < ${#args[@]}; i++)); do
     if [[ "${args[$i]}" == "--executor-id" ]]; then
         EXEC_ID="${args[$((i+1))]}"
-        echo "EXEC_ID: $EXEC_ID"
+        echo "[spark-executor-class] EXEC_ID: $EXEC_ID"
     elif [[ "${args[$i]}" == "--app-id" ]]; then
         APP_ID="${args[$((i+1))]}"
-        echo "APP_ID: $APP_ID"
+        echo "[spark-executor-class] APP_ID: $APP_ID"
     fi
 done
 
 if [[ -z "$EXEC_ID" || -z "$APP_ID" ]]; then
-    echo "❌ Could not parse --executor-id or --app-id from arguments"
+    echo "[spark-executor-class] ❌ Could not parse --executor-id or --app-id from arguments"
     exit 1
 fi
 
@@ -110,10 +122,25 @@ WORK_DIR="$SPARK_HOME/work/${APP_ID}/${EXEC_ID}"
 SCRATCH_DIR="$SPARK_HOME/work/${APP_ID}/${EXEC_ID}/scratch"
 mkdir -p "$WORK_DIR" "$SCRATCH_DIR/tmp" "$SCRATCH_DIR/local"
 ls "$SPARK_HOME/work/${APP_ID}"
-echo $(sha256sum $MANIFEST_OUT | awk '{print $1}')
-echo Copying $MANIFEST_OUT to $WORK_DIR
+echo "[spark-executor-class] Manifest hash is: $(sha256sum $MANIFEST_OUT | awk '{print $1}')"
+if [ "$SGX" = "1" ]; then 
+    echo "[spark-executor-class] Manifest SGX hash is $(sha256sum $MANIFEST_SGX_OUT | awk '{print $1}')"
+    echo "[spark-executor-class] Manifest signature hash is $(sha256sum $MANIFEST_SIG_OUT | awk '{print $1}')"
+fi
+
+echo "[spark-executor-class] Copying $MANIFEST_OUT to $WORK_DIR"
 cp $MANIFEST_OUT  $WORK_DIR
-echo $(stat $WORK_DIR/$MANIFEST_OUT)
+
+if [ "$SGX" = "1" ]; then
+    echo "[spark-executor-class]Copying $MANIFEST_SGX_OUT to $WORK_DIR"
+    cp $MANIFEST_SGX_OUT  $WORK_DIR	
+    echo "[spark-executor-class]Copying $MANIFEST_SIG_OUT to $WORK_DIR"
+    cp $MANIFEST_SIG_OUT  $WORK_DIR
+fi
+
+echo "[spark-executor-class] stat $MANIFEST_OUT is  \n\n$(stat $WORK_DIR/$MANIFEST_OUT)\n\n"
+echo "[spark-executor-class] stat $MANIFEST_SGX_OUT is  \n\n$(stat $WORK_DIR/$MANIFEST_SGX_OUT)\n\n"
+
 # 📝 Log final command
 
 cd "$WORK_DIR"
@@ -127,7 +154,7 @@ MODIFIED_ARGS=("$@")
 # Skip the first argument (the java binary)
 CMD_ARGS=("${MODIFIED_ARGS[@]:1}")
 
-echo "Final executor args are: gramine-direct java -Djava.io.tmpdir=/scratch/tmp -Dspark.local.dir=/scratch/local ${CMD_ARGS[@]}"
+echo "[spark-executor-class] Final executor args are: gramine-direct java -Djava.io.tmpdir=/scratch/tmp -Dspark.local.dir=/scratch/local ${CMD_ARGS[@]}"
 
 cleanup() {
     status=$?
@@ -140,8 +167,17 @@ cleanup() {
 # Trap must be in the *current shell*, not a subshell, if you want to handle signals properly.
 trap cleanup EXIT INT TERM
 
-# Run gramine and capture its exit code
-gramine-direct java -Djava.io.tmpdir=/scratch/tmp -Dspark.local.dir=/scratch/local "${CMD_ARGS[@]}"
+# Determine which Gramine wrapper to use
+if [ "$SGX" = "1" ]; then
+    GRAMINE_CMD="gramine-sgx"
+else 
+    GRAMINE_CMD="gramine-direct"
+fi
+
+echo "[spark-executor-class] 🚀 Launching with: $GRAMINE_CMD, SGX=$SGX, EDMM=$EDMM"
+
+# Run Gramine with modified args
+$GRAMINE_CMD java -Djava.io.tmpdir=/scratch/tmp -Dspark.local.dir=/scratch/local "${CMD_ARGS[@]}"
 
 exitcode=$?
 ehco "\n\n[spark-executor-class] Gramine exit code is: $status"

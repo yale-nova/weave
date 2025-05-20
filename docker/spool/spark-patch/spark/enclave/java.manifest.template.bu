@@ -6,15 +6,13 @@ loader.log_level = "{{ loader_log_level }}"
 #loader.log_file = "{{ spark_home }}/logs/enclave/{{ worker_id }}_gramine_loader.log"
 loader.insecure__use_cmdline_argv = true
 loader.insecure__use_host_env = true
-sys.enable_extra_runtime_domain_names_conf = true
+sys.enable_extra_runtime_domain_names_conf = false
 loader.env.SPARK_HOME = "{{ spark_home }}"
-loader.env.SPARK_LOCAL_IP = "{{ spark_local_ip }}"
-loader.env.HOSTNAME = "{{ worker_id }}"
 #loader.env.SPARK_CONF_DIR = "{{ spark_home }}/conf"
 loader.env.SPARK_LOG_DIR="{{ spark_home }}/logs"
 loader.env.SPARK_WORKER_OPTS="-Dlog4j.configuration=file:/opt/spark/conf/log4j.properties -Dspark.log.dir={{ spark_home }}/logs"
 sys.experimental__enable_flock = true
-sgx.file_check_policy="allow_all_but_log"
+
 # User Mimic for hadoop
 loader.uid = 1000
 loader.gid = 1000
@@ -36,20 +34,18 @@ fs.mounts = [
   { type = "tmpfs", path = "/tmp" },
   { uri = "file:{{ spark_home }}/jars", path = "{{ spark_home }}/jars" },
   { uri = "file:{{ spark_home }}/examples/jars", path = "{{ spark_home }}/examples/jars" },
-  { uri = "file:{{ spark_home }}/conf/", path = "{{ spark_home }}/conf/" },
-  { uri = "file:{{ spark_home }}/logs", path = "{{ spark_home }}/logs/" },
-  { uri = "file:/etc", path = "/etc" },
+  { uri = "file:{{ spark_home }}/conf/log4j.properties", path = "{{ spark_home }}/conf/log4j.properties" },
+  { uri = "file:{{ spark_home }}/logs/enclave/", path = "{{ spark_home }}/logs/enclave/" },
+  { uri = "file:/etc/hosts", path = "/etc/hosts" },
+  { uri = "file:/etc/hostname", path = "/etc/hostname" },
+  { uri = "file:/etc/resolv.conf", path = "/etc/resolv.conf" },
   { uri = "file:/scratch", path = "/scratch"}, 
   { uri = "file:{{ enclave_home }}/helper-files/fake-passwd", path = "/etc/passwd" },
   { uri = "file:{{ enclave_home }}/data/", path = "{{ enclave_home }}/data/"}, 
-  { uri = "file:/dev/urandom", path = "/dev/urandom" },
 ]
 
 # SGX Settings
 sgx.enclave_size = "{{ sgx_enclave_size }}"
-sgx.preheat_enclave = false
-
-sgx.insecure__rpc_thread_num = {{ rpc_thread_count }}
 sgx.max_threads = {{ sgx_max_threads }}
 sgx.edmm_enable = {{ sgx_edmm_enable }}
 sgx.use_exinfo = true
@@ -60,6 +56,9 @@ sgx.trusted_files = [
   "file:{{ arch_libdir }}/",
   "file:/usr/{{ arch_libdir }}/",
   "file:/usr/lib/jvm/java-11-openjdk-amd64/lib/",
+  "file:/etc/hostname", 
+  "file:/etc/hosts",
+  "file:/etc/resolv.conf",
   "file:/usr/lib/jvm/java-11-openjdk-amd64/conf/security/",
   "file:{{ spark_home }}/conf/",
   "file:{{ spark_home }}/jars/", 
@@ -68,11 +67,9 @@ sgx.trusted_files = [
 ]
 
 sgx.allowed_files = [
-  "file:/etc/",
   "file:/scratch/", 
-  "file:{{ spark_home }}/logs/", 
+  "file:{{ spark_home }}/logs/enclave/", 
   "file:{{ enclave_home }}/data/",
-  "file:/dev/urandom",
 ]
 
 # System Settings
@@ -84,15 +81,6 @@ sys.disallow_subprocesses = {{ disallow_subprocesses }}
 loader.insecure__disable_aslr = {{ disable_aslr }}
 
 sys.allowed_ioctls = [
-  { request_code = 0x8912},   # SIOCGIFCONF
-  { request_code = 0x8913},   # SIOCGIFFLAGS
-  { request_code = 0x8915},   # SIOCGIFADDR
-  { request_code = 0x8917},   # SIOCGIFDSTADDR
-  { request_code = 0x8919},   # SIOCGIFBRDADDR
-  { request_code = 0x891B},   # SIOCGIFNETMASK
-  { request_code = 0x891D},   # SIOCGIFMETRIC
-  { request_code = 0x891F},   # SIOCGIFMEM
-  { request_code = 0x8921},   # SIOCGIFMTU
-  { request_code = 0x8927}    # SIOCGIFHWADDR
+  { request_code = 0x8912 }, # SIOCGIFCONF
+  { request_code = 0x8927 }  # SIOCGIFHWADDR
 ]
-

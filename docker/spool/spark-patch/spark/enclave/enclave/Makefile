@@ -4,8 +4,11 @@
 ARCH_LIBDIR ?= /lib/$(shell $(CC) -dumpmachine)
 ENCLAVE_HOME ?= $(patsubst %/,%,$(realpath $(dir $(lastword $(MAKEFILE_LIST)))))
 
-
-GRAMINE_LOG_LEVEL ?= "debug"
+ifeq ($(DEBUG),1)
+GRAMINE_LOG_LEVEL = debug
+else
+GRAMINE_LOG_LEVEL = error
+endif
 
 # Variables to be passed via command line
 WORKER_ID ?= $(shell hostname)
@@ -20,8 +23,7 @@ DISABLE_ASLR ?= true
 DISALLOW_SUBPROCESSES ?= false
 ENABLE_SIGTERM ?= false
 SPARK_HOME ?= /opt/spark
-SGX_EDMM_ENABLE ?= true 
-RPC_THREAD_COUNT ?= 0 
+SGX_EDMM_ENABLE = true
 
 # Logfile for Gramine loader/debugging
 ENCLAVE_LOG_DIR ?= $(SPARK_HOME)/logs/enclave
@@ -37,30 +39,28 @@ endif
 
 .PHONY: dirs
 dirs:
-	    mkdir -p /scratch/$(WORKER_ID) $(ENCLAVE_HOME)/data/ $(SPARK_HOME)/logs/ $(ENCLAVE_LOG_DIR)
+	    mkdir -p /scratch/$(WORKER_ID) $(ENCLAVE_HOME)/data/$(WORKER_ID) $(SPARK_HOME)/logs/ $(ENCLAVE_LOG_DIR)
 
 java.manifest: java.manifest.template
-	gramine-manifest \
-		-Denclave_home=$(ENCLAVE_HOME) \
-		-Dlog_level=$(GRAMINE_LOG_LEVEL) \
-		-Darch_libdir=$(ARCH_LIBDIR) \
-		-Dentrypoint=$(realpath $(shell sh -c "command -v java")) \
-		-Dstack_size=$(STACK_SIZE) \
-		-Dbrk_size=$(BRK_SIZE) \
-		-Dsgx_enclave_size=$(SGX_ENCLAVE_SIZE) \
-		-Dsgx_max_threads=$(SGX_MAX_THREADS) \
-		-Dfds_limit=$(FDS_LIMIT) \
-		-Ddisable_aslr=$(DISABLE_ASLR) \
-		-Ddisallow_subprocesses=$(DISALLOW_SUBPROCESSES) \
-		-Denable_sigterm=$(ENABLE_SIGTERM) \
-		-Drpc_thread_count=$(RPC_THREAD_COUNT) \
-		-Dworker_id=$(WORKER_ID) \
-		-Dspark_home=$(SPARK_HOME) \
-		-Dspark_local_ip=$(SPARK_LOCAL_IP) \
-		-Dloader_log_level=$(GRAMINE_LOG_LEVEL) \
-		-Dsgx_edmm_enable=$(SGX_EDMM_ENABLE) \
-		-Dlogfile_path=$(GRAMINE_LOGFILE) \
-		$< $@.tmp && mv $@.tmp $@
+	    gramine-manifest \
+	            -Denclave_home=$(ENCLAVE_HOME) \
+	            -Dlog_level=$(GRAMINE_LOG_LEVEL) \
+	            -Darch_libdir=$(ARCH_LIBDIR) \
+	            -Dentrypoint=$(realpath $(shell sh -c "command -v java")) \
+	            -Dstack_size=$(STACK_SIZE) \
+	            -Dbrk_size=$(BRK_SIZE) \
+	            -Dsgx_enclave_size=$(SGX_ENCLAVE_SIZE) \
+	            -Dsgx_max_threads=$(SGX_MAX_THREADS) \
+	            -Dfds_limit=$(FDS_LIMIT) \
+	            -Ddisable_aslr=$(DISABLE_ASLR) \
+	            -Ddisallow_subprocesses=$(DISALLOW_SUBPROCESSES) \
+	            -Denable_sigterm=$(ENABLE_SIGTERM) \
+	            -Dworker_id=$(WORKER_ID) \
+	            -Dspark_home=$(SPARK_HOME) \
+	            -Dloader_log_level=$(GRAMINE_LOG_LEVEL) \
+	            -Dsgx_edmm_enable=$(SGX_EDMM_ENABLE) \
+	            -Dlogfile_path=$(GRAMINE_LOGFILE) \
+	            $< > $@
 
 java.manifest.sgx java.sig: sgx_sign
 	    @:

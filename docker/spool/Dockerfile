@@ -146,6 +146,10 @@ RUN find /opt/spark /opt/private-repos /opt/weave-serial /workspace/helloworld \
   \( -type f \( -path "*/bin/*" -o -path "*/sbin/*" -o -name "*.sh" \) \) \
   -exec chmod u+x {} \;
 
+COPY scripts/setup-ssh.sh /workspace/setup-ssh.sh 
+COPY scripts/helloworld-helpers/ /workspace/
+RUN /workspace/setup-ssh.sh
+
 WORKDIR /workspace
 COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh

@@ -21,6 +21,7 @@ CONTAINER_NAME=$3
 CPU=$4
 MEMORY=$5
 IMAGE_NAME="$ACR_NAME.azurecr.io/spark-spool-direct:latest"
+DNS_NAME="$(echo "$CONTAINER_NAME" | tr '[:upper:]' '[:lower:]')-dns"
 
 # === ☑️ Check and Register Microsoft.ContainerInstance ===
 echo "🔍 Checking Azure subscription registration for 'Microsoft.ContainerInstance'..."
@@ -70,9 +71,11 @@ az container create \
   --registry-password "$ACR_PASSWORD" \
   --restart-policy Never \
   --os-type Linux \
-  --ports 22 \
+  --dns-name-label "$DNS_NAME" \
+  --ports 22 8080 8081 9090 \
   --ip-address Public
 
+# === ⏳ Wait for container to be ready ===
 echo "⏳ Waiting for container to reach 'Running' state..."
 while true; do
   STATE=$(az container show --resource-group "$RG_NAME" --name "$CONTAINER_NAME" --query "instanceView.state" -o tsv)
@@ -87,12 +90,11 @@ while true; do
   sleep 2
 done
 
-# === 🧪 Health check: exec into container and run command ===
-echo "🔍 Running health check inside container..."
+# === 🧪 Health check: run the entrypoint script ===
+echo "🔍 Running /workspace/helloworld-entrypoint.sh inside container..."
 az container exec \
   --resource-group "$RG_NAME" \
   --name "$CONTAINER_NAME" \
-  --exec-command "echo Hello from inside container!"
+  --exec-command "/bin/bash /workspace/helloworld-entrypoint.sh"
 
-echo "✅ Health check completed successfully."
-
+echo "✅ Entry point executed. Access container at http://$DNS_NAME.$(az configure -l --query "[?name=='location'].value" -o tsv).azurecontainer.io:<port>"
