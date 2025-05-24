@@ -2,7 +2,7 @@
 
 We are reproducing our traces on the cluster for reviewers.
 
-You can access the cluster WebUI [here](http://weave-webui.eastus.cloudapp.azure.com/)
+You can access the cluster WebUI [here](http://sparkui-eastus.eastus.cloudapp.azure.com:8080/))
 
 List of experiments: 
 
