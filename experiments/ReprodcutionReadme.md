@@ -1,8 +1,20 @@
-## This file is not complete. Will get completed with the access requirements and full guidelines by May 19th. 
+## This file is not complete. Will get completed with the access requirements and full guidelines by May 24th. 
 
 We are reproducing our traces on the cluster for reviewers.
 
-You can access to the cluster WebUI [here](http://weave-webui.eastus.cloudapp.azure.com/)
+You can access the cluster WebUI [here](http://weave-webui.eastus.cloudapp.azure.com/)
+
+List of experiments: 
+
+1- SGX HelloWorld 
+
+2- Figure 5.1. Section One: Enron Email Dataset. **Check Time <30mins**. 
+
+3- Figure 5.1. Section Two: NY Taxi Dataset. **Check Time <30mins**. 
+
+4- Figure 5.1. Section Three: Pokec Social Network Dataset. **Check Time <30mins**. 
+
+5- 
 
 ### 📆 Usage
 
