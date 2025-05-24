@@ -6,15 +6,56 @@ You can access the cluster WebUI [here](http://weave-webui.eastus.cloudapp.azure
 
 List of experiments: 
 
-1- SGX HelloWorld 
+### Cluster access checklist 
 
-2- Figure 5.1. Section One: Enron Email Dataset. **Check Time <30mins**. 
+#### Spark WebUI 
 
-3- Figure 5.1. Section Two: NY Taxi Dataset. **Check Time <30mins**. 
+#### Plotting UI
 
-4- Figure 5.1. Section Three: Pokec Social Network Dataset. **Check Time <30mins**. 
+#### Spark (Submitting new workloads) 
 
-5- 
+### 1- SGX HelloWorld 
+
+#### Experiment setup 
+
+#### Plots 
+
+#### Discussion and analysis 
+
+#### Traces
+
+### 2- Figure 5.1. Section One: Enron Email Dataset. **Check Time <30mins**. 
+
+
+#### Experiment setup 
+
+#### Plots 
+
+#### Discussion and analysis 
+
+#### Traces
+
+### 3- Figure 5.1. Section Two: NY Taxi Dataset. **Check Time <30mins**. 
+
+#### Experiment setup 
+
+#### Plots 
+
+#### Discussion and analysis 
+
+#### Traces
+
+
+### 4- Figure 5.1. Section Three: Pokec Social Network Dataset. **Check Time <30mins**. 
+
+#### Experiment setup 
+
+#### Plots 
+
+#### Discussion and analysis 
+
+#### Traces
+
 
 ### 📆 Usage
 
