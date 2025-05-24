@@ -2,7 +2,7 @@
 
 We are reproducing our traces on the cluster for reviewers.
 
-You can access the cluster WebUI [here](http://sparkui-eastus.eastus.cloudapp.azure.com:8080/))
+You can access the cluster WebUI [here](http://sparkui-eastus.eastus.cloudapp.azure.com:8080/) for the direct cluster, and [here](http://weave.eastus.cloudapp.azure.com:8888/) for the mini SGX cluster with two nodes. 
 
 List of experiments: 
 
