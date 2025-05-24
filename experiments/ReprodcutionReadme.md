@@ -22,6 +22,8 @@ List of experiments:
 
 #### Discussion and analysis 
 
+##### SGX Overheads 
+
 #### Traces
 
 ### 2- Figure 5.1. Section One: Enron Email Dataset. **Check Time <30mins**. 
