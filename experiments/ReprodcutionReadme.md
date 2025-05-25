@@ -8,6 +8,10 @@ List of experiments:
 
 ### Cluster access checklist 
 
+First, please check your access to the cluster with the following links, and also the SSH credentials we posted in HotCRP.
+
+
+
 #### Spark WebUI 
 
 #### Plotting UI
