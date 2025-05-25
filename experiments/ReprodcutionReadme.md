@@ -10,16 +10,18 @@ List of experiments:
 
 First, please check your access to the cluster with the following links, and also the SSH credentials we posted in HotCRP.
 
-1- Access to Spark Web UIs
+#### Spark WebUI
 
 SGX WebUI is at [here](http://weave.eastus.cloudapp.azure.com:8888/)
 
 Direct WebUI is at [here](http://spark-ui.eastus.cloudapp.azure.com:8080/)
 
-
-#### Spark WebUI 
-
 #### Plotting UI
+
+We used these two entries to plot the generated results on the created traces and compare them with the text of the paper. 
+
+First, SGX overhead extrapolation plots from the SGX cluster [link](http://spark-ui.eastus.cloudapp.azure.com:9090/)
+Second, direct 10 node cluster plots from the direct cluster: [link](http://sparkui-eastus.eastus.cloudapp.azure.com:9090/)
 
 #### Spark (Submitting new workloads) 
 
