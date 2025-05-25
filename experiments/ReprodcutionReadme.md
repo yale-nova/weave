@@ -10,6 +10,11 @@ List of experiments:
 
 First, please check your access to the cluster with the following links, and also the SSH credentials we posted in HotCRP.
 
+1- Access to Spark Web UIs
+
+SGX WebUI is at [here](http://weave.eastus.cloudapp.azure.com:8888/)
+
+Direct WebUI is at [here](http://spark-ui.eastus.cloudapp.azure.com:8080/)
 
 
 #### Spark WebUI 
