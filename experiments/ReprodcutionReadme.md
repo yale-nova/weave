@@ -20,8 +20,8 @@ Direct WebUI is at [here](http://spark-ui.eastus.cloudapp.azure.com:8080/)
 
 We used these two entries to plot the generated results on the created traces and compare them with the text of the paper. 
 
-First, SGX overhead extrapolation plots from the SGX cluster [link](http://spark-ui.eastus.cloudapp.azure.com:9090/)
-Second, direct 10 node cluster plots from the direct cluster: [link](http://sparkui-eastus.eastus.cloudapp.azure.com:9090/)
+First, SGX overhead extrapolation plots from the SGX cluster [link](http://weave.eastus.cloudapp.azure.com:9090/)
+Second, direct 10 node cluster plots from the direct cluster: [link](http://spark-ui.eastus.eastus.cloudapp.azure.com:9090/)
 
 #### Spark (Submitting new workloads) 
 
