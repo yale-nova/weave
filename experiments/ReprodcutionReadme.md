@@ -15,10 +15,15 @@ Each system and execution mode combination was profiled for real execution time,
 
 ## Setup 
 
-## Setup
-
-**Master node:** One Azure D3s VM (4 cores, 8 GB memory)  
+**Master node:** One Azure D3s VM (4 cores, 8 GB memory) 
 **Worker nodes:** Two Azure DC3s VMs (8 cores, 16 GB memory) with EMM-enabled SGXv2 (EPC support)
+
+If we have shared access tokens with you, you can ssh into these VMs and check the settings with 
+
+ssh weave-master 
+ssh edmm-test-vm
+and 
+ssh edmm-test-vm2 
 
 Weave adopts a novel design in which Spark executors are deployed inside SGX enclaves. Since executors only exchange encrypted data blocks with other components—and both the size and timing of these blocks are data-independent—this design helps ensure strong confidentiality guarantees. In contrast, the Spark master and worker daemons run outside the enclave (non-EPC).
 
