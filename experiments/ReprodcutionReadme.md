@@ -31,12 +31,12 @@ Each system and execution mode combination was profiled for real execution time,
 ### SGX/Direct Overhead Per System
 | mode        |   avg_overhead |   min_overhead |   max_overhead |   weighted_avg_overhead |
 |:------------|---------------:|---------------:|---------------:|------------------------:|
-| columnsort  |           2.65 |           1.59 |           3.5  |                 3129.04 |
-| snb         |           4.69 |           4.69 |           4.69 |                  120.8  |
-| spark       |           3.35 |           1.96 |           4.68 |                  315.12 |
-| sparksorted |           3.5  |           1.92 |           5.12 |                  354.16 |
-| weave       |           3.19 |           1.65 |           5.41 |                  367.31 |
-| weavesorted |           3.02 |           1.59 |           5.46 |                  397.98 |
+| columnsort  |           2.65 |           1.59 |           3.5  |                    1.87 |
+| snb         |           4.69 |           4.69 |           4.69 |                    4.69 |
+| spark       |           3.35 |           1.96 |           4.68 |                    2.63 |
+| sparksorted |           3.5  |           1.92 |           5.12 |                    2.6  |
+| weave       |           3.19 |           1.65 |           5.41 |                    2.27 |
+| weavesorted |           3.02 |           1.59 |           5.46 |                    2.11 |
 
 ### Overhead Dist Compared to Spark (Direct/SGX)
 | mode        |   avg_vs_spark_direct |   min_vs_spark_direct |   max_vs_spark_direct |   avg_vs_spark_sgx |   min_vs_spark_sgx |   max_vs_spark_sgx |
