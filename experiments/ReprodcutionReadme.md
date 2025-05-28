@@ -38,6 +38,7 @@ We enable detailed logging (see `log4j.properties`) to collect runtime traces an
 
 Download the output or error log files to inspect Spark driver logs and event history.
 
+3- Weave does have two manifests, [java.manifest.template](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/java.manifest.template), which configures the PAL loader for Gramine  direct mode (Syscall proxying only) and a SGX manifest java.manifest.sgx-template, which is used when SGX is available on the machine. 
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
 
 
