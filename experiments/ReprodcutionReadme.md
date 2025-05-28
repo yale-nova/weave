@@ -80,26 +80,37 @@ Weave accomplishes this by patching Spark to use a modified `CoarseGrainedExecut
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
  
 
-## Step 2 -- See SGX + Weave in action 
-
 ### How to start the cluster? 
+## Step 2 -- See SGX + Weave in Action
 
-You can skip this step and just check if the cluster is running at [Our SGX master WebUI](http://weave.eastus.cloudapp.azure.com:8888/)
+### How to Start the Cluster?
 
-We have converted the Weave worker and master to systemctl services. You can restart the cluster with 
+You can skip this step and simply check if the cluster is already running via the SGX master WebUI:
+👉 [Our SGX master WebUI](http://weave.eastus.cloudapp.azure.com:8888/)
 
-ssh weave-master 
+We’ve converted the Weave master and worker nodes into `systemctl` services for easier management. To restart the cluster master:
+
+```bash
+ssh weave-master
 source ./helloworld-helpers/env.ssh-spark.sh
 sudo systemctl restart spark-master
+```
 
-And for executors with 
+To restart the executors on the first worker VM:
 
-ssh edmm-test-vm 
+```bash
+ssh edmm-test-vm
 SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-service-with-env.sh
+```
 
-Same for the second VM with the name edmm-test-vm2. 
+Repeat the same on the second VM:
 
-After this step, you may
+```bash
+ssh edmm-test-vm2
+SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-service-with-env.sh
+```
+
+After restarting, you can confirm that the cluster is up and running again by refreshing the WebUI.
 
 
 ### How to run a simple job? 
