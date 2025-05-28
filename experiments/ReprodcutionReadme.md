@@ -199,7 +199,49 @@ We also saved static Spark UI snapshots:
 * 🧠 `metadata.json` — Full Spark command, mode, and parameters
 
 
-### Scripts we provide for independent reproduction of our results 
+## Scripts We Provide for Independent Reproduction of Our Results
+
+> **Note:** Please skip this section, and [Jump to Trace Verification Data](#data-we-provide-for-verifying-that-traces-we-shared-are-correct) unless strictly necessary. Running the experiments via these scripts is fragile and requires close supervision. The configuration overhead and setup time are significant.
+
+1. **To create the Spark cluster (non-SGX, container-based setup)**:
+
+```bash
+root@weave-master:/home/azureuser/workspace/scripts# ./create_hybrid_bound_aks_cluster.sh
+```
+
+2. **To relaunch the Spark cluster (Kubernetes mode for 10-node non-SGX experiments)**:
+
+```bash
+root@weave-master:/home/azureuser/workspace/scripts# ./launch-hybrid-spark-clusters.sh
+```
+
+3. **To run experiments** (must be executed on `weave-master` for SGX, or `spark-master-0` for Kube-based clusters):
+
+```bash
+./run_all.sh
+```
+
+4. **To fetch and collect experiment traces from all nodes**: 
+
+   * For Kubernetes:
+
+     ```bash
+     ./scripts/fetch_experiment_logs_k8s.sh 22 spark
+     ```
+
+     Fetches the last 22 experiment logs from all worker nodes in the `spark` namespace.
+
+   * For VM-based clusters:
+
+     ```bash
+     ./scripts/fetch_experiment_logs.sh "edmm-test-vm,edmm-test-vm2" 6
+     ```
+
+     Collects logs from the last 6 experiments across the specified worker VMs.
+
+### Data we provide for verifying that the traces we shared are correct 
+
+
 
 ## Numerical Analysis
 
