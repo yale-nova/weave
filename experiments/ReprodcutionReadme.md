@@ -1,167 +1,55 @@
-## This file is not complete. Will get completed with the access requirements and full guidelines by May 24th. 
+# SGX Experiment Summary
 
-We are reproducing our traces on the cluster for reviewers.
+## Description
 
-You can access the cluster WebUI [here](http://sparkui-eastus.eastus.cloudapp.azure.com:8080/) for the direct cluster, and [here](http://weave.eastus.cloudapp.azure.com:8888/) for the mini SGX cluster with two nodes. 
+This README provides a comprehensive summary and analysis of the execution time overheads observed across various data processing systems (Spark, SparkSorted, Weave, WeaveSorted, SNB, ColumnSort) when running on SGX (Secure Enclave) versus Direct execution. The experiments were conducted on several datasets including:
 
-List of experiments: 
+* `yellow_tripdata_2020_wy.csv`
+* `yellow_tripdata_20212025.csv`
+* `enron_spam_data_exploded.csv`
+* `enron_spam_data_cleaned.csv`
+* `pokec-relations.csv`
 
-### Cluster access checklist 
+Each system and execution mode combination was profiled for real execution time, user CPU time, and total runtime. This document includes numerical comparisons and overhead calculations for each dataset and system.
 
-First, please check your access to the cluster with the following links, and also the SSH credentials we posted in HotCRP.
+## Numerical Analysis
 
-#### Spark WebUI
+### Overall SGX Overhead Across All Systems
 
-SGX WebUI is at [here](http://weave.eastus.cloudapp.azure.com:8888/)
+| Metric | Overhead |
+| ------ | -------- |
+| Min    | 1.59×    |
+| Mean   | 3.20×    |
+| Max    | 5.46×    |
 
-Direct WebUI is at [here](http://spark-ui.eastus.cloudapp.azure.com:8080/)
+### SGX Overhead (SGX/Direct) Per System
 
-#### Plotting UI
+| System      | Min   | Mean  | Max   |
+| ----------- | ----- | ----- | ----- |
+| ColumnSort  | 1.59× | 2.65× | 3.50× |
+| SNB         | 4.69× | 4.69× | 4.69× |
+| Spark       | 1.96× | 3.35× | 4.68× |
+| SparkSorted | 1.92× | 3.50× | 5.12× |
+| Weave       | 1.65× | 3.19× | 5.41× |
+| WeaveSorted | 1.59× | 3.02× | 5.46× |
 
-We used these two entries to plot the generated results on the created traces and compare them with the text of the paper. 
+### Execution Time Overhead (Direct Mode) vs Spark and Weave
 
-First, SGX overhead extrapolation plots from the SGX cluster [link](http://weave.eastus.cloudapp.azure.com:9090/)
-Second, direct 10 node cluster plots from the direct cluster: [link](http://spark-ui.eastus.eastus.cloudapp.azure.com:9090/)
+| System      | vs Spark (Min / Mean / Max) | vs Weave (Min / Mean / Max) |
+| ----------- | --------------------------- | --------------------------- |
+| ColumnSort  | 1.68 / 6.17 / 11.51         | 1.78 / 4.92 / 8.43          |
+| SNB         | 1.02 / 1.02 / 1.02          | 1.09 / 1.09 / 1.09          |
+| Spark       | 1.00 / 1.00 / 1.00          | 0.73 / 0.85 / 1.06          |
+| SparkSorted | 0.90 / 1.05 / 1.14          | 0.84 / 0.88 / 0.96          |
+| Weave       | 0.94 / 1.20 / 1.37          | 1.00 / 1.00 / 1.00          |
+| WeaveSorted | 0.92 / 1.34 / 1.60          | 0.98 / 1.11 / 1.28          |
 
-#### Spark (Submitting new workloads) 
+## Availability
 
-### 1- SGX HelloWorld 
+Reproducibility scripts, performance logs, and profiling outputs for both SGX and Direct execution are available. All logs are archived under `sgx_data/` and `direct_data/`, with plotting outputs organized per dataset in `plotting/`.
 
-#### Experiment setup 
+## Trace Snapshots
 
-#### Plots 
+Snapshots of Spark UIs and performance metrics across execution rounds for each system and mode are available in the `trace_snapshots/` directory. These include executor timelines, SQL stages, task breakdowns, and GC metrics.
 
-#### Discussion and analysis 
-
-##### SGX Overheads 
-
-#### Traces
-
-### 2- Figure 5.1. Section One: Enron Email Dataset. **Check Time <30mins**. 
-
-
-#### Experiment setup 
-
-#### Plots 
-
-#### Discussion and analysis 
-
-#### Traces
-
-### 3- Figure 5.1. Section Two: NY Taxi Dataset. **Check Time <30mins**. 
-
-#### Experiment setup 
-
-#### Plots 
-
-#### Discussion and analysis 
-
-#### Traces
-
-
-### 4- Figure 5.1. Section Three: Pokec Social Network Dataset. **Check Time <30mins**. 
-
-#### Experiment setup 
-
-#### Plots 
-
-#### Discussion and analysis 
-
-#### Traces
-
-
-### 📆 Usage
-
-```bash
-bash examples/scripts/run_spark_with_weave.sh <job> <scale>
-```
-
-| Parameter  | Description                                                                 |
-|------------|-----------------------------------------------------------------------------|
-| `<job>`    | Spark job to execute. Options: `hist`, `median`, `pagerank`, `terasort`, `invertedindex`. |
-| `<scale>`  | Sampling multiplier (float). For example: `0.1` = 10% sample, `1.0` = full dataset, `2.0` = duplication. |
-
----
-
-### ✅ Prerequisites
-
-Ensure the following steps are completed prior to running the script:
-
-1. **Compile the experiment fat JAR**:
-
-    ```bash
-    make build-fatjar
-    ```
-
-2. **Download and preprocess the input datasets**:
-
-    ```bash
-    make datasets
-    ```
-
-3. **Confirm `spool` CLI availability**, either:
-
-    - Within a container configured with Spool as the entrypoint, or
-    - By sourcing it locally:
-
-      ```bash
-      source /opt/spool/spool.sh
-      ```
-
----
-
-### 🚀 Example Workflows
-
-#### Histogram on 10% of the Enron dataset
-
-```bash
-bash examples/scripts/run_spark_with_weave.sh hist 0.1
-```
-
-#### PageRank on the full NYC Taxi dataset
-
-```bash
-bash examples/scripts/run_spark_with_weave.sh pagerank 1.0
-```
-
----
-
-### 📁 Output Directory Structure
-
-All outputs—including Spark results and profiling data—are written to:
-
-```
-examples/output/<job>_<scale>/
-```
-
-For instance:
-
-```
-examples/output/hist_0.1/
-  ├── part-00000           # Spark output partition
-  └── weave_profile.json   # Profiling information (if enabled)
-```
-
----
-
-### 🧠 Implementation Notes
-
-- Dataset scaling is performed using the Spark-based `SamplingJob.scala`, preserving reproducibility within Spool contexts.
-- Each job is executed within an isolated **Spool context**, facilitating enclave-specific configurations and manifest generation.
-- All workloads default to **Direct mode** execution. SGX support can be enabled through Spool's configuration flags.
-
----
-
-### 📌 Supported Workloads
-
-All jobs are defined in `SparkMapReduceJobs.scala` and follow a clean one-map-one-reduce pattern:
-
-- **Histogram Count** (`hist`)
-- **Median Calculation by Key** (`median`)
-- **PageRank** (`pagerank`)
-- **TeraSort** (`terasort`)
-- **Inverted Index Construction** (`invertedindex`)
-
-Each workload is fully instrumented for Weave-based profiling and designed for minimal configuration overhead.
-
----
+For any assistance or rerun request, please contact the experiment authors or refer to the reproduction scripts provided in the root directory.
