@@ -28,15 +28,15 @@ Each system and execution mode combination was profiled for real execution time,
 - Maximum: **5.46×**
 - Weighted Average: **2.06×**
 
-### SGX/Direct Overhead Per Input and System
-| input_data                                           |   columnsort |    snb |   spark |   sparksorted |   weave |   weavesorted |
-|:-----------------------------------------------------|-------------:|-------:|--------:|--------------:|--------:|--------------:|
-| /opt/spark/enclave/data/enron_spam_data_cleaned.csv  |         3.5  |   4.69 |    4.68 |          5.12 |    5.41 |          5.46 |
-| /opt/spark/enclave/data/enron_spam_data_exploded.csv |         3.48 | nan    |    4.15 |          4.63 |    3.58 |          3.38 |
-| /opt/spark/enclave/data/pokec-relations.csv          |         2.35 | nan    |    3.22 |          3.24 |    2.87 |          2.36 |
-| /opt/spark/enclave/data/yellow_tripdata_2020.csv     |         2.32 | nan    |    2.75 |          2.62 |    2.41 |          2.32 |
-| /opt/spark/enclave/data/yellow_tripdata_202\*_wy.csv |         1.59 | nan    |    1.96 |          1.92 |    1.65 |          1.59 |
-
+### SGX/Direct Overhead Per System
+| mode        |   avg_overhead |   min_overhead |   max_overhead |   weighted_avg_overhead |
+|:------------|---------------:|---------------:|---------------:|------------------------:|
+| columnsort  |           2.65 |           1.59 |           3.5  |                 3129.04 |
+| snb         |           4.69 |           4.69 |           4.69 |                  120.8  |
+| spark       |           3.35 |           1.96 |           4.68 |                  315.12 |
+| sparksorted |           3.5  |           1.92 |           5.12 |                  354.16 |
+| weave       |           3.19 |           1.65 |           5.41 |                  367.31 |
+| weavesorted |           3.02 |           1.59 |           5.46 |                  397.98 |
 
 ### Overhead Dist Compared to Spark (Direct/SGX)
 | mode        |   avg_vs_spark_direct |   min_vs_spark_direct |   max_vs_spark_direct |   avg_vs_spark_sgx |   min_vs_spark_sgx |   max_vs_spark_sgx |
