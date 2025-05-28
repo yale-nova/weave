@@ -13,7 +13,7 @@ This README provides a comprehensive summary and analysis of the execution time 
 Each system and execution mode combination was profiled for real execution time, user CPU time, and total runtime. This document includes numerical comparisons and overhead calculations for each dataset and system.
 
 
-## Setup 
+## Setup (Time to check < 5mins)
 
 **Master node:** One Azure D3s VM (4 cores, 8 GB memory) 
 
