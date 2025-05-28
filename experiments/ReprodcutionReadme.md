@@ -340,12 +340,12 @@ We have placed all generated plots under the [plotting subdirectory](http://weav
 
 For example, [this summary page](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_202%5C%2A_wy.csv_full_summary.html) visualizes the overhead of WordCount and Sort across multiple schemes:
 
-- Spark
-- Spark + Sort
+- Spark (Insecure)
+- Spark + Sort (Insecure shuffling + range partitioning that enables the execution of queries that need the data to be range based distributed)
 - Weave
 - Weave + Sort
-- ColumnSort
-- SnB
+- ColumnSort (Opaques main component)
+- SnB (Shuffle and balance)
 
 A screenshot of one of these plots is provided in the document for reference.
 
