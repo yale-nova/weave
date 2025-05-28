@@ -50,6 +50,6 @@ Reproducibility scripts, performance logs, and profiling outputs for both SGX an
 
 ## Trace Snapshots
 
-Snapshots of Spark UIs and performance metrics across execution rounds for each system and mode are available in the `trace_snapshots/` directory. These include executor timelines, SQL stages, task breakdowns, and GC metrics.
+Snapshots of Spark UIs and performance metrics across execution rounds for each system and mode are available [here](http://weave.eastus.cloudapp.azure.com:5555/traces/, the data for SGX execution is under [sgx_data](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/), and for direct execution is under [direct_data](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/). These include executor timelines, SQL stages, task breakdowns, and GC metrics.
 
 For any assistance or rerun request, please contact the experiment authors or refer to the reproduction scripts provided in the root directory.
