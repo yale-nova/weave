@@ -347,10 +347,10 @@ For example, [this summary page](http://weave.eastus.cloudapp.azure.com:5555/plo
 - ColumnSort
 - SnB
 
-A screenshot of one of these plots is provided in the document for reference.  
-We use the same hatch and hue patterns as the paper to ensure consistent visual comparison.
+A screenshot of one of these plots is provided in the document for reference.
 
-```
+  
+We use the same hatch and hue patterns as the paper to ensure consistent visual comparison.
 
 
 ## Numerical Analysis
