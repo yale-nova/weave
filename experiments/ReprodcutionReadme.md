@@ -276,6 +276,7 @@ timestamp	elapsed_sec	task_id	stage_id	task_number	executor_id	host
 
 These files are part of each trace directory, enabling validation of our execution logs and experiment freshness.
 
+You may check that the executors are running SGX by checking the executor ERR logs as a validating example. 
 ## Numerical Analysis
 
 ### Overall SGX Overhead Across All Systems
