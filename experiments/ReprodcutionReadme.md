@@ -239,9 +239,42 @@ root@weave-master:/home/azureuser/workspace/scripts# ./launch-hybrid-spark-clust
 
      Collects logs from the last 6 experiments across the specified worker VMs.
 
-### Data we provide for verifying that the traces we shared are correct 
+### Data we provide for verifying that the traces we shared are correct (Time to check for validity of the results <5 mins)
 
+In addition to the data referenced earlier in the setup section, we provide detailed logs and structured outputs for each experiment.
 
+For example:
+👉 [Weave shuffling on Enron Email Dataset with SGX](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/metadata.json)
+
+* **Master log**:
+  [master\_logs/](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/master_logs/)
+* **Executor logs (2 workers)**:
+  [executor\_logs/](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/executor_logs/)
+* **Event log**:
+  [event\_log/](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/event_log/)
+
+Additionally, we provide CSVs that summarize job and task timing:
+
+* `stage_info.csv`
+* `task_specs.csv`
+
+📈 **Example stage info:**
+
+```
+2027-05-25 18:49:31	6.0	0	ResultStage
+2027-05-25 18:50:37	72.0	1	ShuffleMapStage
+...
+```
+
+📊 **Example task specs:**
+
+```
+timestamp	elapsed_sec	task_id	stage_id	task_number	executor_id	host
+2027-05-25 18:50:20	55.0	0	0.0	0.0	1	10.0.0.6
+...
+```
+
+These files are part of each trace directory, enabling validation of our execution logs and experiment freshness.
 
 ## Numerical Analysis
 
