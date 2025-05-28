@@ -92,6 +92,7 @@ We’ve converted the Weave master and worker nodes into `systemctl` services fo
 
 ```bash
 ssh weave-master
+sudo -i 
 source ./helloworld-helpers/env.ssh-spark.sh
 sudo systemctl restart spark-master
 ```
@@ -100,6 +101,7 @@ To restart the executors on the first worker VM:
 
 ```bash
 ssh edmm-test-vm
+sudo -i 
 SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-service-with-env.sh
 ```
 
@@ -107,6 +109,7 @@ Repeat the same on the second VM:
 
 ```bash
 ssh edmm-test-vm2
+sudo -i 
 SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-service-with-env.sh
 ```
 
