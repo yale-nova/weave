@@ -154,8 +154,21 @@ Note: The storage key is hidden in the example. To try the same job, use `run_we
 The script automatically executes jobs in both Spark and Weave modes, generating results like:
 
 ```
+==============================
+🌀 Running mode: spark
+==============================
+📄 Log saved to: task_out_spark.txt
+📂 SGX Result Directory: sgx_results/20250528_180748_af4e760d
+✅ spark succeeded! Found: sgx_results/20250528_180748_af4e760d/stage_info.csv
+
+==============================
+🌀 Running mode: weave
+==============================
+📄 Log saved to: task_out_weave.txt
 📂 SGX Result Directory: sgx_results/20250528_180945_83e98955
-✅ weave succeeded!
+✅ weave succeeded! Found: sgx_results/20250528_180945_83e98955/stage_info.csv
+root@weave-master:/home/azureuser/workspace/scripts# cat task_out_weave.txt 
+
 ```
 
 Timing:
