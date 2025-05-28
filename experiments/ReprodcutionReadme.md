@@ -299,8 +299,28 @@ Excerpt from the log:
 The presence of `spark-executor-class` confirms the use of the Weave-patched execution wrapper.
 
 
-Additionally, loader logs include the final command that the executor class is spawning, which is set to the SGX Gramine PAL launcher for SGX and Gramine direct launcher without SGX. See the laucnher log of the same example for reference inside output.err 
+The presence of `spark-executor-class` confirms the use of the Weave patched execution wrapper.
 
+Additionally, loader logs include the **final command** launched by the executor wrapper, which invokes either the SGX Gramine PAL loader (`gramine-sgx`) or the Gramine direct mode loader depending on configuration.
+
+These logs are available under the `app_data` directory. For example, for the WordCount application:
+👉 [app_data/](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/app_data/)
+
+Inspect the application log for **Worker 0, Executor 0** by downloading the log from:  
+👉 [worker_1/0/](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/app_data/worker_1/0/)
+
+Sample output:
+```
+
+\[spark-executor-class] 🚀 Launching with: gramine-sgx, SGX=1, EDMM=1
+25/05/27 18:49:40 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 1\@edmm-test-vm
+
+```
+
+These logs also contain authentication details and the hashes of used manifests. You can cross-reference these hashes with the actual manifest files, which are copied into the same snapshot directory:
+👉 [java.manifest, java.manifest.sgx](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/app_data/worker_1/0/)
+
+Weave treats each `app_data` directory as the **protected enclave workspace** for executors. The working directory is configured under `$SPARK_HOME/work/${app_id}` to ensure isolation and reproducibility.
 
 
 
