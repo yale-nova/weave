@@ -276,7 +276,30 @@ timestamp	elapsed_sec	task_id	stage_id	task_number	executor_id	host
 
 These files are part of each trace directory, enabling validation of our execution logs and experiment freshness.
 
-You may check that the executors are running SGX by checking the executor ERR logs as a validating example. 
+You may also validate that Weave + Spool was used during execution by inspecting the executor error logs.
+
+For example:
+
+```bash
+wget http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/executor_logs/edmm-test-vm_err.log
+cat edmm-test-vm_err.log
+```
+
+Excerpt from the log:
+
+```
+25/05/27 18:49:26 INFO Worker: Asked to launch executor app-20250527184926-0020/0 for SparkChunkedHistCountApp
+25/05/27 18:49:26 INFO ExecutorRunner: 🏁 [ExecutorRunner] Starting executor runner for app: app-20250527184926-0020, execId: 0
+25/05/27 18:49:26 INFO ExecutorRunner: 🔨 Original JVM launch command: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -cp /opt/spark/conf/:/opt/spark/jars/* -Xmx6144M -Dspark.network.crypto.enabled=true -Dspark.network.crypto.keyFactoryAlgorithm=PBKDF2WithHmacSHA1 ...
+25/05/27 18:49:26 INFO ExecutorRunner: 🧵 Final wrapped command: **[1;31m/opt/spark/bin/spark-executor-class[0m** /usr/lib/jvm/java-11-openjdk-amd64/bin/java -cp /opt/spark/conf/:/opt/spark/jars/* -Xmx6144M -Dspark.network.crypto.enabled=true -Dspark.network.crypto.keyFactoryAlgorithm=PBKDF2WithHmacSHA1 ...CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.0.0.5:35339 --executor-id 0 --hostname 10.0.0.4 --cores 8 --app-id app-20250527184926-0020 --worker-url spark://Worker@10.0.0.4:43259
+25/05/27 18:49:26 INFO ExecutorRunner: 🚀 Launching command: **[1;31m"/opt/spark/bin/spark-executor-class"[0m" "/usr/lib/jvm/java-11-openjdk-amd64/bin/java" "-cp" "/opt/spark/conf/:/opt/spark/jars/*" ...
+```
+
+
+The presence of `spark-executor-class` confirms the use of the Weave-patched execution wrapper.
+
+
+
 ## Numerical Analysis
 
 ### Overall SGX Overhead Across All Systems
