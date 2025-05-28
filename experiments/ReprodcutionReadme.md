@@ -2,7 +2,7 @@
 
 ## Description
 
-This README provides a comprehensive summary and analysis of the execution time overheads observed across various data processing systems (Spark, SparkSorted, Weave, WeaveSorted, SNB, ColumnSort) when running on SGX (Secure Enclave) versus Direct execution. The experiments were conducted on several datasets including:
+This README provides a comprehensive summary and analysis of the execution time overheads observed across various data processing systems (Spark, SparkSorted, Weave, WeaveSorted, SNB, ColumnSort) when running on SGX (Secure Enclave) versus Direct execution. The experiments were conducted on several datasets, including:
 
 * `yellow_tripdata_2020_wy.csv`
 * `yellow_tripdata_20212025.csv`
@@ -12,6 +12,38 @@ This README provides a comprehensive summary and analysis of the execution time 
 
 Each system and execution mode combination was profiled for real execution time, user CPU time, and total runtime. This document includes numerical comparisons and overhead calculations for each dataset and system.
 
+
+## Setup 
+
+## Setup
+
+**Master node:** One Azure D3s VM (4 cores, 8 GB memory)  
+**Worker nodes:** Two Azure DC3s VMs (8 cores, 16 GB memory) with EMM-enabled SGXv2 (EPC support)
+
+Weave adopts a novel design in which Spark executors are deployed inside SGX enclaves. Since executors only exchange encrypted data blocks with other components—and both the size and timing of these blocks are data-independent—this design helps ensure strong confidentiality guarantees. In contrast, the Spark master and worker daemons run outside the enclave (non-EPC).
+
+Job submission is handled via a single `spark-submit` call. Worker nodes dynamically create SGX-based executors based on runtime demand and the configured SGX capability of the CPU. The Spark and Weave configurations are carefully tuned to preserve confidentiality and compatibility.
+
+For reference, we’ve archived a snapshot of the exact configuration used in this experiment:  
+👉 [spark-defaults.conf](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/)
+
+We enable detailed logging (see `log4j.properties`) to collect runtime traces and verify security properties. The exact SGX manifest used in this setup is also saved in the same directory.
+
+### Notes on SGX Manifests
+
+1. We invested substantial time debugging and tuning the SGX manifests to ensure compatibility and optimal performance. Our experiments indicate that existing solutions (e.g., Intel PPML) either fail to run Spark correctly or introduce security flaws. For instance, Intel PPML bypasses Gramine’s syscall proxying by passing parts of `glibc` into the enclave to work around its `vfork` limitations—this undermines the security guarantees of enclave isolation.
+
+2. You can independently verify our claims about data security—at rest, in transit, and during processing—by inspecting the Spark configuration. Encryption and authentication are enabled across the board. Additionally, the execution traces confirm the enforcement of these protections. For example:  
+👉 [Sample SGX run log](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_103550_6d184e89/)
+
+Download the output or error log files to inspect Spark driver logs and event history.
+
+> **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
+
+
+
+
+ 
 ## Numerical Analysis
 
 ### Overall SGX Overhead Across All Systems
