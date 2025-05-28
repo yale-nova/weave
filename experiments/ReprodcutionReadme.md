@@ -120,7 +120,7 @@ After restarting, you can confirm that the cluster is up and running again by re
 We have provided the full trace of both SGX and direct experiments on this two-node cluster:
 👉 [Experiment Traces](http://weave.eastus.cloudapp.azure.com:5555/traces/)
 
-You can skip this step—it’s similar to the demo.
+You can skip this setup step and [jump to Output Explanation](#output-explanation) —it’s similar to the demo.
 
 We use the `./run_spark_job_task_logging.sh` script to run Spark jobs and collect metrics. Here is an example usage:
 
