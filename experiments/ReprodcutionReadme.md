@@ -115,8 +115,6 @@ SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-servic
 
 After restarting, you can confirm that the cluster is up and running again by refreshing the WebUI.
 
-
-### How to run a simple job?  (Time: less than <10 mins)
 ### How to Run a Simple Job? (Time: less than 10 mins)
 
 We have provided the full trace of both SGX and direct experiments on this two-node cluster:
