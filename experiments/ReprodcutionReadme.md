@@ -322,6 +322,22 @@ These logs also contain authentication details and the hashes of used manifests.
 
 Weave treats each `app_data` directory as the **protected enclave workspace** for executors. The working directory is configured under `$SPARK_HOME/work/${app_id}` to ensure isolation and reproducibility.
 
+### Snapshots of Spark WEB-UIs (Optional step)
+
+We have collected snapshots of WebUIs that you can check to additionally verify the reported numbers coming from direct runs. Although it might be difficult to manually map the Spark APP-IDs to workloads we tested, you can use the metadata.json files and their respective app ids from the online traces. 
+
+[Direct cluster WebUI](http://weave.eastus.cloudapp.azure.com:5555/webuis/direct-webui-snapshot/)
+[SGX cluster WebUI](http://weave.eastus.cloudapp.azure.com:5555/webuis/sgx_webui_snapshot/10.0.0.5%3A8888/)
+[K8s Cluster WebUI](http://weave.eastus.cloudapp.azure.com:5555/webuis/kube_cluster_webui/)
+
+Up to this point, we have described the setting in the cluster. 
+
+Before moving to the description of the collected traces and their meaning, we want to introduce the plots we created for each experiment and their parts. 
+
+We have put plots for all experiments in the [plotting subdir](http://weave.eastus.cloudapp.azure.com:5555/plotting/) of the WebUI. You may go there to inspect the result that we will introduce later. The plots use Plotly that enables the inspection of the values of each data point by moving the pointer over specific bars. 
+
+
+[This page](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_202%5C%2A_wy.csv_full_summary.html) as an example, plots the overhead of WordCount and Sort execution for different schemes (Spark, Spark+Sort, Weave, Weave+Sort, ColumnSort, and SnB). 
 
 
 ## Numerical Analysis
