@@ -117,73 +117,75 @@ After restarting, you can confirm that the cluster is up and running again by re
 
 
 ### How to run a simple job?  (Time: less than <10 mins)
-We have provided the full trace of both SGX, and direct experiments on this two-node cluster [online](http://weave.eastus.cloudapp.azure.com:5555/traces/). Feel free to skip this step, as it is similar to our demo. 
+### How to Run a Simple Job? (Time: less than 10 mins)
 
-We use a script named "./run_spark_job_task_logging.sh" to run a Spark job on this cluster and collect all required metrics. 
-A call to that function looks like this 
+We have provided the full trace of both SGX and direct experiments on this two-node cluster:
+👉 [Experiment Traces](http://weave.eastus.cloudapp.azure.com:5555/traces/)
 
-./run_spark_job_task_logging.sh   --conf spark.executor.memory=6g   --conf spark.executor.gramine.enabled=true   --conf spark.driver.host=10.0.0.5   --conf spark.driver.port=35339   --conf "spark.executor.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data/scratch -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271"   --conf "spark.driver.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data/scratch -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 -Dlog4j.debug -Dlog4j.configuration=file:/opt/spark/conf/log4j.properties"   --conf "spark.hadoop.fs.azure.account.auth.type.sparkstorage32271.dfs.core.windows.net=SharedKey"   --conf "spark.hadoop.fs.azure.account.key.sparkstorage32271.dfs.core.windows.net=(??????)"   --deploy-mode client   --class org.apache.spark.shuffle.examples.SparkChunkedShuffleApp   /opt/spark/jars/spark-weave-shuffle_2.12-0.1.0.jar   "/opt/spark/enclave/data/enron_spam_data_cleaned.csv"   weave   --key_cols Date   --value_cols "Message ID" > snb_out.txt 2>&1
+You can skip this step—it’s similar to the demo.
 
-This command shuffles the raw Enron dataset, with its Date column as key and its "Message ID" column as value. 
+We use the `./run_spark_job_task_logging.sh` script to run Spark jobs and collect metrics. Here is an example usage:
 
+```bash
+./run_spark_job_task_logging.sh \
+  --conf spark.executor.memory=6g \
+  --conf spark.executor.gramine.enabled=true \
+  --conf spark.driver.host=10.0.0.5 \
+  --conf spark.driver.port=35339 \
+  --conf "spark.executor.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data/scratch -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271" \
+  --conf "spark.driver.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data/scratch -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 -Dlog4j.debug -Dlog4j.configuration=file:/opt/spark/conf/log4j.properties" \
+  --conf "spark.hadoop.fs.azure.account.auth.type.sparkstorage32271.dfs.core.windows.net=SharedKey" \
+  --conf "spark.hadoop.fs.azure.account.key.sparkstorage32271.dfs.core.windows.net=(??????)" \
+  --deploy-mode client \
+  --class org.apache.spark.shuffle.examples.SparkChunkedShuffleApp \
+  /opt/spark/jars/spark-weave-shuffle_2.12-0.1.0.jar \
+  "/opt/spark/enclave/data/enron_spam_data_cleaned.csv" \
+  weave \
+  --key_cols Date \
+  --value_cols "Message ID" > snb_out.txt 2>&1
+```
 
-Note, we have hidden the storage key in the command above. You can check the same functionality using  run_weave.sh in /home/azureuser/workspace/scripts. Which has this configuration inside. 
+This command shuffles the Enron dataset using the `Date` column as key and `Message ID` as value.
 
-For a modest job that exists quickly and saves time, you can use the same Enron job as above and call.
+Note: The storage key is hidden in the example. To try the same job, use `run_weave.sh`:
 
+```bash
+./run_weave.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
+```
 
-root@weave-master:/home/azureuser/workspace/scripts# ./run_weave.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
+The script automatically executes jobs in both Spark and Weave modes, generating results like:
 
-==============================
-🌀 Running mode: spark
-==============================
-📄 Log saved to: task_out_spark.txt
-📂 SGX Result Directory: sgx_results/20250528_180748_af4e760d
-✅ spark succeeded! Found: sgx_results/20250528_180748_af4e760d/stage_info.csv
-
-==============================
-🌀 Running mode: weave
-==============================
-📄 Log saved to: task_out_weave.txt
+```
 📂 SGX Result Directory: sgx_results/20250528_180945_83e98955
-✅ weave succeeded! Found: sgx_results/20250528_180945_83e98955/stage_info.csv
+✅ weave succeeded!
+```
 
-Our run for this, available at http://weave.eastus.cloudapp.azure.com:8888/, took 4.2 minutes in total. 2.1 mins for Spark, and 1.9 mins for Weave. Sample task outputs are like below 
+Timing:
 
-root@weave-master:/home/azureuser/workspace/scripts# cat task_out_weave.txt 
+* Spark: \~2.1 mins
+* Weave: \~1.9 mins
 
-📁 Saving results to: sgx_results/20250528_180945_83e98955
-pass through: org.apache.spark.shuffle.examples.SparkChunkedShuffleApp
-pass through: weave
-pass through: --key_cols
-pass through: Date
-pass through: --value_cols
-pass through: Message ID
-🔧 Detected exec_scheme: SGX
-🚀 Running Spark job...
-📦 Task: --conf spark.executor.memory=6g --conf spark.executor.gramine.enabled=true --conf spark.driver.host=10.0.0.5 --conf spark.driver.port=35339 --conf spark.executor.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 --conf spark.driver.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data -Dlog4j.debug -Dlog4j.configuration=file:/opt/spark/conf/log4j.properties -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 --conf spark.hadoop.fs.azure.account.auth.type.sparkstorage32271.dfs.core.windows.net=SharedKey --conf spark.hadoop.fs.azure.account.key.sparkstorage32271.dfs.core.windows.net=Private --deploy-mode client --class org.apache.spark.shuffle.examples.SparkChunkedShuffleApp /opt/spark/jars/spark-weave-shuffle_2.12-0.1.0.jar /opt/spark/enclave/data/enron_spam_data_cleaned.csv weave --key_cols Date --value_cols Message ID
-🕒 Started at: 2025-05-28 18:09:45
-real,129.43
-user,38.29
-sys,1.26
+Result traces are stored under `sgx_results/`. Example metadata:
 
-✅ Spark job completed in 129 seconds
-🔍 Parsing Spark logs...
-✅ All CSVs generated!
+```bash
+cat sgx_results/20250528_180945_83e98955/metadata.json
+```
 
-📦 Artifacts saved to: sgx_results/20250528_180945_83e98955
-🧾 Log files: output.log, output.err
-📄 Time CSV: sgx_results/20250528_180945_83e98955/time_metrics.csv
-🧠 Metadata: sgx_results/20250528_180945_83e98955/metadata.json
+This metadata helps verify the authenticity of shared results:
+👉 [SGX traces](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/)
+👉 [Direct traces](http://weave.eastus.cloudapp.azure.com:5555/traces/direcct_data/)
 
-The runner script automatically generates the full trace under the directory sgx_results. 
+We also saved static Spark UI snapshots:
+👉 [All UIs](http://weave.eastus.cloudapp.azure.com:5555/webuis/)
+👉 [SGX UI](http://weave.eastus.cloudapp.azure.com:5555/webuis/sgx_webui_snapshot/)
+👉 [Direct UI](http://weave.eastus.cloudapp.azure.com:5555/webuis/direct_webui_snapshot/)
 
-We have shared all created files for direct extrapolation experiments at http://weave.eastus.cloudapp.azure.com:5555/traces/direcct_data/, and sgx extrapolation experiments at http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/. 
+#### Output Explanation:
 
-Moreover, for all of the experiments that we share here, we have captured a static snapshot of Spark UI at http://weave.eastus.cloudapp.azure.com:5555/webuis/ 
-
-You can find the Spark WebUI for SGX extrapolation specifically at http://weave.eastus.cloudapp.azure.com:5555/webuis/sgx_webui_snapshot/ for direct results on the same two nodes used for extrapolation at http://weave.eastus.cloudapp.azure.com:5555/webuis/direct_webui_snapshot/
-
+* 📦 `Artifacts saved to:` — Full run directory (e.g., `sgx_results/20250528_180945_83e98955`)
+* 🧾 `output.log`, `output.err` — Full logs from `spark-submit` (used to validate features like authentication)
+* 📄 `time_metrics.csv` — Real/user/sys timing per run
+* 🧠 `metadata.json` — Full Spark command, mode, and parameters
 
 
 ### Scripts we provide for independent reproduction of our results 
