@@ -339,6 +339,12 @@ We have put plots for all experiments in the [plotting subdir](http://weave.east
 
 [This page](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_202%5C%2A_wy.csv_full_summary.html) as an example, plots the overhead of WordCount and Sort execution for different schemes (Spark, Spark+Sort, Weave, Weave+Sort, ColumnSort, and SnB). 
 
+A screenshot of one of the plots of that page is placed here for reference. 
+
+
+
+We use the same hatch and hue patterns as the paper to enable easier comparison. 
+
 
 ## Numerical Analysis
 
