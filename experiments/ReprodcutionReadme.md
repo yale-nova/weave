@@ -84,6 +84,24 @@ Weave accomplishes this by patching Spark to use a modified `CoarseGrainedExecut
 
 ### How to start the cluster? 
 
+You can skip this step and just check if the cluster is running at [Our SGX master WebUI](http://weave.eastus.cloudapp.azure.com:8888/)
+
+We have converted the Weave worker and master to systemctl services. You can restart the cluster with 
+
+ssh weave-master 
+source ./helloworld-helpers/env.ssh-spark.sh
+sudo systemctl restart spark-master
+
+And for executors with 
+
+ssh edmm-test-vm 
+SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-service-with-env.sh
+
+Same for the second VM with the name edmm-test-vm2. 
+
+After this step, you may
+
+
 ### How to run a simple job? 
 
 ### Scripts we provide for independent reproduction of our results 
