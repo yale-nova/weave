@@ -353,6 +353,19 @@ A screenshot of one of these plots is provided in the document for reference.
   
 We use the same hatch and hue patterns as the paper to ensure consistent visual comparison.
 
+#### 🔍 Highlight: Important Note on the Plot Above
+
+> ⚠️ **Please note:** The execution time shown for Weave in the plot above corresponds to the time before an OOM failure occurred.
+>
+> Additionally, SnB values may appear as `NaN` in the plot. This is due to the `time` command not producing valid outputs in those runs.
+>
+> Every plot we provide includes a **raw numerical data table** at the bottom of the corresponding HTML page. For the above figure, the underlying data table can be found in:
+>
+> 👉 [sgx_data_full_experiment_summary.csv](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/sgx_data_full_experiment_summary.csv)
+>
+> If needed, you can cross-reference plot bars to source data by checking the corresponding extracted CSVs in:  
+> 👉 [http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
+
 
 ## Numerical Analysis
 
