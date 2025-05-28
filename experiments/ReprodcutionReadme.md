@@ -72,11 +72,12 @@ Download the output or error log files to inspect Spark driver logs and event hi
 
 Download the output or error log files to inspect Spark driver logs and event history.
 
+4. A simple introduction on how Weave configures the manifest and executions is needed at this step. From the demo, we already know that the use of Gramine executors is set inside Spark Configs with the use of spark-defaults.conf or any other configuration mode of Spark. 
+Besides this, SGX and EDMM are set through ENV variables for workers. We talk about this in the second step. Once an executor is requested the worker compiles the manifest and spawns an enclave in SGX or Direct modes baed on the cofiguration. Weave acheives this by patching Spark to use a modified CoarseGrainedExecutor that calls [$SPARK_HOME/bin/executor-class](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/). You can inspect the code to see how this system modifies JVM heap allocations to account for SGX tight boundaries. You may also check the code in our repository, or on any of the above machines.  
+
+
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
  
-
-
-
 
  
 ## Numerical Analysis
