@@ -68,32 +68,6 @@ We enable detailed logging (see `log4j.properties`) to collect runtime traces an
 
 Download the output or error log files to inspect Spark driver logs and event history.
 
-## Setup
-
-If you have been granted access tokens, you can SSH into the experiment VMs to inspect configurations directly:
-
-```bash
-ssh weave-master
-ssh edmm-test-vm
-ssh edmm-test-vm2
-```
-
-Weave adopts a novel design in which Spark executors are deployed inside SGX enclaves. Since executors only exchange encrypted data blocks with other components—and both the size and timing of these blocks are data-independent—this design helps ensure strong confidentiality guarantees. In contrast, the Spark master and worker daemons run outside the enclave (non-EPC).
-
-Job submission is handled via a single `spark-submit` command. Worker nodes dynamically spawn SGX-based executors based on runtime demand and the SGX capability of the CPU. The Spark and Weave configurations are carefully tuned to maintain confidentiality and compatibility.
-
-For reference, we’ve archived a snapshot of the exact configuration used in this experiment:
-👉 [spark-defaults.conf](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/)
-
-Detailed logging is enabled via `log4j.properties` to collect runtime traces and verify system behavior. The exact SGX manifest used is also stored in the same directory for reproducibility.
-
-### Notes on SGX Manifests
-
-1. We invested substantial time debugging and tuning the SGX manifests to ensure compatibility and optimal performance. Our experiments indicate that existing solutions (e.g., Intel PPML) either fail to run Spark correctly or introduce security flaws. For instance, Intel PPML bypasses Gramine’s syscall proxying by passing parts of `glibc` into the enclave to work around its `vfork` limitations—this undermines the security guarantees of enclave isolation.
-
-2. You can independently verify our claims about data security—at rest, in transit, and during processing—by inspecting the Spark configuration. Encryption and authentication are enabled across the board. Additionally, the execution traces confirm the enforcement of these protections. For example:
-   👉 [Sample SGX run log](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_103550_6d184e89/)
-
 3. Weave uses two distinct manifest templates: `java.manifest.template`, which configures the PAL loader for Gramine's direct mode (syscall proxying only), and `java.manifest.sgx-template`, which is used when SGX is available on the machine. Both templates are available at the [config snapshot](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/).
 
 Download the output or error log files to inspect Spark driver logs and event history.
