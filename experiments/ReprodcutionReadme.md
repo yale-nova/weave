@@ -80,10 +80,10 @@ Weave accomplishes this by patching Spark to use a modified `CoarseGrainedExecut
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
  
 
-### How to start the cluster? 
-## Step 2 -- See SGX + Weave in Action
+### How to start the cluster?  (Time: <10mins)
+## Step 2 -- See SGX + Weave in Action 
 
-### How to Start the Cluster?
+### How to Start the Cluster? (Time: <5mins)
 
 You can skip this step and simply check if the cluster is already running via the SGX master WebUI:
 👉 [Our SGX master WebUI](http://weave.eastus.cloudapp.azure.com:8888/)
@@ -116,7 +116,75 @@ SGX=1 EDMM=1 DEBUG=0 PROXY_PDEBUG=0 /home/azureuser/scripts/restart-spark-servic
 After restarting, you can confirm that the cluster is up and running again by refreshing the WebUI.
 
 
-### How to run a simple job? 
+### How to run a simple job?  (Time: less than <10 mins)
+We have provided the full trace of both SGX, and direct experiments on this two-node cluster [online](http://weave.eastus.cloudapp.azure.com:5555/traces/). Feel free to skip this step, as it is similar to our demo. 
+
+We use a script named "./run_spark_job_task_logging.sh" to run a Spark job on this cluster and collect all required metrics. 
+A call to that function looks like this 
+
+./run_spark_job_task_logging.sh   --conf spark.executor.memory=6g   --conf spark.executor.gramine.enabled=true   --conf spark.driver.host=10.0.0.5   --conf spark.driver.port=35339   --conf "spark.executor.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data/scratch -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271"   --conf "spark.driver.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data/scratch -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 -Dlog4j.debug -Dlog4j.configuration=file:/opt/spark/conf/log4j.properties"   --conf "spark.hadoop.fs.azure.account.auth.type.sparkstorage32271.dfs.core.windows.net=SharedKey"   --conf "spark.hadoop.fs.azure.account.key.sparkstorage32271.dfs.core.windows.net=(??????)"   --deploy-mode client   --class org.apache.spark.shuffle.examples.SparkChunkedShuffleApp   /opt/spark/jars/spark-weave-shuffle_2.12-0.1.0.jar   "/opt/spark/enclave/data/enron_spam_data_cleaned.csv"   weave   --key_cols Date   --value_cols "Message ID" > snb_out.txt 2>&1
+
+This command shuffles the raw Enron dataset, with its Date column as key and its "Message ID" column as value. 
+
+
+Note, we have hidden the storage key in the command above. You can check the same functionality using  run_weave.sh in /home/azureuser/workspace/scripts. Which has this configuration inside. 
+
+For a modest job that exists quickly and saves time, you can use the same Enron job as above and call.
+
+
+root@weave-master:/home/azureuser/workspace/scripts# ./run_weave.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
+
+==============================
+🌀 Running mode: spark
+==============================
+📄 Log saved to: task_out_spark.txt
+📂 SGX Result Directory: sgx_results/20250528_180748_af4e760d
+✅ spark succeeded! Found: sgx_results/20250528_180748_af4e760d/stage_info.csv
+
+==============================
+🌀 Running mode: weave
+==============================
+📄 Log saved to: task_out_weave.txt
+📂 SGX Result Directory: sgx_results/20250528_180945_83e98955
+✅ weave succeeded! Found: sgx_results/20250528_180945_83e98955/stage_info.csv
+
+Our run for this, available at http://weave.eastus.cloudapp.azure.com:8888/, took 4.2 minutes in total. 2.1 mins for Spark, and 1.9 mins for Weave. Sample task outputs are like below 
+
+root@weave-master:/home/azureuser/workspace/scripts# cat task_out_weave.txt 
+
+📁 Saving results to: sgx_results/20250528_180945_83e98955
+pass through: org.apache.spark.shuffle.examples.SparkChunkedShuffleApp
+pass through: weave
+pass through: --key_cols
+pass through: Date
+pass through: --value_cols
+pass through: Message ID
+🔧 Detected exec_scheme: SGX
+🚀 Running Spark job...
+📦 Task: --conf spark.executor.memory=6g --conf spark.executor.gramine.enabled=true --conf spark.driver.host=10.0.0.5 --conf spark.driver.port=35339 --conf spark.executor.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 --conf spark.driver.extraJavaOptions=-Dscratch.dir=/opt/spark/enclave/data -Dlog4j.debug -Dlog4j.configuration=file:/opt/spark/conf/log4j.properties -Dweave.scratch.container=weave-scratch -Dweave.scratch.storage=sparkstorage32271 --conf spark.hadoop.fs.azure.account.auth.type.sparkstorage32271.dfs.core.windows.net=SharedKey --conf spark.hadoop.fs.azure.account.key.sparkstorage32271.dfs.core.windows.net=Private --deploy-mode client --class org.apache.spark.shuffle.examples.SparkChunkedShuffleApp /opt/spark/jars/spark-weave-shuffle_2.12-0.1.0.jar /opt/spark/enclave/data/enron_spam_data_cleaned.csv weave --key_cols Date --value_cols Message ID
+🕒 Started at: 2025-05-28 18:09:45
+real,129.43
+user,38.29
+sys,1.26
+
+✅ Spark job completed in 129 seconds
+🔍 Parsing Spark logs...
+✅ All CSVs generated!
+
+📦 Artifacts saved to: sgx_results/20250528_180945_83e98955
+🧾 Log files: output.log, output.err
+📄 Time CSV: sgx_results/20250528_180945_83e98955/time_metrics.csv
+🧠 Metadata: sgx_results/20250528_180945_83e98955/metadata.json
+
+The runner script automatically generates the full trace under the directory sgx_results. 
+
+We have shared all created files for direct extrapolation experiments at http://weave.eastus.cloudapp.azure.com:5555/traces/direcct_data/, and sgx extrapolation experiments at http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/. 
+
+Moreover, for all of the experiments that we share here, we have captured a static snapshot of Spark UI at http://weave.eastus.cloudapp.azure.com:5555/webuis/ 
+
+You can find the Spark WebUI for SGX extrapolation specifically at http://weave.eastus.cloudapp.azure.com:5555/webuis/sgx_webui_snapshot/ for direct results on the same two nodes used for extrapolation at http://weave.eastus.cloudapp.azure.com:5555/webuis/direct_webui_snapshot/
+
+
 
 ### Scripts we provide for independent reproduction of our results 
 
