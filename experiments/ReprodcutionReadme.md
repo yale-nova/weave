@@ -239,7 +239,7 @@ root@weave-master:/home/azureuser/workspace/scripts# ./launch-hybrid-spark-clust
 
      Collects logs from the last 6 experiments across the specified worker VMs.
 
-### Data we provide for verifying that the traces we shared are correct (Time to check for validity of the results <5 mins)
+### Data we provide for verifying that the traces we shared are correct (Time to check for validity of the results <10 mins)
 
 In addition to the data referenced earlier in the setup section, we provide detailed logs and structured outputs for each experiment.
 
