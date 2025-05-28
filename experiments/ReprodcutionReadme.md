@@ -72,8 +72,11 @@ Download the output or error log files to inspect Spark driver logs and event hi
 
 Download the output or error log files to inspect Spark driver logs and event history.
 
-4. A simple introduction on how Weave configures the manifest and executions is needed at this step. From the demo, we already know that the use of Gramine executors is set inside Spark Configs with the use of spark-defaults.conf or any other configuration mode of Spark. 
-Besides this, SGX and EDMM are set through ENV variables for workers. We talk about this in the second step. Once an executor is requested the worker compiles the manifest and spawns an enclave in SGX or Direct modes baed on the cofiguration. Weave acheives this by patching Spark to use a modified CoarseGrainedExecutor that calls [$SPARK_HOME/bin/executor-class](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/). You can inspect the code to see how this system modifies JVM heap allocations to account for SGX tight boundaries. You may also check the code in our repository, or on any of the above machines.  
+4. Weave configures the manifest and execution mode dynamically. The use of Gramine executors is defined in the Spark configuration (e.g., `spark-defaults.conf`). SGX and EDMM modes are set via environment variables on the worker nodes, as discussed in step 2. When an executor is requested, the worker compiles the appropriate manifest and launches the enclave in SGX or direct mode based on the current settings.
+
+Weave accomplishes this by patching Spark to use a modified `CoarseGrainedExecutor`, which calls a wrapper script: [`$SPARK_HOME/bin/executor-class`](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/). This script also adapts the JVM heap settings to respect SGX memory boundaries. You can inspect the implementation in our repository or directly on the provisioned VMs.
+
+> **Note:** Some systems may flag logs due to their file naming format. They are safe to open—use a text editor like Vim for best results. 
 
 
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
