@@ -349,6 +349,7 @@ For example, [this summary page](http://weave.eastus.cloudapp.azure.com:5555/plo
 
 A screenshot of one of these plots is provided in the document for reference.
 
+[![Sample Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/sample_plot.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_202%5C%2A_wy.csv_full_summary.html)  
   
 We use the same hatch and hue patterns as the paper to ensure consistent visual comparison.
 
