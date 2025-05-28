@@ -76,8 +76,6 @@ Download the output or error log files to inspect Spark driver logs and event hi
 
 Weave accomplishes this by patching Spark to use a modified `CoarseGrainedExecutor`, which calls a wrapper script: [`$SPARK_HOME/bin/executor-class`](http://weave.eastus.cloudapp.azure.com:5555/config_snapshot/). This script also adapts the JVM heap settings to respect SGX memory boundaries. You can inspect the implementation in our repository or directly on the provisioned VMs.
 
-> **Note:** Some systems may flag logs due to their file naming format. They are safe to open—use a text editor like Vim for best results. 
-
 
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
  
