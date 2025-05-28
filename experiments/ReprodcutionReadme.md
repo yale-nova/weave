@@ -80,7 +80,14 @@ Weave accomplishes this by patching Spark to use a modified `CoarseGrainedExecut
 > **Note:** Some systems may flag these logs due to their file naming format. They are safe to open—use a text editor like Vim for best results.
  
 
- 
+## Step 2 -- See SGX + Weave in action 
+
+### How to start the cluster? 
+
+### How to run a simple job? 
+
+### Scripts we provide for independent reproduction of our results 
+
 ## Numerical Analysis
 
 ### Overall SGX Overhead Across All Systems
