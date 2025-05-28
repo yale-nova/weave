@@ -26,94 +26,37 @@ Each system and execution mode combination was profiled for real execution time,
 - Minimum: **1.59×**
 - Average: **3.2×**
 - Maximum: **5.46×**
-- Weighted Average: **2130.68×**
-
-### SGX/Direct Overhead Per System
-| mode        |   avg_overhead |   min_overhead |   max_overhead |
-|:------------|---------------:|---------------:|---------------:|
-| columnsort  |           2.65 |           1.59 |           3.5  |
-| snb         |           4.69 |           4.69 |           4.69 |
-| spark       |           3.35 |           1.96 |           4.68 |
-| sparksorted |           3.5  |           1.92 |           5.12 |
-| weave       |           3.19 |           1.65 |           5.41 |
-| weavesorted |           3.02 |           1.59 |           5.46 |
+- Weighted Average: **2.06×**
 
 ### SGX/Direct Overhead Per Input and System
 | input_data                                           |   columnsort |    snb |   spark |   sparksorted |   weave |   weavesorted |
 |:-----------------------------------------------------|-------------:|-------:|--------:|--------------:|--------:|--------------:|
-| enron_spam_data_cleaned.csv  |         3.5  |   4.69 |    4.68 |          5.12 |    5.41 |          5.46 |
-| enron_spam_data_exploded.csv |         3.48 | nan    |    4.15 |          4.63 |    3.58 |          3.38 |
-| pokec-relations.csv          |         2.35 | nan    |    3.22 |          3.24 |    2.87 |          2.36 |
-| yellow_tripdata_2020.csv     |         2.32 | nan    |    2.75 |          2.62 |    2.41 |          2.32 |
-| yellow_tripdata_202\*_wy.csv |         1.59 | nan    |    1.96 |          1.92 |    1.65 |          1.59 |
+| /opt/spark/enclave/data/enron_spam_data_cleaned.csv  |         3.5  |   4.69 |    4.68 |          5.12 |    5.41 |          5.46 |
+| /opt/spark/enclave/data/enron_spam_data_exploded.csv |         3.48 | nan    |    4.15 |          4.63 |    3.58 |          3.38 |
+| /opt/spark/enclave/data/pokec-relations.csv          |         2.35 | nan    |    3.22 |          3.24 |    2.87 |          2.36 |
+| /opt/spark/enclave/data/yellow_tripdata_2020.csv     |         2.32 | nan    |    2.75 |          2.62 |    2.41 |          2.32 |
+| /opt/spark/enclave/data/yellow_tripdata_202\*_wy.csv |         1.59 | nan    |    1.96 |          1.92 |    1.65 |          1.59 |
 
-### Overhead Compared to Spark (Direct)
-| input_data                                           | mode        |   overhead_vs_spark |
-|:-----------------------------------------------------|:------------|--------------------:|
-| enron_spam_data_cleaned.csv  | spark       |                1    |
-| enron_spam_data_cleaned.csv  | sparksorted |                0.9  |
-| enron_spam_data_cleaned.csv  | weave       |                0.94 |
-| enron_spam_data_cleaned.csv  | weavesorted |                0.92 |
-| enron_spam_data_cleaned.csv  | columnsort  |                1.68 |
-| enron_spam_data_cleaned.csv  | snb         |                1.02 |
-| pokec-relations.csv          | spark       |                1    |
-| pokec-relations.csv          | sparksorted |                1.08 |
-| pokec-relations.csv          | weave       |                1.25 |
-| pokec-relations.csv          | weavesorted |                1.6  |
-| pokec-relations.csv          | columnsort  |                7.93 |
-| pokec-relations.csv          | snb         |              nan    |
-| yellow_tripdata_2020.csv     | spark       |                1    |
-| yellow_tripdata_2020.csv     | sparksorted |                1.1  |
-| yellow_tripdata_2020.csv     | weave       |                1.2  |
-| yellow_tripdata_2020.csv     | weavesorted |                1.3  |
-| yellow_tripdata_2020.csv     | columnsort  |                5.39 |
-| yellow_tripdata_2020.csv     | snb         |              nan    |
-| enron_spam_data_exploded.csv | spark       |                1    |
-| enron_spam_data_exploded.csv | sparksorted |                1.03 |
-| enron_spam_data_exploded.csv | weave       |                1.22 |
-| enron_spam_data_exploded.csv | weavesorted |                1.32 |
-| enron_spam_data_exploded.csv | columnsort  |                4.34 |
-| enron_spam_data_exploded.csv | snb         |              nan    |
-| yellow_tripdata_202\*_wy.csv | spark       |                1    |
-| yellow_tripdata_202\*_wy.csv | sparksorted |                1.14 |
-| yellow_tripdata_202\*_wy.csv | weave       |                1.37 |
-| yellow_tripdata_202\*_wy.csv | weavesorted |                1.55 |
-| yellow_tripdata_202\*_wy.csv | columnsort  |               11.51 |
-| yellow_tripdata_202\*_wy.csv | snb         |              nan    |
 
-### Overhead Compared to Weave (Direct)
-| input_data                                           | mode        |   overhead_vs_weave |
-|:-----------------------------------------------------|:------------|--------------------:|
-| enron_spam_data_cleaned.csv  | spark       |                1.06 |
-| enron_spam_data_cleaned.csv  | sparksorted |                0.96 |
-| enron_spam_data_cleaned.csv  | weave       |                1    |
-| enron_spam_data_cleaned.csv  | weavesorted |                0.98 |
-| enron_spam_data_cleaned.csv  | columnsort  |                1.78 |
-| enron_spam_data_cleaned.csv  | snb         |                1.09 |
-| pokec-relations.csv          | spark       |                0.8  |
-| pokec-relations.csv          | sparksorted |                0.86 |
-| pokec-relations.csv          | weave       |                1    |
-| pokec-relations.csv          | weavesorted |                1.28 |
-| pokec-relations.csv          | columnsort  |                6.33 |
-| pokec-relations.csv          | snb         |              nan    |
-| yellow_tripdata_2020.csv     | spark       |                0.83 |
-| yellow_tripdata_2020.csv     | sparksorted |                0.92 |
-| yellow_tripdata_2020.csv     | weave       |                1    |
-| yellow_tripdata_2020.csv     | weavesorted |                1.08 |
-| yellow_tripdata_2020.csv     | columnsort  |                4.49 |
-| yellow_tripdata_2020.csv     | snb         |              nan    |
-| enron_spam_data_exploded.csv | spark       |                0.82 |
-| enron_spam_data_exploded.csv | sparksorted |                0.85 |
-| enron_spam_data_exploded.csv | weave       |                1    |
-| enron_spam_data_exploded.csv | weavesorted |                1.08 |
-| enron_spam_data_exploded.csv | columnsort  |                3.57 |
-| enron_spam_data_exploded.csv | snb         |              nan    |
-| yellow_tripdata_202\*_wy.csv | spark       |                0.73 |
-| yellow_tripdata_202\*_wy.csv | sparksorted |                0.84 |
-| yellow_tripdata_202\*_wy.csv | weave       |                1    |
-| yellow_tripdata_202\*_wy.csv | weavesorted |                1.14 |
-| yellow_tripdata_202\*_wy.csv | columnsort  |                8.43 |
-| yellow_tripdata_202\*_wy.csv | snb         |              nan    |
+### Overhead Dist Compared to Spark (Direct/SGX)
+| mode        |   avg_vs_spark_direct |   min_vs_spark_direct |   max_vs_spark_direct |   avg_vs_spark_sgx |   min_vs_spark_sgx |   max_vs_spark_sgx |
+|:------------|----------------------:|----------------------:|----------------------:|-------------------:|-------------------:|-------------------:|
+| columnsort  |                  6.17 |                  1.68 |                 11.51 |               4.91 |               1.25 |               9.32 |
+| snb         |                  1.02 |                  1.02 |                  1.02 |               1.02 |               1.02 |               1.02 |
+| spark       |                  1    |                  1    |                  1    |               1    |               1    |               1    |
+| sparksorted |                  1.05 |                  0.9  |                  1.14 |               1.08 |               0.99 |               1.15 |
+| weave       |                  1.2  |                  0.94 |                  1.37 |               1.09 |               1.05 |               1.15 |
+| weavesorted |                  1.34 |                  0.92 |                  1.6  |               1.13 |               1.07 |               1.26 |
+
+### Overhead Dist Compared to Weave (Direct/SGX)
+| mode        |   avg_vs_weave_direct |   min_vs_weave_direct |   max_vs_weave_direct |   avg_vs_weave_sgx |   min_vs_weave_sgx |   max_vs_weave_sgx |
+|:------------|----------------------:|----------------------:|----------------------:|-------------------:|-------------------:|-------------------:|
+| columnsort  |                  4.92 |                  1.78 |                  8.43 |               4.45 |               1.15 |               8.12 |
+| snb         |                  1.09 |                  1.09 |                  1.09 |               0.94 |               0.94 |               0.94 |
+| spark       |                  0.85 |                  0.73 |                  1.06 |               0.92 |               0.87 |               0.95 |
+| sparksorted |                  0.89 |                  0.84 |                  0.96 |               0.99 |               0.91 |               1.1  |
+| weave       |                  1    |                  1    |                  1    |               1    |               1    |               1    |
+| weavesorted |                  1.11 |                  0.98 |                  1.28 |               1.04 |               0.99 |               1.09 |
 
 Reproducibility scripts, performance logs, and profiling outputs for both SGX and Direct execution are available. All logs are archived under `sgx_data/` and `direct_data/`, with plotting outputs organized per dataset in `plotting/`.
 
