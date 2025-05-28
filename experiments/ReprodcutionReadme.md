@@ -16,14 +16,39 @@ Each system and execution mode combination was profiled for real execution time,
 ## Setup 
 
 **Master node:** One Azure D3s VM (4 cores, 8 GB memory) 
+
 **Worker nodes:** Two Azure DC3s VMs (8 cores, 16 GB memory) with EMM-enabled SGXv2 (EPC support)
 
-If we have shared access tokens with you, you can ssh into these VMs and check the settings with 
-
-ssh weave-master 
+```bash
+ssh weave-master
 ssh edmm-test-vm
-and 
-ssh edmm-test-vm2 
+ssh edmm-test-vm2
+```
+
+You can check SGX availability on the `edmm` VMs with the `is-sgx-available` utility. Here's an example output (this step is optional):
+
+```bash
+root@edmm-test-vm:~# is-sgx-available
+SGX supported by CPU: true
+SGX1 (ECREATE, EENTER, ...): true
+SGX2 (EAUG, EACCEPT, EMODPR, ...): true
+Flexible Launch Control (IA32_SGXPUBKEYHASH{0..3} MSRs): true
+SGX extensions for virtualizers (EINCVIRTCHILD, EDECVIRTCHILD, ESETCONTEXT): false
+Extensions for concurrent memory management (ETRACKC, ELDBC, ELDUC, ERDINFO): false
+EDECCSSA instruction: false
+CET enclave attributes support (See Table 37-5 in the SDM): false
+Key separation and sharing (KSS) support (CONFIGID, CONFIGSVN, ISVEXTPRODID, ISVFAMILYID report fields): true
+AEX-Notify: true
+Max enclave size (32-bit): 0x80000000
+Max enclave size (64-bit): 0x100000000000000
+EPC size: 0x800000000
+SGX driver loaded: true
+AESMD installed: true
+SGX PSW/libsgx installed: true
+#PF/#GP information in EXINFO in MISC region of SSA supported: true
+#CP information in EXINFO in MISC region of SSA supported: false
+```
+
 
 Weave adopts a novel design in which Spark executors are deployed inside SGX enclaves. Since executors only exchange encrypted data blocks with other components—and both the size and timing of these blocks are data-independent—this design helps ensure strong confidentiality guarantees. In contrast, the Spark master and worker daemons run outside the enclave (non-EPC).
 
