@@ -299,6 +299,10 @@ Excerpt from the log:
 The presence of `spark-executor-class` confirms the use of the Weave-patched execution wrapper.
 
 
+Additionally, loader logs include the final command that the executor class is spawning, which is set to the SGX Gramine PAL launcher for SGX and Gramine direct launcher without SGX. See the laucnher log of the same example for reference inside output.err 
+
+
+
 
 ## Numerical Analysis
 
