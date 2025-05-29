@@ -472,7 +472,7 @@ SGX=1 ./start_cluster.sh
 
 #### Map to snapshot data 
 
-Below are selected SGX and Direct trace records for the task 1:
+Below are selected SGX and Direct trace records for task 1:
 
 | UID                        | Trace Link                                                                                            | Time (s) | GC Time (s) | Overhead | Mode        | SGX |
 | -------------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ----------- | -------- | ----------- | --- |
@@ -541,6 +541,30 @@ Then
 SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
 ```
+
+#### Map to snapshot data 
+
+Below are selected SGX and Direct trace records for task 2:
+
+| UID                        | Trace Link                                                                                        | Mode        | Runtime (s) |
+| -------------------------- | ------------------------------------------------------------------------------------------------- | ----------- | ----------- |
+| 20250527\_184406\_2c6e6f03 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184406_2c6e6f03) | Spark       | 146.62      |
+| 20250527\_184633\_b3d89194 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184633_b3d89194) | SparkSorted | 169.23      |
+| 20250527\_184923\_02e0ddf8 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8) | Weave       | 154.07      |
+| 20250527\_185158\_ac32bc70 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_185158_ac32bc70) | WeaveSorted | 157.54      |
+| 20250527\_185436\_87710cc1 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_185436_87710cc1) | ColumnSort  | 534.46      |
+| 20250527\_190331\_25f9a8e5 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_190331_25f9a8e5) | SnB         | DNF         |
+
+### Trace Table: Direct Mode
+
+| UID                        | Trace Link                                                                                              | Mode        | Runtime (s) |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- | ----------- |
+| 20250527\_212714\_999e53f3 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212714_999e53f3) | Spark       | 35.35       |
+| 20250527\_212749\_228194bb | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212749_228194bb) | SparkSorted | 36.52       |
+| 20250527\_212827\_34c53d48 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212827_34c53d48) | Weave       | 43.03       |
+| 20250527\_212910\_90125bf9 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212910_90125bf9) | WeaveSorted | 46.63       |
+| 20250527\_212957\_ce38846a | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212957_ce38846a) | ColumnSort  | 153.51      |
+| 20250527\_213232\_5664296f | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_213232_5664296f) | SnB         | DNF         |
 
 
 Task 3 - 
