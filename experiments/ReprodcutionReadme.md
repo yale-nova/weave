@@ -452,6 +452,31 @@ You can inspect these patterns visually in the sample plot linked above. Hue at 
   <img src="https://github.com/MattSlm/weave-artifacts/raw/main/images/task1_spark_overhead.png?raw=true" width="45%">
 </p>
 
+### Rerun Instructions (You can also check the data without rerunning)
+
+To rerun the experiments and reproduce the SGX overhead plots for the Enron dataset:
+
+1. **Start the cluster in SGX mode** on `weave-master`:
+
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
+```
+
+### Map to snapshot data 
+
+### Raw Execution Traces
+
+Below are selected SGX trace records for the Enron Email dataset experiment:
+
+| UID                     | Trace Link                                                                                         | Execution Time (s) | GC Time (s) | Overhead | Input CSV Path                                                   |
+|------------------------|----------------------------------------------------------------------------------------------------|---------------------|-------------|----------|------------------------------------------------------------------|
+| 20250527_123926_a151e27c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_123926_a151e27c) | 118.33              | 35.07       | 1.22     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
+| 20250527_124307_3d55a8a5 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124307_3d55a8a5) | 128.53              | 36.44       | 1.20     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
+| 20250527_124713_46b5f094 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124713_46b5f094) | 116.90              | 36.63       | 1.16     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
+| 20250527_125108_274a628b | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125108_274a628b) | 127.20              | 39.30       | 1.26     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
+
+
 Task 2 - 
 
 Task 3 - 
