@@ -369,7 +369,7 @@ We use the same hatch and hue patterns as the paper to ensure consistent visual 
 
 ## Performance Challenges and Optimizations for SGX Execution 
 
-**Feel free to skip this section, which describes Weave optimizations to use SGX + Gramine. ** Jump to the [next experiment section]((#overall-sgx-overhead-across-all-systems) )
+**Feel free to skip this section, which describes Weave optimizations to use SGX + Gramine. ** Jump to the [next experiment section](#overall-sgx-overhead-across-all-systems)
 
 Deploying Spark on SGX, even with the help of a LibOS like Gramine, has proven to be a challenging task. SGXv1 requires static memory preallocation and thread reservation, which is incompatible with Spark's dynamic and resource-intensive behavior—including RPC threads, GC threads, and shuffle workers. As a result, running Spark on SGXv1 is not only inefficient (often incurring more than 10× overhead), but also unpredictable and error-prone.
 
@@ -396,7 +396,6 @@ In addition to the challenges above, we encountered several recurring issues tha
 
 ### Overall SGX Overhead Across All Systems
 
-### Overall SGX/Direct Overhead (Real Time)
 - Minimum: **1.59×**
 - Average: **3.2×**
 - Maximum: **5.46×**
