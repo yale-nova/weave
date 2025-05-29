@@ -396,10 +396,34 @@ In addition to the challenges above, we encountered several recurring issues tha
 
 ### Extrapolation experiment design (Time: <25mins)
 
-#### Data scale 
+#### Data and scale 
 
-We run the experiment over a variety of scales on the original experiments' data. From 20% of 2x -- to see the SGX overheads. On the original Key and Value columns stated in the paper, for the [NY Taxi dataset](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page), [Enron Email dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset), and [Pokec social network data](https://snap.stanford.edu/data/soc-Pokec.html). All dataset are stored in Azure storage, or shared mount between the workers on weave-master:/opt/spark/enclave/data
+Our experiment with SGX shows that the overhead under normal working conditions is fairly consistent. Across all systems, serial execution times (e.g., I/O and communication) are much smaller than parallel compute times. Therefore, we expect that executing 20% of the data on 2 workers gives comparable SGX overhead to full-scale execution on 10 workers.
 
+We also observed that the longer a task takes, the **lower** its SGX overhead becomes. To estimate performance overheads more precisely, we compute the **weighted average SGX overhead**, using native (non-SGX) execution times as weights. This ensures longer tasks have more influence on the reported overhead.
+
+Looking at the data and plots, this trend is consistent: execution overhead decreases as execution time increases.
+
+We evaluated this across several scales and workloads using the original experiment configurations. This includes 20% of data on 2 workers, scaling up to full datasets on 10 nodes. We used the original Key/Value columns described in the paper, and tested on:
+
+* [NYC Taxi dataset](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+* [Enron Email dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset)
+* [Pokec Social Network dataset](https://snap.stanford.edu/data/soc-Pokec.html)
+
+All datasets are stored either in Azure Blob Storage or a shared NFS mount accessible at `weave-master:/opt/spark/enclave/data`.
+
+
+#### Notes on Interpreting SGX Execution Behavior
+
+Our extended analysis revealed several additional insights to help interpret execution behavior and explain certain anomalies seen in trace data:
+
+1. **Unusually high execution overhead almost always indicates memory exhaustion**. This may happen due to under-provisioned heap settings, unbounded GC behavior, or lack of dynamic memory support.
+
+2. **ColumnSort exhibits deterministic performance when batching is used**, thanks to a design that adjusts batch size based on JVM memory. Batches are flushed to Azure Blob Storage as needed, reducing pressure on heap memory. This has enabled long-running SGX jobs (e.g., >2 hours) to execute without issues on multiple executors.
+
+3. **In contrast, SNB requires strict padding for correctness**, as defined in Algorithm 1 of the paper. Its padding depends inversely on the logarithm of the batch size. For typical batch sizes (100–1000), this results in 6×–10× padding overhead. This makes batching ineffective and causes SNB to frequently fail to complete (DNF) in SGX mode.
+
+These details are important when evaluating the raw execution traces. We have structured our system to make performance behavior both understandable and reproducible, and the experiments described above form the basis for extrapolating meaningful SGX overhead figures.
 
 #### Tasks 
 
