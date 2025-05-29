@@ -463,17 +463,29 @@ SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
 ```
 
-### Map to snapshot data 
+#### Map to snapshot data 
 
-Below are selected SGX trace records for the Enron Email dataset experiment:
+Below are selected SGX and Direct trace records for the task 1:
 
-| UID                     | Trace Link                                                                                         | Real | User | Sys | 
-|------------------------|----------------------------------------------------------------------------------------------------|---------------------|-------------|----------|
-| 20250527_123926_a151e27c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_123926_a151e27c) | 118.33              | 35.07       | 1.22     | 
-| 20250527_124307_3d55a8a5 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124307_3d55a8a5) | 128.53              | 36.44       | 1.20     | 
-| 20250527_124713_46b5f094 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124713_46b5f094) | 116.90              | 36.63       | 1.16     | 
-| 20250527_125108_274a628b | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125108_274a628b) | 127.20              | 39.30       | 1.26     | 
+| UID                        | Trace Link                                                                                            | Time (s) | GC Time (s) | Overhead | Mode        | SGX |
+| -------------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ----------- | -------- | ----------- | --- |
+| 20250527\_194608\_af4e760d | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_194608_af4e760d) | 25.28    | 32.68       | 1.14     | spark       | No  |
+| 20250527\_194634\_d1df3dd2 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_194634_d1df3dd2) | 22.85    | 34.46       | 1.12     | sparksorted | No  |
+| 20250527\_194658\_83e98955 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_194658_83e98955) | 23.75    | 38.13       | 1.24     | weave       | No  |
+| 20250527\_194722\_1bb32ae4 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_194722_1bb32ae4) | 23.29    | 38.14       | 1.24     | weavesorted | No  |
+| 20250527\_194746\_7a89575c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_194746_7a89575c) | 42.37    | 71.75       | 2.05     | columnsort  | No  |
+| 20250527\_194829\_0d9e9da3 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_194829_0d9e9da3) | 25.77    | 43.16       | 1.34     | snb         | No  |
 
+##### SGX Runs
+
+| UID                        | Trace Link                                                                                         | Time (s) | GC Time (s) | Overhead | Mode        | SGX |
+| -------------------------- | -------------------------------------------------------------------------------------------------- | -------- | ----------- | -------- | ----------- | --- |
+| 20250527\_123926\_a151e27c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_123926_a151e27c) | 118.33   | 35.07       | 1.22     | spark       | Yes |
+| 20250527\_124307\_3d55a8a5 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124307_3d55a8a5) | 128.53   | 36.44       | 1.20     | weave       | Yes |
+| 20250527\_124713\_46b5f094 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124713_46b5f094) | 116.90   | 36.63       | 1.16     | sparksorted | Yes |
+| 20250527\_125108\_274a628b | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125108_274a628b) | 127.20   | 39.30       | 1.26     | weavesorted | Yes |
+| 20250527\_125354\_cdfcc628 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125354_cdfcc628) | 120.80   | 42.47       | 1.42     | snb         | Yes |
+| 20250527\_125724\_e7802e6a | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125724_e7802e6a) | 148.10   | 67.81       | 2.24     | columnsort  | Yes |
 
 #### Task 2 - Enron Email Dataset (0.2$\times$ Scale) 
 
