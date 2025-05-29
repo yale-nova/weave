@@ -843,7 +843,7 @@ Notably, the execution task overhead mostly depends on the mode of Weave's execu
 
 [![Enron Overheads Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_original_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html)
 
-
+Weave shuffling overhead in this experiment is in 1.62x to 1.95x. Compared to 1.65 to 2.83x in the paper (page 10).
 #### Scalability Experiment -- Scale = 3x 
 
 
