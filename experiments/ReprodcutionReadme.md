@@ -398,6 +398,9 @@ In addition to the challenges above, we encountered several recurring issues tha
 
 #### Data scale 
 
+We run the experiment over a variety of scales on the original experiments' data. From 20% of 2x -- to see the SGX overheads. On the original Key and Value columns stated in the paper, for the [NY Taxi dataset](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page), [Enron Email dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset), and [Pokec social network data](https://snap.stanford.edu/data/soc-Pokec.html). All dataset are stored in Azure storage, or shared mount between the workers on weave-master:/opt/spark/enclave/data
+
+
 #### Tasks 
 
 #### Runtimes 
