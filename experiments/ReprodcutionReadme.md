@@ -811,16 +811,25 @@ One notable trend is that SGX overhead sharply decreases with longer execution d
 
 ## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1 
 
-## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1 
+## Experiment 2: Reproducing Shuffling Overheads from Figure 5.1
 
-### Shuffling Enron Email Dataset.
+### Enron Email Dataset Shuffling
 
-We try Enron in different modes, including a small-scale experiment (can be used for verification), a full-scale experiment, equal to the scale used in the manuscript, and a 3 times scale to show that **Weave scales linearly**, and ColumnSort does not. Note that SnB only finishes for the limited scale of aggregating the dates on original messages with less than 100K rows. 
+We evaluate the Enron dataset using various modes:
 
-#### Figure 5.1. Part A
-The plots of this experiment are located [here](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html). 
+- A **small-scale** run (for verification)
+- A **full-scale** run (same as the manuscript)
+- A **3×-scale** run to demonstrate that **Weave scales linearly**, while **ColumnSort does not**
 
-The table below links to the traces of each scheme mode execution on this dataset. 
+> **Note:** SnB completes only on the limited-scale run (aggregation by date, < 100K rows).
+
+---
+
+### 🔗 [Figure 5.1 – Part A Plots](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html)
+
+---
+
+### Execution Traces
 
 | UID                        | Trace Link                                                                                             | Mode        | Runtime (s) |
 |---------------------------|----------------------------------------------------------------------------------------------------------|-------------|-------------|
@@ -831,19 +840,32 @@ The table below links to the traces of each scheme mode execution on this datase
 | 20250529_041127_6cc8eee8  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_041127_6cc8eee8)       | ColumnSort  | 1100.28     |
 | 20250529_042948_00f4f35e  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_042948_00f4f35e)       | SnB         | DNF         |
 
-##### Plots Analysis (Execution Times)
+---
+
+### 📊 Execution Time Analysis
 
 [![Enron Time Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_original_times.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html)
 
-You can compare the results introduced here with the HistCount and Sort in Figure 5, part 1. The **Cosine Similarity of this data** to the results in the paper is **0.995**. 
+- Matches closely with the manuscript’s Figure 5 results.
+- **Cosine similarity with original results: 0.995**
+- Overhead depends mainly on the shuffling mode.
+- With more partitions, reduce-phase cost becomes negligible.
 
-Notably, the execution task overhead mostly depends on the mode of Weave's execution. As the number of partitions increases, the final Reduce execution time effect on overhead decreases. 
+---
 
-######  Plots Analysis (Execution Overheads)
+### 📈 Overhead Analysis
 
 [![Enron Overheads Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_original_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html)
 
-Weave shuffling overhead in this experiment is in 1.62x to 1.95x. Compared to 1.65 to 2.83x in the paper (page 10).
+- **Weave overhead:** 1.62×–1.95× (paper: 1.65×–2.83×)
+- **ColumnSort:** 10.37× (paper: 10.6×)
+- **SnB** fails here but completed in the original paper because:
+  - It ran in a Gramine subprocess for better memory management.
+  - A lower (though insecure) padding factor was used in the paper.
+
+---
+
+
 #### Scalability Experiment -- Scale = 3x 
 
 
