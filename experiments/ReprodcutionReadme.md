@@ -467,12 +467,12 @@ SGX=1 ./start_cluster.sh
 
 Below are selected SGX trace records for the Enron Email dataset experiment:
 
-| UID                     | Trace Link                                                                                         | Real | User | Sys | Input CSV Path                                                   |
-|------------------------|----------------------------------------------------------------------------------------------------|---------------------|-------------|----------|------------------------------------------------------------------|
-| 20250527_123926_a151e27c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_123926_a151e27c) | 118.33              | 35.07       | 1.22     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
-| 20250527_124307_3d55a8a5 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124307_3d55a8a5) | 128.53              | 36.44       | 1.20     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
-| 20250527_124713_46b5f094 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124713_46b5f094) | 116.90              | 36.63       | 1.16     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
-| 20250527_125108_274a628b | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125108_274a628b) | 127.20              | 39.30       | 1.26     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
+| UID                     | Trace Link                                                                                         | Real | User | Sys | 
+|------------------------|----------------------------------------------------------------------------------------------------|---------------------|-------------|----------|
+| 20250527_123926_a151e27c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_123926_a151e27c) | 118.33              | 35.07       | 1.22     | 
+| 20250527_124307_3d55a8a5 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124307_3d55a8a5) | 128.53              | 36.44       | 1.20     | 
+| 20250527_124713_46b5f094 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124713_46b5f094) | 116.90              | 36.63       | 1.16     | 
+| 20250527_125108_274a628b | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125108_274a628b) | 127.20              | 39.30       | 1.26     | 
 
 
 #### Task 2 - Enron Email Dataset (0.2$\times$ Scale) 
