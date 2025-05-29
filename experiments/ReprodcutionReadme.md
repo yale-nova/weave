@@ -491,6 +491,9 @@ Below are selected SGX and Direct trace records for the task 1:
 
 ##### Purpose: Estimating the job-dependent SGX overheads on Enron Email Dataset 
 
+* **Input Data:** `weave-master:/opt/spark/enclave/data/enron_spam_data_exploded.csv` Augmented from the previous CSV with extracted words per message in the Message column. Used in tasks of section 6.2. and figure 5. 
+* **Plots:** [Execution Summary Plot](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_exploded.csv_full_summary.html)
+* **CSV Source:** `direct_data_experiment_summary.csv` and `sgx_data_experiment_summary.csv` — available [here](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
 
 Task 3 - 
 
