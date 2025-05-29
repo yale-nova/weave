@@ -835,7 +835,7 @@ The table below links to the traces of each scheme mode execution on this datase
 
 [![Enron Time Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_original_times.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html)
 
-
+You can compare the results introduced here with the HistCount and Sort in Figure 5, part 1. The **Cosine Similarity of this data** to the results in the paper is **0.995**
 
 
 #### Scalability Experiment -- Scale = 3x 
