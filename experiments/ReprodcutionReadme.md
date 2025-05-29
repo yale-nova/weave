@@ -607,7 +607,7 @@ SGX=1 ./start_cluster.sh
 
 #### Map to snapshot data 
 
-Below are selected SGX and Direct trace records for task 2:
+Below are selected SGX and Direct trace records for task 3:
 
 ### Trace Table: SGX Mode
 
