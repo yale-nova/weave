@@ -425,7 +425,41 @@ Our extended analysis revealed several additional insights to help interpret exe
 
 These details are important when evaluating the raw execution traces. We have structured our system to make performance behavior both understandable and reproducible, and the experiments described above form the basis for extrapolating meaningful SGX overhead figures.
 
-#### Tasks 
+
+### Tasks (Check time 30 mins, rerun time up to 7hrs)
+
+#### Task 1 - Enron Email Dataset (Small Scale)
+
+##### Purpose: Computing SGX Startup Overheads
+
+* **Input Data:** `weave-master:/opt/spark/enclave/data/enron_spam_data_cleaned.csv`
+* **Plots:** [Execution Summary Plot](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_cleaned.csv_full_summary.html)
+* **CSV Source:** `direct_data_experiment_summary.csv` and `sgx_data_experiment_summary.csv` — available [here](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
+
+##### Analysis
+
+This task was designed to analyze SGX startup overheads. Since the task is computationally lightweight, its runtime is dominated by startup costs, primarily influenced by the Java heap size (4GB) per executor.
+
+As shown in the plots and numerical data, the real execution time overhead for SGX is approximately **5×**. This is expected given the static memory allocation and initialization latency of SGX enclaves.
+
+Notably, systems like ColumnSort and SnB exhibit slightly **lower** relative overheads in this scenario because their execution duration dilutes the impact of fixed startup time, revealing more realistic runtime behavior.
+
+You can inspect these patterns visually in the sample plot linked above.
+
+
+
+
+Task 2 - 
+
+Task 3 - 
+
+Task 4 - 
+
+Task 5 - 
+
+Task 6 - Full scale NY Taxi Dataset (Sort and Wordcount) 
+Traces: 
+Plots: 
 
 #### Runtimes 
 
