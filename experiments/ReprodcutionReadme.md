@@ -595,19 +595,21 @@ To rerun the experiments and reproduce the SGX overhead plots for the Enron data
 
 ```bash
 SGX=1 ./start_cluster.sh
-./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
+./run_all_modes.sh /opt/spark/enclave/data/yellow_tripdata_2020.csv "PULocationID" "DOLocationID"
 ```
 
 2- **Restart the cluster in Direct mode** on `weave-master`:
 Then 
 ```bash
 SGX=1 ./start_cluster.sh
-./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
+./run_all_modes.sh /opt/spark/enclave/data/yellow_tripdata_2020.csv "PULocationID" "DOLocationID"
 ```
 
 #### Map to snapshot data 
 
 Below are selected SGX and Direct trace records for task 2:
+
+### Trace Table: SGX Mode
 
 | UID                        | Trace Link                                                                                        | Mode        | Runtime (s) |
 | -------------------------- | ------------------------------------------------------------------------------------------------- | ----------- | ----------- |
@@ -617,6 +619,13 @@ Below are selected SGX and Direct trace records for task 2:
 | 20250527\_185158\_ac32bc70 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_185158_ac32bc70) | WeaveSorted | 157.54      |
 | 20250527\_185436\_87710cc1 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_185436_87710cc1) | ColumnSort  | 534.46      |
 | 20250527\_190331\_25f9a8e5 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_190331_25f9a8e5) | SnB         | DNF         |
+
+\| 20250527\_134932\_d15b2988 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_134932_d15b2988) | Spark | 206.38 |
+\| 20250527\_135259\_872b3042 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_135259_872b3042) | SparkSorted | 216.62 |
+\| 20250527\_135636\_b24e7275 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_135636_b24e7275) | Weave | 217.36 |
+\| 20250527\_140014\_3a98b933 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_140014_3a98b933) | WeaveSorted | 226.1 |
+\| 20250527\_140401\_c32ab899 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_140401_c32ab899) | ColumnSort | 937.76 |
+\| 20250527\_141939\_79884dd8 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_141939_79884dd8) | SnB | DNF |
 
 ### Trace Table: Direct Mode
 
@@ -628,6 +637,13 @@ Below are selected SGX and Direct trace records for task 2:
 | 20250527\_212910\_90125bf9 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212910_90125bf9) | WeaveSorted | 46.63       |
 | 20250527\_212957\_ce38846a | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212957_ce38846a) | ColumnSort  | 153.51      |
 | 20250527\_213232\_5664296f | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_213232_5664296f) | SnB         | DNF         |
+
+\| 20250527\_203708\_d15b2988 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_203708_d15b2988) | Spark | 75.06 |
+\| 20250527\_203823\_872b3042 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_203823_872b3042) | SparkSorted | 82.73 |
+\| 20250527\_203947\_b24e7275 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_203947_b24e7275) | Weave | 90.13 |
+\| 20250527\_204117\_3a98b933 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_204117_3a98b933) | WeaveSorted | 97.52 |
+\| 20250527\_204255\_c32ab899 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_204255_c32ab899) | ColumnSort | 404.42 |
+\| 20250527\_204941\_79884dd8 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_204941_79884dd8) | SnB | DNF |
 
 
 Task 4 - 
