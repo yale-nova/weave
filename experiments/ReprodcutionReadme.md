@@ -831,6 +831,11 @@ The table below links to the traces of each scheme mode execution on this datase
 | 20250529_041127_6cc8eee8  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_041127_6cc8eee8)       | ColumnSort  | 1100.28     |
 | 20250529_042948_00f4f35e  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_042948_00f4f35e)       | SnB         | DNF         |
 
+#### Plots Analysis (Execution Times)
+
+[![Enron Time Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_original_times.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html)
+
+
 
 
 #### Scalability Experiment -- Scale = 3x 
