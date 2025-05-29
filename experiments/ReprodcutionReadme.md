@@ -386,7 +386,11 @@ These optimizations collectively reduce SGX overhead to between **1.8Ã— and 3.2Ã
 
 We present these insights here to provide context for the extrapolated SGX performance plots and to explain the system-level design decisions that enable Weave to run efficiently under SGX.
 
-In addition to the challenges above, there was many issues that we face repeatedly, making Weave a system that can express deterministic behavior. Including working on Gramine clock sync issues, vFork and clone issues, and some unreported Hadoop storage issues that is still not solved and we avoid with using Azure storage. 
+In addition to the challenges above, we encountered several recurring issues that had to be addressed to make Weave express deterministic behavior under SGX:
+
+* Clock synchronization issues in Gramine that impacted coordination across nodes.
+* `vfork` and `clone` behavior inconsistencies leading to subtle runtime bugs.
+* Unresolved Hadoop local storage bugs that consistently broke execution; we now circumvent these by using Azure storage exclusively.
 
 ### Overall SGX Overhead Across All Systems
 
