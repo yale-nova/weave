@@ -811,8 +811,24 @@ One notable trend is that SGX overhead sharply decreases with longer execution d
 
 ## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1 
 
+## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1 
+
 ### Shuffling Enron Email Dataset.
 
+We try Enron in different modes, including a small-scale experiment (can be used for verification), a full-scale experiment, equal to the scale used in the manuscript, and a 3 times scale to show that **Weave scales linearly**, and ColumnSort does not. Note that SnB only finishes for the limited scale of aggregating the dates on original messages with less than 100K rows. 
+
+#### Figure 5.1. Part A
+
+#### Scalability Experiments 
+
+### Mini-scale experiment 
+
+
+### Verification HowTo 
+
+
+### Reproduction HowTo
+ 
 ### Shuffling NY Taxi Dataset 
 
 ### Shuffling Pokec Dataset (First round of pagerank)
