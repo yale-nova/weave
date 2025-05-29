@@ -800,13 +800,22 @@ SGX=0 ./start_cluster.sh
 Reproducibility scripts, performance logs, and profiling outputs for both SGX and Direct execution are available. All logs are archived under `sgx_data/` and `direct_data/`, with plotting outputs organized per dataset in `plotting/`.
 
 
-## Behavioral Consistency Across Modes
+### Behavioral Consistency Across Modes
 
 To measure the similarity of system performance between SGX and Direct execution modes, we computed the Wasserstein distance between the per-system overhead distributions. Weave consistently shows the smallest Wasserstein distance between its SGX and Direct mode overheads, indicating its behavior is most stable regardless of the execution environment. This metric, with a distance of **0.14**, supports the claim that Weave’s performance characteristics **remain consistent and predictable under SGX**.
 
-## Time-Dependent SGX Overhead Trend
+### Time-Dependent SGX Overhead Trend
 
 One notable trend is that SGX overhead sharply decreases with longer execution durations. Shorter jobs are disproportionately affected by the fixed costs associated with SGX, such as page fault handling, JVM initialization, and secure memory allocation. However, these overheads become negligible in larger workloads. On average, the SGX overhead converges toward a stable multiplier of **\~2x**, highlighting the practical scalability of enclave-based systems when amortized over time.
+
+
+## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1 
+
+### Shuffling Enron Email Dataset.
+
+### Shuffling NY Taxi Dataset 
+
+### Shuffling Pokec Dataset (First round of pagerank)
 
 ## Trace Snapshots
 
