@@ -446,7 +446,7 @@ Notably, systems like ColumnSort and SnB exhibit slightly **lower** relative ove
 
 You can inspect these patterns visually in the sample plot linked above.
 
-
+[![Sample Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/task1_sgx_overhead.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_cleaned.csv_full_summary.html) 
 
 
 Task 2 - 
