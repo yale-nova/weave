@@ -664,24 +664,24 @@ SGX=1 ./start_cluster.sh
 
 | UID                        | Trace Link                                                                                 | Mode        | Runtime (s) |
 | -------------------------- | ------------------------------------------------------------------------------------------ | ----------- | ----------- |
-| 20250527\_130133\_20d9c113 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_130133_20d9c113) | Spark       | 187.73      |
-| 20250527\_130441\_b79073d1 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_130441_b79073d1) | SparkSorted | 203.03      |
-| 20250527\_130804\_fa48a70e | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_130804_fa48a70e) | Weave       | 209.59      |
-| 20250527\_131135\_ab3a36c7 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_131135_ab3a36c7) | WeaveSorted | 220.48      |
-| 20250527\_131515\_1195cab2 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_131515_1195cab2) | ColumnSort  | 1084.86     |
-| 20250527\_133321\_6bbcb0e4 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_133321_6bbcb0e4) | SnB         | DNF         |
+| 20250527\_130133\_20d9c113 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_130133_20d9c113) | Spark       | 187.73      |
+| 20250527\_130441\_b79073d1 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_130441_b79073d1) | SparkSorted | 203.03      |
+| 20250527\_130804\_fa48a70e | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_130804_fa48a70e) | Weave       | 209.59      |
+| 20250527\_131135\_ab3a36c7 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_131135_ab3a36c7) | WeaveSorted | 220.48      |
+| 20250527\_131515\_1195cab2 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_131515_1195cab2) | ColumnSort  | 1084.86     |
+| 20250527\_133321\_6bbcb0e4 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_133321_6bbcb0e4) | SnB         | DNF         |
 
 
 ##### Task 4 - Pokec Dataset (Direct Mode)
 
 | UID                        | Trace Link                                                                                       | Mode        | Runtime (s) |
 | -------------------------- | ------------------------------------------------------------------------------------------------ | ----------- | ----------- |
-| 20250527\_195100\_20d9c113 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_195100_20d9c113) | Spark       | 58.23       |
-| 20250527\_195159\_b79073d1 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_195159_b79073d1) | SparkSorted | 62.75       |
-| 20250527\_195302\_fa48a70e | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_195302_fa48a70e) | Weave       | 72.93       |
-| 20250527\_195415\_ab3a36c7 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_195415_ab3a36c7) | WeaveSorted | 93.33       |
-| 20250527\_195549\_1195cab2 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_195549_1195cab2) | ColumnSort  | 461.96      |
-| 20250527\_200332\_6bbcb0e4 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_200332_6bbcb0e4) | SnB         | DNF         |
+| 20250527\_195100\_20d9c113 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_195100_20d9c113) | Spark       | 58.23       |
+| 20250527\_195159\_b79073d1 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_195159_b79073d1) | SparkSorted | 62.75       |
+| 20250527\_195302\_fa48a70e | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_195302_fa48a70e) | Weave       | 72.93       |
+| 20250527\_195415\_ab3a36c7 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_195415_ab3a36c7) | WeaveSorted | 93.33       |
+| 20250527\_195549\_1195cab2 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_195549_1195cab2) | ColumnSort  | 461.96      |
+| 20250527\_200332\_6bbcb0e4 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_200332_6bbcb0e4) | SnB         | DNF         |
 
 
 ### Task 5 – Yellow Taxi Dataset (5-Year Scalability Pressure Test on 2-Node Cluster)
@@ -735,23 +735,23 @@ SGX=0 ./start_cluster.sh
 
 | UID                        | Trace Link                                                                                       | Mode        | Runtime (s) |
 | -------------------------- | ------------------------------------------------------------------------------------------------ | ----------- | ----------- |
-| 20250527\_232011\_c8b333a0 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_232011_c8b333a0) | Spark       | 221.54      |
-| 20250527\_232354\_15c6c5c9 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_232354_15c6c5c9) | SparkSorted | 252.84      |
-| 20250527\_232807\_e7a1e600 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_232807_e7a1e600) | Weave       | 302.49      |
-| 20250527\_233310\_6d184e89 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_233310_6d184e89) | WeaveSorted | 344.06      |
-| 20250527\_233855\_794b83f5 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250527_233855_794b83f5) | ColumnSort  | 2549.51     |
-| 20250528\_002126\_4f61e266 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/direct_data/20250528_002126_4f61e266) | SnB         | DNF         |
+| 20250527\_232011\_c8b333a0 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_232011_c8b333a0) | Spark       | 221.54      |
+| 20250527\_232354\_15c6c5c9 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_232354_15c6c5c9) | SparkSorted | 252.84      |
+| 20250527\_232807\_e7a1e600 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_232807_e7a1e600) | Weave       | 302.49      |
+| 20250527\_233310\_6d184e89 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_233310_6d184e89) | WeaveSorted | 344.06      |
+| 20250527\_233855\_794b83f5 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_233855_794b83f5) | ColumnSort  | 2549.51     |
+| 20250528\_002126\_4f61e266 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250528_002126_4f61e266) | SnB         | DNF         |
 
 ##### Task 5 - Yellow Taxi (Trace Summary - SGX Mode)
 
 | UID                        | Trace Link                                                                                 | Mode        | Runtime (s) |
 | -------------------------- | ------------------------------------------------------------------------------------------ | ----------- | ----------- |
-| 20250528\_101209\_c8b333a0 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_101209_c8b333a0) | Spark       | 434.78      |
-| 20250528\_101925\_15c6c5c9 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_101925_15c6c5c9) | SparkSorted | 484.82      |
-| 20250528\_102730\_e7a1e600 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_102730_e7a1e600) | Weave       | 499.1       |
-| 20250528\_103550\_6d184e89 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_103550_6d184e89) | WeaveSorted | 545.77      |
-| 20250528\_104456\_794b83f5 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_104456_794b83f5) | ColumnSort  | 4052.8      |
-| 20250528\_115230\_4f61e266 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_115230_4f61e266) | SnB         | DNF         |
+| 20250528\_101209\_c8b333a0 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_101209_c8b333a0) | Spark       | 434.78      |
+| 20250528\_101925\_15c6c5c9 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_101925_15c6c5c9) | SparkSorted | 484.82      |
+| 20250528\_102730\_e7a1e600 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_102730_e7a1e600) | Weave       | 499.1       |
+| 20250528\_103550\_6d184e89 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_103550_6d184e89) | WeaveSorted | 545.77      |
+| 20250528\_104456\_794b83f5 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_104456_794b83f5) | ColumnSort  | 4052.8      |
+| 20250528\_115230\_4f61e266 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250528_115230_4f61e266) | SnB         | DNF         |
 
 
 ### Overall SGX Overhead Across All Systems
