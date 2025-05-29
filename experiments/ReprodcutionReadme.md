@@ -404,7 +404,7 @@ We also observed that the longer a task takes, the **lower** its SGX overhead be
 
 Looking at the data and plots, this trend is consistent: execution overhead decreases as execution time increases.
 
-We evaluated this across several scales and workloads using the original experiment configurations. This includes 20% of data on 2 workers, scaling up to full datasets on 10 nodes. We used the original Key/Value columns described in the paper, and tested on:
+We evaluated this across several scales and workloads using the original experiment configurations. This includes 20% of the data on 2 workers, scaling up to full datasets on 10 nodes. We used the original Key/Value columns described in the paper, and tested on:
 
 * [NYC Taxi dataset](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 * [Enron Email dataset](https://www.kaggle.com/datasets/wcukierski/enron-email-dataset)
@@ -421,7 +421,7 @@ Our extended analysis revealed several additional insights to help interpret exe
 
 2. **ColumnSort exhibits deterministic performance when batching is used**, thanks to a design that adjusts batch size based on JVM memory. Batches are flushed to Azure Blob Storage as needed, reducing pressure on heap memory. This has enabled long-running SGX jobs (e.g., >2 hours) to execute without issues on multiple executors.
 
-3. **In contrast, SNB requires strict padding for correctness**, as defined in Algorithm 1 of the paper. Its padding depends inversely on the logarithm of the batch size. For typical batch sizes (100–1000), this results in 6×–10× padding overhead. This makes batching ineffective and causes SNB to frequently fail to complete (DNF) in SGX mode.
+3. **In contrast, SNB requires strict padding for correctness**, as defined in [Algorithm 1 of the paper](https://people.eecs.berkeley.edu/~raluca/cs261-f15/readings/MSR-TR-2015-70.pdf). Its padding depends inversely on the logarithm of the batch size. For typical batch sizes (0.01 to 0.001 of the original data), this results in 6×–10× padding overhead. This makes batching ineffective and causes SNB to fail to complete (DNF) in SGX and direct modes frequently.
 
 These details are important when evaluating the raw execution traces. We have structured our system to make performance behavior both understandable and reproducible, and the experiments described above form the basis for extrapolating meaningful SGX overhead figures.
 
