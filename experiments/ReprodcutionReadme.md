@@ -754,17 +754,6 @@ SGX=0 ./start_cluster.sh
 | 20250528\_115230\_4f61e266 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250528_115230_4f61e266) | SnB         | DNF         |
 
 
-
-Task 6 - Full scale NY Taxi Dataset (Sort and Wordcount) 
-Traces: 
-Plots: 
-
-#### Runtimes 
-
-#### Map to the shared traces 
-
-#### Reproduction Guide 
-
 ### Overall SGX Overhead Across All Systems
 
 - Minimum: **1.59×**
@@ -813,7 +802,7 @@ Reproducibility scripts, performance logs, and profiling outputs for both SGX an
 
 ## Behavioral Consistency Across Modes
 
-To measure the similarity of system performance between SGX and Direct execution modes, we computed the Wasserstein distance between the per-system overhead distributions. Weave consistently shows the smallest Wasserstein distance between its SGX and Direct mode overheads, indicating its behavior is most stable regardless of the execution environment. This metric, with a distance of 0.14, supports the claim that Weave’s performance characteristics remain consistent and predictable under SGX.
+To measure the similarity of system performance between SGX and Direct execution modes, we computed the Wasserstein distance between the per-system overhead distributions. Weave consistently shows the smallest Wasserstein distance between its SGX and Direct mode overheads, indicating its behavior is most stable regardless of the execution environment. This metric, with a distance of **0.14**, supports the claim that Weave’s performance characteristics **remain consistent and predictable under SGX**.
 
 ## Time-Dependent SGX Overhead Trend
 
