@@ -428,7 +428,7 @@ These details are important when evaluating the raw execution traces. We have st
 
 ### Tasks (Check time 30 mins, rerun time up to 7hrs)
 
-#### Task 1 - Enron Email Dataset (Small Scale)
+#### Task 1 - Enron Email Dataset (Small Scale) (Check time < 5 mins, rerun time <10 mins) 
 
 ##### Purpose: Computing SGX Startup Overheads
 
@@ -475,7 +475,10 @@ Below are selected SGX trace records for the Enron Email dataset experiment:
 | 20250527_125108_274a628b | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125108_274a628b) | 127.20              | 39.30       | 1.26     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
 
 
-Task 2 - 
+#### Task 2 - Enron Email Dataset (0.2$\times$ Scale) 
+
+##### Purpose: Estimating the job-dependent SGX overheads on Enron Email Dataset 
+
 
 Task 3 - 
 
