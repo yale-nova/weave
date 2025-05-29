@@ -457,7 +457,14 @@ You can inspect these patterns visually in the sample plot linked above. Hue at 
 To rerun the experiments and reproduce the SGX overhead plots for the Enron dataset:
 
 1. **Start the cluster in SGX mode** on `weave-master`:
+Then 
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
+```
 
+2- **Restart the cluster in Direct mode** on `weave-master`:
+Then 
 ```bash
 SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
@@ -498,16 +505,42 @@ Below are selected SGX and Direct trace records for the task 1:
 
 ##### Analysis
 
-This task was designed to analyze SGX overheads for shuffling Enron Email data. The task is run with 20% of the original data. And shows comparable runtimes to figure 5.1 for linear systems (Weave and Spark in both modes) and is expected to have lower overhead for columnSort. Since the overhead of Sort is log-linear to the input data. SnB DNfs. 
+---
 
-As shown in the plots and numerical data, the real execution time overhead for SGX is approximately **5×**. This is expected given the static memory allocation and initialization latency of SGX enclaves.
+### Task 2 - Enron Email Dataset (Shuffle-Intensive Execution)
 
-Notably, systems like ColumnSort and SnB exhibit slightly **lower** relative overheads in this scenario because their execution duration dilutes the impact of fixed startup time, revealing more realistic runtime behavior.
+#### Purpose: Evaluating SGX Overhead for Shuffle-Heavy Workloads
 
-You can inspect these patterns visually in the sample plot linked above. Hue at hatches maps are in the plotting UI. Columns are Spark, Spark+Sort, Weave, Weave+Sort, ColumnSort, and SnB, respectively.
+This task evaluates SGX overhead under shuffle-intensive execution using the Enron Email dataset. We used 20% of the original data to stress the shuffle path while keeping resource usage within the bounds of a 2-node cluster.
 
-[![Sample plot 3](https://github.com/MattSlm/weave-artifacts/raw/main/images/task2_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_exploded.csv_full_summary.html)
+This configuration mimics the execution pattern reflected in Figure 5.1 of the paper, enabling a fair comparison between linear systems (Spark and Weave, in both unsorted and sorted variants) and more complex systems like ColumnSort and SnB. The workload includes sorting and key-grouping operations across a realistic data volume.
 
+* **Expected behavior:** ColumnSort shows **lower relative overhead** due to log-linear complexity and efficient batching. SnB is expected to **fail to complete** (DNF) because its padding-heavy algorithm is not suited to memory-constrained SGX environments.
+* **Observed outcome:** As shown in the [plots](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_exploded.csv_full_summary.html), the SGX execution time overhead is approximately **3.5×**, lower than Task 1 since longer runtimes dilute SGX startup costs.
+
+This aligns with expectations: the fixed enclave initialization cost becomes less significant in longer workloads. Systems like ColumnSort and SnB thus show more representative overheads than in lightweight tasks.
+
+Visual inspection confirms these patterns. Hue and hatch styles are consistent across systems—Spark, SparkSorted, Weave, WeaveSorted, ColumnSort, and SnB.
+
+[![Task 2 Overhead Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/task2_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_exploded.csv_full_summary.html)
+
+### Rerun Instructions (You can also check the data without rerunning --recommended--)
+
+To rerun the experiments and reproduce the SGX overhead plots for the Enron dataset:
+
+1. **Start the cluster in SGX mode** on `weave-master`:
+
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
+```
+
+2- **Restart the cluster in Direct mode** on `weave-master`:
+Then 
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
+```
 
 
 Task 3 - 
