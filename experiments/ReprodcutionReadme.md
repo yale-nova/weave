@@ -367,7 +367,9 @@ We use the same hatch and hue patterns as the paper to ensure consistent visual 
 > 👉 [http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
 
 
-## Performance Challenges and Optimizations for SGX Execution
+## Performance Challenges and Optimizations for SGX Execution 
+
+Feel free to skip this section, which describes Weave optimizations to use SGX + Gramine. 
 
 Deploying Spark on SGX, even with the help of a LibOS like Gramine, has proven to be a challenging task. SGXv1 requires static memory preallocation and thread reservation, which is incompatible with Spark's dynamic and resource-intensive behavior—including RPC threads, GC threads, and shuffle workers. As a result, running Spark on SGXv1 is not only inefficient (often incurring more than 10× overhead), but also unpredictable and error-prone.
 
