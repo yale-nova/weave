@@ -444,7 +444,7 @@ As shown in the plots and numerical data, the real execution time overhead for S
 
 Notably, systems like ColumnSort and SnB exhibit slightly **lower** relative overheads in this scenario because their execution duration dilutes the impact of fixed startup time, revealing more realistic runtime behavior.
 
-You can inspect these patterns visually in the sample plot linked above.
+You can inspect these patterns visually in the sample plot linked above. Hue at hatches maps are in the plotting UI. Columns are Spark, Spark+Sort, Weave, Weave+Sort, ColumnSort, and SnB, respectively. 
 
 [![Sample Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/task1_sgx_overhead.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_cleaned.csv_full_summary.html) 
 
