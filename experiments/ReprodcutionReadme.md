@@ -818,8 +818,24 @@ One notable trend is that SGX overhead sharply decreases with longer execution d
 We try Enron in different modes, including a small-scale experiment (can be used for verification), a full-scale experiment, equal to the scale used in the manuscript, and a 3 times scale to show that **Weave scales linearly**, and ColumnSort does not. Note that SnB only finishes for the limited scale of aggregating the dates on original messages with less than 100K rows. 
 
 #### Figure 5.1. Part A
+The plots of this experiment are located [here](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_original_scale.csv__Word__Subject_combined.html). 
 
-#### Scalability Experiments 
+The table below links to the traces of each scheme mode execution on this dataset. 
+
+| UID                        | Trace Link                                                                                             | Mode        | Runtime (s) |
+|---------------------------|----------------------------------------------------------------------------------------------------------|-------------|-------------|
+| 20250529_040117_ce97d03d  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_040117_ce97d03d)       | Spark       | 111.52      |
+| 20250529_040309_50f5ab22  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_040309_50f5ab22)       | SparkSorted | 108.23      |
+| 20250529_040458_2916a8b3  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_040458_2916a8b3)       | Weave       | 181.03      |
+| 20250529_040759_75d2c9a1  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_040759_75d2c9a1)       | WeaveSorted | 207.36      |
+| 20250529_041127_6cc8eee8  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_041127_6cc8eee8)       | ColumnSort  | 1100.28     |
+| 20250529_042948_00f4f35e  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_042948_00f4f35e)       | SnB         | DNF         |
+
+
+
+#### Scalability Experiment -- Scale = 3x 
+
+
 
 ### Mini-scale experiment 
 
