@@ -567,7 +567,68 @@ Below are selected SGX and Direct trace records for task 2:
 | 20250527\_213232\_5664296f | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_213232_5664296f) | SnB         | DNF         |
 
 
-Task 3 - 
+### Task 3 - Yellow taxi dataset (NYTaxi)
+
+#### Purpose: Evaluating SGX Overhead for Shuffle-Heavy Workloads
+
+This task evaluates SGX overhead under shuffle-intensive execution using the NY Taxi dataset (2020). We used ~20% of the original data to stress the shuffle path while keeping resource usage within the bounds of a 2-node cluster.
+
+This configuration mimics the execution pattern reflected in Figure 5.1 of the paper, enabling a fair comparison between linear systems (Spark and Weave, in both unsorted and sorted variants) and more complex systems like ColumnSort and SnB. The workload includes sorting and key-grouping operations across a realistic data volume.
+
+* **Expected behavior:** The Number of input rows is much higher for this dataset, compared to Task 2. We expect longer running times, We expect Weave overhead to be close to 1x (0%) for shuffling. Since sampling creates very accurate distributions for the low cardinality data in the Key column and balances the loads between executors, which compensates for the time spent in histogram consolidation and the fake padding shuffling. We also expect the execution to be faster in SGX compared to the direct vs the SGX experiments of Task 2, i.e., lower SGX overheads are expected. 
+
+* **Observed outcome:** As shown in the [plots](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_2020.csv_full_summary.html), the SGX execution time overhead is roughly **2.3×**, lower than Task 2 since longer runtimes dilute SGX startup costs.
+
+We can also see that the execution time overhead of ColumnSort increases, compared to Task 1 and Task 2. Mainly, because this dataset has more Map output rows, which complicates the sorting. 
+
+This aligns with expectations: the fixed enclave initialization cost becomes less significant in longer workloads. Systems like ColumnSort and SnB thus show more representative overheads than in lightweight tasks.
+
+Visual inspection confirms these patterns. Hue and hatch styles are consistent across systems—Spark, SparkSorted, Weave, WeaveSorted, ColumnSort, and SnB.
+
+[![Task 3 Overheads Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/task3_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_2020.csv_full_summary.html)
+
+### Rerun Instructions (You can also check the data without rerunning --recommended--)
+
+To rerun the experiments and reproduce the SGX overhead plots for the Enron dataset:
+
+1. **Start the cluster in SGX mode** on `weave-master`:
+
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
+```
+
+2- **Restart the cluster in Direct mode** on `weave-master`:
+Then 
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
+```
+
+#### Map to snapshot data 
+
+Below are selected SGX and Direct trace records for task 2:
+
+| UID                        | Trace Link                                                                                        | Mode        | Runtime (s) |
+| -------------------------- | ------------------------------------------------------------------------------------------------- | ----------- | ----------- |
+| 20250527\_184406\_2c6e6f03 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184406_2c6e6f03) | Spark       | 146.62      |
+| 20250527\_184633\_b3d89194 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184633_b3d89194) | SparkSorted | 169.23      |
+| 20250527\_184923\_02e0ddf8 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8) | Weave       | 154.07      |
+| 20250527\_185158\_ac32bc70 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_185158_ac32bc70) | WeaveSorted | 157.54      |
+| 20250527\_185436\_87710cc1 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_185436_87710cc1) | ColumnSort  | 534.46      |
+| 20250527\_190331\_25f9a8e5 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_190331_25f9a8e5) | SnB         | DNF         |
+
+### Trace Table: Direct Mode
+
+| UID                        | Trace Link                                                                                              | Mode        | Runtime (s) |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- | ----------- |
+| 20250527\_212714\_999e53f3 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212714_999e53f3) | Spark       | 35.35       |
+| 20250527\_212749\_228194bb | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212749_228194bb) | SparkSorted | 36.52       |
+| 20250527\_212827\_34c53d48 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212827_34c53d48) | Weave       | 43.03       |
+| 20250527\_212910\_90125bf9 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212910_90125bf9) | WeaveSorted | 46.63       |
+| 20250527\_212957\_ce38846a | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_212957_ce38846a) | ColumnSort  | 153.51      |
+| 20250527\_213232\_5664296f | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_213232_5664296f) | SnB         | DNF         |
+
 
 Task 4 - 
 
