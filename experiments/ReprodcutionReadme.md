@@ -487,6 +487,7 @@ Below are selected SGX and Direct trace records for the task 1:
 | 20250527\_125354\_cdfcc628 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125354_cdfcc628) | 120.80   | 42.47       | 1.42     | snb         | Yes |
 | 20250527\_125724\_e7802e6a | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_125724_e7802e6a) | 148.10   | 67.81       | 2.24     | columnsort  | Yes |
 
+
 #### Task 2 - Enron Email Dataset (0.2$\times$ Scale) 
 
 ##### Purpose: Estimating the job-dependent SGX overheads on Enron Email Dataset 
@@ -494,6 +495,20 @@ Below are selected SGX and Direct trace records for the task 1:
 * **Input Data:** `weave-master:/opt/spark/enclave/data/enron_spam_data_exploded.csv` Augmented from the previous CSV with extracted words per message in the Message column. Used in tasks of section 6.2. and figure 5. 
 * **Plots:** [Execution Summary Plot](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_exploded.csv_full_summary.html)
 * **CSV Source:** `direct_data_experiment_summary.csv` and `sgx_data_experiment_summary.csv` — available [here](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
+
+##### Analysis
+
+This task was designed to analyze SGX overheads for shuffling Enron Email data. The task is run with 20% of the original data. And shows comparable runtimes to figure 5.1 for linear systems (Weave and Spark in both modes) and is expected to have lower overhead for columnSort. Since the overhead of Sort is log-linear to the input data. SnB DNfs. 
+
+As shown in the plots and numerical data, the real execution time overhead for SGX is approximately **5×**. This is expected given the static memory allocation and initialization latency of SGX enclaves.
+
+Notably, systems like ColumnSort and SnB exhibit slightly **lower** relative overheads in this scenario because their execution duration dilutes the impact of fixed startup time, revealing more realistic runtime behavior.
+
+You can inspect these patterns visually in the sample plot linked above. Hue at hatches maps are in the plotting UI. Columns are Spark, Spark+Sort, Weave, Weave+Sort, ColumnSort, and SnB, respectively.
+
+[![Sample plot 3](![Uploading image.png…](https://github.com/MattSlm/weave-artifacts/raw/main/images/task1_sgx_overhead.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_enron_spam_data_exploded.csv_full_summary.html)
+
+
 
 Task 3 - 
 
