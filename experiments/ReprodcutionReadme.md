@@ -317,7 +317,7 @@ Sample output:
 
 ```
 
-These logs also contain authentication details and the hashes of used manifests. You can cross-reference these hashes with the actual manifest files, which are copied into the same snapshot directory:
+These logs also contain authentication details and the hashes of the used manifests. You can cross-reference these hashes with the actual manifest files, which are copied into the same snapshot directory:
 👉 [java.manifest, java.manifest.sgx](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_184923_02e0ddf8/app_data/worker_1/0/)
 
 Weave treats each `app_data` directory as the **protected enclave workspace** for executors. The working directory is configured under `$SPARK_HOME/work/${app_id}` to ensure isolation and reproducibility.
@@ -341,7 +341,7 @@ We have placed all generated plots under the [plotting subdirectory](http://weav
 For example, [this summary page](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_202%5C%2A_wy.csv_full_summary.html) visualizes the overhead of WordCount and Sort across multiple schemes:
 
 - Spark (Insecure)
-- Spark + Sort (Insecure shuffling + range partitioning that enables the execution of queries that need the data to be range based distributed)
+- Spark + Sort (Insecure shuffling + range partitioning that enables the execution of queries that need the data to be range-based distributed)
 - Weave
 - Weave + Sort
 - ColumnSort (Opaques main component)
@@ -369,18 +369,18 @@ We use the same hatch and hue patterns as the paper to ensure consistent visual 
 
 ## Performance Challenges and Optimizations for SGX Execution 
 
-**Feel free to skip this section, which describes Weave optimizations to use SGX + Gramine. ** Jump to the [next experiment section](#overall-sgx-overhead-across-all-systems)
+**Feel free to skip this section, which describes Weave optimizations to use SGX + Gramine.** Jump to the [next experiment section](#overall-sgx-overhead-across-all-systems)
 
-Deploying Spark on SGX, even with the help of a LibOS like Gramine, has proven to be a challenging task. SGXv1 requires static memory preallocation and thread reservation, which is incompatible with Spark's dynamic and resource-intensive behavior—including RPC threads, GC threads, and shuffle workers. As a result, running Spark on SGXv1 is not only inefficient (often incurring more than 10× overhead), but also unpredictable and error-prone.
+Deploying Spark on SGX, even with the help of a LibOS like Gramine, has proven to be a challenging task. SGXv1 requires static memory preallocation and thread reservation, which is incompatible with Spark's dynamic and resource-intensive behavior, including RPC threads, GC threads, and shuffle workers. As a result, running Spark on SGXv1 is not only inefficient (often incurring more than 10× overhead), but also unpredictable and error-prone.
 
 Batch-oriented systems like ColumnSort and SnB frequently experience GC faults or out-of-memory errors under SGXv1. Additionally, Java-based systems like Hadoop and HDFS rely heavily on OS-level calls and subprocess spawning, which are discouraged or disallowed by Gramine’s secure configuration. These limitations often cause Spark components to crash fatally due to unhandled exceptions or missing fallback routines.
 
-Previous solutions [circumvented these issues by launching enclaves through](https://github.com/intel/BigDL/blob/main/ppml/base/bash.manifest.template) `bash`, but this approach consumes excessive EPC memory—reserving \~50% of enclave memory for bash, leaving little room for actual executor computation.
+Previous solutions [circumvented these issues by launching enclaves through](https://github.com/intel/BigDL/blob/main/ppml/base/bash.manifest.template) `bash`, but this approach consumes excessive EPC memory, reserving \~50% of enclave memory for bash, leaving little room for actual executor computation.
 
 Weave addresses these challenges with several key design and configuration changes:
 
 1. **Use of SGXv2 with dynamic memory management**, allowing more flexible allocation and significantly improving enclave utilization.
-2. **Executor-centric enclave model**: We spawn long-lived SGX executors, while keeping workers outside the enclave. This contrasts with prior models that placed Spark workers inside SGX and launched executors as subprocesses.
+2. **Executor-centric enclave model**: We spawn long-lived SGX executors while keeping workers outside the enclave. This contrasts with prior models that placed Spark workers inside SGX and launched executors as subprocesses.
 3. **Minimal enclave entrypoint**: We directly set the entrypoint of the enclave to Spark’s `CoarseGrainedExecutorBackend`, avoiding intermediary shells or wrappers.
 4. **Optimized SGX manifest parameters**: Including JVM stack/heap sizes, GC algorithm and thread settings, max enclave size, and the number of preallocated thread slots.
 
