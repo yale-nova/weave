@@ -367,8 +367,26 @@ We use the same hatch and hue patterns as the paper to ensure consistent visual 
 > 👉 [http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
 
 
-## Numerical Analysis
+## Numerical Analysis and SGX overhead extrapolation 
 
+## Performance Challenges and Optimizations for SGX Execution
+
+Deploying Spark on SGX, even with the help of a LibOS like Gramine, has proven to be a challenging task. SGXv1 requires static memory preallocation and thread reservation, which is incompatible with Spark's dynamic and resource-intensive behavior—including RPC threads, GC threads, and shuffle workers. As a result, running Spark on SGXv1 is not only inefficient (often incurring more than 10× overhead), but also unpredictable and error-prone.
+
+Batch-oriented systems like ColumnSort and SnB frequently experience GC faults or out-of-memory errors under SGXv1. Additionally, Java-based systems like Hadoop and HDFS rely heavily on OS-level calls and subprocess spawning, which are discouraged or disallowed by Gramine’s secure configuration. These limitations often cause Spark components to crash fatally due to unhandled exceptions or missing fallback routines.
+
+Previous solutions circumvented these issues by launching enclaves through `bash`, but this approach consumes excessive EPC memory—reserving \~50% of enclave memory for bash, leaving little room for actual executor computation.
+
+Weave addresses these challenges with several key design and configuration changes:
+
+1. **Use of SGXv2 with dynamic memory management**, allowing more flexible allocation and significantly improving enclave utilization.
+2. **Executor-centric enclave model**: We spawn long-lived SGX executors, while keeping workers outside the enclave. This contrasts with prior models that placed Spark workers inside SGX and launched executors as subprocesses.
+3. **Minimal enclave entrypoint**: We directly set the entrypoint of the enclave to Spark’s `CoarseGrainedExecutorBackend`, avoiding intermediary shells or wrappers.
+4. **Optimized SGX manifest parameters**: Including JVM stack/heap sizes, GC algorithm and thread settings, max enclave size, and the number of preallocated thread slots.
+
+These optimizations collectively reduce SGX overhead to between **1.8× and 3.2×** on average. In practice, they make Weave’s execution time and resource efficiency comparable to that of direct Gramine execution, while maintaining strict isolation and integrity.
+
+We present these insights here to provide context for the extrapolated SGX performance plots and to explain the system-level design decisions that enable Weave to run efficiently under SGX.
 ### Overall SGX Overhead Across All Systems
 
 ### Overall SGX/Direct Overhead (Real Time)
