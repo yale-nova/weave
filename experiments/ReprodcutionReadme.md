@@ -646,8 +646,43 @@ Below are selected SGX and Direct trace records for task 3:
 \| 20250527\_204941\_79884dd8 | [Direct Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/direct_data/20250527_204941_79884dd8) | SnB | DNF |
 
 
-Task 4 - 
+### Task 4 - Pokec Social Data (Page Rank Round 1)
 
+#### Purpose: Evaluating SGX Overhead for Shuffle-Heavy Workloads
+
+This task evaluates SGX overhead under shuffle-intensive execution using the NY Taxi dataset (2020). We used ~20% of the original data to stress the shuffle path while keeping resource usage within the bounds of a 2-node cluster.
+
+This configuration mimics the execution pattern reflected in Figure 5.1 of the paper, enabling a fair comparison between linear systems (Spark and Weave, in both unsorted and sorted variants) and more complex systems like ColumnSort and SnB. The workload includes sorting and key-grouping operations across a realistic data volume.
+
+* **Expected behavior:** The Number of input rows is much higher for this dataset, compared to Task 2. We expect longer running times, We expect Weave overhead to be close to 1x (0%) for shuffling. Since sampling creates very accurate distributions for the low cardinality data in the Key column and balances the loads between executors, which compensates for the time spent in histogram consolidation and the fake padding shuffling. We also expect the execution to be faster in SGX compared to the direct vs the SGX experiments of Task 2, i.e., lower SGX overheads are expected. 
+
+* **Observed outcome:** As shown in the [plots](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_2020.csv_full_summary.html), the SGX execution time overhead is roughly **2.3×**, lower than Task 2 since longer runtimes dilute SGX startup costs.
+
+We can also see that the execution time overhead of ColumnSort increases, compared to Task 1 and Task 2. Mainly, because this dataset has more Map output rows, which complicates the sorting. 
+
+This aligns with expectations: the fixed enclave initialization cost becomes less significant in longer workloads. Systems like ColumnSort and SnB thus show more representative overheads than in lightweight tasks.
+
+Visual inspection confirms these patterns. Hue and hatch styles are consistent across systems—Spark, SparkSorted, Weave, WeaveSorted, ColumnSort, and SnB.
+
+[![Task 3 Overheads Plot](https://github.com/MattSlm/weave-artifacts/raw/main/images/task3_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/extrapolate_experiment_full_summary/_opt_spark_enclave_data_yellow_tripdata_2020.csv_full_summary.html)
+
+### Rerun Instructions (You can also check the data without rerunning --recommended--)
+
+To rerun the experiments and reproduce the SGX overhead plots for the Enron dataset:
+
+1. **Start the cluster in SGX mode** on `weave-master`:
+
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/yellow_tripdata_2020.csv "PULocationID" "DOLocationID"
+```
+
+2- **Restart the cluster in Direct mode** on `weave-master`:
+Then 
+```bash
+SGX=1 ./start_cluster.sh
+./run_all_modes.sh /opt/spark/enclave/data/yellow_tripdata_2020.csv "PULocationID" "DOLocationID"
+```
 Task 5 - 
 
 Task 6 - Full scale NY Taxi Dataset (Sort and Wordcount) 
