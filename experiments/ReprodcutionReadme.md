@@ -465,8 +465,6 @@ SGX=1 ./start_cluster.sh
 
 ### Map to snapshot data 
 
-### Raw Execution Traces
-
 Below are selected SGX trace records for the Enron Email dataset experiment:
 
 | UID                     | Trace Link                                                                                         | Execution Time (s) | GC Time (s) | Overhead | Input CSV Path                                                   |
