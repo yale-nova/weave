@@ -849,7 +849,7 @@ We evaluate the Enron dataset using various modes:
 - Matches closely with the manuscript’s Figure 5 results.
 - **Cosine similarity with original results: 0.995**
 - Overhead depends mainly on the shuffling mode.
-- With more partitions, reduce-phase cost becomes negligible.
+- With more partitions, the reduce-phase cost becomes negligible.
 
 ---
 
@@ -859,14 +859,67 @@ We evaluate the Enron dataset using various modes:
 
 - **Weave overhead:** 1.62×–1.95× (paper: 1.65×–2.83×)
 - **ColumnSort:** 10.37× (paper: 10.6×)
-- **SnB** fails here but completed in the original paper because:
+- **SnB** fails here, but was completed in the original paper because:
   - It ran in a Gramine subprocess for better memory management.
   - A lower (though insecure) padding factor was used in the paper.
 
 ---
 
+#### Enron Email Dataset – 4× Scale Evaluation
 
-#### Scalability Experiment -- Scale = 3x 
+This experiment reproduces the shuffling overheads with the **dataset scaled up by 4×**. We assess how each mode handles increased data volume and whether the overheads scale linearly.
+
+---
+
+### 🔗 [Figure 5.1 – Part B Plots](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
+
+---
+
+### Execution Traces and Runtimes
+
+| UID                        | Trace Link                                                                                             | Mode        | Runtime (s) |
+|---------------------------|----------------------------------------------------------------------------------------------------------|-------------|-------------|
+| 20250528_230036_9ed29f1a  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_230036_9ed29f1a)       | Spark       | 350.47      |
+| 20250528_230627_5a5c6905  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_230627_5a5c6905)       | SparkSorted | 415.50      |
+| 20250528_231323_f1ab4032  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_231323_f1ab4032)       | Weave       | **556.73**      |
+| 20250528_232241_3465a1c8  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_232241_3465a1c8)       | WeaveSorted | 663.73      |
+| 20250528_233345_9b892b96  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_233345_9b892b96)       | ColumnSort  | **4746.14**    |
+| 20250529_005253_1975fdb6  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250529_005253_1975fdb6)       | SnB         | DNF         |
+
+---
+
+### 📊 Execution Time Analysis
+
+[![Execution Times – 3× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_exploded_times.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
+
+- **Spark** execution time grew from ~111.5s → **350.5s** → **~3.14×**, close to linear.
+- **Weave** went from ~181s → **556.7s** → **~3.07×**, showing **linear scaling**.
+- **ColumnSort** jumped from ~1100s → **4746.1s** → **~4.3×**, indicating **log-linear scaling**. 
+- **Extrapolation results** Shows 21 mins for Weave and 147 minutes reported **22 mins** and **140mins** in the paper on this scale. 
+- **SnB** failed at this scale. 
+
+---
+
+### 📈 Overhead Analysis
+
+[![Overheads – 4× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_exploded_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
+
+| Mode        | Overhead (3× scale) | Overhead (original scale) | Change     |
+|-------------|----------------------|----------------------------|------------|
+| Weave       | 1.59×–1.89×          | 1.62×–1.95×                | Stable    |
+| ColumnSort  | 10.37×               | 13.54×                     | Logarithmically ↑  |
+| SnB         | DNF                  | DNF                        | DNF        |
+
+---
+
+### ✅ Summary
+
+- **Spark** and **Weave** exhibit **strong linear scalability**, with execution times increasing ~3×–3.1× for a 3× data increase.
+- **Weave overheads** remain relatively **stable**, confirming scalability.
+- **ColumnSort** becomes **significantly less efficient** at scale, with runtime more than quadrupling.
+- **SnB** does **not scale** to this size and fails to complete execution.
+
+
 
 
 
