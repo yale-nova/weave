@@ -367,15 +367,13 @@ We use the same hatch and hue patterns as the paper to ensure consistent visual 
 > 👉 [http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/](http://weave.eastus.cloudapp.azure.com:5555/extracted_datasets/)
 
 
-## Numerical Analysis and SGX overhead extrapolation 
-
 ## Performance Challenges and Optimizations for SGX Execution
 
 Deploying Spark on SGX, even with the help of a LibOS like Gramine, has proven to be a challenging task. SGXv1 requires static memory preallocation and thread reservation, which is incompatible with Spark's dynamic and resource-intensive behavior—including RPC threads, GC threads, and shuffle workers. As a result, running Spark on SGXv1 is not only inefficient (often incurring more than 10× overhead), but also unpredictable and error-prone.
 
 Batch-oriented systems like ColumnSort and SnB frequently experience GC faults or out-of-memory errors under SGXv1. Additionally, Java-based systems like Hadoop and HDFS rely heavily on OS-level calls and subprocess spawning, which are discouraged or disallowed by Gramine’s secure configuration. These limitations often cause Spark components to crash fatally due to unhandled exceptions or missing fallback routines.
 
-Previous solutions circumvented these issues by launching enclaves through `bash`, but this approach consumes excessive EPC memory—reserving \~50% of enclave memory for bash, leaving little room for actual executor computation.
+Previous solutions [circumvented these issues by launching enclaves through](https://github.com/intel/BigDL/blob/main/ppml/base/bash.manifest.template) `bash`, but this approach consumes excessive EPC memory—reserving \~50% of enclave memory for bash, leaving little room for actual executor computation.
 
 Weave addresses these challenges with several key design and configuration changes:
 
@@ -387,6 +385,9 @@ Weave addresses these challenges with several key design and configuration chang
 These optimizations collectively reduce SGX overhead to between **1.8× and 3.2×** on average. In practice, they make Weave’s execution time and resource efficiency comparable to that of direct Gramine execution, while maintaining strict isolation and integrity.
 
 We present these insights here to provide context for the extrapolated SGX performance plots and to explain the system-level design decisions that enable Weave to run efficiently under SGX.
+
+In addition to the challenges above, there was many issues that we face repeatedly, making Weave a system that can express deterministic behavior. Including working on Gramine clock sync issues, vFork and clone issues, and some unreported Hadoop storage issues that is still not solved and we avoid with using Azure storage. 
+
 ### Overall SGX Overhead Across All Systems
 
 ### Overall SGX/Direct Overhead (Real Time)
