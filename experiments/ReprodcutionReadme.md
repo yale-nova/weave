@@ -467,7 +467,7 @@ SGX=1 ./start_cluster.sh
 
 Below are selected SGX trace records for the Enron Email dataset experiment:
 
-| UID                     | Trace Link                                                                                         | Execution Time (s) | GC Time (s) | Overhead | Input CSV Path                                                   |
+| UID                     | Trace Link                                                                                         | Real | User | Sys | Input CSV Path                                                   |
 |------------------------|----------------------------------------------------------------------------------------------------|---------------------|-------------|----------|------------------------------------------------------------------|
 | 20250527_123926_a151e27c | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_123926_a151e27c) | 118.33              | 35.07       | 1.22     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
 | 20250527_124307_3d55a8a5 | [View Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_124307_3d55a8a5) | 128.53              | 36.44       | 1.20     | `/opt/spark/enclave/data/enron_spam_data_cleaned.csv`           |
