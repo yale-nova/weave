@@ -809,9 +809,7 @@ To measure the similarity of system performance between SGX and Direct execution
 One notable trend is that SGX overhead sharply decreases with longer execution durations. Shorter jobs are disproportionately affected by the fixed costs associated with SGX, such as page fault handling, JVM initialization, and secure memory allocation. However, these overheads become negligible in larger workloads. On average, the SGX overhead converges toward a stable multiplier of **\~2x**, highlighting the practical scalability of enclave-based systems when amortized over time.
 
 
-## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1 
-
-## Experiment 2: Reproducing Shuffling Overheads from Figure 5.1
+## Experiment 2: Reproduction of the shuffling overheads of all schemes in Figure 5.1
 
 ### Enron Email Dataset Shuffling
 
