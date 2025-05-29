@@ -611,7 +611,8 @@ Below are selected SGX and Direct trace records for task 3:
 
 ### Trace Table: SGX Mode
 
-| UID                        | Trace Link                                                                                        | Mode        | Runtime (s) |
+| UID                        | Trace Link                                                                                              | Mode        | Runtime (s) |
+| -------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- | ----------- 
 | 20250527\_134932\_d15b2988 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_134932_d15b2988) | Spark | 206.38 |
 | 20250527\_135259\_872b3042 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_135259_872b3042) | SparkSorted | 216.62 |
 | 20250527\_135636\_b24e7275 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/sgx_data/20250527_135636_b24e7275) | Weave | 217.36 |
@@ -680,6 +681,7 @@ SGX=1 ./start_cluster.sh
 | 20250527\_131135\_ab3a36c7 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_131135_ab3a36c7) | WeaveSorted | 220.48      |
 | 20250527\_131515\_1195cab2 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_131515_1195cab2) | ColumnSort  | 1084.86     |
 | 20250527\_133321\_6bbcb0e4 | [SGX Trace](http://weave.eastus.cloudapp.azure.com:5555/sgx_data/20250527_133321_6bbcb0e4) | SnB         | DNF         |
+
 
 ##### Task 4 - Pokec Dataset (Direct Mode)
 
