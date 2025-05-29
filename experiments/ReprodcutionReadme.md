@@ -377,7 +377,7 @@ Batch-oriented systems like ColumnSort and SnB frequently experience GC faults o
 
 Previous solutions [circumvented these issues by launching enclaves through](https://github.com/intel/BigDL/blob/main/ppml/base/bash.manifest.template) `bash`, but this approach consumes excessive EPC memory, reserving \~50% of enclave memory for bash, leaving little room for actual executor computation.
 
-Weave addresses these challenges with several key design and configuration changes:
+Weave addresses these challenges with several key design and configuration changes: 
 
 1. **Use of SGXv2 with dynamic memory management**, allowing more flexible allocation and significantly improving enclave utilization.
 2. **Executor-centric enclave model**: We spawn long-lived SGX executors while keeping workers outside the enclave. This contrasts with prior models that placed Spark workers inside SGX and launched executors as subprocesses.
@@ -394,7 +394,7 @@ In addition to the challenges above, we encountered several recurring issues tha
 * `vfork` and `clone` [behavior inconsistencies](https://github.com/gramineproject/graphene/issues/2672) leading to subtle runtime bugs.
 * Unresolved Hadoop local storage bugs that consistently broke execution; we now circumvent these by using Azure storage exclusively.
 
-### Extrapolation experiment design 
+### Extrapolation experiment design (Time: <25mins)
 
 #### Data scale 
 
