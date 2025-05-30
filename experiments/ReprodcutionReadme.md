@@ -938,9 +938,26 @@ Plot:  [Mini Enron Experiment (SnB on SGX showcase)](http://weave.eastus.cloudap
 
 
  
-### Shuffling the NY Taxi Dataset 
+### Shuffling the NY Taxi Dataset
 
-### Shuffling Pokec Dataset (First round of pagerank)
+Plot is available [here](http://weave.eastus.cloudapp.azure.com:5555/plots_per_group/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_yellow_tripdata_original_scale.csv__PULocationID__DOLocationID_combined.html).
+
+Cross-reference the numbers with **Figure 5.1, middle section**. Cosine similarity with the original trends is **0.988**.
+
+* **Weave overhead** is measured at **1.69x to 1.68x**, confirming consistency with the description in Section 5.1.
+* **ColumnSort overhead** is reported at **6.5x**.
+
+#### Scalability Analysis
+
+Scalability data and plot are [here](http://weave.eastus.cloudapp.azure.com:5555/plots_per_group/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_yellow_tripdata_202_star_wy.csv__PULocationID__DOLocationID_combined.html).
+
+* The dataset used for this evaluation is **3× larger**.
+* **Weave overhead** decreases by **\~10%**.
+* **ColumnSort overhead** increases to **8.42x**.
+
+While this scalability data is **not included** in the main paper, it aligns with the expected **logarithmic cost trends** and strengthens the conclusions of Figure 5.1.
+
+### Shuffling Pokec Dataset (First round of pagerank) 
 
 ### Reproduction HowTo
 
