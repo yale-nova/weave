@@ -936,13 +936,107 @@ Plot:  [Mini Enron Experiment (SnB on SGX showcase)](http://weave.eastus.cloudap
 | 20250528_142715_d9ef3551  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142715_d9ef3551)       | ColumnSort  | 198.52      |
 | 20250528_143034_50488817  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_143034_50488817)       | SnB         | DNF         |
 
-### Reproduction HowTo
-
 
  
-### Shuffling NY Taxi Dataset 
+### Shuffling the NY Taxi Dataset 
 
 ### Shuffling Pokec Dataset (First round of pagerank)
+
+### Reproduction HowTo
+
+### Trace Collection and Plotting Instructions
+
+To reproduce the plots, each experiment executed on the SGX or direct cluster must have its traces collected. Begin by checking how many experiment logs you want to collect by reviewing the **Live WebUIs**:
+
+* [SGX WebUI](http://weave.eastus.cloudapp.azure.com:8888/)
+* [Direct WebUI](http://sparkui-eastus.eastus.cloudapp.azure.com:8080/)
+
+#### Collecting SGX VM Logs
+
+```bash
+ssh weave-master
+cd /home/azureuser/workspace/sgx_consolidated_experiments
+./scripts/fetch_experiment_logs.sh "edmm-test-vm,edmm-test-vm2" n  # Replace n with desired value
+./scripts/fetch_app_data.sh
+mv consolidated_sgx_data ./traces/reviewer_traces
+```
+
+#### Collecting Kubernetes Traces (10-worker Gramine Direct)
+
+```bash
+ssh weave-master
+cd /home/azureuser/workspace/sgx_consolidated_experiments
+./scripts/fetch_experiment_logs_k8s.sh spark m  # Replace m with desired value
+./scripts/fetch_app_data_k8s.sh
+mv consolidated_sgx_data ./traces/reviewer_traces
+```
+
+We have already collected traces for **5 rounds of the above experiments** [here](http://weave.eastus.cloudapp.azure.com:5555/).
+
+### Cleaning and Processing the Traces
+
+To clean trace metadata and remove incorrectly configured executions (e.g., wrong dataset paths):
+
+```bash
+python3 python/json_fixer.py traces/reviewer_traces
+```
+
+*Example output:*
+
+```
+🔧 Fixed: traces/k8s_newest_data/20250529_212255_10c2759e/metadata.json
+```
+
+Then, extract time and execution metrics:
+
+```bash
+python3 ./python/summarize_experiments_with_logs.py --subdir traces/reviewer_data/
+```
+
+*Example output:*
+
+```
+extracting metadata for  20250529_224125_b059b6e7
+extracting metadata for  20250529_224228_bea2e48a
+...
+```
+
+This generates `full_experiment_summary.csv`, e.g. [sample](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_newest_data/).
+
+### SGX Extrapolation Workflow
+
+1. Join SGX and direct results:
+
+```bash
+python3 join_experiments_summary_left.py
+```
+
+2. Plot consolidated comparisons:
+
+```bash
+python3 python/plot_final_consolidated.py --csv extracted_datasets/extrapolate_experiment_full_summary.csv
+```
+
+3. Extract extrapolation statistics:
+
+```bash
+python3 python/plot_all_extrapolate_experiments.py
+```
+
+### Plotting Figure 5 & Figure 6
+
+1. Clean misconfigured traces:
+
+```bash
+python3 python/clean_misconfigured_experiments.py traces/k8s_data/full_experiment_summary.csv
+```
+
+2. Plot the results:
+
+```bash
+python3 python/make_fig5_plots.py
+```
+
 
 ## Trace Snapshots
 
