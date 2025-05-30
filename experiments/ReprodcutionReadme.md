@@ -1,4 +1,4 @@
-# SGX Experiment Summary
+# SGX Experiment Summary (Finalized reproduction readme)
 
 ## Description
 
