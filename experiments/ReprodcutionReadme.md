@@ -894,6 +894,7 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 - **Weave** went from ~181s → **556.7s** → **~3.07×**, showing **linear scaling**.
 - **ColumnSort** jumped from ~1100s → **4746.1s** → **~4.3×**, indicating **log-linear scaling**. 
 - **Extrapolation results** Shows 21 mins for Weave and 147 minutes reported **22 mins** and **140mins** in the paper on this scale. 
+- At this scale, Opaque execution overhead is 8.35x higher than Weave in this data. We have reported 9.3x in the paper in section 5.2. 
 - **SnB** failed at this scale. 
 
 ---
@@ -905,7 +906,7 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 | Mode        | Overhead (3× scale) | Overhead (original scale) | Change     |
 |-------------|----------------------|----------------------------|------------|
 | Weave       | 1.59×–1.89×          | 1.62×–1.95×                | Stable    |
-| ColumnSort  | 10.37×               | 13.54×                     | Logarithmically ↑  |
+| ColumnSort  | 10.37×               | 13.54×                     | Logarithmically ↑  | 
 | SnB         | DNF                  | DNF                        | DNF        |
 
 ---
@@ -935,11 +936,9 @@ Plot:  [Mini Enron Experiment (SnB on SGX showcase)](http://weave.eastus.cloudap
 | 20250528_142715_d9ef3551  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142715_d9ef3551)       | ColumnSort  | 198.52      |
 | 20250528_143034_50488817  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_143034_50488817)       | SnB         | DNF         |
 
-
-### Verification HowTo 
-
-
 ### Reproduction HowTo
+
+
  
 ### Shuffling NY Taxi Dataset 
 
