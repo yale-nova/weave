@@ -888,7 +888,7 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 
 ### 📊 Execution Time Analysis
 
-[![Execution Times – 3× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_exploded_times.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
+[![Execution Times – 3× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_scaled_times.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
 
 - **Spark** execution time grew from ~111.5s → **350.5s** → **~3.14×**, close to linear.
 - **Weave** went from ~181s → **556.7s** → **~3.07×**, showing **linear scaling**.
@@ -900,7 +900,7 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 
 ### 📈 Overhead Analysis
 
-[![Overheads – 4× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_exploded_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
+[![Overheads – 4× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_scales_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
 
 | Mode        | Overhead (3× scale) | Overhead (original scale) | Change     |
 |-------------|----------------------|----------------------------|------------|
