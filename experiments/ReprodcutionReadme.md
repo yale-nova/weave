@@ -957,7 +957,20 @@ Scalability data and plot are [here](http://weave.eastus.cloudapp.azure.com:5555
 
 While this scalability data is **not included** in the main paper, it aligns with the expected **logarithmic cost trends** and strengthens the conclusions of Figure 5.1.
 
-### Shuffling Pokec Dataset (First round of pagerank) 
+
+Plots are available for the original scale [here](http://weave.eastus.cloudapp.azure.com:5555/plots_per_group/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_pokec-relations.csv__src__dst_combined.html).
+
+* Cosine similarity with the paper’s trend is **0.989**.
+* **Weave overhead** is **1.59x** at original scale.
+* **ColumnSort overhead** is **6x**.
+
+Plots for a **5× scaled** dataset are [here](http://weave.eastus.cloudapp.azure.com:5555/plots_per_group/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_pokec-relations_original_scale.csv__src__dst_combined.html).
+
+* **Weave overhead increases** to **2.07x**, due to **quadratic sampling overhead** in the histogram phase.
+* **ColumnSort overhead explodes to 17.1x**, which is **8.3× the Weave overhead**.
+
+This behavior is consistent with the **scalability with dataset size** discussed in **Section 5.2, Paragraph 3** of the manuscript.
+
 
 ### Reproduction HowTo
 
