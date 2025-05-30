@@ -900,7 +900,7 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 
 ### 📈 Overhead Analysis
 
-[![Overheads – 4× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_scales_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
+[![Overheads – 4× Scale](https://github.com/MattSlm/weave-artifacts/raw/main/images/enron_scaled_overheads.png)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_exploded_full_scale.csv__Word__Subject_combined.html)
 
 | Mode        | Overhead (3× scale) | Overhead (original scale) | Change     |
 |-------------|----------------------|----------------------------|------------|
@@ -923,6 +923,16 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 Plot:  [Mini Enron Experiment (SnB on SGX showcase)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_cleaned.csv__Date__Message__ID_combined.html) 
 
 Data: 
+### Execution Traces – Small-Scale Enron Exploded Dataset
+
+| UID                        | Trace Link                                                                                             | Mode        | Runtime (s) |
+|---------------------------|----------------------------------------------------------------------------------------------------------|-------------|-------------|
+| 20250528_142236_02699ccf  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142236_02699ccf)       | Spark       | 57.05       |
+| 20250528_142334_decb3070  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142334_decb3070)       | SparkSorted | 62.73       |
+| 20250528_142437_62a06834  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142437_62a06834)       | Weave       | 75.99       |
+| 20250528_142554_69744a8e  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142554_69744a8e)       | WeaveSorted | 80.47       |
+| 20250528_142715_d9ef3551  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_142715_d9ef3551)       | ColumnSort  | 198.52      |
+| 20250528_143034_50488817  | [Trace](http://weave.eastus.cloudapp.azure.com:5555/traces/k8s_new_data/20250528_143034_50488817)       | SnB         | DNF         |
 
 
 ### Verification HowTo 
