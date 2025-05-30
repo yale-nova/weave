@@ -922,8 +922,9 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 
 Plot:  [Mini Enron Experiment (SnB on SGX showcase)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_cleaned.csv__Date__Message__ID_combined.html) 
 
-Data: 
-### Execution Traces – Small-Scale Enron Exploded Dataset
+
+#### Data: 
+ Execution Traces – Small-Scale Enron Exploded Dataset
 
 | UID                        | Trace Link                                                                                             | Mode        | Runtime (s) |
 |---------------------------|----------------------------------------------------------------------------------------------------------|-------------|-------------|
