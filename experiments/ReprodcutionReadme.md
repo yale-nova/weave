@@ -463,7 +463,7 @@ SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_cleaned.csv "Date" "Message ID"
 ```
 
-2- **Restart the cluster in Direct mode** on `weave-master`:
+2- **Restart the cluster in Direct mode** and then on `weave-master`:
 Then 
 ```bash
 SGX=1 ./start_cluster.sh
@@ -524,7 +524,7 @@ SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/enron_spam_data_exploded.csv "Word" "Subject"
 ```
 
-2- **Restart the cluster in Direct mode** on `weave-master`:
+2- **Restart the cluster in Direct mode** and then on `weave-master`:
 Then 
 ```bash
 SGX=1 ./start_cluster.sh
@@ -587,7 +587,7 @@ SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/yellow_tripdata_2020.csv "PULocationID" "DOLocationID"
 ```
 
-2- **Restart the cluster in Direct mode** on `weave-master`:
+2- **Restart the cluster in Direct mode** and then on `weave-master`:
 Then 
 ```bash
 SGX=1 ./start_cluster.sh
@@ -653,7 +653,7 @@ SGX=1 ./start_cluster.sh
 ./run_all_modes.sh /opt/spark/enclave/data/pokec-relations.csv "src" "dst"
 ```
 
-2- **Restart the cluster in Direct mode** on `weave-master`:
+2- **Restart the cluster in Direct mode** and then on `weave-master`:
 Then 
 ```bash
 SGX=1 ./start_cluster.sh
