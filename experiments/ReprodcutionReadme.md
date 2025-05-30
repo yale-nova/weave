@@ -918,10 +918,11 @@ This experiment reproduces the shuffling overheads with the **dataset scaled up 
 - **SnB** does **not scale** to this size and fails to complete execution.
 
 
-
-
-
 ### Mini-scale experiment 
+
+Plot:  [Mini Enron Experiment (SnB on SGX showcase)](http://weave.eastus.cloudapp.azure.com:5555/plotting/figure5/azure_input__weave-scratch_sparkstorage32271.dfs.core.windows.net_enron_spam_data_cleaned.csv__Date__Message__ID_combined.html) 
+
+Data: 
 
 
 ### Verification HowTo 
