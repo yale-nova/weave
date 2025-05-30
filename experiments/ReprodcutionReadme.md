@@ -218,7 +218,7 @@ root@weave-master:/home/azureuser/workspace/scripts# ./launch-hybrid-spark-clust
 3. **To run experiments** (must be executed on `weave-master` for SGX, or `spark-master-0` for Kube-based clusters):
 
 ```bash
-./run_all.sh
+./run_all.sh # This command has to be called with the name of input data and key and value cols. 
 ```
 
 4. **To fetch and collect experiment traces from all nodes**: 
