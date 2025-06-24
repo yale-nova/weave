@@ -1,6 +1,6 @@
 # Weave
 
-This repository provides the runtime infrastructure and Gramine configurations for Weave, our confidential computing framework built on top of Spark. Specifically, it integrates two systems: [Weave](https://github.com/MattSlm/spark-weave-shuffle), a memory-oblivious shuffler that mitigates access pattern and speculative execution leaks, and [Spool](https://github.com/MattSlm/spark-spool), a lightweight context generator that minimizes enclave overhead. This repo provides streamlined Gramine manifests, Spark environment tuning, and reproducible test cases for JVM, Scala, and Spark workloads running inside enclaves.
+This repository provides the runtime infrastructure and Gramine configurations for Weave, a confidential computing framework built on top of Spark. This repository provides streamlined Gramine manifests, Spark environment tuning, and reproducible test cases for JVM, Scala, and Spark workloads running inside enclaves.
 
 ### Container Detection for Global Installs
 
